@@ -1,0 +1,233 @@
+{
+  "slug": "atlanta",
+  "meta": {
+    "title": "Atlanta — Initiative",
+    "dates": "Apr 17–20, 2026",
+    "description": "Jacob York's world premiere play at Aurora Theatre. Staying with Jacob & Galen in Decatur.",
+    "emoji": "🎭",
+    "status": "upcoming",
+    "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
+    "coordinates": { "lat": 33.749, "lng": -84.388 },
+    "color": "#3b82f6"
+  },
+  "access": {
+    "mfrancese@gmail.com": { "role": "owner", "name": "Michael" },
+    "megc.holland@gmail.com": { "role": "owner", "name": "Meghan" }
+  },
+  "bookings": [
+    {
+      "id": "outbound",
+      "category": "flight",
+      "label": "Outbound Flight",
+      "status": "booked",
+      "carrier": "Frontier Airlines",
+      "detail": "F9 2646 · STL → ATL",
+      "date": "Fri, Apr 17",
+      "time": "8:23 PM → 11:09 PM ET",
+      "duration": "1h 46m · Nonstop",
+      "confirmation": "SJ4C3A",
+      "cost": "$175.92",
+      "paidWith": "Visa ···3174",
+      "notes": "Personal items only (14×18×8 in). No carry-on or checked bags purchased.",
+      "alertNotes": [
+        "Measure all backpacks against 14\"H × 18\"W × 8\"D before trip",
+        "Set alarm 8:23 PM Thu 4/16 for 24-hr check-in (seat assignments)"
+      ],
+      "passengers": "Michael, Meghan, Kenna, Louise",
+      "order": 0
+    },
+    {
+      "id": "return",
+      "category": "flight",
+      "label": "Return Flight",
+      "status": "booked",
+      "carrier": "Southwest Airlines",
+      "detail": "WN 1395 · ATL → STL",
+      "date": "Mon, Apr 20",
+      "time": "8:05 PM → 8:55 PM CT",
+      "duration": "1h 50m · Nonstop · Basic fare",
+      "confirmation": "BO8RPW",
+      "cost": "$679.12",
+      "paidWith": "30K RR pts + $284.34 Visa ···4879 + $94.78 flight credits",
+      "notes": "Basic fare includes carry-on + personal item. Preferred seats selected (Row 9). Flight changes require fare upgrade.",
+      "passengers": "Michael (9E), Meghan (9D), Kenna (9C), Louise (9F)",
+      "order": 1
+    },
+    {
+      "id": "car",
+      "category": "car",
+      "label": "Rental Car",
+      "status": "booked",
+      "carrier": "Enterprise",
+      "detail": "Standard Car · Subaru Impreza or similar",
+      "date": "Apr 17–20",
+      "time": "Pickup 11:00 PM Fri → Return 7:30 PM Mon",
+      "duration": "3 days",
+      "confirmation": "H-2100517884COUNT",
+      "cost": "$217.30",
+      "paidWith": "21,730 Capital One miles (Venture X ···8314)",
+      "notes": "ATL Rental Car Center, 2200 Rental Car Cntr Pkwy. Unlimited mileage. Free cancellation. Return car by 5:30–6:00 PM Mon (need buffer for SkyTrain + TSA).",
+      "alertNotes": [
+        "Confirm Enterprise ATL counter open past 11:30 PM Fridays",
+        "Return by 5:30 PM despite 7:30 PM reservation — need airport buffer"
+      ],
+      "passengers": "Driver: Michael Francese",
+      "order": 2
+    },
+    {
+      "id": "show",
+      "category": "show",
+      "label": "Initiative — Aurora Theatre",
+      "status": "pending",
+      "carrier": "Aurora Theatre",
+      "detail": "World Premiere · by Jacob York",
+      "date": "Sat, Apr 18",
+      "time": "8:00 PM ET · ~2 hrs (15 min intermission)",
+      "duration": "128 E Pike St, Lawrenceville, GA 30046",
+      "confirmation": "Pending — Galen contacting Aurora",
+      "cost": "TBD",
+      "paidWith": "—",
+      "notes": "3 tickets needed (2 adults, 1 child). Galen York is working with Aurora to exchange existing Friday tickets for Saturday. Content advisory: adult language, themes of loss and grief.",
+      "passengers": "Michael, Meghan, Kenna",
+      "order": 3
+    }
+  ],
+  "timeline": [
+    {
+      "id": "day_fri",
+      "day": "Fri",
+      "dayNum": "17",
+      "month": "APR",
+      "title": "Travel Day — Fly to Atlanta",
+      "section": "Atlanta",
+      "order": 0,
+      "events": [
+        { "time": "1:00 PM CT", "text": "Kenna returns to school from camp" },
+        { "time": "1:15 PM", "text": "Michael picks up Kenna" },
+        { "time": "~2:00 PM", "text": "Uber to STL — all 4 meet at airport" },
+        { "time": "8:23 PM", "text": "✈ Frontier F9 2646 departs STL", "status": "booked", "statusLabel": "SJ4C3A" },
+        { "time": "11:09 PM ET", "text": "Land ATL", "status": "booked" },
+        { "time": "~11:30 PM", "text": "SkyTrain to Rental Car Center → pick up Enterprise" },
+        { "time": "~12:00 AM", "text": "Drive to Decatur (~20 min) → arrive Jacob & Galen's" }
+      ],
+      "details": [
+        {
+          "icon": "🎒",
+          "title": "Prepare the Night Before",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "warn", "text": "<strong>SET ALARM: 8:23 PM Thu 4/16</strong> — Frontier 24-hr check-in opens for seat selection" },
+            { "type": "info", "text": "Final packing check: measure all backpacks against Frontier 14×18×8\" limit" },
+            { "type": "tip", "text": "Pack BubbleBum booster in one of the backpacks for Louise" }
+          ]
+        },
+        {
+          "icon": "⚠️",
+          "title": "Potential Pitfalls",
+          "color": "#e8c55c",
+          "items": [
+            { "type": "warn", "text": "Frontier gate agents enforce bag sizing — $99/bag if oversized" },
+            { "type": "warn", "text": "Late arrival (11 PM) — confirm Enterprise counter is still open" },
+            { "type": "info", "text": "SkyTrain runs until 1 AM from airport to Rental Car Center" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day_sat",
+      "day": "Sat",
+      "dayNum": "18",
+      "month": "APR",
+      "title": "Show Day — Initiative",
+      "order": 1,
+      "events": [
+        { "time": "Morning", "text": "Breakfast with Wiley & Laura" },
+        { "time": "Daytime", "text": "Relax at Jacob & Galen's / explore Decatur" },
+        { "time": "~6:15 PM", "text": "Leave Decatur → Lawrenceville (~30 min)" },
+        { "time": "7:00 PM", "text": "Arrive Lawrenceville · dinner near Aurora Theatre" },
+        { "time": "8:00 PM", "text": "🎭 Initiative — Curtain", "status": "pending", "statusLabel": "Tickets TBD" },
+        { "time": "~10:00 PM", "text": "Show ends · drive back to Decatur" }
+      ],
+      "details": [
+        {
+          "icon": "🎭",
+          "title": "Show Info",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "info", "text": "Aurora Theatre, 128 E Pike St, Lawrenceville, GA 30046" },
+            { "type": "info", "text": "World premiere by Jacob York. ~2 hours with 15 min intermission" },
+            { "type": "warn", "text": "Content advisory: adult language, themes of loss and grief" },
+            { "type": "tip", "text": "Louise stays with Galen & Owen during the show" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day_sun",
+      "day": "Sun",
+      "dayNum": "19",
+      "month": "APR",
+      "title": "Free Day with the Yorks",
+      "order": 2,
+      "events": [
+        { "time": "All day", "text": "Full day with the Yorks in Decatur" },
+        { "time": "Ideas", "text": "Fernbank Museum · Stone Mountain · Ponce City Market" }
+      ],
+      "details": []
+    },
+    {
+      "id": "day_mon",
+      "day": "Mon",
+      "dayNum": "20",
+      "month": "APR",
+      "title": "Travel Home",
+      "order": 3,
+      "events": [
+        { "time": "Daytime", "text": "Hang with Jacob, Galen & kids" },
+        { "time": "~5:30 PM ET", "text": "Return rental car at ATL" },
+        { "time": "~6:00 PM", "text": "SkyTrain to terminal · through TSA" },
+        { "time": "8:05 PM", "text": "✈ Southwest WN 1395 departs ATL", "status": "booked", "statusLabel": "BO8RPW" },
+        { "time": "8:55 PM CT", "text": "Land STL · Uber home", "status": "booked" }
+      ],
+      "details": [
+        {
+          "icon": "⏰",
+          "title": "Timing is Critical",
+          "color": "#e8c55c",
+          "items": [
+            { "type": "warn", "text": "<strong>Return rental car by 5:30 PM</strong> — need 2+ hours buffer for SkyTrain + TSA before 8:05 PM flight" },
+            { "type": "info", "text": "SkyTrain from Rental Car Center to terminal takes ~10 minutes" },
+            { "type": "tip", "text": "Southwest boards early — be at gate by 7:30 PM" }
+          ]
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "confirmed": [
+      { "item": "Frontier outbound (4 pax)", "cost": "$175.92", "note": "Visa ···3174" },
+      { "item": "Southwest return (4 pax)", "cost": "$679.12", "note": "30K pts + $284.34 cash + $94.78 credits" },
+      { "item": "Enterprise rental (3 days)", "cost": "$217.30", "note": "21,730 Capital One miles" }
+    ],
+    "estimated": [
+      { "item": "Uber to STL (Fri)", "cost": "~$35", "note": "Est." },
+      { "item": "Uber from STL (Mon)", "cost": "~$35", "note": "Est." },
+      { "item": "Gas in Atlanta", "cost": "~$20", "note": "Est." },
+      { "item": "Show tickets (3)", "cost": "TBD", "note": "Pending" },
+      { "item": "Meals (Fri–Mon)", "cost": "~$200", "note": "Est." }
+    ],
+    "confirmedTotal": "~$1,072",
+    "estimatedTotal": "~$1,362",
+    "savingsNote": "Points: 30K SW + 21.7K CapOne · Credits: $94.78"
+  },
+  "checklist": [
+    { "id": "check_1", "text": "Measure all 4 backpacks: 14\"H × 18\"W × 8\"D max (Frontier)", "done": false, "urgent": true, "group": "urgent", "order": 0 },
+    { "id": "check_2", "text": "Confirm Enterprise ATL counter hours (open past 11:30 PM Fri?)", "done": false, "urgent": true, "group": "urgent", "order": 1 },
+    { "id": "check_3", "text": "Show tickets — follow up with Galen on Aurora exchange", "done": false, "urgent": true, "group": "urgent", "order": 2 },
+    { "id": "check_4", "text": "Confirm Kenna's camp return time (1 PM Fri) is firm", "done": false, "urgent": false, "group": "normal", "order": 3 },
+    { "id": "check_5", "text": "Pack BubbleBum inflatable booster for Louise", "done": false, "urgent": false, "group": "normal", "order": 4 },
+    { "id": "check_6", "text": "Set alarm: 8:23 PM Thu 4/16 — Frontier 24-hr check-in", "done": false, "urgent": false, "group": "normal", "order": 5 },
+    { "id": "check_7", "text": "Coordinate with Wiley & Laura — Sat breakfast plans", "done": false, "urgent": false, "group": "normal", "order": 6 },
+    { "id": "check_8", "text": "Discuss Louise plan with Galen for during Sat show", "done": false, "urgent": false, "group": "normal", "order": 7 }
+  ]
+}
