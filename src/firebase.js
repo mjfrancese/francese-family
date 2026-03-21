@@ -23,7 +23,7 @@ export function sanitizeEmail(email) {
   return email.replace(/\./g, '_')
 }
 
-export const OWNER_EMAILS = ['mfrancese@gmail.com', 'megc.holland@gmail.com']
+export const OWNER_EMAILS = ['mfrancese@gmail.com', 'meghancryan@gmail.com']
 
 export function isOwnerEmail(email) {
   return OWNER_EMAILS.includes(email)
