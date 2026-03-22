@@ -8,6 +8,7 @@ import { Globe, Plus, Upload } from 'lucide-react'
 import WorldMap from './WorldMap'
 import NewTripForm from './NewTripForm'
 import StatusBadge from '../components/StatusBadge'
+import TripIcon from '../components/TripIcon'
 
 export default function Landing() {
   const { user, signOut } = useAuth()
@@ -152,7 +153,7 @@ export default function Landing() {
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontSize: 24 }}>{trip.emoji || ''}</span>
+                    <TripIcon icon={trip.icon || trip.emoji} size={32} tripColor={trip.color} />
                     <h3 style={{
                       fontFamily: fonts.heading,
                       fontSize: 17,

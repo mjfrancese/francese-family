@@ -4,7 +4,7 @@
     "title": "Fourth of July — New Hampshire",
     "dates": "Early July 2026",
     "description": "Fourth of July week at Mom & Dad's in Melvin Village. Kristina and family will be there too.",
-    "emoji": "🇺🇸",
+    "icon": "lucide:home",
     "status": "planning",
     "travelers": ["Michael", "Meghan", "Louise", "Kenna (TBD)"],
     "coordinates": { "lat": 43.687, "lng": -71.392 },

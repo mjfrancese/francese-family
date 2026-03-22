@@ -11,6 +11,7 @@ import Reservations from './Reservations'
 import Budget from './Budget'
 import Checklist from './Checklist'
 import SharePanel from '../components/SharePanel'
+import TripIcon from '../components/TripIcon'
 
 const TABS = [
   { key: 'daybyday', label: 'Day by Day', Icon: Calendar },
@@ -121,14 +122,7 @@ export default function TripDashboard() {
 
         {/* Trip title */}
         <div style={{ marginBottom: 4, display: 'flex', justifyContent: 'center' }}>
-          <div style={{
-            width: 40, height: 40, borderRadius: '50%',
-            background: `${meta.color || colors.accent}22`,
-            border: `2px solid ${meta.color || colors.accent}`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <Calendar size={20} color={meta.color || colors.accent} />
-          </div>
+          <TripIcon icon={meta.icon || meta.emoji} size={40} tripColor={meta.color} />
         </div>
         <h1 style={{
           fontFamily: fonts.heading,
