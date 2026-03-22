@@ -2,6 +2,7 @@ import { useState } from 'react'
 import DayCard from '../components/DayCard'
 import SectionHeader from '../components/SectionHeader'
 import { colors } from '../theme'
+import { MapPin } from 'lucide-react'
 
 export default function DayByDay({ timeline }) {
   const [expandedDay, setExpandedDay] = useState(null)
@@ -18,7 +19,7 @@ export default function DayByDay({ timeline }) {
     if (day.section && day.section !== currentSection) {
       currentSection = day.section
       elements.push(
-        <SectionHeader key={`section-${currentSection}`} icon={day.sectionIcon || '📍'}>
+        <SectionHeader key={`section-${currentSection}`} Icon={MapPin}>
           {currentSection}
         </SectionHeader>
       )

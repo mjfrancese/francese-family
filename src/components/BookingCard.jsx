@@ -2,21 +2,22 @@ import { useState } from 'react'
 import { colors, fonts } from '../theme'
 import StatusBadge from './StatusBadge'
 import InfoRow from './InfoRow'
+import { Plane, Car, Hotel, Theater, Train, FerrisWheel, Utensils, Bus, ClipboardList, AlertTriangle, ChevronRight } from 'lucide-react'
 
 const categoryIcons = {
-  flight: '✈',
-  car: '🚗',
-  hotel: '🏨',
-  show: '🎭',
-  train: '🚄',
-  attraction: '🎡',
-  dining: '🍽',
-  transport: '🚌',
+  flight: Plane,
+  car: Car,
+  hotel: Hotel,
+  show: Theater,
+  train: Train,
+  attraction: FerrisWheel,
+  dining: Utensils,
+  transport: Bus,
 }
 
 export default function BookingCard({ booking }) {
   const [expanded, setExpanded] = useState(false)
-  const icon = categoryIcons[booking.category] || '📋'
+  const Icon = categoryIcons[booking.category] || ClipboardList
 
   return (
     <div style={{
@@ -38,7 +39,14 @@ export default function BookingCard({ booking }) {
         onMouseOver={e => e.currentTarget.style.background = colors.cardHover}
         onMouseOut={e => e.currentTarget.style.background = 'transparent'}
       >
-        <span style={{ fontSize: 20, flexShrink: 0 }}>{icon}</span>
+        <div style={{
+          width: 36, height: 36, borderRadius: 8,
+          background: '#1a1a2e',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexShrink: 0,
+        }}>
+          <Icon size={18} color={colors.textMuted} />
+        </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{
             fontFamily: fonts.heading,
@@ -54,15 +62,15 @@ export default function BookingCard({ booking }) {
           )}
         </div>
         <StatusBadge status={booking.status} label={booking.confirmation} />
-        <span style={{
-          fontSize: 14,
-          color: colors.textDim,
-          transform: expanded ? 'rotate(90deg)' : 'rotate(0deg)',
-          transition: 'transform 0.15s ease',
-          flexShrink: 0,
-        }}>
-          ▶
-        </span>
+        <ChevronRight
+          size={16}
+          color={colors.textDim}
+          style={{
+            transform: expanded ? 'rotate(90deg)' : 'rotate(0deg)',
+            transition: 'transform 0.15s ease',
+            flexShrink: 0,
+          }}
+        />
       </div>
 
       {expanded && (
@@ -106,9 +114,10 @@ export default function BookingCard({ booking }) {
                   color: '#e8c55c',
                   lineHeight: 1.6,
                   display: 'flex',
+                  alignItems: 'flex-start',
                   gap: 6,
                 }}>
-                  <span>⚠</span>
+                  <AlertTriangle size={12} style={{ flexShrink: 0, marginTop: 2 }} />
                   <span>{note}</span>
                 </div>
               ))}

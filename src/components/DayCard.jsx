@@ -2,6 +2,7 @@ import { colors, fonts } from '../theme'
 import StatusBadge from './StatusBadge'
 import DetailSection from './DetailSection'
 import { renderBullets } from './Bullet'
+import { ChevronRight } from 'lucide-react'
 
 export default function DayCard({ day, dayNum, month, title, events = [], details = [], expanded, onToggle }) {
   const hasDetails = details && details.length > 0
@@ -79,15 +80,15 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
 
         {/* Chevron */}
         {hasDetails && (
-          <span style={{
-            fontSize: 14,
-            color: colors.textDim,
-            transform: expanded ? 'rotate(90deg)' : 'rotate(0deg)',
-            transition: 'transform 0.15s ease',
-            flexShrink: 0,
-          }}>
-            ▶
-          </span>
+          <ChevronRight
+            size={16}
+            color={colors.textDim}
+            style={{
+              transform: expanded ? 'rotate(90deg)' : 'rotate(0deg)',
+              transition: 'transform 0.15s ease',
+              flexShrink: 0,
+            }}
+          />
         )}
       </div>
 

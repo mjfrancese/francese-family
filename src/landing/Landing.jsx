@@ -4,6 +4,7 @@ import { useAuth } from '../auth/AuthContext'
 import { useTrips } from '../hooks/useTrips'
 import { isOwnerEmail } from '../firebase'
 import { colors, fonts } from '../theme'
+import { Globe, Plus, Upload } from 'lucide-react'
 import WorldMap from './WorldMap'
 import NewTripForm from './NewTripForm'
 import StatusBadge from '../components/StatusBadge'
@@ -26,7 +27,7 @@ export default function Landing() {
         borderBottom: `1px solid ${colors.divider}`,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span style={{ fontSize: 24 }}>🌍</span>
+          <Globe size={24} color={colors.accent} />
           <div>
             <h1 style={{
               fontFamily: fonts.heading,
@@ -64,7 +65,7 @@ export default function Landing() {
                 fontFamily: fonts.body,
               }}
             >
-              + New Trip
+              <Plus size={14} style={{ verticalAlign: -2, marginRight: 2 }} /> New Trip
             </button>
           )}
           {canCreate && (
@@ -81,7 +82,7 @@ export default function Landing() {
                 fontFamily: fonts.body,
               }}
             >
-              Import
+              <Upload size={14} style={{ verticalAlign: -2, marginRight: 2 }} /> Import
             </button>
           )}
           {user?.photoURL && (
@@ -151,7 +152,7 @@ export default function Landing() {
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontSize: 24 }}>{trip.emoji || '✈'}</span>
+                    <span style={{ fontSize: 24 }}>{trip.emoji || ''}</span>
                     <h3 style={{
                       fontFamily: fonts.heading,
                       fontSize: 17,

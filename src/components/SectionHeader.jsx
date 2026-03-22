@@ -1,6 +1,6 @@
 import { colors, fonts } from '../theme'
 
-export default function SectionHeader({ icon, children }) {
+export default function SectionHeader({ icon, Icon, children }) {
   return (
     <div style={{
       display: 'flex',
@@ -10,7 +10,8 @@ export default function SectionHeader({ icon, children }) {
       borderBottom: `1px solid ${colors.divider}`,
       marginBottom: 14,
     }}>
-      {icon && <span style={{ fontSize: 16 }}>{icon}</span>}
+      {Icon && <Icon size={16} color={colors.textMuted} />}
+      {!Icon && icon && <span style={{ fontSize: 16 }}>{icon}</span>}
       <span style={{
         fontFamily: fonts.heading,
         fontSize: 16,

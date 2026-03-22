@@ -5,6 +5,7 @@ import { useTripData } from '../hooks/useTripData'
 import { useChecklist } from '../hooks/useChecklist'
 import { useAccess } from '../hooks/useAccess'
 import { colors, fonts, styles } from '../theme'
+import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Share2 } from 'lucide-react'
 import DayByDay from './DayByDay'
 import Reservations from './Reservations'
 import Budget from './Budget'
@@ -12,10 +13,10 @@ import Checklist from './Checklist'
 import SharePanel from '../components/SharePanel'
 
 const TABS = [
-  { key: 'daybyday', label: 'Day by Day', icon: '📅' },
-  { key: 'reservations', label: 'Reservations', icon: '📋' },
-  { key: 'budget', label: 'Budget', icon: '💰' },
-  { key: 'todo', label: 'To Do', icon: '✅' },
+  { key: 'daybyday', label: 'Day by Day', Icon: Calendar },
+  { key: 'reservations', label: 'Reservations', Icon: ClipboardList },
+  { key: 'budget', label: 'Budget', Icon: DollarSign },
+  { key: 'todo', label: 'To Do', Icon: CheckSquare },
 ]
 
 export default function TripDashboard() {
@@ -42,7 +43,7 @@ export default function TripDashboard() {
     return (
       <div style={{ minHeight: '100vh', background: colors.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ textAlign: 'center', color: colors.textDim }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
+          <div style={{ marginBottom: 16 }}><Lock size={48} color={colors.textDim} /></div>
           <div style={{ fontSize: 14, marginBottom: 8 }}>You don't have access to this trip.</div>
           <button
             onClick={() => navigate('/')}
@@ -63,19 +64,8 @@ export default function TripDashboard() {
     )
   }
 
-  // Determine available tabs (hide tabs with no data)
-  const availableTabs = TABS.filter(tab => {
-    if (tab.key === 'daybyday') return timeline.length > 0
-    if (tab.key === 'reservations') return bookings.length > 0
-    if (tab.key === 'budget') return budget !== null
-    if (tab.key === 'todo') return true // always show checklist
-    return true
-  })
-
-  // Default to first available tab
-  if (!availableTabs.find(t => t.key === activeTab) && availableTabs.length > 0) {
-    setActiveTab(availableTabs[0].key)
-  }
+  // Always show all tabs
+  const availableTabs = TABS
 
   const doneCount = checklistItems.filter(i => i.done).length
 
@@ -108,7 +98,7 @@ export default function TripDashboard() {
               gap: 6,
             }}
           >
-            ← Home
+            <ArrowLeft size={14} /> Home
           </button>
           {isOwner && (
             <button
@@ -130,8 +120,15 @@ export default function TripDashboard() {
         </div>
 
         {/* Trip title */}
-        <div style={{ marginBottom: 4 }}>
-          <span style={{ fontSize: 32 }}>{meta.emoji || '✈'}</span>
+        <div style={{ marginBottom: 4, display: 'flex', justifyContent: 'center' }}>
+          <div style={{
+            width: 40, height: 40, borderRadius: '50%',
+            background: `${meta.color || colors.accent}22`,
+            border: `2px solid ${meta.color || colors.accent}`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <Calendar size={20} color={meta.color || colors.accent} />
+          </div>
         </div>
         <h1 style={{
           fontFamily: fonts.heading,
@@ -178,6 +175,7 @@ export default function TripDashboard() {
               onClick={() => setActiveTab(tab.key)}
               style={styles.tab(activeTab === tab.key)}
             >
+              <tab.Icon size={14} style={{ marginRight: 4, verticalAlign: -2 }} />
               {tab.label}
               {tab.key === 'todo' && checklistItems.length > 0 && (
                 <span style={{

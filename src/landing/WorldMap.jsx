@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps'
 import { colors, fonts } from '../theme'
@@ -8,6 +8,11 @@ const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
 export default function WorldMap({ trips }) {
   const navigate = useNavigate()
   const [tooltip, setTooltip] = useState(null)
+  const [zoom, setZoom] = useState(1)
+
+  const handleMoveEnd = useCallback((position) => {
+    setZoom(position.zoom)
+  }, [])
 
   return (
     <div style={{ position: 'relative', width: '100%', maxWidth: 900, margin: '0 auto' }}>
@@ -15,7 +20,16 @@ export default function WorldMap({ trips }) {
         projectionConfig={{ scale: 147, center: [10, 20] }}
         style={{ width: '100%', height: 'auto' }}
       >
-        <ZoomableGroup>
+        <ZoomableGroup
+          onMoveEnd={handleMoveEnd}
+          translateExtent={zoom <= 1 ? [[0, 0], [800, 600]] : undefined}
+          filterZoomEvent={e => {
+            // Allow zoom (wheel/pinch) always, but only allow pan when zoomed in
+            if (e.type === 'wheel' || e.type === 'touchmove') return true
+            // Block drag/pan at zoom level 1
+            return zoom > 1
+          }}
+        >
           <Geographies geography={GEO_URL}>
             {({ geographies }) =>
               geographies.map((geo) => (
@@ -81,7 +95,7 @@ export default function WorldMap({ trips }) {
           textAlign: 'center',
         }}>
           <div style={{ fontSize: 13, fontWeight: 600, color: colors.text }}>
-            {tooltip.emoji} {tooltip.title}
+            {tooltip.title}
           </div>
           <div style={{ fontSize: 11, color: colors.textDim, fontFamily: fonts.mono }}>
             {tooltip.dates}

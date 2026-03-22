@@ -1,5 +1,6 @@
 import { colors, fonts } from '../theme'
 import SectionHeader from '../components/SectionHeader'
+import { CircleCheck, BarChart3 } from 'lucide-react'
 
 function BudgetRow({ item, cost, note }) {
   return (
@@ -70,7 +71,7 @@ export default function Budget({ budget }) {
       {/* Confirmed */}
       {budget.confirmed && budget.confirmed.length > 0 && (
         <div style={{ marginBottom: 24 }}>
-          <SectionHeader icon="✅">Confirmed Costs</SectionHeader>
+          <SectionHeader Icon={CircleCheck}>Confirmed Costs</SectionHeader>
           <div style={{ background: colors.card, border: `1px solid ${colors.cardBorder}`, borderRadius: 8, padding: 16 }}>
             {budget.confirmed.map((row, i) => (
               <BudgetRow key={i} item={row.item} cost={row.cost} note={row.note} />
@@ -83,7 +84,7 @@ export default function Budget({ budget }) {
       {/* Estimated */}
       {budget.estimated && budget.estimated.length > 0 && (
         <div style={{ marginBottom: 24 }}>
-          <SectionHeader icon="📊">Estimated Costs</SectionHeader>
+          <SectionHeader Icon={BarChart3}>Estimated Costs</SectionHeader>
           <div style={{ background: colors.card, border: `1px solid ${colors.cardBorder}`, borderRadius: 8, padding: 16 }}>
             {budget.estimated.map((row, i) => (
               <BudgetRow key={i} item={row.item} cost={row.cost} note={row.note} />

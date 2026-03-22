@@ -1,17 +1,18 @@
 import BookingCard from '../components/BookingCard'
 import SectionHeader from '../components/SectionHeader'
 import { colors } from '../theme'
+import { Plane, Train, Bus, Car, Hotel, Theater, FerrisWheel, Utensils } from 'lucide-react'
 
 const categoryOrder = ['flight', 'train', 'transport', 'car', 'hotel', 'show', 'attraction', 'dining']
 const categoryLabels = {
-  flight: { label: 'Flights', icon: '✈' },
-  train: { label: 'Trains', icon: '🚄' },
-  transport: { label: 'Transport', icon: '🚌' },
-  car: { label: 'Car Rental', icon: '🚗' },
-  hotel: { label: 'Hotels', icon: '🏨' },
-  show: { label: 'Shows & Events', icon: '🎭' },
-  attraction: { label: 'Attractions', icon: '🎡' },
-  dining: { label: 'Dining', icon: '🍽' },
+  flight: { label: 'Flights', Icon: Plane },
+  train: { label: 'Trains', Icon: Train },
+  transport: { label: 'Transport', Icon: Bus },
+  car: { label: 'Car Rental', Icon: Car },
+  hotel: { label: 'Hotels', Icon: Hotel },
+  show: { label: 'Shows & Events', Icon: Theater },
+  attraction: { label: 'Attractions', Icon: FerrisWheel },
+  dining: { label: 'Dining', Icon: Utensils },
 }
 
 export default function Reservations({ bookings }) {
@@ -34,10 +35,10 @@ export default function Reservations({ bookings }) {
   return (
     <div>
       {sortedCategories.map(cat => {
-        const config = categoryLabels[cat] || { label: cat, icon: '📋' }
+        const config = categoryLabels[cat] || { label: cat }
         return (
           <div key={cat} style={{ marginBottom: 24 }}>
-            <SectionHeader icon={config.icon}>{config.label}</SectionHeader>
+            <SectionHeader Icon={config.Icon}>{config.label}</SectionHeader>
             {groups[cat].map(b => <BookingCard key={b.id} booking={b} />)}
           </div>
         )

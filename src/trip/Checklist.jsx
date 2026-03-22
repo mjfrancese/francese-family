@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { colors, fonts } from '../theme'
+import { ChevronRight, Check } from 'lucide-react'
 
 export default function Checklist({ items, toggle }) {
   const [showCompleted, setShowCompleted] = useState(false)
@@ -27,14 +28,25 @@ export default function Checklist({ items, toggle }) {
   const groupConfig = {
     'this-week': { bg: '#2a1a1a', border: '#4a2a2a', label: '#e85c5c', title: 'Do This Week' },
     'urgent': { bg: '#2a1a1a', border: '#4a2a2a', label: '#e85c5c', title: 'Urgent' },
+    'planning': { bg: '#1a1a2a', border: '#2a2a4a', label: '#4a90d9', title: 'Planning' },
     'april': { bg: '#2a2a1a', border: '#4a4a2a', label: '#e8c55c', title: 'Before Travel — April' },
     'may': { bg: '#2a1a2a', border: '#4a2a4a', label: '#b88ad9', title: 'Before Travel — May' },
     'june': { bg: '#1a1a2a', border: '#2a2a4a', label: '#4a90d9', title: 'Before Travel — June' },
+    'july': { bg: '#1a2a1a', border: '#2a4a2a', label: '#5ce892', title: 'Before Travel — July' },
     'packing': { bg: '#1a2a2a', border: '#2a4a4a', label: '#8a8aaa', title: 'Packing & Prep' },
     'normal': { bg: '#1a1a2a', border: '#2a2a4a', label: '#8a8aaa', title: 'To Do' },
   }
 
-  const groupOrder = ['this-week', 'urgent', 'april', 'may', 'june', 'packing', 'normal']
+  const groupOrder = ['this-week', 'urgent', 'planning', 'april', 'may', 'june', 'july', 'packing', 'normal']
+
+  // Add any groups from data that aren't in groupOrder (catch-all)
+  for (const item of items) {
+    const g = item.group || 'normal'
+    if (!groupOrder.includes(g)) {
+      groupOrder.push(g)
+      groupConfig[g] = { bg: '#1a1a2a', border: '#2a2a4a', label: '#8a8aaa', title: g.charAt(0).toUpperCase() + g.slice(1).replace(/-/g, ' ') }
+    }
+  }
 
   return (
     <div>
@@ -124,13 +136,13 @@ export default function Checklist({ items, toggle }) {
               marginBottom: 8,
             }}
           >
-            <span style={{
-              transform: showCompleted ? 'rotate(90deg)' : 'rotate(0deg)',
-              transition: 'transform 0.15s ease',
-              display: 'inline-block',
-            }}>
-              ▶
-            </span>
+            <ChevronRight
+              size={14}
+              style={{
+                transform: showCompleted ? 'rotate(90deg)' : 'rotate(0deg)',
+                transition: 'transform 0.15s ease',
+              }}
+            />
             Completed ({doneItems.length})
           </button>
           {showCompleted && doneItems.map(item => (
@@ -175,7 +187,7 @@ function ChecklistItem({ item, onToggle }) {
         transition: 'all 0.15s ease',
       }}>
         {item.done && (
-          <span style={{ color: '#fff', fontSize: 11, fontWeight: 700 }}>✓</span>
+          <Check size={12} color="#fff" strokeWidth={3} />
         )}
       </div>
 

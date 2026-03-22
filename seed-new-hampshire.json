@@ -1,0 +1,75 @@
+{
+  "slug": "new-hampshire-july",
+  "meta": {
+    "title": "Fourth of July — New Hampshire",
+    "dates": "Early July 2026",
+    "description": "Fourth of July week at Mom & Dad's in Melvin Village. Kristina and family will be there too.",
+    "emoji": "🇺🇸",
+    "status": "planning",
+    "travelers": ["Michael", "Meghan", "Louise", "Kenna (TBD)"],
+    "coordinates": { "lat": 43.687, "lng": -71.392 },
+    "color": "#ef4444"
+  },
+  "access": {
+    "mfrancese@gmail.com": { "role": "owner", "name": "Michael" },
+    "meghancryan@gmail.com": { "role": "owner", "name": "Meghan" }
+  },
+  "bookings": [],
+  "timeline": [],
+  "budget": {
+    "confirmed": [],
+    "estimated": [],
+    "confirmedTotal": "$0",
+    "estimatedTotal": "TBD"
+  },
+  "checklist": [
+    {
+      "id": "check_1",
+      "text": "Decide on dates (early July week — around the 4th)",
+      "done": false,
+      "urgent": true,
+      "group": "planning",
+      "order": 1
+    },
+    {
+      "id": "check_2",
+      "text": "Confirm whether Kenna is coming or at her dad's",
+      "done": false,
+      "urgent": true,
+      "group": "planning",
+      "order": 2
+    },
+    {
+      "id": "check_3",
+      "text": "Book flights (STL → MHT or BOS)",
+      "done": false,
+      "urgent": false,
+      "group": "planning",
+      "order": 3
+    },
+    {
+      "id": "check_4",
+      "text": "Book rental car (airport → Melvin Village, ~2 hrs from BOS)",
+      "done": false,
+      "urgent": false,
+      "group": "planning",
+      "order": 4
+    },
+    {
+      "id": "check_5",
+      "text": "Coordinate dates with Kristina's family",
+      "done": false,
+      "urgent": false,
+      "group": "planning",
+      "order": 5
+    },
+    {
+      "id": "check_6",
+      "text": "Pack swimsuits & lake gear for Louise",
+      "done": false,
+      "urgent": false,
+      "group": "packing",
+      "order": 6
+    }
+  ]
+}
