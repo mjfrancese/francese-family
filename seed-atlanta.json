@@ -4,7 +4,7 @@
     "title": "Atlanta — Initiative",
     "dates": "Apr 17–20, 2026",
     "description": "Jacob York's world premiere play at Aurora Theatre. Staying with Jacob & Galen in Decatur.",
-    "icon": "lucide:theater",
+    "icon": "theater",
     "status": "upcoming",
     "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
     "coordinates": { "lat": 33.749, "lng": -84.388 },

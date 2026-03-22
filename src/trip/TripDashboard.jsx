@@ -5,13 +5,14 @@ import { useTripData } from '../hooks/useTripData'
 import { useChecklist } from '../hooks/useChecklist'
 import { useAccess } from '../hooks/useAccess'
 import { colors, fonts, styles } from '../theme'
-import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Share2 } from 'lucide-react'
+import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Settings } from 'lucide-react'
 import DayByDay from './DayByDay'
 import Reservations from './Reservations'
 import Budget from './Budget'
 import Checklist from './Checklist'
 import SharePanel from '../components/SharePanel'
 import TripIcon from '../components/TripIcon'
+import TripSettings from '../components/TripSettings'
 
 const TABS = [
   { key: 'daybyday', label: 'Day by Day', Icon: Calendar },
@@ -29,6 +30,7 @@ export default function TripDashboard() {
   const { hasAccess, isOwner, accessList, loading: accessLoading, addAccess, removeAccess } = useAccess(slug, user)
   const [activeTab, setActiveTab] = useState('daybyday')
   const [showShare, setShowShare] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
 
   const loading = dataLoading || checkLoading || accessLoading
 
@@ -102,21 +104,38 @@ export default function TripDashboard() {
             <ArrowLeft size={14} /> Home
           </button>
           {isOwner && (
-            <button
-              onClick={() => setShowShare(true)}
-              style={{
-                padding: '6px 14px',
-                background: 'none',
-                border: `1px solid ${colors.border}`,
-                borderRadius: 6,
-                color: colors.textMuted,
-                fontSize: 11,
-                cursor: 'pointer',
-                fontFamily: fonts.body,
-              }}
-            >
-              Share
-            </button>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button
+                onClick={() => setShowSettings(true)}
+                style={{
+                  padding: '6px 10px',
+                  background: 'none',
+                  border: `1px solid ${colors.border}`,
+                  borderRadius: 6,
+                  color: colors.textMuted,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Settings size={14} />
+              </button>
+              <button
+                onClick={() => setShowShare(true)}
+                style={{
+                  padding: '6px 14px',
+                  background: 'none',
+                  border: `1px solid ${colors.border}`,
+                  borderRadius: 6,
+                  color: colors.textMuted,
+                  fontSize: 11,
+                  cursor: 'pointer',
+                  fontFamily: fonts.body,
+                }}
+              >
+                Share
+              </button>
+            </div>
           )}
         </div>
 
@@ -199,6 +218,14 @@ export default function TripDashboard() {
           onAdd={addAccess}
           onRemove={removeAccess}
           onClose={() => setShowShare(false)}
+        />
+      )}
+
+      {showSettings && (
+        <TripSettings
+          slug={slug}
+          meta={meta}
+          onClose={() => setShowSettings(false)}
         />
       )}
     </div>

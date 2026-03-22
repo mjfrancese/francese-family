@@ -4,7 +4,7 @@
     "title": "London & Paris 2026",
     "dates": "Jun 7\u201316, 2026",
     "description": "10-day family adventure through London, Paris, and Disneyland Paris.",
-    "icon": "flag:GB",
+    "icon": "castle",
     "status": "upcoming",
     "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
     "coordinates": { "lat": 51.507, "lng": -0.128 },

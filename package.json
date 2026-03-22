@@ -10,7 +10,6 @@
     "push-trip": "node scripts/push-trip.js"
   },
   "dependencies": {
-    "country-flag-icons": "^1.6.15",
     "firebase": "^10.14.0",
     "lucide-react": "^0.577.0",
     "react": "^18.3.1",
