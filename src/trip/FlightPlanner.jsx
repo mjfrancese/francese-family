@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { colors, fonts } from '../theme'
 import SectionHeader from '../components/SectionHeader'
-import { Plane, Car, Clock, ArrowRight, DollarSign, Calendar, Users, Star } from 'lucide-react'
+import { Plane, Car, ArrowRight, DollarSign, Calendar, Users, Star } from 'lucide-react'
 
 function formatDay(dateStr) {
   const d = new Date(dateStr + 'T12:00:00')
@@ -126,81 +126,6 @@ function FlightOption({ flight, selected, onSelect }) {
   )
 }
 
-function CarCompanyOption({ company, status, note, price, days, selected, onSelect }) {
-  const isSelected = selected === company
-  const perDay = price ? Math.round(price / days) : 0
-
-  return (
-    <div
-      onClick={() => onSelect(company)}
-      style={{
-        background: isSelected ? 'rgba(74, 144, 217, 0.08)' : colors.card,
-        border: `2px solid ${isSelected ? colors.accent : colors.cardBorder}`,
-        borderRadius: 8,
-        padding: 14,
-        cursor: 'pointer',
-        transition: 'all 0.15s ease',
-        marginBottom: 6,
-      }}
-      onMouseOver={e => { if (!isSelected) e.currentTarget.style.borderColor = colors.cardBorderActive }}
-      onMouseOut={e => { if (!isSelected) e.currentTarget.style.borderColor = colors.cardBorder }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{
-          width: 32, height: 32, borderRadius: 6,
-          background: '#1a1a2e',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          flexShrink: 0,
-        }}>
-          <Car size={16} color={isSelected ? colors.accent : colors.textMuted} />
-        </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-            <span style={{ fontSize: 14, fontWeight: 600, color: colors.text }}>{company}</span>
-            <span style={{
-              padding: '1px 6px',
-              background: 'rgba(184, 138, 217, 0.1)',
-              border: '1px solid rgba(184, 138, 217, 0.2)',
-              borderRadius: 4,
-              fontSize: 10,
-              color: '#b88ad9',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 3,
-            }}>
-              <Star size={8} /> {status}
-            </span>
-          </div>
-          <div style={{ fontSize: 11, color: colors.textMuted }}>
-            {note}
-            {price && <span style={{ color: colors.textDark }}> · ${perDay}/day</span>}
-          </div>
-        </div>
-        {price ? (
-          <div style={{
-            padding: '4px 10px',
-            background: isSelected ? 'rgba(74, 144, 217, 0.15)' : '#1a3a2a',
-            border: `1px solid ${isSelected ? colors.accent : '#2d6b45'}`,
-            borderRadius: 6,
-            flexShrink: 0,
-          }}>
-            <span style={{
-              fontFamily: fonts.mono,
-              fontSize: 14,
-              fontWeight: 600,
-              color: isSelected ? colors.accent : '#5ce892',
-            }}>
-              ${price.toLocaleString()}
-            </span>
-          </div>
-        ) : (
-          <span style={{ fontSize: 11, color: colors.textDark }}>N/A</span>
-        )}
-      </div>
-    </div>
-  )
-}
-
 
 export default function FlightPlanner({ flightOptions }) {
   const outDates = Object.keys(flightOptions.outbound).sort()
@@ -210,7 +135,6 @@ export default function FlightPlanner({ flightOptions }) {
   const [selectedRetDate, setSelectedRetDate] = useState(retDates[1])
   const [selectedOutFlight, setSelectedOutFlight] = useState(null)
   const [selectedRetFlight, setSelectedRetFlight] = useState(null)
-  const [selectedCarCompany, setSelectedCarCompany] = useState('Avis')
 
   const outFlights = flightOptions.outbound[selectedOutDate] || []
   const retFlights = flightOptions.return[selectedRetDate] || []
@@ -229,9 +153,9 @@ export default function FlightPlanner({ flightOptions }) {
   // Rental car pricing lookup
   const carKey = `${selectedOutDate}_${selectedRetDate}`
   const carPricing = flightOptions.rentalCarPricing?.[carKey]
-  const carOptions = flightOptions.rentalCarOptions || []
   const carDays = carPricing?.days || nightCount(selectedOutDate, selectedRetDate)
-  const carPrice = carPricing?.[selectedCarCompany] || 0
+  const carPrice = carPricing?.total || 0
+  const carPerDay = carPrice ? Math.round(carPrice / carDays) : 0
 
   // Trip math
   const nights = nightCount(selectedOutDate, selectedRetDate)
@@ -239,6 +163,11 @@ export default function FlightPlanner({ flightOptions }) {
   const retPrice = selectedRetFlight?.price || cheapestForDate(retFlights)
   const flightsTotal = outPrice + retPrice
   const tripTotal = flightsTotal + carPrice
+
+  // Total color range
+  const allCarPrices = Object.values(flightOptions.rentalCarPricing || {}).map(p => p.total || 0)
+  const minTotal = outMin + retMin + Math.min(...allCarPrices)
+  const maxTotal = outMax + retMax + Math.max(...allCarPrices)
 
   return (
     <div>
@@ -260,7 +189,7 @@ export default function FlightPlanner({ flightOptions }) {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <Plane size={14} color={colors.textDim} />
-          <span style={{ fontSize: 12, color: colors.textMuted }}>STL → BOS (nonstops available)</span>
+          <span style={{ fontSize: 12, color: colors.textMuted }}>STL → BOS nonstop</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <Car size={14} color={colors.textDim} />
@@ -322,25 +251,67 @@ export default function FlightPlanner({ flightOptions }) {
         ))}
       </div>
 
-      {/* Rental car picker */}
-      <SectionHeader Icon={Car}>Rental Car — SUV at BOS</SectionHeader>
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 12, color: colors.textDim, marginBottom: 8 }}>
-          {carDays}-day SUV rental, {formatDay(selectedOutDate)} to {formatDay(selectedRetDate)}
-          {!carPricing && <span style={{ color: '#e8c55c' }}> — no exact pricing for this date combo</span>}
+      {/* Rental car info */}
+      <SectionHeader Icon={Car}>Rental Car</SectionHeader>
+      <div style={{
+        background: colors.card,
+        border: `1px solid ${colors.cardBorder}`,
+        borderRadius: 8,
+        padding: 14,
+        marginBottom: 24,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{
+            width: 32, height: 32, borderRadius: 6,
+            background: '#1a1a2e',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            flexShrink: 0,
+          }}>
+            <Car size={16} color={colors.accent} />
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+              <span style={{ fontSize: 14, fontWeight: 600, color: colors.text }}>Avis</span>
+              <span style={{
+                padding: '1px 6px',
+                background: 'rgba(184, 138, 217, 0.1)',
+                border: '1px solid rgba(184, 138, 217, 0.2)',
+                borderRadius: 4,
+                fontSize: 10,
+                color: '#b88ad9',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 3,
+              }}>
+                <Star size={8} /> President&apos;s Club
+              </span>
+            </div>
+            <div style={{ fontSize: 11, color: colors.textMuted }}>
+              {carDays}-day rental, {formatDay(selectedOutDate)} to {formatDay(selectedRetDate)}
+              {carPerDay > 0 && <span style={{ color: colors.textDark }}> · ${carPerDay}/day</span>}
+            </div>
+          </div>
+          {carPrice ? (
+            <div style={{
+              padding: '4px 10px',
+              background: '#1a3a2a',
+              border: '1px solid #2d6b45',
+              borderRadius: 6,
+              flexShrink: 0,
+            }}>
+              <span style={{
+                fontFamily: fonts.mono,
+                fontSize: 14,
+                fontWeight: 600,
+                color: '#5ce892',
+              }}>
+                ${carPrice.toLocaleString()}
+              </span>
+            </div>
+          ) : (
+            <span style={{ fontSize: 11, color: '#e8c55c' }}>No pricing</span>
+          )}
         </div>
-        {carOptions.map((opt) => (
-          <CarCompanyOption
-            key={opt.company}
-            company={opt.company}
-            status={opt.status}
-            note={opt.note}
-            price={carPricing?.[opt.company] || null}
-            days={carDays}
-            selected={selectedCarCompany}
-            onSelect={setSelectedCarCompany}
-          />
-        ))}
       </div>
 
       {/* Cost summary */}
@@ -388,7 +359,7 @@ export default function FlightPlanner({ flightOptions }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: `1px solid ${colors.divider}` }}>
           <span style={{ fontSize: 13, color: colors.textMuted }}>
             <Car size={12} style={{ marginRight: 6, verticalAlign: -1 }} />
-            {selectedCarCompany} SUV ({carDays} days)
+            Avis rental ({carDays} days)
           </span>
           <span style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.text }}>
             {carPrice ? `$${carPrice.toLocaleString()}` : 'N/A'}
@@ -404,13 +375,13 @@ export default function FlightPlanner({ flightOptions }) {
             fontFamily: fonts.mono,
             fontSize: 22,
             fontWeight: 700,
-            color: priceColor(tripTotal, outMin + retMin + Math.min(...carOptions.map(c => carPricing?.[c.company] || Infinity)), outMax + retMax + Math.max(...carOptions.map(c => carPricing?.[c.company] || 0))),
+            color: priceColor(tripTotal, minTotal, maxTotal),
           }}>
             {carPrice ? `~$${tripTotal.toLocaleString()}` : '—'}
           </span>
         </div>
         <div style={{ textAlign: 'right', fontSize: 10, color: colors.textDark, marginTop: 2 }}>
-          Prices as of Apr 4, 2026 via Google Flights + KAYAK — subject to change
+          Prices as of Apr 4, 2026 via Google Flights + Avis.com — subject to change
         </div>
       </div>
     </div>
