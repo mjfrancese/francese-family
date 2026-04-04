@@ -48,53 +48,40 @@
     "outbound": {
       "2026-06-30": [
         { "price": 476, "airline": "AA", "flightNum": "AA nonstop", "depart": "09:39", "arrive": "13:24", "duration": "2h 45m", "stops": 0, "airport": "BOS" },
-        { "price": 476, "airline": "WN", "flightNum": "WN nonstop", "depart": "19:10", "arrive": "22:40", "duration": "2h 30m", "stops": 0, "airport": "BOS" },
-        { "price": 375, "airline": "F9", "flightNum": "F9 (1 stop)", "depart": "18:33", "arrive": "01:27+1", "duration": "5h 54m", "stops": 1, "airport": "BOS" },
-        { "price": 332, "airline": "F9", "flightNum": "F9 (1 stop)", "depart": "18:33", "arrive": "07:52+1", "duration": "12h 19m", "stops": 1, "airport": "BOS" }
+        { "price": 476, "airline": "WN", "flightNum": "WN nonstop", "depart": "19:10", "arrive": "22:40", "duration": "2h 30m", "stops": 0, "airport": "BOS" }
       ],
       "2026-07-01": [
         { "price": 476, "airline": "AA", "flightNum": "AA nonstop", "depart": "09:39", "arrive": "13:24", "duration": "2h 45m", "stops": 0, "airport": "BOS" },
-        { "price": 476, "airline": "AA", "flightNum": "AA nonstop", "depart": "19:51", "arrive": "23:36", "duration": "2h 45m", "stops": 0, "airport": "BOS" },
-        { "price": 505, "airline": "AA", "flightNum": "AA (1 stop)", "depart": "06:15", "arrive": "11:46", "duration": "4h 31m", "stops": 1, "airport": "BOS" },
-        { "price": 447, "airline": "F9", "flightNum": "F9 (1 stop)", "depart": "17:33", "arrive": "01:27+1", "duration": "6h 54m", "stops": 1, "airport": "BOS" }
+        { "price": 476, "airline": "AA", "flightNum": "AA nonstop", "depart": "19:51", "arrive": "23:36", "duration": "2h 45m", "stops": 0, "airport": "BOS" }
       ],
       "2026-07-02": [
-        { "price": 597, "airline": "F9", "flightNum": "F9 (1 stop)", "depart": "18:33", "arrive": "01:27+1", "duration": "5h 54m", "stops": 1, "airport": "BOS" },
         { "price": 857, "airline": "AA", "flightNum": "AA nonstop", "depart": "19:50", "arrive": "23:37", "duration": "2h 47m", "stops": 0, "airport": "BOS" },
-        { "price": 857, "airline": "WN", "flightNum": "WN nonstop", "depart": "19:55", "arrive": "23:25", "duration": "2h 30m", "stops": 0, "airport": "BOS" },
-        { "price": 721, "airline": "AA", "flightNum": "AA (1 stop)", "depart": "06:00", "arrive": "11:53", "duration": "4h 53m", "stops": 1, "airport": "BOS" }
+        { "price": 857, "airline": "WN", "flightNum": "WN nonstop", "depart": "19:55", "arrive": "23:25", "duration": "2h 30m", "stops": 0, "airport": "BOS" }
       ],
       "2026-07-03": [
         { "price": 692, "airline": "AA", "flightNum": "AA nonstop", "depart": "19:50", "arrive": "23:37", "duration": "2h 47m", "stops": 0, "airport": "BOS" },
         { "price": 692, "airline": "WN", "flightNum": "WN nonstop", "depart": "19:55", "arrive": "23:25", "duration": "2h 30m", "stops": 0, "airport": "BOS" },
-        { "price": 926, "airline": "WN", "flightNum": "WN nonstop", "depart": "14:30", "arrive": "18:05", "duration": "2h 35m", "stops": 0, "airport": "BOS" },
-        { "price": 721, "airline": "AA", "flightNum": "AA (1 stop)", "depart": "05:00", "arrive": "11:24", "duration": "5h 24m", "stops": 1, "airport": "BOS" }
+        { "price": 926, "airline": "WN", "flightNum": "WN nonstop", "depart": "14:30", "arrive": "18:05", "duration": "2h 35m", "stops": 0, "airport": "BOS" }
       ]
     },
     "return": {
       "2026-07-05": [
-        { "price": 721, "airline": "DL", "flightNum": "DL (1 stop)", "depart": "05:30", "arrive": "09:32", "duration": "5h 2m", "stops": 1, "airport": "BOS" },
         { "price": 857, "airline": "WN", "flightNum": "WN nonstop", "depart": "05:50", "arrive": "07:45", "duration": "2h 55m", "stops": 0, "airport": "BOS" },
-        { "price": 996, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:10", "duration": "3h 10m", "stops": 0, "airport": "BOS" },
-        { "price": 721, "airline": "UA", "flightNum": "UA (1 stop)", "depart": "07:19", "arrive": "12:11", "duration": "5h 52m", "stops": 1, "airport": "BOS" }
+        { "price": 996, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:10", "duration": "3h 10m", "stops": 0, "airport": "BOS" }
       ],
       "2026-07-06": [
         { "price": 692, "airline": "WN", "flightNum": "WN nonstop", "depart": "05:35", "arrive": "07:25", "duration": "2h 50m", "stops": 0, "airport": "BOS" },
-        { "price": 875, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:09", "duration": "3h 9m", "stops": 0, "airport": "BOS" },
-        { "price": 721, "airline": "WN", "flightNum": "WN (1 stop)", "depart": "05:25", "arrive": "09:10", "duration": "4h 45m", "stops": 1, "airport": "BOS" },
-        { "price": 721, "airline": "DL", "flightNum": "DL (1 stop)", "depart": "19:15", "arrive": "23:56", "duration": "5h 41m", "stops": 1, "airport": "BOS" }
+        { "price": 875, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:09", "duration": "3h 9m", "stops": 0, "airport": "BOS" }
       ],
       "2026-07-07": [
         { "price": 692, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:09", "duration": "3h 9m", "stops": 0, "airport": "BOS" },
         { "price": 692, "airline": "AA", "flightNum": "AA nonstop", "depart": "17:10", "arrive": "19:20", "duration": "3h 10m", "stops": 0, "airport": "BOS" },
-        { "price": 692, "airline": "WN", "flightNum": "WN nonstop", "depart": "18:25", "arrive": "20:30", "duration": "3h 5m", "stops": 0, "airport": "BOS" },
-        { "price": 452, "airline": "F9", "flightNum": "F9 (1 stop)", "depart": "06:00", "arrive": "17:30", "duration": "12h 30m", "stops": 1, "airport": "BOS" }
+        { "price": 692, "airline": "WN", "flightNum": "WN nonstop", "depart": "18:25", "arrive": "20:30", "duration": "3h 5m", "stops": 0, "airport": "BOS" }
       ],
       "2026-07-08": [
         { "price": 692, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:09", "duration": "3h 9m", "stops": 0, "airport": "BOS" },
         { "price": 692, "airline": "WN", "flightNum": "WN nonstop", "depart": "18:25", "arrive": "20:30", "duration": "3h 5m", "stops": 0, "airport": "BOS" },
-        { "price": 701, "airline": "AA", "flightNum": "AA nonstop", "depart": "17:10", "arrive": "19:20", "duration": "3h 10m", "stops": 0, "airport": "BOS" },
-        { "price": 721, "airline": "DL", "flightNum": "DL (1 stop)", "depart": "05:30", "arrive": "09:43", "duration": "5h 13m", "stops": 1, "airport": "BOS" }
+        { "price": 701, "airline": "AA", "flightNum": "AA nonstop", "depart": "17:10", "arrive": "19:20", "duration": "3h 10m", "stops": 0, "airport": "BOS" }
       ]
     }
   },
