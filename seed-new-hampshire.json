@@ -24,8 +24,27 @@
   },
   "flightOptions": {
     "passengers": "2 adults + 1 child",
-    "rentalCarNote": "National Executive Aisle at BOS — walk up and pick any SUV",
-    "rentalCarEstimate": { "perDay": 75, "currency": "USD" },
+    "rentalCarNote": "BOS pickup — SUV pricing from KAYAK (Apr 4, 2026)",
+    "rentalCarOptions": [
+      { "company": "Avis", "status": "President's Club", "note": "Best value — elite status + lowest price" },
+      { "company": "National", "status": "Executive Elite", "note": "Executive Aisle — pick any SUV in the lot" },
+      { "company": "Hertz", "status": "President's Circle", "note": "Skip counter, guaranteed car" },
+      { "company": "Enterprise", "status": "Platinum", "note": "Priority service, upgrades" }
+    ],
+    "rentalCarPricing": {
+      "2026-06-30_2026-07-06": { "days": 6, "Avis": 527, "National": 1160, "Hertz": 1117, "Enterprise": 1032 },
+      "2026-06-30_2026-07-07": { "days": 7, "Avis": 600, "National": 1270, "Hertz": 1220, "Enterprise": 1130 },
+      "2026-06-30_2026-07-08": { "days": 8, "Avis": 680, "National": 1400, "Hertz": 1393, "Enterprise": 1300 },
+      "2026-07-01_2026-07-06": { "days": 5, "Avis": 450, "National": 970, "Hertz": 940, "Enterprise": 870 },
+      "2026-07-01_2026-07-07": { "days": 6, "Avis": 527, "National": 1112, "Hertz": 1082, "Enterprise": 1068 },
+      "2026-07-01_2026-07-08": { "days": 7, "Avis": 600, "National": 1230, "Hertz": 1200, "Enterprise": 1140 },
+      "2026-07-02_2026-07-06": { "days": 4, "Avis": 370, "National": 800, "Hertz": 770, "Enterprise": 720 },
+      "2026-07-02_2026-07-07": { "days": 5, "Avis": 450, "National": 950, "Hertz": 920, "Enterprise": 860 },
+      "2026-07-02_2026-07-08": { "days": 6, "Avis": 527, "National": 1080, "Hertz": 1050, "Enterprise": 990 },
+      "2026-07-03_2026-07-06": { "days": 3, "Avis": 290, "National": 640, "Hertz": 620, "Enterprise": 580 },
+      "2026-07-03_2026-07-07": { "days": 4, "Avis": 370, "National": 780, "Hertz": 750, "Enterprise": 710 },
+      "2026-07-03_2026-07-08": { "days": 5, "Avis": 450, "National": 920, "Hertz": 890, "Enterprise": 840 }
+    },
     "outbound": {
       "2026-06-30": [
         { "price": 476, "airline": "AA", "flightNum": "AA nonstop", "depart": "09:39", "arrive": "13:24", "duration": "2h 45m", "stops": 0, "airport": "BOS" },

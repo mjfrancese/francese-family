@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { colors, fonts } from '../theme'
 import SectionHeader from '../components/SectionHeader'
-import { Plane, Car, Clock, ArrowRight, ChevronRight, DollarSign, Calendar, Users } from 'lucide-react'
+import { Plane, Car, Clock, ArrowRight, DollarSign, Calendar, Users, Star } from 'lucide-react'
 
 function formatDay(dateStr) {
   const d = new Date(dateStr + 'T12:00:00')
@@ -118,6 +118,82 @@ function FlightOption({ flight, selected, onSelect }) {
   )
 }
 
+function CarCompanyOption({ company, status, note, price, days, selected, onSelect }) {
+  const isSelected = selected === company
+  const perDay = price ? Math.round(price / days) : 0
+
+  return (
+    <div
+      onClick={() => onSelect(company)}
+      style={{
+        background: isSelected ? 'rgba(74, 144, 217, 0.08)' : colors.card,
+        border: `2px solid ${isSelected ? colors.accent : colors.cardBorder}`,
+        borderRadius: 8,
+        padding: 14,
+        cursor: 'pointer',
+        transition: 'all 0.15s ease',
+        marginBottom: 6,
+      }}
+      onMouseOver={e => { if (!isSelected) e.currentTarget.style.borderColor = colors.cardBorderActive }}
+      onMouseOut={e => { if (!isSelected) e.currentTarget.style.borderColor = colors.cardBorder }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{
+          width: 32, height: 32, borderRadius: 6,
+          background: '#1a1a2e',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexShrink: 0,
+        }}>
+          <Car size={16} color={isSelected ? colors.accent : colors.textMuted} />
+        </div>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+            <span style={{ fontSize: 14, fontWeight: 600, color: colors.text }}>{company}</span>
+            <span style={{
+              padding: '1px 6px',
+              background: 'rgba(184, 138, 217, 0.1)',
+              border: '1px solid rgba(184, 138, 217, 0.2)',
+              borderRadius: 4,
+              fontSize: 10,
+              color: '#b88ad9',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 3,
+            }}>
+              <Star size={8} /> {status}
+            </span>
+          </div>
+          <div style={{ fontSize: 11, color: colors.textMuted }}>
+            {note}
+            {price && <span style={{ color: colors.textDark }}> · ${perDay}/day</span>}
+          </div>
+        </div>
+        {price ? (
+          <div style={{
+            padding: '4px 10px',
+            background: isSelected ? 'rgba(74, 144, 217, 0.15)' : '#1a3a2a',
+            border: `1px solid ${isSelected ? colors.accent : '#2d6b45'}`,
+            borderRadius: 6,
+            flexShrink: 0,
+          }}>
+            <span style={{
+              fontFamily: fonts.mono,
+              fontSize: 14,
+              fontWeight: 600,
+              color: isSelected ? colors.accent : '#5ce892',
+            }}>
+              ${price.toLocaleString()}
+            </span>
+          </div>
+        ) : (
+          <span style={{ fontSize: 11, color: colors.textDark }}>N/A</span>
+        )}
+      </div>
+    </div>
+  )
+}
+
+
 export default function FlightPlanner({ flightOptions }) {
   const outDates = Object.keys(flightOptions.outbound).sort()
   const retDates = Object.keys(flightOptions.return).sort()
@@ -126,8 +202,8 @@ export default function FlightPlanner({ flightOptions }) {
   const [selectedRetDate, setSelectedRetDate] = useState(retDates[1])
   const [selectedOutFlight, setSelectedOutFlight] = useState(null)
   const [selectedRetFlight, setSelectedRetFlight] = useState(null)
+  const [selectedCarCompany, setSelectedCarCompany] = useState('Avis')
 
-  // Auto-select cheapest nonstop (or cheapest overall) on date change
   const outFlights = flightOptions.outbound[selectedOutDate] || []
   const retFlights = flightOptions.return[selectedRetDate] || []
 
@@ -136,14 +212,19 @@ export default function FlightPlanner({ flightOptions }) {
     return Math.min(...flights.map(f => f.price))
   }
 
+  // Rental car pricing lookup
+  const carKey = `${selectedOutDate}_${selectedRetDate}`
+  const carPricing = flightOptions.rentalCarPricing?.[carKey]
+  const carOptions = flightOptions.rentalCarOptions || []
+  const carDays = carPricing?.days || nightCount(selectedOutDate, selectedRetDate)
+  const carPrice = carPricing?.[selectedCarCompany] || 0
+
   // Trip math
   const nights = nightCount(selectedOutDate, selectedRetDate)
   const outPrice = selectedOutFlight?.price || cheapestForDate(outFlights)
   const retPrice = selectedRetFlight?.price || cheapestForDate(retFlights)
   const flightsTotal = outPrice + retPrice
-  const carDays = nights + (nights > 0 ? 1 : 0)
-  const carTotal = carDays * (flightOptions.rentalCarEstimate?.perDay || 75)
-  const tripTotal = flightsTotal + carTotal
+  const tripTotal = flightsTotal + carPrice
 
   return (
     <div>
@@ -194,12 +275,7 @@ export default function FlightPlanner({ flightOptions }) {
           {!selectedOutFlight && <span style={{ color: colors.textDark }}> — tap to select</span>}
         </div>
         {outFlights.map((f, i) => (
-          <FlightOption
-            key={i}
-            flight={f}
-            selected={selectedOutFlight}
-            onSelect={setSelectedOutFlight}
-          />
+          <FlightOption key={i} flight={f} selected={selectedOutFlight} onSelect={setSelectedOutFlight} />
         ))}
       </div>
 
@@ -224,11 +300,27 @@ export default function FlightPlanner({ flightOptions }) {
           {!selectedRetFlight && <span style={{ color: colors.textDark }}> — tap to select</span>}
         </div>
         {retFlights.map((f, i) => (
-          <FlightOption
-            key={i}
-            flight={f}
-            selected={selectedRetFlight}
-            onSelect={setSelectedRetFlight}
+          <FlightOption key={i} flight={f} selected={selectedRetFlight} onSelect={setSelectedRetFlight} />
+        ))}
+      </div>
+
+      {/* Rental car picker */}
+      <SectionHeader Icon={Car}>Rental Car — SUV at BOS</SectionHeader>
+      <div style={{ marginBottom: 24 }}>
+        <div style={{ fontSize: 12, color: colors.textDim, marginBottom: 8 }}>
+          {carDays}-day SUV rental, {formatDay(selectedOutDate)} to {formatDay(selectedRetDate)}
+          {!carPricing && <span style={{ color: '#e8c55c' }}> — no exact pricing for this date combo</span>}
+        </div>
+        {carOptions.map((opt) => (
+          <CarCompanyOption
+            key={opt.company}
+            company={opt.company}
+            status={opt.status}
+            note={opt.note}
+            price={carPricing?.[opt.company] || null}
+            days={carDays}
+            selected={selectedCarCompany}
+            onSelect={setSelectedCarCompany}
           />
         ))}
       </div>
@@ -278,9 +370,11 @@ export default function FlightPlanner({ flightOptions }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: `1px solid ${colors.divider}` }}>
           <span style={{ fontSize: 13, color: colors.textMuted }}>
             <Car size={12} style={{ marginRight: 6, verticalAlign: -1 }} />
-            Rental car — National Executive Aisle ({carDays} days)
+            {selectedCarCompany} SUV ({carDays} days)
           </span>
-          <span style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.text }}>~${carTotal}</span>
+          <span style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.text }}>
+            {carPrice ? `$${carPrice.toLocaleString()}` : 'N/A'}
+          </span>
         </div>
 
         {/* Total */}
@@ -292,13 +386,13 @@ export default function FlightPlanner({ flightOptions }) {
             fontFamily: fonts.mono,
             fontSize: 22,
             fontWeight: 700,
-            color: tripTotal <= 1500 ? '#5ce892' : tripTotal <= 1800 ? '#e8c55c' : '#e85c5c',
+            color: tripTotal <= 1700 ? '#5ce892' : tripTotal <= 2200 ? '#e8c55c' : '#e85c5c',
           }}>
-            ~${tripTotal.toLocaleString()}
+            {carPrice ? `~$${tripTotal.toLocaleString()}` : '—'}
           </span>
         </div>
         <div style={{ textAlign: 'right', fontSize: 10, color: colors.textDark, marginTop: 2 }}>
-          Prices as of Apr 4, 2026 — subject to change
+          Prices as of Apr 4, 2026 via Google Flights + KAYAK — subject to change
         </div>
       </div>
     </div>
