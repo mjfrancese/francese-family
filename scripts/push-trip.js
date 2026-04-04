@@ -99,6 +99,10 @@ function transformData(data, isNew) {
     result.checklist = checkData
   }
 
+  if (data.flightOptions) {
+    result.flightOptions = data.flightOptions
+  }
+
   return result
 }
 

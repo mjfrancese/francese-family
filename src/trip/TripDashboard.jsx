@@ -5,7 +5,7 @@ import { useTripData } from '../hooks/useTripData'
 import { useChecklist } from '../hooks/useChecklist'
 import { useAccess } from '../hooks/useAccess'
 import { colors, fonts, styles } from '../theme'
-import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Settings } from 'lucide-react'
+import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Settings, Plane } from 'lucide-react'
 import DayByDay from './DayByDay'
 import Reservations from './Reservations'
 import Budget from './Budget'
@@ -13,19 +13,22 @@ import Checklist from './Checklist'
 import SharePanel from '../components/SharePanel'
 import TripIcon from '../components/TripIcon'
 import TripSettings from '../components/TripSettings'
+import FlightSearch from './FlightSearch'
+import FlightPlanner from './FlightPlanner'
 
 const TABS = [
   { key: 'daybyday', label: 'Day by Day', Icon: Calendar },
   { key: 'reservations', label: 'Reservations', Icon: ClipboardList },
   { key: 'budget', label: 'Budget', Icon: DollarSign },
   { key: 'todo', label: 'To Do', Icon: CheckSquare },
+  { key: 'flights', label: 'Flights', Icon: Plane },
 ]
 
 export default function TripDashboard() {
   const { slug } = useParams()
   const navigate = useNavigate()
   const { user } = useAuth()
-  const { meta, timeline, bookings, budget, loading: dataLoading } = useTripData(slug)
+  const { meta, timeline, bookings, budget, flightOptions, loading: dataLoading } = useTripData(slug)
   const { items: checklistItems, loading: checkLoading, toggle } = useChecklist(slug)
   const { hasAccess, isOwner, accessList, loading: accessLoading, addAccess, removeAccess } = useAccess(slug, user)
   const [activeTab, setActiveTab] = useState('daybyday')
@@ -210,6 +213,11 @@ export default function TripDashboard() {
         {activeTab === 'reservations' && <Reservations bookings={bookings} />}
         {activeTab === 'budget' && <Budget budget={budget} />}
         {activeTab === 'todo' && <Checklist items={checklistItems} toggle={toggle} />}
+        {activeTab === 'flights' && (
+          flightOptions
+            ? <FlightPlanner flightOptions={flightOptions} />
+            : <FlightSearch meta={meta} />
+        )}
       </div>
 
       {showShare && (

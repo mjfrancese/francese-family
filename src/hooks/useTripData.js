@@ -3,7 +3,7 @@ import { ref, get } from 'firebase/database'
 import { db } from '../firebase'
 
 export function useTripData(slug) {
-  const [data, setData] = useState({ meta: null, timeline: [], bookings: [], budget: null })
+  const [data, setData] = useState({ meta: null, timeline: [], bookings: [], budget: null, flightOptions: null })
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -35,6 +35,7 @@ export function useTripData(slug) {
           timeline,
           bookings,
           budget: raw.budget || null,
+          flightOptions: raw.flightOptions || null,
         })
       } catch (err) {
         console.error('Failed to load trip data:', err)
