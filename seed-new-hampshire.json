@@ -6,7 +6,7 @@
     "description": "Fourth of July week at Mom & Dad's in Melvin Village. Kristina and family will be there too.",
     "icon": "home",
     "status": "planning",
-    "travelers": ["Michael", "Meghan", "Louise"],
+    "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
     "coordinates": { "lat": 43.687, "lng": -71.392 },
     "color": "#ef4444"
   },
@@ -23,7 +23,7 @@
     "estimatedTotal": "TBD"
   },
   "flightOptions": {
-    "passengers": "2 adults + 1 child",
+    "passengers": "2 adults + 2 children",
     "rentalCarNote": "BOS pickup — SUV pricing from KAYAK (Apr 4, 2026)",
     "rentalCarOptions": [
       { "company": "Avis", "status": "President's Club", "note": "Best value — elite status + lowest price" },

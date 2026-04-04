@@ -23,7 +23,15 @@ const pillBase = {
   border: '2px solid transparent',
 }
 
-function DatePill({ dateStr, selected, cheapest, onSelect }) {
+function priceColor(price, min, max) {
+  if (min === max) return '#5ce892'
+  const ratio = (price - min) / (max - min)
+  if (ratio <= 0.33) return '#5ce892'
+  if (ratio <= 0.66) return '#e8c55c'
+  return '#e85c5c'
+}
+
+function DatePill({ dateStr, selected, cheapest, priceMin, priceMax, onSelect }) {
   const active = selected === dateStr
   return (
     <button
@@ -40,7 +48,7 @@ function DatePill({ dateStr, selected, cheapest, onSelect }) {
         {formatDay(dateStr)}
       </div>
       <div style={{ fontSize: 11, color: colors.textDim }}>
-        from <span style={{ fontFamily: fonts.mono, color: cheapest <= 500 ? '#5ce892' : cheapest <= 700 ? '#e8c55c' : '#e85c5c' }}>${cheapest}</span>
+        from <span style={{ fontFamily: fonts.mono, color: priceColor(cheapest, priceMin, priceMax) }}>${cheapest}</span>
       </div>
     </button>
   )
@@ -212,6 +220,12 @@ export default function FlightPlanner({ flightOptions }) {
     return Math.min(...flights.map(f => f.price))
   }
 
+  // Compute price ranges for relative green/yellow/red coloring
+  const outCheapests = outDates.map(d => cheapestForDate(flightOptions.outbound[d]))
+  const retCheapests = retDates.map(d => cheapestForDate(flightOptions.return[d]))
+  const outMin = Math.min(...outCheapests), outMax = Math.max(...outCheapests)
+  const retMin = Math.min(...retCheapests), retMax = Math.max(...retCheapests)
+
   // Rental car pricing lookup
   const carKey = `${selectedOutDate}_${selectedRetDate}`
   const carPricing = flightOptions.rentalCarPricing?.[carKey]
@@ -263,6 +277,8 @@ export default function FlightPlanner({ flightOptions }) {
             dateStr={d}
             selected={selectedOutDate}
             cheapest={cheapestForDate(flightOptions.outbound[d])}
+            priceMin={outMin}
+            priceMax={outMax}
             onSelect={(date) => { setSelectedOutDate(date); setSelectedOutFlight(null) }}
           />
         ))}
@@ -288,6 +304,8 @@ export default function FlightPlanner({ flightOptions }) {
             dateStr={d}
             selected={selectedRetDate}
             cheapest={cheapestForDate(flightOptions.return[d])}
+            priceMin={retMin}
+            priceMax={retMax}
             onSelect={(date) => { setSelectedRetDate(date); setSelectedRetFlight(null) }}
           />
         ))}
@@ -386,7 +404,7 @@ export default function FlightPlanner({ flightOptions }) {
             fontFamily: fonts.mono,
             fontSize: 22,
             fontWeight: 700,
-            color: tripTotal <= 1700 ? '#5ce892' : tripTotal <= 2200 ? '#e8c55c' : '#e85c5c',
+            color: priceColor(tripTotal, outMin + retMin + Math.min(...carOptions.map(c => carPricing?.[c.company] || Infinity)), outMax + retMax + Math.max(...carOptions.map(c => carPricing?.[c.company] || 0))),
           }}>
             {carPrice ? `~$${tripTotal.toLocaleString()}` : '—'}
           </span>
