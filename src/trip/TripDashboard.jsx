@@ -70,8 +70,8 @@ export default function TripDashboard() {
     )
   }
 
-  // Always show all tabs
-  const availableTabs = TABS
+  // Only show flights tab if trip has flight options (planning mode)
+  const availableTabs = flightOptions ? TABS : TABS.filter(t => t.key !== 'flights')
 
   const doneCount = checklistItems.filter(i => i.done).length
 

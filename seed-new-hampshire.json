@@ -3,7 +3,7 @@
   "meta": {
     "title": "Fourth of July — New Hampshire",
     "dates": "Jul 1–7, 2026",
-    "description": "Fourth of July week at Mom & Dad's in Melvin Village. Kristina and family will be there too.",
+    "description": "Fourth of July week at Mom & Dad's lake house in Melvin Village, NH. Kristina and family coming from Nashville for the same dates.",
     "icon": "home",
     "status": "upcoming",
     "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
@@ -56,23 +56,366 @@
     }
   ],
   "timeline": [
-    { "date": "2026-07-01", "time": "09:39", "type": "flight", "title": "Depart STL → BOS", "detail": "AA 3814 · STL 9:39 AM → BOS 1:24 PM. Deplane at BOS (skiplagged)." },
-    { "date": "2026-07-01", "time": "13:00", "type": "car", "title": "Pick up rental car", "detail": "Enterprise · 15 Transportation Way, East Boston. Midsize Corolla." },
-    { "date": "2026-07-01", "time": "14:30", "type": "drive", "title": "Drive BOS → Melvin Village", "detail": "~2 hr drive north to parents' house." },
-    { "date": "2026-07-04", "time": "00:00", "type": "event", "title": "Fourth of July", "detail": "Celebrate at the lake with family!" },
-    { "date": "2026-07-07", "time": "14:00", "type": "drive", "title": "Drive Melvin Village → BOS", "detail": "~2 hr drive south to Logan Airport." },
-    { "date": "2026-07-07", "time": "16:30", "type": "car", "title": "Return rental car", "detail": "Enterprise · 15 Transportation Way, East Boston. Due back by 6:00 PM." },
-    { "date": "2026-07-07", "time": "18:25", "type": "flight", "title": "Depart BOS → STL", "detail": "WN 754 · BOS 6:25 PM → STL 8:30 PM. Seats 12A/B/C/D." }
+    {
+      "day": "Wed",
+      "dayNum": "1",
+      "month": "JUL",
+      "title": "Fly to Boston + Drive North",
+      "section": "Travel",
+      "order": 0,
+      "events": [
+        { "time": "09:39", "text": "✈ AA 3814 · STL → BOS · Deplane at BOS (skiplagged!)", "status": "booked", "statusLabel": "DBDQRA" },
+        { "time": "13:24", "text": "Arrive BOS. Deplane immediately — do NOT board BOS→BUF leg" },
+        { "time": "~13:45", "text": "Pick up rental car — Enterprise, 15 Transportation Way", "status": "booked", "statusLabel": "ENTERPRISE" },
+        { "time": "~14:30", "text": "🚗 Drive BOS → Melvin Village (~2 hrs via I-93 N → Rte 109)" },
+        { "time": "~16:30", "text": "Arrive at Mom & Dad's! Settle in, unpack, lake time" }
+      ],
+      "details": [
+        {
+          "icon": "🎒",
+          "title": "Prepare the Night Before (Jun 30)",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "warn", "text": "<strong>CARRY-ON ONLY — NO CHECKED BAGS.</strong> This is a skiplagged fare (STL→BUF via BOS). Checked bags will be sent to Buffalo. Pack everything in carry-ons + personal items." },
+            { "type": "info", "text": "Pack for a week at the lake: swimsuits, sunscreen, bug spray, lake toys for Louise" },
+            { "type": "info", "text": "Bring car seats for Louise (and Kenna's booster if needed). Enterprise won't have them" },
+            { "type": "info", "text": "Download offline entertainment for Louise — 2.5 hr flight + 2 hr drive" },
+            { "type": "info", "text": "Charge all devices. Pack chargers in carry-on" }
+          ]
+        },
+        {
+          "icon": "⚠️",
+          "title": "Skiplagged Flight — Critical Rules",
+          "color": "#e8c55c",
+          "items": [
+            { "type": "warn", "text": "<strong>This ticket is booked as STL → BUF with a connection at BOS.</strong> You are deplaning at BOS and skipping the BOS→BUF leg. This is legal but against airline policy" },
+            { "type": "warn", "text": "<strong>NO CHECKED BAGS.</strong> Any checked luggage will be routed to Buffalo, not Boston" },
+            { "type": "warn", "text": "Do NOT tell gate agents or crew you're getting off at BOS. Just deplane normally when the door opens" },
+            { "type": "warn", "text": "Do NOT use AAdvantage frequent flyer numbers on this booking — skiplagging can trigger account flags" },
+            { "type": "warn", "text": "If the flight is cancelled or rerouted, AA will rebook you to BUF (your ticketed destination), not BOS. That's the risk" },
+            { "type": "info", "text": "Savings: ~$81 for 4 passengers vs. booking STL→BOS directly ($634 vs $553)" }
+          ]
+        },
+        {
+          "icon": "🚗",
+          "title": "Rental Car + Drive",
+          "color": "#4a90d9",
+          "items": [
+            { "type": "info", "text": "Enterprise Rent-A-Car · 15 Transportation Way, East Boston, MA 02128" },
+            { "type": "info", "text": "Midsize Car (Toyota Corolla or similar). Confirmation: H-1596322716COUNT" },
+            { "type": "info", "text": "Paid with Capital One Venture X miles (60,686 miles). Booked via Capital One Travel" },
+            { "type": "tip", "text": "Enterprise Platinum status — skip the counter, go straight to the aisle. You may get a free upgrade" },
+            { "type": "info", "text": "Drive: I-93 N → I-95 N → Rte 16 N → Rte 109 to Melvin Village. ~2 hours depending on traffic" },
+            { "type": "tip", "text": "If you need a stop: The Common Man Roadside in Epsom, NH (1890 Dover Rd) is a great halfway point — you've stopped there before" }
+          ]
+        },
+        {
+          "icon": "💡",
+          "title": "Arrival Tips",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "Stop for groceries on the way up — Hannaford in Alton or Wolfeboro is the closest full grocery store to Melvin Village" },
+            { "type": "tip", "text": "Gas up before leaving the highway — stations are sparse near the lake" },
+            { "type": "tip", "text": "Louise will likely be wiped from travel. Plan for an easy first evening — lake, dinner at the house, early bedtime" }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Thu",
+      "dayNum": "2",
+      "month": "JUL",
+      "title": "First Full Day at the Lake",
+      "section": "Melvin Village · Lake Week",
+      "order": 1,
+      "events": [
+        { "text": "Sleep in — decompress from travel day" },
+        { "text": "Morning: Dock time, swimming, lake toys with Louise" },
+        { "text": "Afternoon: Explore Wolfeboro (~15 min drive)" },
+        { "text": "Dinner at the house with Mom & Dad" }
+      ],
+      "details": [
+        {
+          "icon": "🎒",
+          "title": "Day Plan",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "info", "text": "No fixed plans — ease into lake life. Let Louise and Kenna get comfortable with the house and water" },
+            { "type": "info", "text": "Check if Kristina's family has arrived or when they're expected" },
+            { "type": "info", "text": "Sunscreen + bug spray protocol — NH lake country means mosquitoes at dusk" }
+          ]
+        },
+        {
+          "icon": "💡",
+          "title": "Things to Do — Lake Winnipesaukee Area",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "<strong>Wolfeboro:</strong> Self-proclaimed 'oldest summer resort in America.' Great downtown with shops, restaurants, ice cream on the waterfront. ~15 min drive" },
+            { "type": "tip", "text": "<strong>Brewster Beach (Wolfeboro):</strong> Public beach on the lake, calmer water, good for Louise. Free parking for town visitors" },
+            { "type": "tip", "text": "<strong>Wright Museum:</strong> WWII museum in Wolfeboro. More for the adults/Kenna if there's a rainy stretch" },
+            { "type": "tip", "text": "<strong>Ice cream:</strong> Bailey's Bubble in Wolfeboro or the Yum Yum Shop in Center Ossipee" },
+            { "type": "tip", "text": "Ask Mom & Dad about kayaks, paddleboard, or boat access — lake activities are the main attraction" }
+          ]
+        },
+        {
+          "icon": "⚠️",
+          "title": "Lake Safety — Louise",
+          "color": "#e8c55c",
+          "items": [
+            { "type": "warn", "text": "Louise needs a life jacket on the dock and in the water at all times. Bring one or confirm Mom & Dad have one that fits" },
+            { "type": "warn", "text": "Lake Winnipesaukee is cold in early July (~65-70°F). Louise may not last long in the water — have towels and warm clothes ready" },
+            { "type": "warn", "text": "Dock edges, boat slip, and rocky shoreline — keep a close eye. Buddy system always" }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Fri",
+      "dayNum": "3",
+      "month": "JUL",
+      "title": "Explore + Prep for the Fourth",
+      "section": "Melvin Village · Lake Week",
+      "order": 2,
+      "events": [
+        { "text": "Morning: Lake time or Castle in the Clouds" },
+        { "text": "Afternoon: Pick up fireworks, supplies for July 4th" },
+        { "text": "Evening: Family dinner, sunset from the dock" }
+      ],
+      "details": [
+        {
+          "icon": "💡",
+          "title": "Things to Do",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "<strong>Castle in the Clouds:</strong> Historic mountaintop estate in Moultonborough (~20 min drive). Stunning lake views, hiking trails, horseback riding. Louise-friendly grounds. Worth a half-day" },
+            { "type": "tip", "text": "<strong>Squam Lakes Natural Science Center (Holderness):</strong> Live animal exhibits — bears, mountain lions, raptors. Great for kids. ~30 min drive" },
+            { "type": "tip", "text": "<strong>Weirs Beach:</strong> Arcade, mini golf, scenic railway, lake beach. Touristy but fun. ~25 min drive" },
+            { "type": "tip", "text": "<strong>M/S Mount Washington Cruise:</strong> Scenic lake cruise from Weirs Beach. 2.5 hrs. Good for a calm day with the whole family" },
+            { "type": "tip", "text": "Fireworks: NH allows consumer fireworks. Phantom Fireworks and local stands along Rte 16 will be stocked for the 4th" }
+          ]
+        },
+        {
+          "icon": "🎒",
+          "title": "Fourth of July Prep",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "info", "text": "Stock up on: sparklers, snacks, drinks, ice, charcoal/propane, s'mores supplies" },
+            { "type": "info", "text": "Check local fireworks shows — Wolfeboro usually does a big display over the lake on July 4th" },
+            { "type": "info", "text": "Coordinate with Kristina's family on dinner plans — cookout at the house?" }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Sat",
+      "dayNum": "4",
+      "month": "JUL",
+      "title": "Fourth of July!",
+      "section": "Melvin Village · Lake Week",
+      "order": 3,
+      "events": [
+        { "text": "🇺🇸 Happy Fourth of July!" },
+        { "text": "Morning: Lazy lake morning, swimming" },
+        { "text": "Afternoon: Family cookout — burgers, hot dogs, corn" },
+        { "text": "Evening: Sparklers on the dock, watch fireworks over the lake" }
+      ],
+      "details": [
+        {
+          "icon": "🎒",
+          "title": "Game Plan",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "info", "text": "Keep it simple — this is the day to just be at the lake with family. No driving needed" },
+            { "type": "info", "text": "Cookout timing: Start grilling around 4-5 PM. Eat by 6. Sunset ~8:25 PM. Fireworks after dark (~9 PM)" },
+            { "type": "info", "text": "Sparklers for the kids at dusk — Kenna can handle her own, supervise Louise closely" }
+          ]
+        },
+        {
+          "icon": "💡",
+          "title": "Fireworks Options",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "<strong>Wolfeboro fireworks:</strong> Usually launched from the town docks, visible from boats or Cate Park. Check wolfeboro.org for exact time (typically 9:15 PM)" },
+            { "type": "tip", "text": "<strong>Alton Bay fireworks:</strong> Another good show, visible from the water. Usually July 4th evening" },
+            { "type": "tip", "text": "<strong>From the dock:</strong> If you can see across the lake, you may catch multiple town shows from the water. Bring blankets — it drops into the 50s after dark" },
+            { "type": "tip", "text": "Private fireworks at the house? NH is a free-fire state — legal without permits. Be considerate of neighbors" }
+          ]
+        },
+        {
+          "icon": "⚠️",
+          "title": "Potential Pitfalls",
+          "color": "#e8c55c",
+          "items": [
+            { "type": "warn", "text": "Louise + fireworks noise — she may be scared of loud bangs. Have headphones or ear protection ready, or watch from a distance" },
+            { "type": "warn", "text": "Bug spray is mandatory for evening dock time. Mosquitoes peak at dusk" },
+            { "type": "warn", "text": "If driving to a fireworks show, leave EARLY. Traffic around Wolfeboro and Weirs Beach on July 4th is brutal" },
+            { "type": "warn", "text": "Temps drop fast after sunset — 80s during the day, 50s at night. Layers for everyone" }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Sun",
+      "dayNum": "5",
+      "month": "JUL",
+      "title": "Lake Day + Family Time",
+      "section": "Melvin Village · Lake Week",
+      "order": 4,
+      "events": [
+        { "text": "Morning: Boat ride or kayaking" },
+        { "text": "Afternoon: Swimming, dock lounging, nap time for Louise" },
+        { "text": "Dinner out or at the house" }
+      ],
+      "details": [
+        {
+          "icon": "💡",
+          "title": "Things to Do",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "<strong>Boat day:</strong> If Mom & Dad have a boat, this is the day. Cruise the lake, find a cove, swim off the boat. Louise in a life jacket the whole time" },
+            { "type": "tip", "text": "<strong>Kayaking/paddleboarding:</strong> Calm mornings are best. Kenna would love paddleboarding if available" },
+            { "type": "tip", "text": "<strong>Libby Museum (Wolfeboro):</strong> Quirky little natural history museum. Good for a rainy-day backup" },
+            { "type": "tip", "text": "<strong>Dinner out:</strong> Garwoods in Wolfeboro (lakeside dining), The Cider Press in Center Sandwich, or East of Suez in Center Ossipee for something different" }
+          ]
+        },
+        {
+          "icon": "🎒",
+          "title": "Pace Check",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "info", "text": "Day 5 of 7. No need to pack the day — the point of this trip is to relax at the lake" },
+            { "type": "info", "text": "If Kristina's family is there, coordinate kid activities. Cousins + lake = entertainment sorted" },
+            { "type": "info", "text": "Downtime for adults while kids play — bring books, enjoy the dock" }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Mon",
+      "dayNum": "6",
+      "month": "JUL",
+      "title": "Last Full Day",
+      "section": "Melvin Village · Lake Week",
+      "order": 5,
+      "events": [
+        { "text": "Morning: One last swim, soak up the lake" },
+        { "text": "Afternoon: Pack up + last family time" },
+        { "text": "Evening: Family dinner — enjoy the last night" },
+        { "text": "⚠ Pack tonight — early departure tomorrow!" }
+      ],
+      "details": [
+        {
+          "icon": "🎒",
+          "title": "Prepare for Departure (Jul 7)",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "info", "text": "Pack bags tonight. You need to leave by ~2 PM tomorrow for the drive to BOS" },
+            { "type": "info", "text": "Clean up the house — strip beds, take out trash, leave it nice for Mom & Dad" },
+            { "type": "info", "text": "Double-check nothing left behind: chargers, swimsuits, lake toys, car seats" },
+            { "type": "warn", "text": "Return flight is BOS 6:25 PM. Work backwards: 2 hr drive + 30 min car return + 1.5 hr airport buffer = leave Melvin Village by 2:00 PM latest" }
+          ]
+        },
+        {
+          "icon": "💡",
+          "title": "Last Day Ideas",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "Morning swim is non-negotiable — last chance until the next visit" },
+            { "type": "tip", "text": "Photo ops: Family photo on the dock, kids at the lake, sunset from the deck" },
+            { "type": "tip", "text": "If you haven't been to Wolfeboro yet for ice cream, today's the day" }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tue",
+      "dayNum": "7",
+      "month": "JUL",
+      "title": "Drive South + Fly Home",
+      "section": "Return Journey",
+      "order": 6,
+      "events": [
+        { "text": "Morning: Last morning at the lake. Final packing" },
+        { "time": "~14:00", "text": "🚗 Drive Melvin Village → BOS (~2 hrs)" },
+        { "time": "~16:00", "text": "Arrive East Boston. Return rental car to Enterprise" },
+        { "time": "~16:30", "text": "Shuttle to terminal. Check in + clear security" },
+        { "time": "18:25", "text": "✈ WN 754 · BOS → STL · Seats 12A/B/C/D", "status": "booked", "statusLabel": "AXYZFP" },
+        { "time": "20:30", "text": "Arrive STL! Home sweet home 🏠" }
+      ],
+      "details": [
+        {
+          "icon": "🎒",
+          "title": "Departure Checklist",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "info", "text": "Final sweep of the house: chargers, toiletries, swimsuits, kids' items" },
+            { "type": "info", "text": "Car seats into the rental car for the drive back" },
+            { "type": "info", "text": "Say goodbye to Mom & Dad (and Kristina's crew if they're still there)" },
+            { "type": "warn", "text": "<strong>Leave by 2:00 PM.</strong> 2 hr drive + 30 min car return + shuttle + 1.5 hr airport buffer = need to be at gate by 5:45 PM" }
+          ]
+        },
+        {
+          "icon": "🚗",
+          "title": "Rental Car Return",
+          "color": "#4a90d9",
+          "items": [
+            { "type": "info", "text": "Enterprise · 15 Transportation Way, East Boston. Due back by 6:00 PM" },
+            { "type": "info", "text": "Fill the tank before returning — there's a gas station near the Enterprise lot" },
+            { "type": "info", "text": "Enterprise shuttle runs continuously to all terminals. ~5 min ride to Terminal B (Southwest)" },
+            { "type": "tip", "text": "Enterprise Platinum status — express return. Drop keys and go" }
+          ]
+        },
+        {
+          "icon": "✈️",
+          "title": "Flight Details",
+          "color": "#4a90d9",
+          "items": [
+            { "type": "info", "text": "Southwest WN 754 · BOS 6:25 PM → STL 8:30 PM" },
+            { "type": "info", "text": "Seats: Meghan 12A, Michael 12B, Louise 12C, Kenna 12D" },
+            { "type": "info", "text": "Confirmation: AXYZFP. Basic fare — carry-on + personal item included" },
+            { "type": "info", "text": "Paid: $921.60 (Visa *4879 $755.10 + Flight Credit $166.50)" }
+          ]
+        },
+        {
+          "icon": "⚠️",
+          "title": "Potential Pitfalls",
+          "color": "#e8c55c",
+          "items": [
+            { "type": "warn", "text": "I-93 South into Boston can be brutal, especially summer weekday. Check traffic before leaving and allow extra time" },
+            { "type": "warn", "text": "Enterprise shuttle to terminal adds 10-15 min. Don't cut it close" },
+            { "type": "warn", "text": "Southwest: No assigned seats on Basic fare, but you already have 12A/B/C/D. Check in 24 hrs before (Jul 6 at 6:25 PM CDT) for boarding positions" },
+            { "type": "warn", "text": "Louise will be tired and cranky after a week of lake life. Snacks and iPad ready for the flight" }
+          ]
+        },
+        {
+          "icon": "💡",
+          "title": "Tips",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "Stop for one last lobster roll on the way south if time allows — try the Common Man Roadside in Epsom again" },
+            { "type": "tip", "text": "BOS Terminal B (Southwest) has decent food options past security if you're hungry before boarding" },
+            { "type": "tip", "text": "2 hr 5 min flight. Home by 8:30 PM. Easy bedtime routine. Trip complete!" }
+          ]
+        }
+      ]
+    }
   ],
   "budget": {
     "confirmed": [
-      { "item": "Outbound flight (AA, skiplagged)", "amount": "$552.80", "paidWith": "Apple Pay" },
-      { "item": "Return flight (WN)", "amount": "$921.60", "paidWith": "Visa *4879 + flight credit" },
-      { "item": "Rental car (Enterprise, 6 days)", "amount": "$606.86", "paidWith": "60,686 Venture X miles" }
+      { "item": "Outbound flight (AA, skiplagged)", "cost": "$552.80", "note": "Apple Pay" },
+      { "item": "Return flight (Southwest)", "cost": "$921.60", "note": "Visa *4879 + flight credit" },
+      { "item": "Rental car (Enterprise, 6 days)", "cost": "$606.86", "note": "60,686 Venture X miles" }
     ],
-    "estimated": [],
+    "estimated": [
+      { "item": "Gas (BOS↔Melvin Village, ~300 mi round trip)", "cost": "~$40–50", "note": null },
+      { "item": "Groceries (week at the lake)", "cost": "~$200–300", "note": "shared with family" },
+      { "item": "Dining out (Wolfeboro, etc.)", "cost": "~$100–200", "note": "2–3 meals out" },
+      { "item": "Fireworks / sparklers", "cost": "~$30–50", "note": null },
+      { "item": "Activities (Castle in the Clouds, etc.)", "cost": "~$50–100", "note": "optional" }
+    ],
     "confirmedTotal": "$1,474.40 cash + 60,686 miles",
-    "estimatedTotal": "$0"
+    "estimatedTotal": "~$1,894–2,174",
+    "savingsNote": "60,686 Venture X miles (~$607 value) for rental car + $166.50 WN flight credit + ~$81 skiplagged savings = ~$854 total savings"
   },
   "checklist": [
     {
@@ -80,48 +423,112 @@
       "text": "Decide on dates (Jul 1–7)",
       "done": true,
       "urgent": false,
-      "group": "planning",
+      "group": "completed",
       "order": 1
     },
     {
-      "id": "check_3",
-      "text": "Book flights — AA outbound (DBDQRA), WN return (AXYZFP)",
+      "id": "check_2",
+      "text": "Book flights — AA outbound skiplagged (DBDQRA), WN return (AXYZFP)",
       "done": true,
       "urgent": false,
-      "group": "planning",
+      "group": "completed",
       "order": 2
     },
     {
-      "id": "check_4",
-      "text": "Book rental car — Enterprise at BOS (H-1596322716COUNT)",
+      "id": "check_3",
+      "text": "Book rental car — Enterprise at BOS via Capital One Travel (H-1596322716COUNT)",
       "done": true,
       "urgent": false,
-      "group": "planning",
+      "group": "completed",
       "order": 3
     },
     {
-      "id": "check_5",
-      "text": "Coordinate dates with Kristina's family",
-      "done": false,
-      "urgent": true,
-      "group": "planning",
+      "id": "check_4",
+      "text": "Coordinate dates with Kristina's family — CONFIRMED same dates (Jul 1–7). They're coming from Nashville.",
+      "done": true,
+      "urgent": false,
+      "group": "completed",
       "order": 4
     },
     {
-      "id": "check_6",
-      "text": "Pack swimsuits & lake gear for Louise",
+      "id": "check_5",
+      "text": "Confirm with Mom & Dad — house availability, sleeping arrangements for both families",
       "done": false,
-      "urgent": false,
-      "group": "packing",
+      "urgent": true,
+      "group": "this-week",
       "order": 5
     },
     {
+      "id": "check_6",
+      "text": "Southwest check-in — Jul 6 at 6:25 PM CDT (24 hrs before return). Both Michael and Meghan check in simultaneously for best boarding positions",
+      "done": false,
+      "urgent": false,
+      "group": "june",
+      "order": 6
+    },
+    {
       "id": "check_7",
-      "text": "CARRY-ON ONLY — no checked bags (skiplagged outbound)",
+      "text": "Buy car seat / booster for rental car — Louise needs a car seat, Kenna may need a booster. Enterprise doesn't provide them reliably",
+      "done": false,
+      "urgent": false,
+      "group": "june",
+      "order": 7
+    },
+    {
+      "id": "check_8",
+      "text": "Stock up on lake supplies — sunscreen, bug spray, swim diapers (if needed), water toys, life jacket for Louise",
+      "done": false,
+      "urgent": false,
+      "group": "june",
+      "order": 8
+    },
+    {
+      "id": "check_9",
+      "text": "Plan July 4th cookout — coordinate food with Mom & Dad and Kristina's family. Who's bringing what?",
+      "done": false,
+      "urgent": false,
+      "group": "june",
+      "order": 9
+    },
+    {
+      "id": "check_10",
+      "text": "Download offline entertainment for Louise — iPad loaded for 2.5 hr flight + 2 hr drive each way",
+      "done": false,
+      "urgent": false,
+      "group": "june",
+      "order": 10
+    },
+    {
+      "id": "check_11",
+      "text": "⚠️ CARRY-ON ONLY — no checked bags! Skiplagged outbound fare (STL→BUF via BOS). Checked bags go to Buffalo. Pack everything in carry-ons + personal items.",
       "done": false,
       "urgent": true,
       "group": "packing",
-      "order": 6
+      "order": 11
+    },
+    {
+      "id": "check_12",
+      "text": "Pack swimsuits, lake gear, and warm layers — 80s daytime, 50s at night. Bug spray essential for evening dock time",
+      "done": false,
+      "urgent": false,
+      "group": "packing",
+      "order": 12
+    },
+    {
+      "id": "check_13",
+      "text": "Pack car seats in carry-on-friendly bag or gate-check — need them for the rental car drive to Melvin Village",
+      "done": false,
+      "urgent": false,
+      "group": "packing",
+      "order": 13
+    },
+    {
+      "id": "check_14",
+      "text": "Chargers, portable battery pack, camera — lake sunsets are worth capturing",
+      "done": false,
+      "urgent": false,
+      "group": "packing",
+      "order": 14
     }
   ]
 }

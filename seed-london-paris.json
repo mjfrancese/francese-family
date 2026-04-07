@@ -924,15 +924,15 @@
   "checklist": [
     {
       "id": "check_1",
-      "text": "Apply for Global Entry \u2014 Michael + Meghan \u2014 Apply at ttp.dhs.gov. $120/person \u2014 fully reimbursed by Venture X. Kids apply FREE once your apps are pending. All 4 can do Enrollment on Arrival at STL on Jun 16 if conditionally approved. Includes TSA PreCheck for outbound.",
-      "done": false,
-      "urgent": true,
-      "group": "this-week",
+      "text": "Global Entry \u2014 Michael, Meghan, Louise \u2014 APPROVED. Michael: 170118414 (exp Oct 2031), Meghan: 170122305, Louise: 170127606 (exp Oct 2031). Use PASS IDs as Known Traveler Numbers when booking flights. Includes TSA PreCheck.",
+      "done": true,
+      "urgent": false,
+      "group": "completed",
       "order": 1
     },
     {
       "id": "check_2",
-      "text": "Apply for Global Entry \u2014 Kenna + Louise (after adults) \u2014 Free for minors when parent's application is pending or approved. Same site: ttp.dhs.gov. Parent must consent + attend interview with each child.",
+      "text": "\u26a0\ufe0f Global Entry \u2014 Kenna \u2014 BLOCKED on passport. Once passport arrives: apply at ttp.dhs.gov (free for minors), get conditional approval, schedule interview, complete interview. All must happen before Jun 7. If Kenna doesn't have GE, one parent must go through regular customs with her on return.",
       "done": false,
       "urgent": true,
       "group": "this-week",
@@ -940,27 +940,35 @@
     },
     {
       "id": "check_3",
-      "text": "Buy 3-4 Anker Nano Travel Adapters (5-in-1, 20W) \u2014 anker.com/products/a9215. Covers US/UK/EU/AU plugs with USB-C port. ~$16 each. One per person or per charging station.",
-      "done": false,
-      "urgent": true,
-      "group": "this-week",
+      "text": "3x Anker Nano Travel Adapters (5-in-1, 20W) \u2014 Ordered. One each for Michael, Meghan, Kenna. Louise does not need one.",
+      "done": true,
+      "urgent": false,
+      "group": "completed",
       "order": 3
     },
     {
       "id": "check_4",
-      "text": "Check T-Mobile plan details with Meghan \u2014 Find out exact plan name (Go5G, Magenta MAX, Experience More/Beyond, etc.). This determines if you get 5GB or 15GB free high-speed data in UK+France. May not need a separate eSIM at all.",
-      "done": false,
-      "urgent": true,
-      "group": "this-week",
+      "text": "T-Mobile plan confirmed \u2014 Magenta MAX \u2014 Includes 5GB high-speed data per line in 215+ countries (UK + France covered), then unlimited at 2G speeds. May be enough without buying an eSIM. See check_12 for data plan decision.",
+      "done": true,
+      "urgent": false,
+      "group": "completed",
       "order": 4
     },
     {
       "id": "check_5",
-      "text": "\u26a0\ufe0f Kenna's passport \u2014 follow up on hiccup \u2014 Application requires a copy of Tyler's (Meghan's ex-husband) ID. Follow up on status \u2014 this is a BLOCKER for Eurostar API, UK ETA, and travel.",
+      "text": "\u26a0\ufe0f Kenna's passport \u2014 \"Information Received, In Process Again\" \u2014 Tyler's ID was sent and received by State Dept on 3/5. Routine processing is 4-6 weeks (may be delayed due to the hold). Application locator: 433376153. BLOCKER for Eurostar API, UK ETA, Global Entry, and travel. If not received by mid-May, call 1-877-487-2778.",
       "done": false,
       "urgent": true,
       "group": "this-week",
       "order": 5
+    },
+    {
+      "id": "check_44",
+      "text": "\u26a0\ufe0f Disney same-room request \u2014 NO RESPONSE \u2014 Emailed 3 addresses on Mar 17-18 requesting same room for both Art of Marvel nights (32984124 + H-DKH4WQD368V2). No reply from dlp.guest.communication, dlp.hny.front.office, or DLP.NWY.CONCIERGERIE. Consider calling Disneyland Paris directly or trying the DLP app/chat.",
+      "done": false,
+      "urgent": true,
+      "group": "this-week",
+      "order": 44
     },
     {
       "id": "check_6",
@@ -1012,7 +1020,7 @@
     },
     {
       "id": "check_12",
-      "text": "Data plan decision \u2014 T-Mobile vs. eSIM \u2014 Once you know your T-Mobile plan tier: if 5-15GB included is enough, just enable data roaming. If not, add T-Mobile 30-Day International Pass ($50/15GB/line) or buy an Airalo Europe eSIM (~$16/10GB). Both UK and France are covered by all options.",
+      "text": "Data plan decision \u2014 Magenta MAX gives 5GB/line free \u2014 You get 5GB high-speed data per line in UK+France, then unlimited 2G. For a 10-day trip, 5GB is tight with maps/photos. Options: (1) Just use the 5GB and lean on hotel WiFi, (2) Add T-Mobile International Pass ($50/15GB/line for 30 days), or (3) Buy an Airalo Europe eSIM (~$16/10GB as backup). Enable data roaming on both phones before departure.",
       "done": false,
       "urgent": false,
       "group": "april",
@@ -1148,7 +1156,7 @@
     },
     {
       "id": "check_29",
-      "text": "Passports for all 4 \u2014 verify before leaving \u2014 Michael \u2705, Meghan \u2705, Louise \u2705, Kenna \u26a0\ufe0f (pending \u2014 follow up!). All 4 needed for BA flights, Eurostar, and UK ETA.",
+      "text": "Passports for all 4 \u2014 verify before leaving \u2014 Michael \u2705, Meghan \u2705, Louise \u2705, Kenna \u26a0\ufe0f (still pending \u2014 status: In Process Again as of ~Mar 28. Locator: 433376153). All 4 needed for BA flights, Eurostar, and UK ETA.",
       "done": false,
       "urgent": false,
       "group": "packing",
