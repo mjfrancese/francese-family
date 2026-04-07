@@ -2,10 +2,10 @@
   "slug": "new-hampshire-july",
   "meta": {
     "title": "Fourth of July — New Hampshire",
-    "dates": "Early July 2026",
+    "dates": "Jul 1–7, 2026",
     "description": "Fourth of July week at Mom & Dad's in Melvin Village. Kristina and family will be there too.",
     "icon": "home",
-    "status": "planning",
+    "status": "upcoming",
     "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
     "coordinates": { "lat": 43.687, "lng": -71.392 },
     "color": "#ef4444"
@@ -14,96 +14,87 @@
     "mfrancese@gmail.com": { "role": "owner", "name": "Michael" },
     "meghancryan@gmail.com": { "role": "owner", "name": "Meghan" }
   },
-  "bookings": [],
-  "timeline": [],
-  "budget": {
-    "confirmed": [],
-    "estimated": [],
-    "confirmedTotal": "$0",
-    "estimatedTotal": "TBD"
-  },
-  "flightOptions": {
-    "passengers": "2 adults + 2 children",
-    "rentalCarNote": "Avis President's Club (AWD Q152360) at BOS — updated Apr 6, 2026",
-    "rentalCarPricing": {
-      "2026-06-29_2026-07-06": { "days": 7, "total": 710 },
-      "2026-06-29_2026-07-07": { "days": 8, "total": 811 },
-      "2026-06-29_2026-07-08": { "days": 9, "total": 913 },
-      "2026-06-29_2026-07-09": { "days": 10, "total": 1014 },
-      "2026-06-30_2026-07-06": { "days": 6, "total": 674 },
-      "2026-06-30_2026-07-07": { "days": 7, "total": 710 },
-      "2026-06-30_2026-07-08": { "days": 8, "total": 811 },
-      "2026-06-30_2026-07-09": { "days": 9, "total": 913 },
-      "2026-07-01_2026-07-06": { "days": 5, "total": 674 },
-      "2026-07-01_2026-07-07": { "days": 6, "total": 674 },
-      "2026-07-01_2026-07-08": { "days": 7, "total": 710 },
-      "2026-07-01_2026-07-09": { "days": 8, "total": 811 }
+  "bookings": [
+    {
+      "category": "flight",
+      "label": "American Airlines · STL → BOS",
+      "status": "booked",
+      "carrier": "American Airlines",
+      "detail": "Jul 1 · AA 3814 (Envoy Air) · STL 9:39 AM → BOS 1:24 PM. Ticketed through BUF — deplane at BOS, do not board BOS→BUF leg. No checked bags.",
+      "date": "Jul 1",
+      "time": "09:39",
+      "confirmation": "DBDQRA",
+      "cost": "$552.80 (4 × $138.20)",
+      "paidWith": "Apple Pay",
+      "notes": "Skiplagged fare: booked STL→BUF via BOS. Deplane at BOS. Carry-on only — no checked bags or they go to BUF."
     },
-    "outbound": {
-      "2026-06-29": [
-        { "price": 922, "airline": "AA", "flightNum": "AA nonstop", "depart": "09:39", "arrive": "13:24", "duration": "2h 45m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "14:30", "arrive": "18:05", "duration": "2h 35m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "AA", "flightNum": "AA nonstop", "depart": "19:51", "arrive": "23:36", "duration": "2h 45m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "19:55", "arrive": "23:25", "duration": "2h 30m", "stops": 0, "airport": "BOS" }
-      ],
-      "2026-06-30": [
-        { "price": 634, "airline": "AA", "flightNum": "AA nonstop", "depart": "09:39", "arrive": "13:24", "duration": "2h 45m", "stops": 0, "airport": "BOS" },
-        { "price": 634, "airline": "WN", "flightNum": "WN nonstop", "depart": "19:10", "arrive": "22:40", "duration": "2h 30m", "stops": 0, "airport": "BOS" },
-        { "price": 634, "airline": "AA", "flightNum": "AA nonstop", "depart": "19:51", "arrive": "23:36", "duration": "2h 45m", "stops": 0, "airport": "BOS" }
-      ],
-      "2026-07-01": [
-        { "price": 634, "airline": "AA", "flightNum": "AA nonstop", "depart": "09:39", "arrive": "13:24", "duration": "2h 45m", "stops": 0, "airport": "BOS" },
-        { "price": 634, "airline": "AA", "flightNum": "AA nonstop", "depart": "19:51", "arrive": "23:36", "duration": "2h 45m", "stops": 0, "airport": "BOS" }
-      ]
+    {
+      "category": "flight",
+      "label": "Southwest · BOS → STL",
+      "status": "booked",
+      "carrier": "Southwest",
+      "detail": "Jul 7 · WN 754 · BOS 6:25 PM → STL 8:30 PM. Seats 12A/B/C/D (Preferred). Basic fare.",
+      "date": "Jul 7",
+      "time": "18:25",
+      "confirmation": "AXYZFP",
+      "cost": "$921.60",
+      "paidWith": "Visa *4879 ($755.10) + Flight Credit ($166.50)",
+      "notes": "Meghan 12A, Michael 12B, Louise 12C, Kenna 12D. Basic fare — carryon + personal item only."
     },
-    "return": {
-      "2026-07-06": [
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "05:35", "arrive": "07:25", "duration": "2h 50m", "stops": 0, "airport": "BOS" },
-        { "price": 1223, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:09", "duration": "3h 9m", "stops": 0, "airport": "BOS" },
-        { "price": 1262, "airline": "AA", "flightNum": "AA nonstop", "depart": "17:10", "arrive": "19:20", "duration": "3h 10m", "stops": 0, "airport": "BOS" }
-      ],
-      "2026-07-07": [
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "05:50", "arrive": "07:45", "duration": "2h 55m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:09", "duration": "3h 9m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "AA", "flightNum": "AA nonstop", "depart": "17:10", "arrive": "19:20", "duration": "3h 10m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "18:25", "arrive": "20:30", "duration": "3h 5m", "stops": 0, "airport": "BOS" }
-      ],
-      "2026-07-08": [
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "05:50", "arrive": "07:45", "duration": "2h 55m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:09", "duration": "3h 9m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "18:25", "arrive": "20:30", "duration": "3h 5m", "stops": 0, "airport": "BOS" },
-        { "price": 939, "airline": "AA", "flightNum": "AA nonstop", "depart": "17:10", "arrive": "19:20", "duration": "3h 10m", "stops": 0, "airport": "BOS" }
-      ],
-      "2026-07-09": [
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "05:35", "arrive": "07:25", "duration": "2h 50m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "AA", "flightNum": "AA nonstop", "depart": "07:00", "arrive": "09:09", "duration": "3h 9m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "12:55", "arrive": "14:45", "duration": "2h 50m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "AA", "flightNum": "AA nonstop", "depart": "17:10", "arrive": "19:20", "duration": "3h 10m", "stops": 0, "airport": "BOS" },
-        { "price": 922, "airline": "WN", "flightNum": "WN nonstop", "depart": "18:50", "arrive": "20:55", "duration": "3h 5m", "stops": 0, "airport": "BOS" }
-      ]
+    {
+      "category": "car",
+      "label": "Enterprise · Midsize (Corolla) at BOS",
+      "status": "booked",
+      "carrier": "Enterprise",
+      "detail": "Jul 1 1:00 PM → Jul 7 6:00 PM. Midsize Car (Toyota Corolla or Similar). 15 Transportation Way, East Boston.",
+      "date": "Jul 1–7",
+      "time": "13:00–18:00",
+      "confirmation": "H-1596322716COUNT",
+      "cost": "$606.86 (60,686 Capital One Venture X miles)",
+      "paidWith": "Capital One Venture X *8314 (miles redemption)",
+      "notes": "Booked via Capital One Travel. Platinum status with Enterprise. Free cancellation before pick-up."
     }
+  ],
+  "timeline": [
+    { "date": "2026-07-01", "time": "09:39", "type": "flight", "title": "Depart STL → BOS", "detail": "AA 3814 · STL 9:39 AM → BOS 1:24 PM. Deplane at BOS (skiplagged)." },
+    { "date": "2026-07-01", "time": "13:00", "type": "car", "title": "Pick up rental car", "detail": "Enterprise · 15 Transportation Way, East Boston. Midsize Corolla." },
+    { "date": "2026-07-01", "time": "14:30", "type": "drive", "title": "Drive BOS → Melvin Village", "detail": "~2 hr drive north to parents' house." },
+    { "date": "2026-07-04", "time": "00:00", "type": "event", "title": "Fourth of July", "detail": "Celebrate at the lake with family!" },
+    { "date": "2026-07-07", "time": "14:00", "type": "drive", "title": "Drive Melvin Village → BOS", "detail": "~2 hr drive south to Logan Airport." },
+    { "date": "2026-07-07", "time": "16:30", "type": "car", "title": "Return rental car", "detail": "Enterprise · 15 Transportation Way, East Boston. Due back by 6:00 PM." },
+    { "date": "2026-07-07", "time": "18:25", "type": "flight", "title": "Depart BOS → STL", "detail": "WN 754 · BOS 6:25 PM → STL 8:30 PM. Seats 12A/B/C/D." }
+  ],
+  "budget": {
+    "confirmed": [
+      { "item": "Outbound flight (AA, skiplagged)", "amount": "$552.80", "paidWith": "Apple Pay" },
+      { "item": "Return flight (WN)", "amount": "$921.60", "paidWith": "Visa *4879 + flight credit" },
+      { "item": "Rental car (Enterprise, 6 days)", "amount": "$606.86", "paidWith": "60,686 Venture X miles" }
+    ],
+    "estimated": [],
+    "confirmedTotal": "$1,474.40 cash + 60,686 miles",
+    "estimatedTotal": "$0"
   },
   "checklist": [
     {
       "id": "check_1",
-      "text": "Decide on dates (early July week — around the 4th)",
-      "done": false,
-      "urgent": true,
+      "text": "Decide on dates (Jul 1–7)",
+      "done": true,
+      "urgent": false,
       "group": "planning",
       "order": 1
     },
     {
       "id": "check_3",
-      "text": "Book flights (STL → BOS nonstop)",
-      "done": false,
+      "text": "Book flights — AA outbound (DBDQRA), WN return (AXYZFP)",
+      "done": true,
       "urgent": false,
       "group": "planning",
       "order": 2
     },
     {
       "id": "check_4",
-      "text": "Book rental car — Avis at BOS (AWD Q152360, ~$85–100/day)",
-      "done": false,
+      "text": "Book rental car — Enterprise at BOS (H-1596322716COUNT)",
+      "done": true,
       "urgent": false,
       "group": "planning",
       "order": 3
@@ -112,7 +103,7 @@
       "id": "check_5",
       "text": "Coordinate dates with Kristina's family",
       "done": false,
-      "urgent": false,
+      "urgent": true,
       "group": "planning",
       "order": 4
     },
@@ -123,6 +114,14 @@
       "urgent": false,
       "group": "packing",
       "order": 5
+    },
+    {
+      "id": "check_7",
+      "text": "CARRY-ON ONLY — no checked bags (skiplagged outbound)",
+      "done": false,
+      "urgent": true,
+      "group": "packing",
+      "order": 6
     }
   ]
 }
