@@ -276,10 +276,8 @@ const Day13Detail = () => (
     </DetailSection>
     <DetailSection icon="⚠️" title="Potential Pitfalls" color="#e8c55c">
       <WarnBullet>5:15 AM alarm with a 5-year-old. Have Louise's clothes and a snack ready to go</WarnBullet>
-      <WarnBullet>Eiffel Tower lift tickets go on sale exactly 60 days ahead at MIDNIGHT Paris time. For Jun 13 visit → tickets drop at <strong>5:00 PM CDT on April 13</strong> (midnight CEST = UTC+2). Be on ticket.toureiffel.paris refreshing at 4:55 PM!</WarnBullet>
-      <WarnBullet>Summit sells out within MINUTES in summer. If midnight batch sells out, a second batch often drops at 4:45 AM Paris time = <strong>9:45 PM CDT April 13</strong></WarnBullet>
-      <WarnBullet>Create your account on ticket.toureiffel.paris NOW so you're ready to buy instantly on April 13</WarnBullet>
-      <WarnBullet>If you miss both windows, Trocadéro viewpoint is still an amazing free photo op — and on-site tickets are sometimes available day-of with a longer wait</WarnBullet>
+      <InfoBullet>✅ <strong>Eiffel Tower tickets BOOKED!</strong> 4 tickets, Summit by Elevator, 11:00 AM entry. €101.00 (~$121). E-tickets sent via email — print or have on phone.</InfoBullet>
+      <WarnBullet>Arrive at Trocadéro by ~10:15 for photos, then walk to tower entrance for 11:00 entry. Allow 20-30 min in the security + elevator queue even with timed tickets.</WarnBullet>
       <WarnBullet>RER A to Disney: Validate your tickets! Fine for no validation is €50+</WarnBullet>
       <WarnBullet>Watch belongings on Paris metro — tourist areas are pickpocket-heavy</WarnBullet>
     </DetailSection>
@@ -287,7 +285,7 @@ const Day13Detail = () => (
       <TipBullet>Eurostar has a bar car — coffee and pastries once onboard</TipBullet>
       <TipBullet>Dream Castle pool has a water slide! Let the kids burn energy after travel</TipBullet>
       <TipBullet>Disney Village is walkable — good for dinner without park tickets</TipBullet>
-      <TipBullet><strong>Eiffel Tower tickets:</strong> Must be purchased April 13 at 5:00 PM CDT (midnight Paris, 60 days out). Summit by elevator is the goal. All 4 need tickets (Louise is 5 — child rate, not free). Official site only: ticket.toureiffel.paris</TipBullet>
+      <TipBullet><strong>Eiffel Tower:</strong> BOOKED — 11:00 AM summit entry. Have e-tickets ready on phone. Trocadéro photos first, then walk across to the tower.</TipBullet>
     </DetailSection>
   </>
 );
@@ -536,8 +534,9 @@ export default function TripItinerary() {
               { time: "05:15", text: "Wake up. Walk to St Pancras (5 min)" },
               { time: "06:31", text: "🚄 Eurostar 9002 · Coach 10 · Seats 18,17,13,14", status: BOOKED, statusLabel: "QRXPZK" },
               { time: "09:57", text: "Arrive Paris Gare du Nord" },
-              { time: "~10:30", text: "Metro to Trocadéro → Eiffel Tower!" },
-              { time: "~13:00", text: "Lunch near Eiffel Tower" },
+              { time: "~10:15", text: "Metro to Trocadéro → photos, then walk to tower entrance" },
+              { time: "11:00", text: "🗼 Eiffel Tower · Summit by Elevator (4 tickets)", status: BOOKED },
+              { time: "~12:30", text: "Lunch near Eiffel Tower" },
               { time: "~14:00", text: "Metro → RER A to Marne-la-Vallée (~1 hr)" },
               { time: "~15:30", text: "Check into Dream Castle Hotel", status: BOOKED, statusLabel: "H-KTXPJ3X4HJ4C" },
               { text: "Kids: castle pool & water slide! Evening: Disney Village" }
@@ -692,6 +691,7 @@ export default function TripItinerary() {
             { item: "Art of Marvel Night 1", cost: "$1,733.68", note: "hotel+tickets+meals" },
             { item: "Matilda the Musical", cost: "~$425.00", note: "£340" },
             { item: "London Eye", cost: "~$138.00", note: "£110" },
+            { item: "Eiffel Tower (4 tickets, summit)", cost: "~$121.00", note: "€101" },
           ].map((r, i) => (
             <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 12px", borderBottom: "1px solid #1a1a2a" }}>
               <div>
@@ -703,12 +703,12 @@ export default function TripItinerary() {
           ))}
           <div style={{ display: "flex", justifyContent: "space-between", padding: "12px 12px 8px", borderTop: "2px solid #2a2a3a", marginTop: 4 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df" }}>Confirmed Cash Total</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df", fontFamily: "monospace" }}>~$5,402</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df", fontFamily: "monospace" }}>~$5,523</span>
           </div>
 
           <SectionHeader icon="📊">Estimated Additional</SectionHeader>
           {[
-            { item: "Eiffel Tower (4 tickets, summit)", cost: "~$110" },
+
             { item: "Local Transport (Oyster, Metro, RER)", cost: "~$149" },
             { item: "Meals (London + Paris transit)", cost: "~$545–750" },
             { item: "Disney meals (covered by plan)", cost: "$0", note: "4 of 6 meals" },
@@ -725,7 +725,7 @@ export default function TripItinerary() {
           ))}
           <div style={{ display: "flex", justifyContent: "space-between", padding: "12px 12px 8px", borderTop: "2px solid #2a2a3a", marginTop: 4 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df" }}>Estimated Trip Total</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df", fontFamily: "monospace" }}>~$6,366–6,711</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df", fontFamily: "monospace" }}>~$6,377–6,712</span>
           </div>
 
           <div style={{ background: "#111a15", border: "1px solid #1a2a1a", borderRadius: 8, padding: 14, marginTop: 16 }}>
@@ -758,7 +758,7 @@ export default function TripItinerary() {
 
           <SectionHeader icon="🟡">Before Travel — April</SectionHeader>
           {[
-            { title: "🗼 Eiffel Tower — Apr 13 at 5:00 PM CDT!", detail: "Lift tickets drop at midnight Paris time (60 days ahead). ticket.toureiffel.paris. Summit sells out in MINUTES. Backup batch at 9:45 PM CDT. Create account NOW." },
+            { title: "✅ Eiffel Tower — BOOKED!", detail: "4 tickets, Summit by Elevator, Jun 13 at 11:00 AM. €101.00 (~$121). E-tickets via email." },
             { title: "UK ETA — all 4 passengers", detail: "gov.uk/apply-electronic-travel-authorisation. £10/person. Apply once all passports are in hand. Takes a few days to process." },
             { title: "Eurostar API for Kenna Holland", detail: "eurostar.com → Manage Booking → QRXPZK. BLOCKED until passport arrives." },
             { title: "BA Advance Passenger Info — all 4", detail: "ba.com → Manage My Booking → YUAD5K. Passport + contact details for each passenger." },

@@ -146,6 +146,19 @@
       "notes": "Fixed time \u2014 1:00 PM."
     },
     {
+      "category": "attraction",
+      "label": "Eiffel Tower \u00b7 Summit by Elevator",
+      "status": "booked",
+      "carrier": null,
+      "detail": "4 tickets (2 adult, 2 child) \u00b7 Summit by Lift \u00b7 11:00 AM entry",
+      "date": "Jun 13",
+      "time": "11:00",
+      "confirmation": null,
+      "cost": "\u20ac101.00 (~$121)",
+      "paidWith": null,
+      "notes": "Purchased Apr 13. E-tickets sent via email (PDF). Print or have on phone. Arrive at Trocad\u00e9ro first for photos, then walk to tower entrance."
+    },
+    {
       "category": "dining",
       "label": "Bistrot Chez R\u00e9my",
       "status": "booked",
@@ -553,8 +566,9 @@
         { "time": "05:15", "text": "Wake up. Walk to St Pancras (5 min)" },
         { "time": "06:31", "text": "\ud83d\ude84 Eurostar 9002 \u00b7 Coach 10 \u00b7 Seats 18,17,13,14", "status": "booked", "statusLabel": "QRXPZK" },
         { "time": "09:57", "text": "Arrive Paris Gare du Nord" },
-        { "time": "~10:30", "text": "Metro to Trocad\u00e9ro \u2192 Eiffel Tower!" },
-        { "time": "~13:00", "text": "Lunch near Eiffel Tower" },
+        { "time": "~10:15", "text": "Metro to Trocad\u00e9ro \u2192 photos, then walk to tower entrance" },
+        { "time": "11:00", "text": "\ud83d\uddfc Eiffel Tower \u00b7 Summit by Elevator (4 tickets)", "status": "booked" },
+        { "time": "~12:30", "text": "Lunch near Eiffel Tower" },
         { "time": "~14:00", "text": "Metro \u2192 RER A to Marne-la-Vall\u00e9e (~1 hr)" },
         { "time": "~15:30", "text": "Check into Dream Castle Hotel", "status": "booked", "statusLabel": "H-KTXPJ3X4HJ4C" },
         { "text": "Kids: castle pool & water slide! Evening: Disney Village" }
@@ -589,10 +603,8 @@
           "color": "#e8c55c",
           "items": [
             { "type": "warn", "text": "5:15 AM alarm with a 5-year-old. Have Louise's clothes and a snack ready to go" },
-            { "type": "warn", "text": "Eiffel Tower lift tickets go on sale exactly 60 days ahead at MIDNIGHT Paris time. For Jun 13 visit \u2192 tickets drop at <strong>5:00 PM CDT on April 13</strong> (midnight CEST = UTC+2). Be on ticket.toureiffel.paris refreshing at 4:55 PM!" },
-            { "type": "warn", "text": "Summit sells out within MINUTES in summer. If midnight batch sells out, a second batch often drops at 4:45 AM Paris time = <strong>9:45 PM CDT April 13</strong>" },
-            { "type": "warn", "text": "Create your account on ticket.toureiffel.paris NOW so you're ready to buy instantly on April 13" },
-            { "type": "warn", "text": "If you miss both windows, Trocad\u00e9ro viewpoint is still an amazing free photo op \u2014 and on-site tickets are sometimes available day-of with a longer wait" },
+            { "type": "info", "text": "\u2705 <strong>Eiffel Tower tickets BOOKED!</strong> 4 tickets, Summit by Elevator, 11:00 AM entry. \u20ac101.00 (~$121). E-tickets sent via email \u2014 print or have on phone." },
+            { "type": "warn", "text": "Arrive at Trocad\u00e9ro by ~10:15 for photos, then walk to tower entrance for 11:00 entry. Allow 20-30 min in the security + elevator queue even with timed tickets." },
             { "type": "warn", "text": "RER A to Disney: Validate your tickets! Fine for no validation is \u20ac50+" },
             { "type": "warn", "text": "Watch belongings on Paris metro \u2014 tourist areas are pickpocket-heavy" }
           ]
@@ -605,7 +617,7 @@
             { "type": "tip", "text": "Eurostar has a bar car \u2014 coffee and pastries once onboard" },
             { "type": "tip", "text": "Dream Castle pool has a water slide! Let the kids burn energy after travel" },
             { "type": "tip", "text": "Disney Village is walkable \u2014 good for dinner without park tickets" },
-            { "type": "tip", "text": "<strong>Eiffel Tower tickets:</strong> Must be purchased April 13 at 5:00 PM CDT (midnight Paris, 60 days out). Summit by elevator is the goal. All 4 need tickets (Louise is 5 \u2014 child rate, not free). Official site only: ticket.toureiffel.paris" }
+            { "type": "tip", "text": "<strong>Eiffel Tower:</strong> BOOKED \u2014 11:00 AM summit entry. Have e-tickets ready on phone. Trocad\u00e9ro photos first, then walk across to the tower." }
           ]
         }
       ]
@@ -907,18 +919,18 @@
       { "item": "Travelodge (5 nights)", "cost": "~$1,553.00", "note": "\u00a31,242.45" },
       { "item": "Art of Marvel Night 1", "cost": "$1,733.68", "note": "hotel+tickets+meals" },
       { "item": "Matilda the Musical", "cost": "~$425.00", "note": "\u00a3340" },
-      { "item": "London Eye", "cost": "~$138.00", "note": "\u00a3110" }
+      { "item": "London Eye", "cost": "~$138.00", "note": "\u00a3110" },
+      { "item": "Eiffel Tower (4 tickets, summit)", "cost": "~$121.00", "note": "\u20ac101" }
     ],
     "estimated": [
-      { "item": "Eiffel Tower (4 tickets, summit)", "cost": "~$110", "note": null },
       { "item": "Local Transport (Oyster, Metro, RER)", "cost": "~$149", "note": null },
       { "item": "Meals (London + Paris transit)", "cost": "~$545\u2013750", "note": null },
       { "item": "Disney meals (covered by plan)", "cost": "$0", "note": "4 of 6 meals" },
       { "item": "Disney meals (NOT covered)", "cost": "~$60\u2013100", "note": "Jun 15 dinner + Jun 16 breakfast" },
       { "item": "Premier Access (optional)", "cost": "~$100\u2013200", "note": "PA One passes" }
     ],
-    "confirmedTotal": "~$5,402",
-    "estimatedTotal": "~$6,366\u20136,711",
+    "confirmedTotal": "~$5,523",
+    "estimatedTotal": "~$6,377\u20136,712",
     "savingsNote": "260K Avios (~$4,000+ value) + 64,795 C1 miles ($648) + $300 Venture X credit = ~$4,948+ total savings"
   },
   "checklist": [
@@ -972,10 +984,10 @@
     },
     {
       "id": "check_6",
-      "text": "\ud83d\uddfc Eiffel Tower \u2014 Apr 13 at 5:00 PM CDT! \u2014 Lift tickets drop at midnight Paris time (60 days ahead). ticket.toureiffel.paris. Summit sells out in MINUTES. Backup batch at 9:45 PM CDT. Create account NOW.",
-      "done": false,
+      "text": "\ud83d\uddfc Eiffel Tower \u2014 BOOKED! 4 tickets, Summit by Elevator, Jun 13 at 11:00 AM. \u20ac101.00 (~$121). E-tickets via email.",
+      "done": true,
       "urgent": false,
-      "group": "april",
+      "group": "completed",
       "order": 6
     },
     {
