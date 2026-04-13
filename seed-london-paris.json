@@ -6,21 +6,35 @@
     "description": "10-day family adventure through London, Paris, and Disneyland Paris.",
     "icon": "castle",
     "status": "upcoming",
-    "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
-    "coordinates": { "lat": 51.507, "lng": -0.128 },
+    "travelers": [
+      "Michael",
+      "Meghan",
+      "Kenna",
+      "Louise"
+    ],
+    "coordinates": {
+      "lat": 51.507,
+      "lng": -0.128
+    },
     "color": "#e8c55c"
   },
   "access": {
-    "mfrancese@gmail.com": { "role": "owner", "name": "Michael" },
-    "meghancryan@gmail.com": { "role": "owner", "name": "Meghan" }
+    "mfrancese@gmail.com": {
+      "role": "owner",
+      "name": "Michael"
+    },
+    "meghancryan@gmail.com": {
+      "role": "owner",
+      "name": "Meghan"
+    }
   },
   "bookings": [
     {
       "category": "flight",
-      "label": "British Airways · Round Trip",
+      "label": "British Airways \u00b7 Round Trip",
       "status": "booked",
       "carrier": "British Airways",
-      "detail": "Outbound: Jun 7 · BA220 · STL\u2192LHR 22:00\u219212:05+1 | Return: Jun 16 · BA221 · LHR\u2192STL 16:25\u219219:30",
+      "detail": "Outbound: Jun 7 \u00b7 BA220 \u00b7 STL\u2192LHR 22:00\u219212:05+1 | Return: Jun 16 \u00b7 BA221 \u00b7 LHR\u2192STL 16:25\u219219:30",
       "date": "Jun 7\u201316",
       "time": "22:00 / 16:25",
       "confirmation": "YUAD5K",
@@ -30,10 +44,10 @@
     },
     {
       "category": "train",
-      "label": "Eurostar · London \u2194 Paris Round Trip",
+      "label": "Eurostar \u00b7 London \u2194 Paris Round Trip",
       "status": "booked",
       "carrier": "Eurostar",
-      "detail": "Outbound: Jun 13 · 9002 · 06:31\u219209:57 · Coach 10 · Seats 18,17,13,14 | Return: Jun 16 · 9023 · 11:02\u219212:30 · Coach 4 · Seats 53,54,58,57",
+      "detail": "Outbound: Jun 13 \u00b7 9002 \u00b7 06:31\u219209:57 \u00b7 Coach 10 \u00b7 Seats 18,17,13,14 | Return: Jun 16 \u00b7 9023 \u00b7 11:02\u219212:30 \u00b7 Coach 4 \u00b7 Seats 53,54,58,57",
       "date": "Jun 13 / Jun 16",
       "time": "06:31 / 11:02",
       "confirmation": "QRXPZK",
@@ -46,7 +60,7 @@
       "label": "Heathrow Express \u2014 Outbound (LHR\u2192Paddington)",
       "status": "booked",
       "carrier": "Heathrow Express",
-      "detail": "Jun 8 · LHR \u2192 Paddington",
+      "detail": "Jun 8 \u00b7 LHR \u2192 Paddington",
       "date": "Jun 8",
       "time": "~13:00",
       "confirmation": "69d52862",
@@ -59,7 +73,7 @@
       "label": "Heathrow Express \u2014 Return (Paddington\u2192LHR)",
       "status": "booked",
       "carrier": "Heathrow Express",
-      "detail": "Jun 16 · Paddington \u2192 LHR",
+      "detail": "Jun 16 \u00b7 Paddington \u2192 LHR",
       "date": "Jun 16",
       "time": "~13:00",
       "confirmation": "c44d65da",
@@ -207,9 +221,20 @@
       "section": "Departure",
       "order": 0,
       "events": [
-        { "text": "\u23f0 ALARM: Jun 6 at 9:55 PM \u2014 BA check-in opens for FREE seat selection!", "status": "action", "statusLabel": "SET ALARM" },
-        { "time": "22:00", "text": "BA220 \u00b7 STL \u2192 LHR \u00b7 World Traveller", "status": "booked", "statusLabel": "YUAD5K" },
-        { "text": "Overnight flight \u2014 arrives June 8 at 12:05 PM (Terminal 5)" }
+        {
+          "text": "\u23f0 ALARM: Jun 6 at 9:55 PM \u2014 BA check-in opens for FREE seat selection!",
+          "status": "action",
+          "statusLabel": "SET ALARM"
+        },
+        {
+          "time": "22:00",
+          "text": "BA220 \u00b7 STL \u2192 LHR \u00b7 World Traveller",
+          "status": "booked",
+          "statusLabel": "YUAD5K"
+        },
+        {
+          "text": "Overnight flight \u2014 arrives June 8 at 12:05 PM (Terminal 5)"
+        }
       ],
       "details": [
         {
@@ -217,11 +242,26 @@
           "title": "Prepare the Night Before",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "Final packing check: passports for all 4 (including Louise, age 5)" },
-            { "type": "info", "text": "Charge all devices, download offline entertainment for overnight flight" },
-            { "type": "info", "text": "Pack carry-on essentials: snacks, change of clothes, toothbrush \u2014 you land midday and go straight to the hotel" },
-            { "type": "info", "text": "Light dinner before heading to airport. Aim to arrive STL by 7:30 PM (2.5 hrs before)" },
-            { "type": "info", "text": "Kids' iPads loaded + headphones packed for 8-hr overnight flight" }
+            {
+              "type": "info",
+              "text": "Final packing check: passports for all 4 (including Louise, age 5)"
+            },
+            {
+              "type": "info",
+              "text": "Charge all devices, download offline entertainment for overnight flight"
+            },
+            {
+              "type": "info",
+              "text": "Pack carry-on essentials: snacks, change of clothes, toothbrush \u2014 you land midday and go straight to the hotel"
+            },
+            {
+              "type": "info",
+              "text": "Light dinner before heading to airport. Aim to arrive STL by 7:30 PM (2.5 hrs before)"
+            },
+            {
+              "type": "info",
+              "text": "Kids' iPads loaded + headphones packed for 8-hr overnight flight"
+            }
           ]
         },
         {
@@ -229,11 +269,26 @@
           "title": "\u23f0 SEAT STRATEGY \u2014 $0 cost",
           "color": "#d94a8a",
           "items": [
-            { "type": "warn", "text": "<strong>SET ALARM: Jun 6 at 9:55 PM CDT.</strong> BA online check-in opens at exactly 10:00 PM CDT (24 hrs before 10 PM Jun 7 departure). This is your FREE seat selection window!" },
-            { "type": "info", "text": "Both Michael and Meghan: log in simultaneously on separate devices at ba.com \u2192 Manage My Booking \u2192 YUAD5K. Select seats for all 4 passengers the instant they appear" },
-            { "type": "info", "text": "Target a row of 3 (A-B-C or H-J-K) for Michael+Kenna+Louise, with Meghan in the middle section same row (D-E-F). Or grab any 4 adjacent seats" },
-            { "type": "tip", "text": "If free seats don't put you together, DO NOT PAY. At the airport check-in desk, say: \"We have a 5-year-old who needs to be seated next to a parent.\" UK CAA guidance requires airlines to seat children under 12 with an accompanying adult at no charge. Gate agents handle this daily" },
-            { "type": "tip", "text": "Check back at 12 hrs, 6 hrs, and 2 hrs before departure \u2014 seats shuffle as others check in, cancel, or upgrade" }
+            {
+              "type": "warn",
+              "text": "<strong>SET ALARM: Jun 6 at 9:55 PM CDT.</strong> BA online check-in opens at exactly 10:00 PM CDT (24 hrs before 10 PM Jun 7 departure). This is your FREE seat selection window!"
+            },
+            {
+              "type": "info",
+              "text": "Both Michael and Meghan: log in simultaneously on separate devices at ba.com \u2192 Manage My Booking \u2192 YUAD5K. Select seats for all 4 passengers the instant they appear"
+            },
+            {
+              "type": "info",
+              "text": "Target a row of 3 (A-B-C or H-J-K) for Michael+Kenna+Louise, with Meghan in the middle section same row (D-E-F). Or grab any 4 adjacent seats"
+            },
+            {
+              "type": "tip",
+              "text": "If free seats don't put you together, DO NOT PAY. At the airport check-in desk, say: \"We have a 5-year-old who needs to be seated next to a parent.\" UK CAA guidance requires airlines to seat children under 12 with an accompanying adult at no charge. Gate agents handle this daily"
+            },
+            {
+              "type": "tip",
+              "text": "Check back at 12 hrs, 6 hrs, and 2 hrs before departure \u2014 seats shuffle as others check in, cancel, or upgrade"
+            }
           ]
         },
         {
@@ -241,10 +296,22 @@
           "title": "Flight Details",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "BA220 \u00b7 STL \u2192 LHR \u00b7 Departs 22:00, arrives 12:05+1 \u00b7 Terminal 5" },
-            { "type": "info", "text": "World Traveller (economy). Booking ref: YUAD5K" },
-            { "type": "info", "text": "Paid with 260,000 Avios + $1,083.86 in taxes/fees" },
-            { "type": "info", "text": "Flight is ~8 hours. Meal service included. Try to sleep \u2014 you land midday and need to power through Day 1" }
+            {
+              "type": "info",
+              "text": "BA220 \u00b7 STL \u2192 LHR \u00b7 Departs 22:00, arrives 12:05+1 \u00b7 Terminal 5"
+            },
+            {
+              "type": "info",
+              "text": "World Traveller (economy). Booking ref: YUAD5K"
+            },
+            {
+              "type": "info",
+              "text": "Paid with 260,000 Avios + $1,083.86 in taxes/fees"
+            },
+            {
+              "type": "info",
+              "text": "Flight is ~8 hours. Meal service included. Try to sleep \u2014 you land midday and need to power through Day 1"
+            }
           ]
         },
         {
@@ -252,9 +319,18 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "UK ETA required for all 4 passengers \u2014 must be approved BEFORE boarding. Apply well in advance!" },
-            { "type": "warn", "text": "BA Advance Passenger Info must be completed on ba.com \u2192 Manage My Booking \u2192 YUAD5K" },
-            { "type": "warn", "text": "Overnight flight with a 5-year-old: bring comfort items, tablet loaded with shows, noise-canceling if possible" }
+            {
+              "type": "warn",
+              "text": "UK ETA required for all 4 passengers \u2014 must be approved BEFORE boarding. Apply well in advance!"
+            },
+            {
+              "type": "warn",
+              "text": "BA Advance Passenger Info must be completed on ba.com \u2192 Manage My Booking \u2192 YUAD5K"
+            },
+            {
+              "type": "warn",
+              "text": "Overnight flight with a 5-year-old: bring comfort items, tablet loaded with shows, noise-canceling if possible"
+            }
           ]
         }
       ]
@@ -267,12 +343,31 @@
       "section": "London \u00b7 Days 1\u20135",
       "order": 1,
       "events": [
-        { "time": "12:05", "text": "Arrive LHR Terminal 5. Early check-in booked from 12pm!" },
-        { "time": "~13:00", "text": "\ud83d\ude84 Heathrow Express \u2192 Paddington (15 min)", "status": "booked", "statusLabel": "69d52862" },
-        { "time": "~13:30", "text": "Tube to Kings Cross. Check into Travelodge", "status": "booked", "statusLabel": "164080202" },
-        { "text": "WiFi code: TVLRTFRPK \u00b7 Breakfast included all 5 mornings" },
-        { "text": "Explore Coal Drops Yard / St Pancras area" },
-        { "text": "Early dinner \u2014 Dishoom or Pizza Union" }
+        {
+          "time": "12:05",
+          "text": "Arrive LHR Terminal 5. Early check-in booked from 12pm!"
+        },
+        {
+          "time": "~13:00",
+          "text": "\ud83d\ude84 Heathrow Express \u2192 Paddington (15 min)",
+          "status": "booked",
+          "statusLabel": "69d52862"
+        },
+        {
+          "time": "~13:30",
+          "text": "Tube to Kings Cross. Check into Travelodge",
+          "status": "booked",
+          "statusLabel": "164080202"
+        },
+        {
+          "text": "WiFi code: TVLRTFRPK \u00b7 Breakfast included all 5 mornings"
+        },
+        {
+          "text": "Explore Coal Drops Yard / St Pancras area"
+        },
+        {
+          "text": "Early dinner \u2014 Dishoom or Pizza Union"
+        }
       ],
       "details": [
         {
@@ -280,9 +375,18 @@
           "title": "Prepare (on the plane)",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "Have UK ETA confirmation accessible on phone for each passenger" },
-            { "type": "info", "text": "Brush teeth, wash face before landing \u2014 you'll want to feel somewhat fresh" },
-            { "type": "info", "text": "Have hotel address ready: Travelodge London Kings Cross Royal Scot" }
+            {
+              "type": "info",
+              "text": "Have UK ETA confirmation accessible on phone for each passenger"
+            },
+            {
+              "type": "info",
+              "text": "Brush teeth, wash face before landing \u2014 you'll want to feel somewhat fresh"
+            },
+            {
+              "type": "info",
+              "text": "Have hotel address ready: Travelodge London Kings Cross Royal Scot"
+            }
           ]
         },
         {
@@ -290,10 +394,22 @@
           "title": "Travel Requirements",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "Immigration at T5 \u2014 can take 30-60 min. E-gates may work for US adults with ETA; kids under 12 use staffed desks" },
-            { "type": "info", "text": "Heathrow Express: Pre-booked (ref 69d52862). Platform in T5 basement level. 15 min to Paddington" },
-            { "type": "info", "text": "Paddington \u2192 Kings Cross: Hammersmith & City or Circle line \u2192 Kings Cross St Pancras (~20 min). Use contactless payment" },
-            { "type": "info", "text": "Travelodge: Early check-in available from noon! Walk from Kings Cross station ~5 min" }
+            {
+              "type": "info",
+              "text": "Immigration at T5 \u2014 can take 30-60 min. E-gates may work for US adults with ETA; kids under 12 use staffed desks"
+            },
+            {
+              "type": "info",
+              "text": "Heathrow Express: Pre-booked (ref 69d52862). Platform in T5 basement level. 15 min to Paddington"
+            },
+            {
+              "type": "info",
+              "text": "Paddington \u2192 Kings Cross: Hammersmith & City or Circle line \u2192 Kings Cross St Pancras (~20 min). Use contactless payment"
+            },
+            {
+              "type": "info",
+              "text": "Travelodge: Early check-in available from noon! Walk from Kings Cross station ~5 min"
+            }
           ]
         },
         {
@@ -301,10 +417,22 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "Jet lag will hit HARD, especially Louise. Power through until 7-8 PM local time to reset body clocks" },
-            { "type": "warn", "text": "Don't over-plan Day 1. Coal Drops Yard is a 5-min walk \u2014 perfect low-key exploring" },
-            { "type": "warn", "text": "Contactless payment works everywhere in London (Tube, buses, shops). No cash needed" },
-            { "type": "warn", "text": "Louise might crash mid-afternoon. Have a stroller or be ready for a hotel nap break" }
+            {
+              "type": "warn",
+              "text": "Jet lag will hit HARD, especially Louise. Power through until 7-8 PM local time to reset body clocks"
+            },
+            {
+              "type": "warn",
+              "text": "Don't over-plan Day 1. Coal Drops Yard is a 5-min walk \u2014 perfect low-key exploring"
+            },
+            {
+              "type": "warn",
+              "text": "Contactless payment works everywhere in London (Tube, buses, shops). No cash needed"
+            },
+            {
+              "type": "warn",
+              "text": "Louise might crash mid-afternoon. Have a stroller or be ready for a hotel nap break"
+            }
           ]
         },
         {
@@ -312,11 +440,26 @@
           "title": "Local Intel",
           "color": "#5ce892",
           "items": [
-            { "type": "tip", "text": "Travelodge WiFi code: TVLRTFRPK. Breakfast included all 5 mornings" },
-            { "type": "tip", "text": "Coal Drops Yard has great kid-friendly restaurants (Pizza Pilgrims, Barrafina)" },
-            { "type": "tip", "text": "St Pancras station next door has beautiful architecture \u2014 worth a peek even on arrival day" },
-            { "type": "tip", "text": "<strong>Kenna Oyster card:</strong> Buy at Paddington or Kings Cross Tube station (\u00a37). Ask staff to add Young Visitor discount (50% off, 14 days). Kenna must be present. Louise rides free everywhere as under-11" },
-            { "type": "tip", "text": "<strong>Adults + transport:</strong> Apple Pay on your iPhones works on all London transport (Tube, buses, Thames Clipper). Just tap at the yellow readers. Auto-caps at daily rate. No Oyster card needed for adults" }
+            {
+              "type": "tip",
+              "text": "Travelodge WiFi code: TVLRTFRPK. Breakfast included all 5 mornings"
+            },
+            {
+              "type": "tip",
+              "text": "Coal Drops Yard has great kid-friendly restaurants (Pizza Pilgrims, Barrafina)"
+            },
+            {
+              "type": "tip",
+              "text": "St Pancras station next door has beautiful architecture \u2014 worth a peek even on arrival day"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Kenna Oyster card:</strong> Buy at Paddington or Kings Cross Tube station (\u00a37). Ask staff to add Young Visitor discount (50% off, 14 days). Kenna must be present. Louise rides free everywhere as under-11"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Adults + transport:</strong> Apple Pay on your iPhones works on all London transport (Tube, buses, Thames Clipper). Just tap at the yellow readers. Auto-caps at daily rate. No Oyster card needed for adults"
+            }
           ]
         }
       ]
@@ -329,14 +472,39 @@
       "section": "London \u00b7 Days 1\u20135",
       "order": 2,
       "events": [
-        { "time": "~09:30", "text": "Big Ben, Westminster Abbey" },
-        { "time": "~11:00", "text": "St James's Park playground (Louise)" },
-        { "time": "~11:30", "text": "Walk to Buckingham Palace" },
-        { "time": "~12:15", "text": "Walk back to South Bank. Quick lunch" },
-        { "time": "13:00", "text": "\ud83c\udfa1 London Eye (30 min ride)", "status": "booked", "statusLabel": "#601617735" },
-        { "time": "~13:45", "text": "Walk to London Eye Pier \u2192 Thames Clipper boat ride" },
-        { "time": "~15:00", "text": "Explore South Bank" },
-        { "text": "Dinner at Southbank Centre Food Market" }
+        {
+          "time": "~09:30",
+          "text": "Big Ben, Westminster Abbey"
+        },
+        {
+          "time": "~11:00",
+          "text": "St James's Park playground (Louise)"
+        },
+        {
+          "time": "~11:30",
+          "text": "Walk to Buckingham Palace"
+        },
+        {
+          "time": "~12:15",
+          "text": "Walk back to South Bank. Quick lunch"
+        },
+        {
+          "time": "13:00",
+          "text": "\ud83c\udfa1 London Eye (30 min ride)",
+          "status": "booked",
+          "statusLabel": "#601617735"
+        },
+        {
+          "time": "~13:45",
+          "text": "Walk to London Eye Pier \u2192 Thames Clipper boat ride"
+        },
+        {
+          "time": "~15:00",
+          "text": "Explore South Bank"
+        },
+        {
+          "text": "Dinner at Southbank Centre Food Market"
+        }
       ],
       "details": [
         {
@@ -344,10 +512,22 @@
           "title": "Prepare the Night Before",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "First breakfast at Travelodge \u2014 check time/location at front desk" },
-            { "type": "info", "text": "Save London Eye e-ticket on phone (Order #601617735). Screenshot as backup" },
-            { "type": "info", "text": "Check weather \u2014 this is a heavily outdoor day (Westminster, parks, river)" },
-            { "type": "info", "text": "Pack layers, rain jackets, comfy walking shoes \u2014 BIG walking day" }
+            {
+              "type": "info",
+              "text": "First breakfast at Travelodge \u2014 check time/location at front desk"
+            },
+            {
+              "type": "info",
+              "text": "Save London Eye e-ticket on phone (Order #601617735). Screenshot as backup"
+            },
+            {
+              "type": "info",
+              "text": "Check weather \u2014 this is a heavily outdoor day (Westminster, parks, river)"
+            },
+            {
+              "type": "info",
+              "text": "Pack layers, rain jackets, comfy walking shoes \u2014 BIG walking day"
+            }
           ]
         },
         {
@@ -355,9 +535,18 @@
           "title": "Travel Requirements",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "Travelodge \u2192 Westminster: Tube from Kings Cross (Northern or Victoria line). ~15 min" },
-            { "type": "info", "text": "Thames Clipper: Buy tickets at pier (Oyster/contactless works). Runs every 20 min" },
-            { "type": "info", "text": "All walking between Westminster, St James's Park, Buckingham Palace, and South Bank is doable (~25 min stretches)" }
+            {
+              "type": "info",
+              "text": "Travelodge \u2192 Westminster: Tube from Kings Cross (Northern or Victoria line). ~15 min"
+            },
+            {
+              "type": "info",
+              "text": "Thames Clipper: Buy tickets at pier (Oyster/contactless works). Runs every 20 min"
+            },
+            {
+              "type": "info",
+              "text": "All walking between Westminster, St James's Park, Buckingham Palace, and South Bank is doable (~25 min stretches)"
+            }
           ]
         },
         {
@@ -365,9 +554,18 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "London Eye at 1:00 PM is a FIXED time. Work backwards from this \u2014 don't linger at Buckingham Palace" },
-            { "type": "warn", "text": "Changing of the Guard only happens certain days \u2014 check online. Huge crowds if it's on" },
-            { "type": "warn", "text": "South Bank can be overwhelming with 2 kids. Pick a focused stretch near London Eye rather than walking end to end" }
+            {
+              "type": "warn",
+              "text": "London Eye at 1:00 PM is a FIXED time. Work backwards from this \u2014 don't linger at Buckingham Palace"
+            },
+            {
+              "type": "warn",
+              "text": "Changing of the Guard only happens certain days \u2014 check online. Huge crowds if it's on"
+            },
+            {
+              "type": "warn",
+              "text": "South Bank can be overwhelming with 2 kids. Pick a focused stretch near London Eye rather than walking end to end"
+            }
           ]
         },
         {
@@ -375,9 +573,18 @@
           "title": "Local Intel",
           "color": "#5ce892",
           "items": [
-            { "type": "tip", "text": "St James's Park playground is excellent for Louise \u2014 perfect mid-morning energy burn" },
-            { "type": "tip", "text": "Southbank Centre Food Market (Fri-Sun) has great diverse food at reasonable prices" },
-            { "type": "tip", "text": "Thames Clipper is both transport AND sightseeing \u2014 great for tired legs after the Eye" }
+            {
+              "type": "tip",
+              "text": "St James's Park playground is excellent for Louise \u2014 perfect mid-morning energy burn"
+            },
+            {
+              "type": "tip",
+              "text": "Southbank Centre Food Market (Fri-Sun) has great diverse food at reasonable prices"
+            },
+            {
+              "type": "tip",
+              "text": "Thames Clipper is both transport AND sightseeing \u2014 great for tired legs after the Eye"
+            }
           ]
         }
       ]
@@ -390,14 +597,40 @@
       "section": "London \u00b7 Days 1\u20135",
       "order": 3,
       "events": [
-        { "text": "Morning: Covent Garden shops + street performers" },
-        { "time": "~11:30", "text": "Head to V&A Museum (Tube to South Kensington)" },
-        { "time": "12:30", "text": "\ud83d\udc57 V&A Fashion Tour (45 min)", "status": "action", "statusLabel": "BOOK AHEAD" },
-        { "time": "13:15", "text": "Tube: South Kensington \u2192 Leicester Square (~15 min)" },
-        { "time": "~13:35", "text": "Arrive Cambridge Theatre \u2014 25 min buffer \u26a0\ufe0f" },
-        { "time": "14:00", "text": "\ud83c\udfad Matilda the Musical \u00b7 Dress Circle Row A \u00b7 Seats 23-26", "status": "booked", "statusLabel": "26042Q" },
-        { "time": "~16:30", "text": "Show ends" },
-        { "text": "Dinner in Covent Garden or Chinatown" }
+        {
+          "text": "Morning: Covent Garden shops + street performers"
+        },
+        {
+          "time": "~11:30",
+          "text": "Head to V&A Museum (Tube to South Kensington)"
+        },
+        {
+          "time": "12:30",
+          "text": "\ud83d\udc57 V&A Fashion Tour (45 min)",
+          "status": "action",
+          "statusLabel": "BOOK AHEAD"
+        },
+        {
+          "time": "13:15",
+          "text": "Tube: South Kensington \u2192 Leicester Square (~15 min)"
+        },
+        {
+          "time": "~13:35",
+          "text": "Arrive Cambridge Theatre \u2014 25 min buffer \u26a0\ufe0f"
+        },
+        {
+          "time": "14:00",
+          "text": "\ud83c\udfad Matilda the Musical \u00b7 Dress Circle Row A \u00b7 Seats 23-26",
+          "status": "booked",
+          "statusLabel": "26042Q"
+        },
+        {
+          "time": "~16:30",
+          "text": "Show ends"
+        },
+        {
+          "text": "Dinner in Covent Garden or Chinatown"
+        }
       ],
       "details": [
         {
@@ -405,10 +638,22 @@
           "title": "Prepare the Night Before",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "Download Matilda e-tickets to phone. Ref: 26042Q-6YAMRCW8CJ" },
-            { "type": "info", "text": "Cambridge Theatre, Seven Dials (Covent Garden area). Dress Circle Row A, Seats 23-26" },
-            { "type": "info", "text": "Book V&A Fashion Tour if not done yet (vam.ac.uk, 12:30 PM slot)" },
-            { "type": "info", "text": "Plan the tight transfer: V&A \u2192 Matilda has only a 25 min buffer" }
+            {
+              "type": "info",
+              "text": "Download Matilda e-tickets to phone. Ref: 26042Q-6YAMRCW8CJ"
+            },
+            {
+              "type": "info",
+              "text": "Cambridge Theatre, Seven Dials (Covent Garden area). Dress Circle Row A, Seats 23-26"
+            },
+            {
+              "type": "info",
+              "text": "Book V&A Fashion Tour if not done yet (vam.ac.uk, 12:30 PM slot)"
+            },
+            {
+              "type": "info",
+              "text": "Plan the tight transfer: V&A \u2192 Matilda has only a 25 min buffer"
+            }
           ]
         },
         {
@@ -416,9 +661,18 @@
           "title": "Travel Requirements",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "Kings Cross \u2192 Covent Garden: Piccadilly line, ~10 min" },
-            { "type": "info", "text": "Covent Garden \u2192 V&A (South Kensington): Piccadilly line, ~10 min" },
-            { "type": "info", "text": "V&A \u2192 Cambridge Theatre: Tube South Ken \u2192 Leicester Square (Piccadilly, ~12 min) + 5 min walk" }
+            {
+              "type": "info",
+              "text": "Kings Cross \u2192 Covent Garden: Piccadilly line, ~10 min"
+            },
+            {
+              "type": "info",
+              "text": "Covent Garden \u2192 V&A (South Kensington): Piccadilly line, ~10 min"
+            },
+            {
+              "type": "info",
+              "text": "V&A \u2192 Cambridge Theatre: Tube South Ken \u2192 Leicester Square (Piccadilly, ~12 min) + 5 min walk"
+            }
           ]
         },
         {
@@ -426,10 +680,22 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "\u23f1 TIGHT TRANSFER: V&A tour ends ~1:15 PM. Matilda curtain is 2:00 PM sharp. Only ~45 min door-to-door with Tube. If tour runs over, you're sprinting" },
-            { "type": "warn", "text": "Contingency: If running late, skip Tube and taxi V&A \u2192 Cambridge Theatre (~15 min, ~\u00a312)" },
-            { "type": "warn", "text": "Alternative: Drop V&A tour entirely. Museum is free to explore casually instead \u2014 zero stress" },
-            { "type": "warn", "text": "Matilda is 2 hrs 40 min. Louise (age 5) needs to sit through the whole show \u2014 bring a quiet snack" }
+            {
+              "type": "warn",
+              "text": "\u23f1 TIGHT TRANSFER: V&A tour ends ~1:15 PM. Matilda curtain is 2:00 PM sharp. Only ~45 min door-to-door with Tube. If tour runs over, you're sprinting"
+            },
+            {
+              "type": "warn",
+              "text": "Contingency: If running late, skip Tube and taxi V&A \u2192 Cambridge Theatre (~15 min, ~\u00a312)"
+            },
+            {
+              "type": "warn",
+              "text": "Alternative: Drop V&A tour entirely. Museum is free to explore casually instead \u2014 zero stress"
+            },
+            {
+              "type": "warn",
+              "text": "Matilda is 2 hrs 40 min. Louise (age 5) needs to sit through the whole show \u2014 bring a quiet snack"
+            }
           ]
         },
         {
@@ -437,9 +703,18 @@
           "title": "Local Intel",
           "color": "#5ce892",
           "items": [
-            { "type": "tip", "text": "Covent Garden street performers are free and kids love them \u2014 perfect morning entertainment" },
-            { "type": "tip", "text": "Dress Circle Row A is phenomenal \u2014 front of the upper level with full unobstructed stage view" },
-            { "type": "tip", "text": "Post-show: you're in Seven Dials/Covent Garden. Chinatown is a 5-min walk for dinner" }
+            {
+              "type": "tip",
+              "text": "Covent Garden street performers are free and kids love them \u2014 perfect morning entertainment"
+            },
+            {
+              "type": "tip",
+              "text": "Dress Circle Row A is phenomenal \u2014 front of the upper level with full unobstructed stage view"
+            },
+            {
+              "type": "tip",
+              "text": "Post-show: you're in Seven Dials/Covent Garden. Chinatown is a 5-min walk for dinner"
+            }
           ]
         }
       ]
@@ -452,9 +727,15 @@
       "section": "London \u00b7 Days 1\u20135",
       "order": 4,
       "events": [
-        { "text": "British Museum (mummies, Greek marbles)" },
-        { "text": "Regent's Park playgrounds / pedal boats" },
-        { "text": "Dinner near Kings Cross" }
+        {
+          "text": "British Museum (mummies, Greek marbles)"
+        },
+        {
+          "text": "Regent's Park playgrounds / pedal boats"
+        },
+        {
+          "text": "Dinner near Kings Cross"
+        }
       ],
       "details": [
         {
@@ -462,8 +743,14 @@
           "title": "Prepare the Night Before",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "Flex day \u2014 no fixed bookings! Sleep in if jet lag is still lingering" },
-            { "type": "info", "text": "British Museum is free, no timed entry needed. Opens 10 AM" }
+            {
+              "type": "info",
+              "text": "Flex day \u2014 no fixed bookings! Sleep in if jet lag is still lingering"
+            },
+            {
+              "type": "info",
+              "text": "British Museum is free, no timed entry needed. Opens 10 AM"
+            }
           ]
         },
         {
@@ -471,8 +758,14 @@
           "title": "Travel Requirements",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "Kings Cross \u2192 British Museum: 20 min walk through Bloomsbury, or Tube 1 stop to Russell Square" },
-            { "type": "info", "text": "British Museum \u2192 Regent's Park: 15 min walk north" }
+            {
+              "type": "info",
+              "text": "Kings Cross \u2192 British Museum: 20 min walk through Bloomsbury, or Tube 1 stop to Russell Square"
+            },
+            {
+              "type": "info",
+              "text": "British Museum \u2192 Regent's Park: 15 min walk north"
+            }
           ]
         },
         {
@@ -480,8 +773,14 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "British Museum is ENORMOUS. Don't try to see everything. Pick 2-3 highlights: Egyptian mummies, Rosetta Stone, Greek marbles" },
-            { "type": "warn", "text": "Museum fatigue is real with kids. 2 hours max, then get outside to Regent's Park" }
+            {
+              "type": "warn",
+              "text": "British Museum is ENORMOUS. Don't try to see everything. Pick 2-3 highlights: Egyptian mummies, Rosetta Stone, Greek marbles"
+            },
+            {
+              "type": "warn",
+              "text": "Museum fatigue is real with kids. 2 hours max, then get outside to Regent's Park"
+            }
           ]
         },
         {
@@ -489,9 +788,18 @@
           "title": "Local Intel",
           "color": "#5ce892",
           "items": [
-            { "type": "tip", "text": "Regent's Park has fantastic playgrounds and pedal boats on the boating lake" },
-            { "type": "tip", "text": "This is your buffer/recovery day. If something from earlier was missed, today is the makeup day" },
-            { "type": "tip", "text": "Close to hotel \u2014 easy to pop back for an afternoon rest if Louise needs it" }
+            {
+              "type": "tip",
+              "text": "Regent's Park has fantastic playgrounds and pedal boats on the boating lake"
+            },
+            {
+              "type": "tip",
+              "text": "This is your buffer/recovery day. If something from earlier was missed, today is the makeup day"
+            },
+            {
+              "type": "tip",
+              "text": "Close to hotel \u2014 easy to pop back for an afternoon rest if Louise needs it"
+            }
           ]
         }
       ]
@@ -504,11 +812,25 @@
       "section": "London \u00b7 Days 1\u20135",
       "order": 5,
       "events": [
-        { "text": "\ud83d\udc68\u200d\ud83d\udc67 Michael + Louise: Natural History Museum", "status": "action", "statusLabel": "BOOK ENTRY" },
-        { "text": "\ud83d\udc69\u200d\ud83d\udc67 Meghan + Kenna: Tate Modern + Millennium Bridge" },
-        { "text": "Regroup for lunch or afternoon" },
-        { "text": "Optional: Sky Garden (free, book 3 wks ahead)", "status": "action", "statusLabel": "BOOK MAY 25" },
-        { "text": "\u26a0 Pack tonight \u2014 5:15 AM wake-up tomorrow!" }
+        {
+          "text": "\ud83d\udc68\u200d\ud83d\udc67 Michael + Louise: Natural History Museum",
+          "status": "action",
+          "statusLabel": "BOOK ENTRY"
+        },
+        {
+          "text": "\ud83d\udc69\u200d\ud83d\udc67 Meghan + Kenna: Tate Modern + Millennium Bridge"
+        },
+        {
+          "text": "Regroup for lunch or afternoon"
+        },
+        {
+          "text": "Optional: Sky Garden (free, book 3 wks ahead)",
+          "status": "action",
+          "statusLabel": "BOOK MAY 25"
+        },
+        {
+          "text": "\u26a0 Pack tonight \u2014 5:15 AM wake-up tomorrow!"
+        }
       ],
       "details": [
         {
@@ -516,11 +838,26 @@
           "title": "Prepare the Night Before",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "Confirm Natural History Museum timed entry (nhm.ac.uk)" },
-            { "type": "info", "text": "Confirm Sky Garden booking if secured (booked May 25)" },
-            { "type": "info", "text": "\u26a0\ufe0f SET ALARM FOR 5:15 AM TOMORROW! Pack bags for Paris TONIGHT" },
-            { "type": "info", "text": "Print/save Eurostar tickets. Ref: QRXPZK. Check-in opens 45 min before departure" },
-            { "type": "info", "text": "Lay out tomorrow's clothes. Bags by the door. Everyone in bed by 9 PM" }
+            {
+              "type": "info",
+              "text": "Confirm Natural History Museum timed entry (nhm.ac.uk)"
+            },
+            {
+              "type": "info",
+              "text": "Confirm Sky Garden booking if secured (booked May 25)"
+            },
+            {
+              "type": "info",
+              "text": "\u26a0\ufe0f SET ALARM FOR 5:15 AM TOMORROW! Pack bags for Paris TONIGHT"
+            },
+            {
+              "type": "info",
+              "text": "Print/save Eurostar tickets. Ref: QRXPZK. Check-in opens 45 min before departure"
+            },
+            {
+              "type": "info",
+              "text": "Lay out tomorrow's clothes. Bags by the door. Everyone in bed by 9 PM"
+            }
           ]
         },
         {
@@ -528,9 +865,18 @@
           "title": "Travel Requirements",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "Split day: Decide morning meeting point for Michael+Louise and Meghan+Kenna" },
-            { "type": "info", "text": "NHM: Tube to South Kensington (Piccadilly line, ~15 min from Kings Cross)" },
-            { "type": "info", "text": "Tate Modern: Tube to Southwark or St Paul's + walk across Millennium Bridge" }
+            {
+              "type": "info",
+              "text": "Split day: Decide morning meeting point for Michael+Louise and Meghan+Kenna"
+            },
+            {
+              "type": "info",
+              "text": "NHM: Tube to South Kensington (Piccadilly line, ~15 min from Kings Cross)"
+            },
+            {
+              "type": "info",
+              "text": "Tate Modern: Tube to Southwark or St Paul's + walk across Millennium Bridge"
+            }
           ]
         },
         {
@@ -538,9 +884,18 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "CRITICAL: Pack for Paris tonight. You will NOT have time tomorrow morning \u2014 Eurostar departs 6:31 AM" },
-            { "type": "warn", "text": "Eurostar API must be completed for Kenna and Louise before departure. Do this NOW if not done" },
-            { "type": "warn", "text": "Early dinner tonight. Everyone in bed by 9 PM \u2014 tomorrow is brutal" }
+            {
+              "type": "warn",
+              "text": "CRITICAL: Pack for Paris tonight. You will NOT have time tomorrow morning \u2014 Eurostar departs 6:31 AM"
+            },
+            {
+              "type": "warn",
+              "text": "Eurostar API must be completed for Kenna and Louise before departure. Do this NOW if not done"
+            },
+            {
+              "type": "warn",
+              "text": "Early dinner tonight. Everyone in bed by 9 PM \u2014 tomorrow is brutal"
+            }
           ]
         },
         {
@@ -548,9 +903,18 @@
           "title": "Local Intel",
           "color": "#5ce892",
           "items": [
-            { "type": "tip", "text": "NHM dinosaur gallery is the highlight for Louise. Blue whale in Hintze Hall is jaw-dropping" },
-            { "type": "tip", "text": "Tate Modern is free. Kenna (12) may enjoy the immersive installations on upper floors" },
-            { "type": "tip", "text": "Sky Garden is free \u2014 360\u00b0 views from the 35th floor of the Walkie Talkie building" }
+            {
+              "type": "tip",
+              "text": "NHM dinosaur gallery is the highlight for Louise. Blue whale in Hintze Hall is jaw-dropping"
+            },
+            {
+              "type": "tip",
+              "text": "Tate Modern is free. Kenna (12) may enjoy the immersive installations on upper floors"
+            },
+            {
+              "type": "tip",
+              "text": "Sky Garden is free \u2014 360\u00b0 views from the 35th floor of the Walkie Talkie building"
+            }
           ]
         }
       ]
@@ -563,15 +927,46 @@
       "section": "Channel Crossing",
       "order": 6,
       "events": [
-        { "time": "05:15", "text": "Wake up. Walk to St Pancras (5 min)" },
-        { "time": "06:31", "text": "\ud83d\ude84 Eurostar 9002 \u00b7 Coach 10 \u00b7 Seats 18,17,13,14", "status": "booked", "statusLabel": "QRXPZK" },
-        { "time": "09:57", "text": "Arrive Paris Gare du Nord" },
-        { "time": "~10:15", "text": "Metro to Trocad\u00e9ro \u2192 photos, then walk to tower entrance" },
-        { "time": "11:00", "text": "\ud83d\uddfc Eiffel Tower \u00b7 Summit by Elevator (4 tickets)", "status": "booked" },
-        { "time": "~12:30", "text": "Lunch near Eiffel Tower" },
-        { "time": "~14:00", "text": "Metro \u2192 RER A to Marne-la-Vall\u00e9e (~1 hr)" },
-        { "time": "~15:30", "text": "Check into Dream Castle Hotel", "status": "booked", "statusLabel": "H-KTXPJ3X4HJ4C" },
-        { "text": "Kids: castle pool & water slide! Evening: Disney Village" }
+        {
+          "time": "05:15",
+          "text": "Wake up. Walk to St Pancras (5 min)"
+        },
+        {
+          "time": "06:31",
+          "text": "\ud83d\ude84 Eurostar 9002 \u00b7 Coach 10 \u00b7 Seats 18,17,13,14",
+          "status": "booked",
+          "statusLabel": "QRXPZK"
+        },
+        {
+          "time": "09:57",
+          "text": "Arrive Paris Gare du Nord"
+        },
+        {
+          "time": "~10:15",
+          "text": "Metro to Trocad\u00e9ro \u2192 photos, then walk to tower entrance"
+        },
+        {
+          "time": "11:00",
+          "text": "\ud83d\uddfc Eiffel Tower \u00b7 Summit by Elevator (4 tickets)",
+          "status": "booked"
+        },
+        {
+          "time": "~12:30",
+          "text": "Lunch near Eiffel Tower"
+        },
+        {
+          "time": "~14:00",
+          "text": "Metro \u2192 RER A to Marne-la-Vall\u00e9e (~1 hr)"
+        },
+        {
+          "time": "~15:30",
+          "text": "Check into Dream Castle Hotel",
+          "status": "booked",
+          "statusLabel": "H-KTXPJ3X4HJ4C"
+        },
+        {
+          "text": "Kids: castle pool & water slide! Evening: Disney Village"
+        }
       ],
       "details": [
         {
@@ -579,10 +974,22 @@
           "title": "Prepare the Night Before (Jun 12)",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "Bags packed by door. Alarm 5:15 AM. Clothes laid out" },
-            { "type": "info", "text": "Eurostar tickets on phone. Ref: QRXPZK. Train 9002, Coach 10, Seats 18/17/13/14" },
-            { "type": "info", "text": "Travelodge is 5-min walk to St Pancras \u2014 leave hotel by 5:30 AM latest" },
-            { "type": "info", "text": "No hotel breakfast (too early). Grab pastries at St Pancras or eat on Eurostar" }
+            {
+              "type": "info",
+              "text": "Bags packed by door. Alarm 5:15 AM. Clothes laid out"
+            },
+            {
+              "type": "info",
+              "text": "Eurostar tickets on phone. Ref: QRXPZK. Train 9002, Coach 10, Seats 18/17/13/14"
+            },
+            {
+              "type": "info",
+              "text": "Travelodge is 5-min walk to St Pancras \u2014 leave hotel by 5:30 AM latest"
+            },
+            {
+              "type": "info",
+              "text": "No hotel breakfast (too early). Grab pastries at St Pancras or eat on Eurostar"
+            }
           ]
         },
         {
@@ -590,11 +997,26 @@
           "title": "Travel Requirements \u2014 4 Legs Today",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "<strong>Leg 1:</strong> Walk to St Pancras (5 min). Check-in opens 5:46 AM. Gates close 6:01 AM. Be there 5:45" },
-            { "type": "info", "text": "<strong>Leg 2:</strong> Eurostar 9002 \u00b7 06:31\u219209:57 Paris Gare du Nord. Security + UK exit + French entry checks before boarding" },
-            { "type": "info", "text": "<strong>Leg 3:</strong> Gare du Nord \u2192 Trocad\u00e9ro: Metro Line 4 \u2192 Line 6 (or Line 9). ~30 min" },
-            { "type": "info", "text": "<strong>Leg 4:</strong> Eiffel Tower area \u2192 Disney: Metro to Ch\u00e2telet, RER A to Marne-la-Vall\u00e9e/Chessy. ~1 hour. ~\u20ac5/person" },
-            { "type": "info", "text": "Dream Castle shuttle: Free from Disney bus station. Runs ~every 20 min" }
+            {
+              "type": "info",
+              "text": "<strong>Leg 1:</strong> Walk to St Pancras (5 min). Check-in opens 5:46 AM. Gates close 6:01 AM. Be there 5:45"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Leg 2:</strong> Eurostar 9002 \u00b7 06:31\u219209:57 Paris Gare du Nord. Security + UK exit + French entry checks before boarding"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Leg 3:</strong> Gare du Nord \u2192 Trocad\u00e9ro: Metro Line 4 \u2192 Line 6 (or Line 9). ~30 min"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Leg 4:</strong> Eiffel Tower area \u2192 Disney: Metro to Ch\u00e2telet, RER A to Marne-la-Vall\u00e9e/Chessy. ~1 hour. ~\u20ac5/person"
+            },
+            {
+              "type": "info",
+              "text": "Dream Castle shuttle: Free from Disney bus station. Runs ~every 20 min"
+            }
           ]
         },
         {
@@ -602,11 +1024,26 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "5:15 AM alarm with a 5-year-old. Have Louise's clothes and a snack ready to go" },
-            { "type": "info", "text": "\u2705 <strong>Eiffel Tower tickets BOOKED!</strong> 4 tickets, Summit by Elevator, 11:00 AM entry. \u20ac101.00 (~$121). E-tickets sent via email \u2014 print or have on phone." },
-            { "type": "warn", "text": "Arrive at Trocad\u00e9ro by ~10:15 for photos, then walk to tower entrance for 11:00 entry. Allow 20-30 min in the security + elevator queue even with timed tickets." },
-            { "type": "warn", "text": "RER A to Disney: Validate your tickets! Fine for no validation is \u20ac50+" },
-            { "type": "warn", "text": "Watch belongings on Paris metro \u2014 tourist areas are pickpocket-heavy" }
+            {
+              "type": "warn",
+              "text": "5:15 AM alarm with a 5-year-old. Have Louise's clothes and a snack ready to go"
+            },
+            {
+              "type": "info",
+              "text": "\u2705 <strong>Eiffel Tower tickets BOOKED!</strong> 4 tickets, Summit by Elevator, 11:00 AM entry. \u20ac101.00 (~$121). E-tickets sent via email \u2014 print or have on phone."
+            },
+            {
+              "type": "warn",
+              "text": "Arrive at Trocad\u00e9ro by ~10:15 for photos, then walk to tower entrance for 11:00 entry. Allow 20-30 min in the security + elevator queue even with timed tickets."
+            },
+            {
+              "type": "warn",
+              "text": "RER A to Disney: Validate your tickets! Fine for no validation is \u20ac50+"
+            },
+            {
+              "type": "warn",
+              "text": "Watch belongings on Paris metro \u2014 tourist areas are pickpocket-heavy"
+            }
           ]
         },
         {
@@ -614,10 +1051,22 @@
           "title": "Local Intel",
           "color": "#5ce892",
           "items": [
-            { "type": "tip", "text": "Eurostar has a bar car \u2014 coffee and pastries once onboard" },
-            { "type": "tip", "text": "Dream Castle pool has a water slide! Let the kids burn energy after travel" },
-            { "type": "tip", "text": "Disney Village is walkable \u2014 good for dinner without park tickets" },
-            { "type": "tip", "text": "<strong>Eiffel Tower:</strong> BOOKED \u2014 11:00 AM summit entry. Have e-tickets ready on phone. Trocad\u00e9ro photos first, then walk across to the tower." }
+            {
+              "type": "tip",
+              "text": "Eurostar has a bar car \u2014 coffee and pastries once onboard"
+            },
+            {
+              "type": "tip",
+              "text": "Dream Castle pool has a water slide! Let the kids burn energy after travel"
+            },
+            {
+              "type": "tip",
+              "text": "Disney Village is walkable \u2014 good for dinner without park tickets"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Eiffel Tower:</strong> BOOKED \u2014 11:00 AM summit entry. Have e-tickets ready on phone. Trocad\u00e9ro photos first, then walk across to the tower."
+            }
           ]
         }
       ]
@@ -630,22 +1079,76 @@
       "section": "Disneyland Paris \u00b7 Days 7\u20138",
       "order": 7,
       "events": [
-        { "time": "~07:00", "text": "Check out Dream Castle. Shuttle/walk to Art of Marvel." },
-        { "time": "~07:15", "text": "Early check-in at Art of Marvel \u2014 get MagicPass + Easy Pass (room not ready until 3 PM)", "status": "booked", "statusLabel": "32984124" },
-        { "time": "~07:30", "text": "Head to Disney Adventure World entrance (10-min walk)" },
-        { "time": "08:00\u201308:30", "text": "\u2b50 EXTRA MAGIC TIME \u2014 early access! (Art of Marvel arrival day = eligible)", "status": "booked", "statusLabel": "EARLY ACCESS" },
-        { "text": "All 4 together: Crush's Coaster (Louise clears 107cm!), Spider-Man W.E.B., then split for Avengers Assemble" },
-        { "time": "09:30", "text": "Park opens to public. Crowds arrive \u2014 switch to lower-wait rides" },
-        { "time": "09:30\u201311:30", "text": "Ratatouille (refurbished \u2014 now 2D!), Frozen Ever After, Raiponce Tangled Spin, Tower of Terror" },
-        { "time": "11:45", "text": "\ud83c\udf7d\ufe0f Lunch: Bistrot Chez R\u00e9my \u2014 meal voucher 1", "status": "booked", "statusLabel": "DINING" },
-        { "time": "~13:00", "text": "Continue rides. Use SNACK+DRINK voucher mid-afternoon (Pause Gourmande)" },
-        { "time": "~15:00", "text": "Room ready \u2014 drop bags at Art of Marvel" },
-        { "time": "18:00", "text": "\ud83c\udf7d\ufe0f Dinner: PYM Kitchen \u2014 meal voucher 2", "status": "booked", "statusLabel": "DINING" },
-        { "time": "~19:00", "text": "Evening rides + explore Adventure Way gardens (new! Toy Story, Tangled themes)" },
-        { "time": "~20:30", "text": "\u2728 Disney Cascade of Lights \u2014 NEW nighttime lake show (drones, fireworks, water projections!)" },
-        { "time": "~21:00", "text": "Disney Adventure World closes (est. June hours)" },
-        { "time": "~21:30", "text": "\ud83c\udf78 Skyline Bar at Art of Marvel \u2014 use DRINK VOUCHER (cocktails/mocktails!)" },
-        { "text": "\ud83c\udf9f\ufe0f All meals + drinks today covered by Full-board Extra Plus (4 vouchers used)" }
+        {
+          "time": "~07:00",
+          "text": "Check out Dream Castle. Shuttle/walk to Art of Marvel."
+        },
+        {
+          "time": "~07:15",
+          "text": "Early check-in at Art of Marvel \u2014 get MagicPass + Easy Pass (room not ready until 3 PM)",
+          "status": "booked",
+          "statusLabel": "32984124"
+        },
+        {
+          "time": "~07:30",
+          "text": "Head to Disney Adventure World entrance (10-min walk)"
+        },
+        {
+          "time": "08:00\u201308:30",
+          "text": "\u2b50 EXTRA MAGIC TIME \u2014 early access! (Art of Marvel arrival day = eligible)",
+          "status": "booked",
+          "statusLabel": "EARLY ACCESS"
+        },
+        {
+          "text": "All 4 together: Crush's Coaster (Louise clears 107cm!), Spider-Man W.E.B., then split for Avengers Assemble"
+        },
+        {
+          "time": "09:30",
+          "text": "Park opens to public. Crowds arrive \u2014 switch to lower-wait rides"
+        },
+        {
+          "time": "09:30\u201311:30",
+          "text": "Ratatouille (refurbished \u2014 now 2D!), Frozen Ever After, Raiponce Tangled Spin, Tower of Terror"
+        },
+        {
+          "time": "11:45",
+          "text": "\ud83c\udf7d\ufe0f Lunch: Bistrot Chez R\u00e9my \u2014 meal voucher 1",
+          "status": "booked",
+          "statusLabel": "DINING"
+        },
+        {
+          "time": "~13:00",
+          "text": "Continue rides. Use SNACK+DRINK voucher mid-afternoon (Pause Gourmande)"
+        },
+        {
+          "time": "~15:00",
+          "text": "Room ready \u2014 drop bags at Art of Marvel"
+        },
+        {
+          "time": "18:00",
+          "text": "\ud83c\udf7d\ufe0f Dinner: PYM Kitchen \u2014 meal voucher 2",
+          "status": "booked",
+          "statusLabel": "DINING"
+        },
+        {
+          "time": "~19:00",
+          "text": "Evening rides + explore Adventure Way gardens (new! Toy Story, Tangled themes)"
+        },
+        {
+          "time": "~20:30",
+          "text": "\u2728 Disney Cascade of Lights \u2014 NEW nighttime lake show (drones, fireworks, water projections!)"
+        },
+        {
+          "time": "~21:00",
+          "text": "Disney Adventure World closes (est. June hours)"
+        },
+        {
+          "time": "~21:30",
+          "text": "\ud83c\udf78 Skyline Bar at Art of Marvel \u2014 use DRINK VOUCHER (cocktails/mocktails!)"
+        },
+        {
+          "text": "\ud83c\udf9f\ufe0f All meals + drinks today covered by Full-board Extra Plus (4 vouchers used)"
+        }
       ],
       "details": [
         {
@@ -653,11 +1156,26 @@
           "title": "Prepare the Night Before (Jun 13)",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "Set alarm 6:30 AM. Pack day bag: chargers, sunscreen, snacks, rain layer" },
-            { "type": "info", "text": "Download Disneyland Paris app. Link booking #32984124 to Disney Account" },
-            { "type": "info", "text": "Ensure MagicPass and meal vouchers are accessible in app (mobile check-in opens Jun 7)" },
-            { "type": "info", "text": "Charge phones to 100% \u2014 app-heavy day (wait times, dining, Premier Access)" },
-            { "type": "info", "text": "Bring a portable battery pack!" }
+            {
+              "type": "info",
+              "text": "Set alarm 6:30 AM. Pack day bag: chargers, sunscreen, snacks, rain layer"
+            },
+            {
+              "type": "info",
+              "text": "Download Disneyland Paris app. Link booking #32984124 to Disney Account"
+            },
+            {
+              "type": "info",
+              "text": "Ensure MagicPass and meal vouchers are accessible in app (mobile check-in opens Jun 7)"
+            },
+            {
+              "type": "info",
+              "text": "Charge phones to 100% \u2014 app-heavy day (wait times, dining, Premier Access)"
+            },
+            {
+              "type": "info",
+              "text": "Bring a portable battery pack!"
+            }
           ]
         },
         {
@@ -665,10 +1183,22 @@
           "title": "Travel Requirements",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "Dream Castle \u2192 Art of Marvel: ~10-15 min shuttle or walk through Disney Village" },
-            { "type": "info", "text": "Art of Marvel \u2192 Disney Adventure World entrance: ~10 min walk. Security opens ~30 min before EMT" },
-            { "type": "info", "text": "Show MagicPass/Easy Pass at EMT entrance. Get it at Art of Marvel early check-in desk first" },
-            { "type": "info", "text": "<strong>At check-in: Request same room for both nights.</strong> Tell front desk you have booking #32984124 (Jun 14) and #H-DKH4WQD368V2 (Jun 15) \u2014 ask them to assign the same room. This is the most reliable way to get it done" }
+            {
+              "type": "info",
+              "text": "Dream Castle \u2192 Art of Marvel: ~10-15 min shuttle or walk through Disney Village"
+            },
+            {
+              "type": "info",
+              "text": "Art of Marvel \u2192 Disney Adventure World entrance: ~10 min walk. Security opens ~30 min before EMT"
+            },
+            {
+              "type": "info",
+              "text": "Show MagicPass/Easy Pass at EMT entrance. Get it at Art of Marvel early check-in desk first"
+            },
+            {
+              "type": "info",
+              "text": "<strong>At check-in: Request same room for both nights.</strong> Tell front desk you have booking #32984124 (Jun 14) and #H-DKH4WQD368V2 (Jun 15) \u2014 ask them to assign the same room. This is the most reliable way to get it done"
+            }
           ]
         },
         {
@@ -676,12 +1206,30 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "Dream Castle checkout: Don't wait until 11 AM! Check out ~7:00 to maximize EMT" },
-            { "type": "warn", "text": "Art of Marvel early check-in gets your MagicPass, but room isn't ready until 3 PM. Leave bags at hotel luggage storage" },
-            { "type": "warn", "text": "Louise (est. 115cm in June) CLEARS Crush's Coaster (107cm), Big Thunder Mountain (102cm), and Tower of Terror (102cm)!" },
-            { "type": "warn", "text": "Louise CANNOT ride: Avengers Assemble: Flight Force (120cm), Hyperspace Mountain (120cm), Indiana Jones (140cm) \u2014 use Parent Swap for these 3" },
-            { "type": "warn", "text": "Bistrot Chez R\u00e9my at 11:45 AM is FIXED. Set phone alarm \u2014 easy to lose track on rides" },
-            { "type": "warn", "text": "PYM Kitchen at 6:00 PM \u2014 same. Don't queue for a ride at 5:30 thinking you'll make it" }
+            {
+              "type": "warn",
+              "text": "Dream Castle checkout: Don't wait until 11 AM! Check out ~7:00 to maximize EMT"
+            },
+            {
+              "type": "warn",
+              "text": "Art of Marvel early check-in gets your MagicPass, but room isn't ready until 3 PM. Leave bags at hotel luggage storage"
+            },
+            {
+              "type": "warn",
+              "text": "Louise (est. 115cm in June) CLEARS Crush's Coaster (107cm), Big Thunder Mountain (102cm), and Tower of Terror (102cm)!"
+            },
+            {
+              "type": "warn",
+              "text": "Louise CANNOT ride: Avengers Assemble: Flight Force (120cm), Hyperspace Mountain (120cm), Indiana Jones (140cm) \u2014 use Parent Swap for these 3"
+            },
+            {
+              "type": "warn",
+              "text": "Bistrot Chez R\u00e9my at 11:45 AM is FIXED. Set phone alarm \u2014 easy to lose track on rides"
+            },
+            {
+              "type": "warn",
+              "text": "PYM Kitchen at 6:00 PM \u2014 same. Don't queue for a ride at 5:30 thinking you'll make it"
+            }
           ]
         },
         {
@@ -689,15 +1237,42 @@
           "title": "Disney Tips & Strategy",
           "color": "#d94a8a",
           "items": [
-            { "type": "tip", "text": "<strong>EMT Strategy (8:00\u20139:30):</strong> ALL FOUR \u2192 Crush's Coaster first (Louise clears 107cm!). Then Spider-Man W.E.B. Adventure (no req). Then split: Michael+Kenna \u2192 Avengers Assemble (120cm, Parent Swap for Meghan) while Meghan+Louise \u2192 Frozen Ever After or Ratatouille" },
-            { "type": "tip", "text": "<strong>Post-9:30:</strong> Tower of Terror (Louise clears 102cm! \u2014 new covered queue area makes the wait more bearable), Cars Road Trip, Ratatouille (refurbished 2026 \u2014 now 2D, new Parisian artist studio queue scene, enhanced props)" },
-            { "type": "tip", "text": "<strong>NEW World of Frozen (opened Mar 29):</strong> Frozen Ever After (boat ride through Arendelle \u2014 expect long waits even in June!), Royal Encounter with Anna & Elsa in Arendelle Castle (meet & greet \u2014 check app for Virtual Queue), \"A Celebration in Arendelle\" daytime show on Viking longships in Arendelle Bay. Louise will be mesmerized" },
-            { "type": "tip", "text": "<strong>NEW Adventure Way (opened Mar 29):</strong> Raiponce Tangled Spin (spinner ride under glowing lanterns \u2014 Louise's new favorite!), themed gardens (Toy Story, Tangled, British), Regal View Restaurant & Lounge (Princess character dining \u2014 first in-park bar at DLP!), new Mickey & Minnie meet and greet" },
-            { "type": "tip", "text": "<strong>NEW Disney Cascade of Lights (~8:30-9:00 PM):</strong> Brand-new nighttime lake show on Adventure Bay \u2014 fireworks, water-screen projections, drones, and aquatic drones. Don't miss this! It's the Adventure World equivalent of Illuminations" },
-            { "type": "tip", "text": "<strong>Avengers Assemble: Flight Force (120cm):</strong> Louise can't ride. Parent Swap \u2014 one adult rides with Kenna, then swaps. Free!" },
-            { "type": "tip", "text": "<strong>Standby Pass (FREE!):</strong> Reserve free return-time slots in the app. Only hold 1 at a time. Combine with Premier Access for max efficiency" },
-            { "type": "tip", "text": "<strong>Single Rider:</strong> Available on Crush's Coaster, Ratatouille, RC Racer. Great for a quick re-ride" },
-            { "type": "tip", "text": "<strong>Louise highlights:</strong> Frozen Ever After (boat ride!), Raiponce Tangled Spin (lanterns!), Ratatouille, Cars Road Trip, A Celebration in Arendelle show, Anna & Elsa meet and greet" }
+            {
+              "type": "tip",
+              "text": "<strong>EMT Strategy (8:00\u20139:30):</strong> ALL FOUR \u2192 Crush's Coaster first (Louise clears 107cm!). Then Spider-Man W.E.B. Adventure (no req). Then split: Michael+Kenna \u2192 Avengers Assemble (120cm, Parent Swap for Meghan) while Meghan+Louise \u2192 Frozen Ever After or Ratatouille"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Post-9:30:</strong> Tower of Terror (Louise clears 102cm! \u2014 new covered queue area makes the wait more bearable), Cars Road Trip, Ratatouille (refurbished 2026 \u2014 now 2D, new Parisian artist studio queue scene, enhanced props)"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>NEW World of Frozen (opened Mar 29):</strong> Frozen Ever After (boat ride through Arendelle \u2014 expect long waits even in June!), Royal Encounter with Anna & Elsa in Arendelle Castle (meet & greet \u2014 check app for Virtual Queue), \"A Celebration in Arendelle\" daytime show on Viking longships in Arendelle Bay. Louise will be mesmerized"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>NEW Adventure Way (opened Mar 29):</strong> Raiponce Tangled Spin (spinner ride under glowing lanterns \u2014 Louise's new favorite!), themed gardens (Toy Story, Tangled, British), Regal View Restaurant & Lounge (Princess character dining \u2014 first in-park bar at DLP!), new Mickey & Minnie meet and greet"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>NEW Disney Cascade of Lights (~8:30-9:00 PM):</strong> Brand-new nighttime lake show on Adventure Bay \u2014 fireworks, water-screen projections, drones, and aquatic drones. Don't miss this! It's the Adventure World equivalent of Illuminations"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Avengers Assemble: Flight Force (120cm):</strong> Louise can't ride. Parent Swap \u2014 one adult rides with Kenna, then swaps. Free!"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Standby Pass (FREE!):</strong> Reserve free return-time slots in the app. Only hold 1 at a time. Combine with Premier Access for max efficiency"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Single Rider:</strong> Available on Crush's Coaster, Ratatouille, RC Racer. Great for a quick re-ride"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Louise highlights:</strong> Frozen Ever After (boat ride!), Raiponce Tangled Spin (lanterns!), Ratatouille, Cars Road Trip, A Celebration in Arendelle show, Anna & Elsa meet and greet"
+            }
           ]
         },
         {
@@ -705,13 +1280,34 @@
           "title": "Premier Access Recommendation",
           "color": "#e8a04a",
           "items": [
-            { "type": "info", "text": "<strong>Skip Premier Access Ultimate</strong> (~\u20ac120-160/person in June high season). With EMT + 2 full days, you have time for standby" },
-            { "type": "info", "text": "<strong>Buy 1-2 Premier Access One strategically</strong> (~\u20ac8-18/ride, purchased in-app once inside park):" },
-            { "type": "tip", "text": "<strong>#1: Frozen Ever After</strong> \u2014 brand new ride, will have the longest waits. All 4 can ride. Best PA One value today" },
-            { "type": "tip", "text": "<strong>#2: Ratatouille</strong> \u2014 if standby hits 60+ min midday. All 4 can ride. Buy while queuing for something else" },
-            { "type": "tip", "text": "Skip PA for: Cars Road Trip (short waits), Tower of Terror (preshow means PA still takes 15-20 min)" },
-            { "type": "info", "text": "<strong>Parent Swap (free!):</strong> Only needed for Avengers Assemble: Flight Force (120cm). One adult rides with Kenna, then the other swaps \u2014 no re-queuing" },
-            { "type": "info", "text": "Max 3 PA One per person per day. Budget: 2 passes \u00d7 4 riders \u00d7 ~\u20ac12 = ~\u20ac96 (~$105)" }
+            {
+              "type": "info",
+              "text": "<strong>Skip Premier Access Ultimate</strong> (~\u20ac120-160/person in June high season). With EMT + 2 full days, you have time for standby"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Buy 1-2 Premier Access One strategically</strong> (~\u20ac8-18/ride, purchased in-app once inside park):"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>#1: Frozen Ever After</strong> \u2014 brand new ride, will have the longest waits. All 4 can ride. Best PA One value today"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>#2: Ratatouille</strong> \u2014 if standby hits 60+ min midday. All 4 can ride. Buy while queuing for something else"
+            },
+            {
+              "type": "tip",
+              "text": "Skip PA for: Cars Road Trip (short waits), Tower of Terror (preshow means PA still takes 15-20 min)"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Parent Swap (free!):</strong> Only needed for Avengers Assemble: Flight Force (120cm). One adult rides with Kenna, then the other swaps \u2014 no re-queuing"
+            },
+            {
+              "type": "info",
+              "text": "Max 3 PA One per person per day. Budget: 2 passes \u00d7 4 riders \u00d7 ~\u20ac12 = ~\u20ac96 (~$105)"
+            }
           ]
         },
         {
@@ -719,13 +1315,34 @@
           "title": "Meal Plan Voucher Map \u2014 Jun 14",
           "color": "#5ce892",
           "items": [
-            { "type": "info", "text": "<strong>No breakfast voucher today</strong> \u2014 you slept at Dream Castle (not covered by meal plan)" },
-            { "type": "info", "text": "<strong>11:45 AM \u2014 Bistrot Chez R\u00e9my \u2192 MEAL VOUCHER 1.</strong> Table service = starter + main + dessert + soft drink (kids). Order all 3 courses \u2014 they're included, don't skip any!" },
-            { "type": "info", "text": "<strong>~3:00 PM \u2014 Pause Gourmande \u2192 SNACK + DRINK VOUCHER.</strong> Pastry + hot/cold drink at any quick-service. Perfect mid-ride fuel. Don't waste this at breakfast!" },
-            { "type": "info", "text": "<strong>6:00 PM \u2014 PYM Kitchen \u2192 MEAL VOUCHER 2.</strong> All-you-can-eat buffet + soft drink. Go back for seconds \u2014 best calorie-per-voucher value" },
-            { "type": "info", "text": "<strong>~9:00 PM \u2014 Skyline Bar (Art of Marvel) \u2192 DRINK VOUCHER.</strong> 1 alcoholic OR non-alcoholic drink per person. Cocktails run \u20ac12-16 \u2014 high-value use! Michael & Meghan: cocktails. Kenna & Louise: mocktails/milkshakes" },
-            { "type": "warn", "text": "<strong>Excluded restaurants:</strong> Starbucks, McDonald's, Rainforest Caf\u00e9, Five Guys, Earl of Sandwich, Vapiano, The Royal Pub, Brasserie Rosalie \u2014 vouchers NOT accepted" },
-            { "type": "tip", "text": "<strong>$0 out of pocket for all food + drinks today</strong>" }
+            {
+              "type": "info",
+              "text": "<strong>No breakfast voucher today</strong> \u2014 you slept at Dream Castle (not covered by meal plan)"
+            },
+            {
+              "type": "info",
+              "text": "<strong>11:45 AM \u2014 Bistrot Chez R\u00e9my \u2192 MEAL VOUCHER 1.</strong> Table service = starter + main + dessert + soft drink (kids). Order all 3 courses \u2014 they're included, don't skip any!"
+            },
+            {
+              "type": "info",
+              "text": "<strong>~3:00 PM \u2014 Pause Gourmande \u2192 SNACK + DRINK VOUCHER.</strong> Pastry + hot/cold drink at any quick-service. Perfect mid-ride fuel. Don't waste this at breakfast!"
+            },
+            {
+              "type": "info",
+              "text": "<strong>6:00 PM \u2014 PYM Kitchen \u2192 MEAL VOUCHER 2.</strong> All-you-can-eat buffet + soft drink. Go back for seconds \u2014 best calorie-per-voucher value"
+            },
+            {
+              "type": "info",
+              "text": "<strong>~9:00 PM \u2014 Skyline Bar (Art of Marvel) \u2192 DRINK VOUCHER.</strong> 1 alcoholic OR non-alcoholic drink per person. Cocktails run \u20ac12-16 \u2014 high-value use! Michael & Meghan: cocktails. Kenna & Louise: mocktails/milkshakes"
+            },
+            {
+              "type": "warn",
+              "text": "<strong>Excluded restaurants:</strong> Starbucks, McDonald's, Rainforest Caf\u00e9, Five Guys, Earl of Sandwich, Vapiano, The Royal Pub, Brasserie Rosalie \u2014 vouchers NOT accepted"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>$0 out of pocket for all food + drinks today</strong>"
+            }
           ]
         }
       ]
@@ -738,20 +1355,69 @@
       "section": "Disneyland Paris \u00b7 Days 7\u20138",
       "order": 8,
       "events": [
-        { "time": "~07:00", "text": "\ud83c\udf7d\ufe0f Breakfast at Art of Marvel \u2014 BREAKFAST VOUCHER (only included breakfast of trip)" },
-        { "time": "~07:30", "text": "Head to Disneyland Park entrance (10-min walk)" },
-        { "time": "08:00\u201308:30", "text": "\u2b50 EXTRA MAGIC TIME \u2014 early access! (Art of Marvel guest)", "status": "booked", "statusLabel": "EARLY ACCESS" },
-        { "text": "All 4 \u2192 Big Thunder Mountain. Then split: Hyperspace Mtn (Parent Swap) + Peter Pan (walk-on!)" },
-        { "time": "09:30", "text": "Park opens to public. Crowds arrive \u2014 switch to lower-wait rides" },
-        { "time": "12:30", "text": "\ud83c\udf7d\ufe0f Lunch: Royal Banquet \u2014 LAST DAY VOUCHER + character dining \ud83d\udc78", "status": "booked", "statusLabel": "DINING" },
-        { "time": "~14:00", "text": "Afternoon: Pirates of the Caribbean, Phantom Manor, Peter Pan's Flight" },
-        { "time": "~14:40", "text": "Disney Stars on Parade (est. time \u2014 check app on the day)" },
-        { "time": "17:25", "text": "\u23f0 BA RETURN CHECK-IN OPENS \u2014 grab free seats on phone NOW!", "status": "action", "statusLabel": "SET ALARM" },
-        { "time": "~18:30", "text": "\ud83c\udf7d\ufe0f Dinner: Quick-service (NO voucher left \u2014 ~\u20ac40-60 out of pocket)", "status": "action", "statusLabel": "NOT COVERED" },
-        { "text": "Stay in Art of Marvel (same room)", "status": "booked", "statusLabel": "H-DKH4WQD368V2" },
-        { "time": "~22:00", "text": "\u2728 Disney Illuminations fireworks at Sleeping Beauty Castle!" },
-        { "time": "~22:30", "text": "Disneyland Park closes (est. June hours). Walk back to hotel." },
-        { "text": "\u26a0 Pack tonight \u2014 7:30 AM checkout tomorrow!" }
+        {
+          "time": "~07:00",
+          "text": "\ud83c\udf7d\ufe0f Breakfast at Art of Marvel \u2014 BREAKFAST VOUCHER (only included breakfast of trip)"
+        },
+        {
+          "time": "~07:30",
+          "text": "Head to Disneyland Park entrance (10-min walk)"
+        },
+        {
+          "time": "08:00\u201308:30",
+          "text": "\u2b50 EXTRA MAGIC TIME \u2014 early access! (Art of Marvel guest)",
+          "status": "booked",
+          "statusLabel": "EARLY ACCESS"
+        },
+        {
+          "text": "All 4 \u2192 Big Thunder Mountain. Then split: Hyperspace Mtn (Parent Swap) + Peter Pan (walk-on!)"
+        },
+        {
+          "time": "09:30",
+          "text": "Park opens to public. Crowds arrive \u2014 switch to lower-wait rides"
+        },
+        {
+          "time": "12:30",
+          "text": "\ud83c\udf7d\ufe0f Lunch: Royal Banquet \u2014 LAST DAY VOUCHER + character dining \ud83d\udc78",
+          "status": "booked",
+          "statusLabel": "DINING"
+        },
+        {
+          "time": "~14:00",
+          "text": "Afternoon: Pirates of the Caribbean, Phantom Manor, Peter Pan's Flight"
+        },
+        {
+          "time": "~14:40",
+          "text": "Disney Stars on Parade (est. time \u2014 check app on the day)"
+        },
+        {
+          "time": "17:25",
+          "text": "\u23f0 BA RETURN CHECK-IN OPENS \u2014 grab free seats on phone NOW!",
+          "status": "action",
+          "statusLabel": "SET ALARM"
+        },
+        {
+          "time": "~18:30",
+          "text": "\ud83c\udf7d\ufe0f Dinner: Quick-service (NO voucher left \u2014 ~\u20ac40-60 out of pocket)",
+          "status": "action",
+          "statusLabel": "NOT COVERED"
+        },
+        {
+          "text": "Stay in Art of Marvel (same room)",
+          "status": "booked",
+          "statusLabel": "H-DKH4WQD368V2"
+        },
+        {
+          "time": "~22:00",
+          "text": "\u2728 Disney Illuminations fireworks at Sleeping Beauty Castle!"
+        },
+        {
+          "time": "~22:30",
+          "text": "Disneyland Park closes (est. June hours). Walk back to hotel."
+        },
+        {
+          "text": "\u26a0 Pack tonight \u2014 7:30 AM checkout tomorrow!"
+        }
       ],
       "details": [
         {
@@ -759,10 +1425,22 @@
           "title": "Prepare the Night Before (Jun 14)",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "Set alarm 6:15 AM. Breakfast opens early \u2014 be there by 7:00 to eat and still make EMT" },
-            { "type": "info", "text": "Check parade and show times in app tonight. Plan around Disney Stars on Parade + Illuminations" },
-            { "type": "info", "text": "Charge phones again. Another full app-heavy day" },
-            { "type": "info", "text": "Royal Banquet at 12:30 is at the DISNEYLAND HOTEL (not your hotel). Know the walking route \u2014 allow 15 min" }
+            {
+              "type": "info",
+              "text": "Set alarm 6:15 AM. Breakfast opens early \u2014 be there by 7:00 to eat and still make EMT"
+            },
+            {
+              "type": "info",
+              "text": "Check parade and show times in app tonight. Plan around Disney Stars on Parade + Illuminations"
+            },
+            {
+              "type": "info",
+              "text": "Charge phones again. Another full app-heavy day"
+            },
+            {
+              "type": "info",
+              "text": "Royal Banquet at 12:30 is at the DISNEYLAND HOTEL (not your hotel). Know the walking route \u2014 allow 15 min"
+            }
           ]
         },
         {
@@ -770,10 +1448,22 @@
           "title": "\u23f0 RETURN FLIGHT CHECK-IN",
           "color": "#d94a8a",
           "items": [
-            { "type": "warn", "text": "<strong>SET ALARM: Jun 15 at 5:20 PM Paris time (10:20 AM CDT).</strong> BA return check-in opens at exactly 5:25 PM CEST (24 hrs before 4:25 PM BST Jun 16 departure). You'll be in Disneyland Park \u2014 do this from your phone during a break!" },
-            { "type": "info", "text": "Same strategy: both log in on separate phones at ba.com \u2192 YUAD5K. Grab 4 adjacent seats instantly" },
-            { "type": "info", "text": "If free seats don't work, handle at Heathrow T5 check-in desk on Jun 16 \u2014 same \"5-year-old must sit with parent\" rule applies" },
-            { "type": "tip", "text": "Good time to do this: right before or after Disney Stars on Parade (~2:30-3:00 PM park time). Take 5 min, grab seats, get back to the magic" }
+            {
+              "type": "warn",
+              "text": "<strong>SET ALARM: Jun 15 at 5:20 PM Paris time (10:20 AM CDT).</strong> BA return check-in opens at exactly 5:25 PM CEST (24 hrs before 4:25 PM BST Jun 16 departure). You'll be in Disneyland Park \u2014 do this from your phone during a break!"
+            },
+            {
+              "type": "info",
+              "text": "Same strategy: both log in on separate phones at ba.com \u2192 YUAD5K. Grab 4 adjacent seats instantly"
+            },
+            {
+              "type": "info",
+              "text": "If free seats don't work, handle at Heathrow T5 check-in desk on Jun 16 \u2014 same \"5-year-old must sit with parent\" rule applies"
+            },
+            {
+              "type": "tip",
+              "text": "Good time to do this: right before or after Disney Stars on Parade (~2:30-3:00 PM park time). Take 5 min, grab seats, get back to the magic"
+            }
           ]
         },
         {
@@ -781,9 +1471,18 @@
           "title": "Travel Requirements",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "Art of Marvel \u2192 Disneyland Park entrance: ~10 min walk through Disney Village" },
-            { "type": "info", "text": "Security checkpoint opens ~30 min before EMT (~7:30 AM)" },
-            { "type": "info", "text": "Royal Banquet: Inside the Disneyland Hotel (castle building above park entrance). Exit park \u2192 walk through hotel lobby \u2192 restaurant. Allow 15 min each way" }
+            {
+              "type": "info",
+              "text": "Art of Marvel \u2192 Disneyland Park entrance: ~10 min walk through Disney Village"
+            },
+            {
+              "type": "info",
+              "text": "Security checkpoint opens ~30 min before EMT (~7:30 AM)"
+            },
+            {
+              "type": "info",
+              "text": "Royal Banquet: Inside the Disneyland Hotel (castle building above park entrance). Exit park \u2192 walk through hotel lobby \u2192 restaurant. Allow 15 min each way"
+            }
           ]
         },
         {
@@ -791,11 +1490,26 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "Royal Banquet at 12:30 is OUTSIDE the park (in Disneyland Hotel). Exit and re-enter. Allow 15 min each way" },
-            { "type": "warn", "text": "Character dining takes ~75-90 min with princesses visiting tables. Don't rush \u2014 this is a highlight for the kids" },
-            { "type": "warn", "text": "Peter Pan's Flight: Consistently longest waits (60-90 min). Hit it during EMT (Meghan+Louise while Michael+Kenna do Hyperspace Mountain) or buy PA One" },
-            { "type": "warn", "text": "Disney Illuminations at ~10 PM. Louise will be exhausted after 14+ hours. Consider a stroller" },
-            { "type": "warn", "text": "\u26a0\ufe0f PACK TONIGHT! 7:30 AM checkout tomorrow. You will NOT have time in the morning" }
+            {
+              "type": "warn",
+              "text": "Royal Banquet at 12:30 is OUTSIDE the park (in Disneyland Hotel). Exit and re-enter. Allow 15 min each way"
+            },
+            {
+              "type": "warn",
+              "text": "Character dining takes ~75-90 min with princesses visiting tables. Don't rush \u2014 this is a highlight for the kids"
+            },
+            {
+              "type": "warn",
+              "text": "Peter Pan's Flight: Consistently longest waits (60-90 min). Hit it during EMT (Meghan+Louise while Michael+Kenna do Hyperspace Mountain) or buy PA One"
+            },
+            {
+              "type": "warn",
+              "text": "Disney Illuminations at ~10 PM. Louise will be exhausted after 14+ hours. Consider a stroller"
+            },
+            {
+              "type": "warn",
+              "text": "\u26a0\ufe0f PACK TONIGHT! 7:30 AM checkout tomorrow. You will NOT have time in the morning"
+            }
           ]
         },
         {
@@ -803,14 +1517,38 @@
           "title": "Disney Tips & Strategy",
           "color": "#d94a8a",
           "items": [
-            { "type": "tip", "text": "<strong>EMT Strategy (8:00\u20139:30):</strong> ALL FOUR \u2192 Big Thunder Mountain first (Louise clears 102cm!). Then split: Michael+Kenna \u2192 Hyperspace Mountain (120cm, Parent Swap for Meghan) while Meghan+Louise \u2192 Peter Pan's Flight (no req, walk-on during EMT!)" },
-            { "type": "tip", "text": "<strong>Post-9:30:</strong> Pirates of the Caribbean, Phantom Manor, Buzz Lightyear (all family-friendly, all 4 ride together)" },
-            { "type": "tip", "text": "<strong>After Royal Banquet (~2 PM):</strong> It's a Small World, Alice's Curious Labyrinth (walkthrough \u2014 Louise will love it, no wait), Dumbo, Mad Hatter's Tea Cups" },
-            { "type": "tip", "text": "<strong>Parent Swap rides (120cm+):</strong> Hyperspace Mountain only. Indiana Jones (140cm) \u2014 Kenna only, both adults swap. That's it \u2014 Louise rides almost everything else!" },
-            { "type": "tip", "text": "<strong>Parade Strategy (~2:30-3:00 PM):</strong> Disney Stars on Parade is spectacular. Watch from Main Street or Central Plaza. OR skip and ride headliners with shorter queues during the parade" },
-            { "type": "tip", "text": "<strong>Evening (7-10 PM):</strong> Re-ride favorites. Queues drop significantly after dinner. Fantasyland rides nearly walk-on after 8 PM" },
-            { "type": "tip", "text": "<strong>10:00 PM:</strong> Disney Illuminations at Sleeping Beauty Castle. Claim a spot in the hub 20-30 min early. Front-center gives the best view" },
-            { "type": "tip", "text": "<strong>Single Rider:</strong> Big Thunder Mountain and Ratatouille both have it. Great for a quick re-ride" }
+            {
+              "type": "tip",
+              "text": "<strong>EMT Strategy (8:00\u20139:30):</strong> ALL FOUR \u2192 Big Thunder Mountain first (Louise clears 102cm!). Then split: Michael+Kenna \u2192 Hyperspace Mountain (120cm, Parent Swap for Meghan) while Meghan+Louise \u2192 Peter Pan's Flight (no req, walk-on during EMT!)"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Post-9:30:</strong> Pirates of the Caribbean, Phantom Manor, Buzz Lightyear (all family-friendly, all 4 ride together)"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>After Royal Banquet (~2 PM):</strong> It's a Small World, Alice's Curious Labyrinth (walkthrough \u2014 Louise will love it, no wait), Dumbo, Mad Hatter's Tea Cups"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Parent Swap rides (120cm+):</strong> Hyperspace Mountain only. Indiana Jones (140cm) \u2014 Kenna only, both adults swap. That's it \u2014 Louise rides almost everything else!"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Parade Strategy (~2:30-3:00 PM):</strong> Disney Stars on Parade is spectacular. Watch from Main Street or Central Plaza. OR skip and ride headliners with shorter queues during the parade"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Evening (7-10 PM):</strong> Re-ride favorites. Queues drop significantly after dinner. Fantasyland rides nearly walk-on after 8 PM"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>10:00 PM:</strong> Disney Illuminations at Sleeping Beauty Castle. Claim a spot in the hub 20-30 min early. Front-center gives the best view"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Single Rider:</strong> Big Thunder Mountain and Ratatouille both have it. Great for a quick re-ride"
+            }
           ]
         },
         {
@@ -818,12 +1556,30 @@
           "title": "Premier Access Recommendation",
           "color": "#e8a04a",
           "items": [
-            { "type": "info", "text": "<strong>Best PA One targets for Disneyland Park today:</strong>" },
-            { "type": "tip", "text": "<strong>#1: Peter Pan's Flight</strong> \u2014 perpetually 60-90 min waits. Only ~\u20ac8-12. All 4 can ride. Best value PA in either park" },
-            { "type": "tip", "text": "<strong>#2: Big Thunder Mountain</strong> \u2014 if you want a re-ride and it's 45+ min midday. All 4 can ride (Louise clears 102cm)" },
-            { "type": "tip", "text": "Skip PA for: Phantom Manor (rarely 25+ min), Pirates (walk-on after 5 PM), Buzz (moderate waits)" },
-            { "type": "info", "text": "<strong>Parent Swap only needed for 2 rides today:</strong> Hyperspace Mountain (120cm) and Indiana Jones (140cm, Kenna only). That's it!" },
-            { "type": "info", "text": "Estimated PA One spend: 2 passes \u00d7 4 riders \u00d7 ~\u20ac10 avg = ~\u20ac80 (~$87)" }
+            {
+              "type": "info",
+              "text": "<strong>Best PA One targets for Disneyland Park today:</strong>"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>#1: Peter Pan's Flight</strong> \u2014 perpetually 60-90 min waits. Only ~\u20ac8-12. All 4 can ride. Best value PA in either park"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>#2: Big Thunder Mountain</strong> \u2014 if you want a re-ride and it's 45+ min midday. All 4 can ride (Louise clears 102cm)"
+            },
+            {
+              "type": "tip",
+              "text": "Skip PA for: Phantom Manor (rarely 25+ min), Pirates (walk-on after 5 PM), Buzz (moderate waits)"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Parent Swap only needed for 2 rides today:</strong> Hyperspace Mountain (120cm) and Indiana Jones (140cm, Kenna only). That's it!"
+            },
+            {
+              "type": "info",
+              "text": "Estimated PA One spend: 2 passes \u00d7 4 riders \u00d7 ~\u20ac10 avg = ~\u20ac80 (~$87)"
+            }
           ]
         },
         {
@@ -831,11 +1587,26 @@
           "title": "Meal Plan Voucher Map \u2014 Jun 15",
           "color": "#5ce892",
           "items": [
-            { "type": "info", "text": "<strong>~7:00 AM \u2014 Art of Marvel buffet \u2192 BREAKFAST VOUCHER.</strong> Eat well \u2014 this is your only included breakfast. Hot + cold buffet, pastries, eggs, the works" },
-            { "type": "info", "text": "<strong>12:30 PM \u2014 Royal Banquet \u2192 LAST DAY VOUCHER + CHARACTER DINING.</strong> Princess dining! The character meal REPLACES a regular voucher (not extra). Starter + main + dessert. Expect Anna, Elsa, Rapunzel, Cinderella, Aurora visiting your table. Allow 75-90 min" },
-            { "type": "warn", "text": "<strong>~6:00-7:00 PM \u2014 Dinner: NO VOUCHER LEFT.</strong> All 6 vouchers are spent. Budget ~\u20ac40-60 out of pocket for the family. Options: quick-service in Disneyland Park (~\u20ac12-15/person), or a cr\u00eape/snack \u2014 you'll have had a massive Royal Banquet lunch" },
-            { "type": "warn", "text": "<strong>Snack + Drink vouchers were used yesterday.</strong> You get 1 set per night, and your plan only covers 1 night" },
-            { "type": "tip", "text": "<strong>Strategy:</strong> Royal Banquet will be a huge multi-course meal with characters at 12:30. You probably won't be hungry again until 6-7 PM. A lighter quick-service dinner keeps costs down" }
+            {
+              "type": "info",
+              "text": "<strong>~7:00 AM \u2014 Art of Marvel buffet \u2192 BREAKFAST VOUCHER.</strong> Eat well \u2014 this is your only included breakfast. Hot + cold buffet, pastries, eggs, the works"
+            },
+            {
+              "type": "info",
+              "text": "<strong>12:30 PM \u2014 Royal Banquet \u2192 LAST DAY VOUCHER + CHARACTER DINING.</strong> Princess dining! The character meal REPLACES a regular voucher (not extra). Starter + main + dessert. Expect Anna, Elsa, Rapunzel, Cinderella, Aurora visiting your table. Allow 75-90 min"
+            },
+            {
+              "type": "warn",
+              "text": "<strong>~6:00-7:00 PM \u2014 Dinner: NO VOUCHER LEFT.</strong> All 6 vouchers are spent. Budget ~\u20ac40-60 out of pocket for the family. Options: quick-service in Disneyland Park (~\u20ac12-15/person), or a cr\u00eape/snack \u2014 you'll have had a massive Royal Banquet lunch"
+            },
+            {
+              "type": "warn",
+              "text": "<strong>Snack + Drink vouchers were used yesterday.</strong> You get 1 set per night, and your plan only covers 1 night"
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Strategy:</strong> Royal Banquet will be a huge multi-course meal with characters at 12:30. You probably won't be hungry again until 6-7 PM. A lighter quick-service dinner keeps costs down"
+            }
           ]
         }
       ]
@@ -848,16 +1619,54 @@
       "section": "Return Journey",
       "order": 9,
       "events": [
-        { "time": "~07:00", "text": "\ud83c\udf7d\ufe0f Breakfast NOT included (C1 booking). Grab pastries at station (~\u20ac15-20)", "status": "action", "statusLabel": "NOT COVERED" },
-        { "time": "~07:30", "text": "Check out. RER A \u2192 Ch\u00e2telet \u2192 RER B \u2192 Gare du Nord" },
-        { "time": "~09:00", "text": "Arrive Gare du Nord. Eurostar check-in" },
-        { "time": "11:02", "text": "\ud83d\ude84 Eurostar 9023 \u00b7 Coach 4 \u00b7 Seats 53,54,58,57", "status": "booked", "statusLabel": "QRXPZK" },
-        { "time": "12:30", "text": "Arrive London St Pancras" },
-        { "time": "~12:45", "text": "Walk/Tube to Paddington (~15 min)" },
-        { "time": "~13:00", "text": "\ud83d\ude84 Heathrow Express (15 min)", "status": "booked", "statusLabel": "c44d65da" },
-        { "time": "~13:15", "text": "Arrive Heathrow T5 \u2014 3 hr 10 min buffer \u2705" },
-        { "time": "16:25", "text": "\u2708 BA221 \u00b7 LHR \u2192 STL", "status": "booked", "statusLabel": "YUAD5K" },
-        { "time": "19:30", "text": "Arrive St. Louis! Welcome home \ud83c\udfe0" }
+        {
+          "time": "~07:00",
+          "text": "\ud83c\udf7d\ufe0f Breakfast NOT included (C1 booking). Grab pastries at station (~\u20ac15-20)",
+          "status": "action",
+          "statusLabel": "NOT COVERED"
+        },
+        {
+          "time": "~07:30",
+          "text": "Check out. RER A \u2192 Ch\u00e2telet \u2192 RER B \u2192 Gare du Nord"
+        },
+        {
+          "time": "~09:00",
+          "text": "Arrive Gare du Nord. Eurostar check-in"
+        },
+        {
+          "time": "11:02",
+          "text": "\ud83d\ude84 Eurostar 9023 \u00b7 Coach 4 \u00b7 Seats 53,54,58,57",
+          "status": "booked",
+          "statusLabel": "QRXPZK"
+        },
+        {
+          "time": "12:30",
+          "text": "Arrive London St Pancras"
+        },
+        {
+          "time": "~12:45",
+          "text": "Walk/Tube to Paddington (~15 min)"
+        },
+        {
+          "time": "~13:00",
+          "text": "\ud83d\ude84 Heathrow Express (15 min)",
+          "status": "booked",
+          "statusLabel": "c44d65da"
+        },
+        {
+          "time": "~13:15",
+          "text": "Arrive Heathrow T5 \u2014 3 hr 10 min buffer \u2705"
+        },
+        {
+          "time": "16:25",
+          "text": "\u2708 BA221 \u00b7 LHR \u2192 STL",
+          "status": "booked",
+          "statusLabel": "YUAD5K"
+        },
+        {
+          "time": "19:30",
+          "text": "Arrive St. Louis! Welcome home \ud83c\udfe0"
+        }
       ],
       "details": [
         {
@@ -865,11 +1674,26 @@
           "title": "Prepare the Night Before (Jun 15)",
           "color": "#b88ad9",
           "items": [
-            { "type": "info", "text": "PACK EVERYTHING after Illuminations tonight. Checkout is 7:30 AM" },
-            { "type": "info", "text": "Set alarm 6:30 AM" },
-            { "type": "warn", "text": "<strong>Breakfast NOT included tomorrow</strong> \u2014 Night 2 is Capital One (no meal plan). Options: pay for hotel buffet (~\u20ac82 for family of 4) or grab pastries at Marne-la-Vall\u00e9e station or Gare du Nord (much cheaper, ~\u20ac15-20 total)" },
-            { "type": "info", "text": "Eurostar return on phone. Ref: QRXPZK. Train 9023, Coach 4, Seats 53/54/58/57" },
-            { "type": "info", "text": "Heathrow Express on phone. Ref: c44d65da" }
+            {
+              "type": "info",
+              "text": "PACK EVERYTHING after Illuminations tonight. Checkout is 7:30 AM"
+            },
+            {
+              "type": "info",
+              "text": "Set alarm 6:30 AM"
+            },
+            {
+              "type": "warn",
+              "text": "<strong>Breakfast NOT included tomorrow</strong> \u2014 Night 2 is Capital One (no meal plan). Options: pay for hotel buffet (~\u20ac82 for family of 4) or grab pastries at Marne-la-Vall\u00e9e station or Gare du Nord (much cheaper, ~\u20ac15-20 total)"
+            },
+            {
+              "type": "info",
+              "text": "Eurostar return on phone. Ref: QRXPZK. Train 9023, Coach 4, Seats 53/54/58/57"
+            },
+            {
+              "type": "info",
+              "text": "Heathrow Express on phone. Ref: c44d65da"
+            }
           ]
         },
         {
@@ -877,11 +1701,26 @@
           "title": "Travel Requirements \u2014 5 Legs!",
           "color": "#4a90d9",
           "items": [
-            { "type": "info", "text": "<strong>Leg 1:</strong> Art of Marvel \u2192 Marne-la-Vall\u00e9e station (~15 min walk). RER A \u2192 Ch\u00e2telet-Les Halles. RER B \u2192 Gare du Nord. Total ~50-60 min. ~\u20ac5/person" },
-            { "type": "info", "text": "<strong>Leg 2:</strong> Eurostar 9023 departs 11:02 AM. Check-in ~10:15. Be at Gare du Nord by 10:00 AM latest" },
-            { "type": "info", "text": "<strong>Leg 3:</strong> Arrive St Pancras 12:30 (UK time \u2014 gain 1 hour). Walk/Tube to Paddington (~15 min)" },
-            { "type": "info", "text": "<strong>Leg 4:</strong> Heathrow Express from Paddington ~13:00. 15 min to T5. Ref: c44d65da" },
-            { "type": "info", "text": "<strong>Leg 5:</strong> BA221 departs 16:25 \u2192 STL 19:30. Arrive T5 ~13:15 = 3 hr 10 min buffer" }
+            {
+              "type": "info",
+              "text": "<strong>Leg 1:</strong> Art of Marvel \u2192 Marne-la-Vall\u00e9e station (~15 min walk). RER A \u2192 Ch\u00e2telet-Les Halles. RER B \u2192 Gare du Nord. Total ~50-60 min. ~\u20ac5/person"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Leg 2:</strong> Eurostar 9023 departs 11:02 AM. Check-in ~10:15. Be at Gare du Nord by 10:00 AM latest"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Leg 3:</strong> Arrive St Pancras 12:30 (UK time \u2014 gain 1 hour). Walk/Tube to Paddington (~15 min)"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Leg 4:</strong> Heathrow Express from Paddington ~13:00. 15 min to T5. Ref: c44d65da"
+            },
+            {
+              "type": "info",
+              "text": "<strong>Leg 5:</strong> BA221 departs 16:25 \u2192 STL 19:30. Arrive T5 ~13:15 = 3 hr 10 min buffer"
+            }
           ]
         },
         {
@@ -889,11 +1728,26 @@
           "title": "Potential Pitfalls",
           "color": "#e8c55c",
           "items": [
-            { "type": "warn", "text": "RER connections can be confusing at Ch\u00e2telet. Follow signs for RER B direction \"A\u00e9roport Charles de Gaulle\"" },
-            { "type": "warn", "text": "RER B runs every ~10-15 min. If you miss one, you're fine \u2014 plenty of buffer" },
-            { "type": "warn", "text": "Gare du Nord Eurostar terminal is separate from main station. Follow \"Eurostar\" signs" },
-            { "type": "warn", "text": "Time zone change: France \u2192 UK loses 1 hour. Depart 11:02 Paris, arrive 12:30 London (feels like 28 min!)" },
-            { "type": "warn", "text": "If ANY leg is delayed, you still have 3+ hours buffer at Heathrow. Don't panic" }
+            {
+              "type": "warn",
+              "text": "RER connections can be confusing at Ch\u00e2telet. Follow signs for RER B direction \"A\u00e9roport Charles de Gaulle\""
+            },
+            {
+              "type": "warn",
+              "text": "RER B runs every ~10-15 min. If you miss one, you're fine \u2014 plenty of buffer"
+            },
+            {
+              "type": "warn",
+              "text": "Gare du Nord Eurostar terminal is separate from main station. Follow \"Eurostar\" signs"
+            },
+            {
+              "type": "warn",
+              "text": "Time zone change: France \u2192 UK loses 1 hour. Depart 11:02 Paris, arrive 12:30 London (feels like 28 min!)"
+            },
+            {
+              "type": "warn",
+              "text": "If ANY leg is delayed, you still have 3+ hours buffer at Heathrow. Don't panic"
+            }
           ]
         },
         {
@@ -901,10 +1755,22 @@
           "title": "Local Intel",
           "color": "#5ce892",
           "items": [
-            { "type": "tip", "text": "Buy RER tickets at Marne-la-Vall\u00e9e machines (cards accepted). Keep them \u2014 scan OUT at Gare du Nord" },
-            { "type": "tip", "text": "Eurostar bar car: final French croissant opportunity" },
-            { "type": "tip", "text": "Heathrow T5 duty-free is excellent for last-minute gifts. Budget time for it with 3+ hr buffer" },
-            { "type": "tip", "text": "BA221 arrives STL 19:30. Home for a late dinner. Trip complete!" }
+            {
+              "type": "tip",
+              "text": "Buy RER tickets at Marne-la-Vall\u00e9e machines (cards accepted). Keep them \u2014 scan OUT at Gare du Nord"
+            },
+            {
+              "type": "tip",
+              "text": "Eurostar bar car: final French croissant opportunity"
+            },
+            {
+              "type": "tip",
+              "text": "Heathrow T5 duty-free is excellent for last-minute gifts. Budget time for it with 3+ hr buffer"
+            },
+            {
+              "type": "tip",
+              "text": "BA221 arrives STL 19:30. Home for a late dinner. Trip complete!"
+            }
           ]
         }
       ]
@@ -912,25 +1778,81 @@
   ],
   "budget": {
     "confirmed": [
-      { "item": "BA Flights (taxes/fees)", "cost": "$1,083.86", "note": "+ 260K Avios" },
-      { "item": "Eurostar Round Trip", "cost": "$368.00", "note": null },
-      { "item": "Heathrow Express (2\u00d7)", "cost": "~$50.00", "note": "\u00a340" },
-      { "item": "UK ETA (4 persons)", "cost": "~$50.00", "note": "\u00a310 each" },
-      { "item": "Travelodge (5 nights)", "cost": "~$1,553.00", "note": "\u00a31,242.45" },
-      { "item": "Art of Marvel Night 1", "cost": "$1,733.68", "note": "hotel+tickets+meals" },
-      { "item": "Matilda the Musical", "cost": "~$425.00", "note": "\u00a3340" },
-      { "item": "London Eye", "cost": "~$138.00", "note": "\u00a3110" },
-      { "item": "Eiffel Tower (4 tickets, summit)", "cost": "~$121.00", "note": "\u20ac101" }
+      {
+        "item": "BA Flights (taxes/fees)",
+        "cost": "$1,083.86",
+        "note": "+ 260K Avios"
+      },
+      {
+        "item": "Eurostar Round Trip",
+        "cost": "$368.00",
+        "note": null
+      },
+      {
+        "item": "Heathrow Express (2\u00d7)",
+        "cost": "~$50.00",
+        "note": "\u00a340"
+      },
+      {
+        "item": "UK ETA (4 persons)",
+        "cost": "~$50.00",
+        "note": "\u00a310 each"
+      },
+      {
+        "item": "Travelodge (5 nights)",
+        "cost": "~$1,553.00",
+        "note": "\u00a31,242.45"
+      },
+      {
+        "item": "Art of Marvel Night 1",
+        "cost": "$1,733.68",
+        "note": "hotel+tickets+meals"
+      },
+      {
+        "item": "Matilda the Musical",
+        "cost": "~$425.00",
+        "note": "\u00a3340"
+      },
+      {
+        "item": "London Eye",
+        "cost": "~$138.00",
+        "note": "\u00a3110"
+      },
+      {
+        "item": "Eiffel Tower (4 tickets, summit)",
+        "cost": "$125.66",
+        "note": "\u20ac101.00"
+      }
     ],
     "estimated": [
-      { "item": "Local Transport (Oyster, Metro, RER)", "cost": "~$149", "note": null },
-      { "item": "Meals (London + Paris transit)", "cost": "~$545\u2013750", "note": null },
-      { "item": "Disney meals (covered by plan)", "cost": "$0", "note": "4 of 6 meals" },
-      { "item": "Disney meals (NOT covered)", "cost": "~$60\u2013100", "note": "Jun 15 dinner + Jun 16 breakfast" },
-      { "item": "Premier Access (optional)", "cost": "~$100\u2013200", "note": "PA One passes" }
+      {
+        "item": "Local Transport (Oyster, Metro, RER)",
+        "cost": "~$149",
+        "note": null
+      },
+      {
+        "item": "Meals (London + Paris transit)",
+        "cost": "~$545\u2013750",
+        "note": null
+      },
+      {
+        "item": "Disney meals (covered by plan)",
+        "cost": "$0",
+        "note": "4 of 6 meals"
+      },
+      {
+        "item": "Disney meals (NOT covered)",
+        "cost": "~$60\u2013100",
+        "note": "Jun 15 dinner + Jun 16 breakfast"
+      },
+      {
+        "item": "Premier Access (optional)",
+        "cost": "~$100\u2013200",
+        "note": "PA One passes"
+      }
     ],
-    "confirmedTotal": "~$5,523",
-    "estimatedTotal": "~$6,377\u20136,712",
+    "confirmedTotal": "~$5,528",
+    "estimatedTotal": "~$6,382\u20136,727",
     "savingsNote": "260K Avios (~$4,000+ value) + 64,795 C1 miles ($648) + $300 Venture X credit = ~$4,948+ total savings"
   },
   "checklist": [
@@ -944,7 +1866,7 @@
     },
     {
       "id": "check_2",
-      "text": "\u26a0\ufe0f Global Entry \u2014 Kenna \u2014 BLOCKED on passport. Once passport arrives: apply at ttp.dhs.gov (free for minors), get conditional approval, schedule interview, complete interview. All must happen before Jun 7. If Kenna doesn't have GE, one parent must go through regular customs with her on return.",
+      "text": "\u26a0\ufe0f Global Entry \u2014 Kenna \u2014 Passport arriving Apr 14! Once in hand: apply at ttp.dhs.gov (free for minors), get conditional approval, schedule interview. All must happen before Jun 7. If Kenna doesn't have GE, one parent must go through regular customs with her on return.",
       "done": false,
       "urgent": true,
       "group": "this-week",
@@ -968,7 +1890,7 @@
     },
     {
       "id": "check_5",
-      "text": "\u26a0\ufe0f Kenna's passport \u2014 \"Information Received, In Process Again\" \u2014 Tyler's ID was sent and received by State Dept on 3/5. Routine processing is 4-6 weeks (may be delayed due to the hold). Application locator: 433376153. BLOCKER for Eurostar API, UK ETA, Global Entry, and travel. If not received by mid-May, call 1-877-487-2778.",
+      "text": "Kenna's passport \u2014 ARRIVING Apr 14! \u2014 Passport expected in mail. Once received: immediately start UK ETA, Eurostar API, BA Passenger Info, and Global Entry applications.",
       "done": false,
       "urgent": true,
       "group": "this-week",
@@ -976,15 +1898,15 @@
     },
     {
       "id": "check_44",
-      "text": "\u26a0\ufe0f Disney same-room request \u2014 NO RESPONSE \u2014 Emailed 3 addresses on Mar 17-18 requesting same room for both Art of Marvel nights (32984124 + H-DKH4WQD368V2). No reply from dlp.guest.communication, dlp.hny.front.office, or DLP.NWY.CONCIERGERIE. Consider calling Disneyland Paris directly or trying the DLP app/chat.",
+      "text": "Disney same-room request \u2014 HANDLE AT CHECK-IN \u2014 Spoke with Disneyland Paris; they confirmed the two bookings (32984124 + H-DKH4WQD368V2) will likely need to be joined at check-in. Plan to ask at the front desk on arrival.",
       "done": false,
-      "urgent": true,
-      "group": "this-week",
+      "urgent": false,
+      "group": "pre-travel",
       "order": 44
     },
     {
       "id": "check_6",
-      "text": "\ud83d\uddfc Eiffel Tower \u2014 BOOKED! 4 tickets, Summit by Elevator, Jun 13 at 11:00 AM. \u20ac101.00 (~$121). E-tickets via email.",
+      "text": "\ud83d\uddfc Eiffel Tower \u2014 BOOKED \u2014 Summit by lift, Jun 13 at 11:00 AM. 4 tickets (2 adult, 1 young 12-24, 1 child 4-11). Order #262010216859. \u20ac101 ($125.66).",
       "done": true,
       "urgent": false,
       "group": "completed",

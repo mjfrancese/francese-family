@@ -303,7 +303,7 @@ const Day14Detail = () => (
       <InfoBullet>Dream Castle → Art of Marvel: ~10-15 min shuttle or walk through Disney Village</InfoBullet>
       <InfoBullet>Art of Marvel → Disney Adventure World entrance: ~10 min walk. Security opens ~30 min before EMT</InfoBullet>
       <InfoBullet>Show MagicPass/Easy Pass at EMT entrance. Get it at Art of Marvel early check-in desk first</InfoBullet>
-      <InfoBullet><strong>At check-in: Request same room for both nights.</strong> Tell front desk you have booking #32984124 (Jun 14) and #H-DKH4WQD368V2 (Jun 15) — ask them to assign the same room. This is the most reliable way to get it done</InfoBullet>
+      <InfoBullet><strong>At check-in: Request same room for both nights.</strong> Disneyland Paris confirmed the two bookings (#32984124 + #H-DKH4WQD368V2) will need to be joined at check-in. Ask front desk to assign the same room for both nights</InfoBullet>
     </DetailSection>
     <DetailSection icon="⚠️" title="Potential Pitfalls" color="#e8c55c">
       <WarnBullet>Dream Castle checkout: Don't wait until 11 AM! Check out ~7:00 to maximize EMT</WarnBullet>
@@ -619,7 +619,7 @@ export default function TripItinerary() {
             <InfoRow label="Outbound" value="Jun 13 · 9002 · 06:31→09:57 · Coach 10 · Seats 18,17,13,14" />
             <InfoRow label="Return" value="Jun 16 · 9023 · 11:02→12:30 · Coach 4 · Seats 53,54,58,57" />
             <InfoRow label="Cost" value="$368 (Apple Pay)" />
-            <InfoRow label="Kenna API" value="BLOCKED — passport pending" status={{ type: MISSING, label: "BLOCKED" }} />
+            <InfoRow label="Kenna API" value="Passport arriving Apr 14 — submit API after" status={{ type: ACTION, label: "SOON" }} />
             <InfoRow label="Louise API" value="Completed" status={{ type: BOOKED, label: "✓ DONE" }} />
           </div>
 
@@ -691,7 +691,7 @@ export default function TripItinerary() {
             { item: "Art of Marvel Night 1", cost: "$1,733.68", note: "hotel+tickets+meals" },
             { item: "Matilda the Musical", cost: "~$425.00", note: "£340" },
             { item: "London Eye", cost: "~$138.00", note: "£110" },
-            { item: "Eiffel Tower (4 tickets, summit)", cost: "~$121.00", note: "€101" },
+            { item: "Eiffel Tower (4 tickets, summit)", cost: "$125.66", note: "€101" },
           ].map((r, i) => (
             <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 12px", borderBottom: "1px solid #1a1a2a" }}>
               <div>
@@ -703,12 +703,11 @@ export default function TripItinerary() {
           ))}
           <div style={{ display: "flex", justifyContent: "space-between", padding: "12px 12px 8px", borderTop: "2px solid #2a2a3a", marginTop: 4 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df" }}>Confirmed Cash Total</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df", fontFamily: "monospace" }}>~$5,523</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df", fontFamily: "monospace" }}>~$5,528</span>
           </div>
 
           <SectionHeader icon="📊">Estimated Additional</SectionHeader>
           {[
-
             { item: "Local Transport (Oyster, Metro, RER)", cost: "~$149" },
             { item: "Meals (London + Paris transit)", cost: "~$545–750" },
             { item: "Disney meals (covered by plan)", cost: "$0", note: "4 of 6 meals" },
@@ -725,7 +724,7 @@ export default function TripItinerary() {
           ))}
           <div style={{ display: "flex", justifyContent: "space-between", padding: "12px 12px 8px", borderTop: "2px solid #2a2a3a", marginTop: 4 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df" }}>Estimated Trip Total</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df", fontFamily: "monospace" }}>~$6,377–6,712</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#e8e4df", fontFamily: "monospace" }}>~$6,382–6,727</span>
           </div>
 
           <div style={{ background: "#111a15", border: "1px solid #1a2a1a", borderRadius: 8, padding: 14, marginTop: 16 }}>
@@ -748,7 +747,7 @@ export default function TripItinerary() {
             { title: "Apply for Global Entry — Kenna + Louise (after adults)", detail: "Free for minors when parent's application is pending or approved. Same site: ttp.dhs.gov. Parent must consent + attend interview with each child." },
             { title: "Buy 3-4 Anker Nano Travel Adapters (5-in-1, 20W)", detail: "anker.com/products/a9215. Covers US/UK/EU/AU plugs with USB-C port. ~$16 each. One per person or per charging station." },
             { title: "Check T-Mobile plan details with Meghan", detail: "Find out exact plan name (Go5G, Magenta MAX, Experience More/Beyond, etc.). This determines if you get 5GB or 15GB free high-speed data in UK+France. May not need a separate eSIM at all." },
-            { title: "⚠️ Kenna's passport — follow up on hiccup", detail: "Application requires a copy of Tyler's (Meghan's ex-husband) ID. Follow up on status — this is a BLOCKER for Eurostar API, UK ETA, and travel." },
+            { title: "Kenna's passport — ARRIVING Apr 14!", detail: "Passport expected in mail. Once received: immediately start UK ETA, Eurostar API, BA Passenger Info, and Global Entry applications." },
           ].map((item, i) => (
             <div key={i} style={{ background: "#1a1520", border: "1px solid #3a1a2a", borderRadius: 8, padding: 14, marginBottom: 8 }}>
               <div style={{ fontSize: 13, fontWeight: 600, color: "#e85c5c", marginBottom: 4 }}>{item.title}</div>
