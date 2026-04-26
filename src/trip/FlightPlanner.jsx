@@ -131,8 +131,15 @@ export default function FlightPlanner({ flightOptions }) {
   const outDates = Object.keys(flightOptions.outbound).sort()
   const retDates = Object.keys(flightOptions.return).sort()
 
+  // Trip-specific labels — fall back to NH defaults so existing trip keeps rendering
+  const route = flightOptions.route || 'STL → BOS nonstop'
+  const lodgingLabel = flightOptions.lodgingLabel || 'Melvin Village'
+  const carBrand = flightOptions.carBrand || 'Avis'
+  const carStatusLabel = flightOptions.carStatusLabel || "President's Club"
+  const priceAsOfNote = flightOptions.priceAsOfNote || 'Prices as of Apr 4, 2026 via Google Flights + Avis.com — subject to change'
+
   const [selectedOutDate, setSelectedOutDate] = useState(outDates[0])
-  const [selectedRetDate, setSelectedRetDate] = useState(retDates[1])
+  const [selectedRetDate, setSelectedRetDate] = useState(retDates[1] || retDates[0])
   const [selectedOutFlight, setSelectedOutFlight] = useState(null)
   const [selectedRetFlight, setSelectedRetFlight] = useState(null)
 
@@ -189,7 +196,7 @@ export default function FlightPlanner({ flightOptions }) {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <Plane size={14} color={colors.textDim} />
-          <span style={{ fontSize: 12, color: colors.textMuted }}>STL → BOS nonstop</span>
+          <span style={{ fontSize: 12, color: colors.textMuted }}>{route}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <Car size={14} color={colors.textDim} />
@@ -271,7 +278,7 @@ export default function FlightPlanner({ flightOptions }) {
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-              <span style={{ fontSize: 14, fontWeight: 600, color: colors.text }}>Avis</span>
+              <span style={{ fontSize: 14, fontWeight: 600, color: colors.text }}>{carBrand}</span>
               <span style={{
                 padding: '1px 6px',
                 background: 'rgba(184, 138, 217, 0.1)',
@@ -283,7 +290,7 @@ export default function FlightPlanner({ flightOptions }) {
                 alignItems: 'center',
                 gap: 3,
               }}>
-                <Star size={8} /> President&apos;s Club
+                <Star size={8} /> {carStatusLabel}
               </span>
             </div>
             <div style={{ fontSize: 11, color: colors.textMuted }}>
@@ -333,7 +340,7 @@ export default function FlightPlanner({ flightOptions }) {
             {formatDay(selectedOutDate)} — {formatDay(selectedRetDate)}
           </span>
           <div style={{ fontSize: 12, color: colors.textDim, marginTop: 4 }}>
-            {nights} night{nights !== 1 ? 's' : ''} in Melvin Village
+            {nights} night{nights !== 1 ? 's' : ''} in {lodgingLabel}
           </div>
         </div>
 
@@ -359,7 +366,7 @@ export default function FlightPlanner({ flightOptions }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: `1px solid ${colors.divider}` }}>
           <span style={{ fontSize: 13, color: colors.textMuted }}>
             <Car size={12} style={{ marginRight: 6, verticalAlign: -1 }} />
-            Avis rental ({carDays} days)
+            {carBrand} rental ({carDays} days)
           </span>
           <span style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.text }}>
             {carPrice ? `$${carPrice.toLocaleString()}` : 'N/A'}
@@ -381,7 +388,7 @@ export default function FlightPlanner({ flightOptions }) {
           </span>
         </div>
         <div style={{ textAlign: 'right', fontSize: 10, color: colors.textDark, marginTop: 2 }}>
-          Prices as of Apr 4, 2026 via Google Flights + Avis.com — subject to change
+          {priceAsOfNote}
         </div>
       </div>
     </div>

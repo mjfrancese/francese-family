@@ -5,7 +5,7 @@
     "dates": "Apr 17–20, 2026",
     "description": "Jacob York's world premiere play at Aurora Theatre. Staying with Jacob & Galen in Decatur.",
     "icon": "theater",
-    "status": "upcoming",
+    "status": "complete",
     "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
     "coordinates": { "lat": 33.749, "lng": -84.388 },
     "color": "#3b82f6"

@@ -1,0 +1,519 @@
+{
+  "slug": "st-augustine",
+  "meta": {
+    "title": "St. Augustine — Ryan Family Reunion",
+    "dates": "Jul 15–18, 2026",
+    "description": "Long weekend in St. Augustine with Meghan's family. Brett's family is local; Chris and Kim bringing their families too. 4 days of beach, cousins, and the oldest city in the U.S.",
+    "icon": "beach",
+    "status": "planning",
+    "travelers": ["Michael", "Meghan", "Kenna", "Louise"],
+    "coordinates": { "lat": 29.9012, "lng": -81.3124 },
+    "color": "#06b6d4"
+  },
+  "access": {
+    "mfrancese@gmail.com": { "role": "owner", "name": "Michael" },
+    "meghancryan@gmail.com": { "role": "owner", "name": "Meghan" }
+  },
+  "flightOptions": {
+    "passengers": "3 adults + 1 child",
+    "route": "STL ↔ JAX (4 pax)",
+    "lodgingLabel": "St. Augustine",
+    "carBrand": "Hertz",
+    "carStatusLabel": "President's Circle",
+    "rentalCarNote": "Std SUV (Blazer) — alts: Hertz Midsize $211 / Avis Std $244 / Costco SUV from $248",
+    "priceAsOfNote": "Prices as of Apr 26, 2026 via fli (Google Flights) + Hertz/Avis/Costco/Capital One Travel — subject to change",
+    "outbound": {
+      "2026-07-15": [
+        {
+          "airline": "WN",
+          "airport": "JAX",
+          "flightNum": "WN 3771 nonstop",
+          "depart": "10:15",
+          "arrive": "13:15",
+          "duration": "2h",
+          "price": 714,
+          "stops": 0
+        },
+        {
+          "airline": "DL",
+          "airport": "JAX",
+          "flightNum": "DL 1524+2356 via ATL",
+          "depart": "06:00",
+          "arrive": "10:43",
+          "duration": "3h 43m",
+          "price": 649,
+          "stops": 1
+        },
+        {
+          "airline": "DL",
+          "airport": "JAX",
+          "flightNum": "DL 1536+2923 via ATL",
+          "depart": "07:08",
+          "arrive": "12:00",
+          "duration": "3h 52m",
+          "price": 649,
+          "stops": 1
+        },
+        {
+          "airline": "AA",
+          "airport": "JAX",
+          "flightNum": "AA 712+2001 via DFW",
+          "depart": "07:31",
+          "arrive": "12:51",
+          "duration": "4h 20m",
+          "price": 649,
+          "stops": 1
+        },
+        {
+          "airline": "DL",
+          "airport": "JAX",
+          "flightNum": "DL 1571+2990 via ATL",
+          "depart": "09:24",
+          "arrive": "15:09",
+          "duration": "4h 45m",
+          "price": 649,
+          "stops": 1
+        }
+      ]
+    },
+    "return": {
+      "2026-07-18": [
+        {
+          "airline": "WN",
+          "airport": "JAX",
+          "flightNum": "WN 449 nonstop",
+          "depart": "18:20",
+          "arrive": "19:30",
+          "duration": "2h 10m",
+          "price": 754,
+          "stops": 0
+        },
+        {
+          "airline": "WN",
+          "airport": "JAX",
+          "flightNum": "WN 1957 nonstop",
+          "depart": "08:25",
+          "arrive": "09:35",
+          "duration": "2h 10m",
+          "price": 834,
+          "stops": 0
+        },
+        {
+          "airline": "DL",
+          "airport": "JAX",
+          "flightNum": "DL 2326+2700 via ATL",
+          "depart": "10:44",
+          "arrive": "14:27",
+          "duration": "4h 43m",
+          "price": 649,
+          "stops": 1
+        },
+        {
+          "airline": "DL",
+          "airport": "JAX",
+          "flightNum": "DL 2720+2833 via ATL",
+          "depart": "17:40",
+          "arrive": "20:38",
+          "duration": "3h 58m",
+          "price": 649,
+          "stops": 1
+        },
+        {
+          "airline": "AA",
+          "airport": "JAX",
+          "flightNum": "AA 1991+459 via CLT",
+          "depart": "19:56",
+          "arrive": "23:57",
+          "duration": "5h 1m",
+          "price": 649,
+          "stops": 1
+        }
+      ]
+    },
+    "rentalCarPricing": {
+      "2026-07-15_2026-07-18": {
+        "days": 4,
+        "total": 229
+      }
+    }
+  },
+  "bookings": [
+    {
+      "id": "outbound",
+      "category": "flight",
+      "label": "Southwest · STL → JAX (recommended)",
+      "status": "pending",
+      "carrier": "Southwest",
+      "detail": "Wed Jul 15 · WN 3771 · STL 10:15 AM → JAX 1:15 PM ET. Only nonstop option. ~2h flight.",
+      "date": "Jul 15",
+      "time": "10:15",
+      "duration": "2h · Nonstop",
+      "confirmation": "—",
+      "cost": "~$714 (4 × ~$178)",
+      "paidWith": "TBD",
+      "notes": "Only nonstop STL→JAX on Jul 15. 1-stop alternates start at $649 but add 2-4 hrs of connection time — not worth it with Louise. Book early — single nonstop daily, will sell out.",
+      "passengers": "Michael, Meghan, Kenna, Louise",
+      "order": 0
+    },
+    {
+      "id": "return",
+      "category": "flight",
+      "label": "Southwest · JAX → STL (recommended)",
+      "status": "pending",
+      "carrier": "Southwest",
+      "detail": "Sat Jul 18 · WN 449 · JAX 6:20 PM ET → STL 7:30 PM CT. Nonstop, 2h 10m. Late departure maximizes Saturday in St. Augustine.",
+      "date": "Jul 18",
+      "time": "18:20",
+      "duration": "2h 10m · Nonstop",
+      "confirmation": "—",
+      "cost": "~$754 (4 × ~$189)",
+      "paidWith": "TBD",
+      "notes": "Two WN nonstop returns: 8:25 AM (cuts Saturday short) or 6:20 PM (full day). The 6:20 PM is the better fit — lands STL ~7:30 PM, manageable bedtime for Louise.",
+      "passengers": "Michael, Meghan, Kenna, Louise",
+      "order": 1
+    },
+    {
+      "id": "car",
+      "category": "car",
+      "label": "Rental Car at JAX",
+      "status": "planning",
+      "carrier": "TBD — Capital One Travel / National / Hertz",
+      "detail": "Standard SUV (CR-V/RAV4 class). Pickup Jul 15 ~2:00 PM, return Jul 18 ~4:30 PM (90 min before flight).",
+      "date": "Jul 15–18",
+      "time": "14:00–16:30",
+      "duration": "3 days",
+      "confirmation": "—",
+      "cost": "~$320–400 estimate",
+      "paidWith": "Likely Capital One Venture X miles (like NH/Atlanta)",
+      "notes": "Recommended path: Capital One Travel (used for last 2 trips, miles redemption). Backup: National (Executive Elite free upgrade) or Hertz (President's Circle). Need a Standard SUV — 4 pax + Louise's car seat + 4 days of beach luggage. JAX → St. Augustine is ~50 min drive south.",
+      "alertNotes": [
+        "Compare across Capital One Travel, National, Hertz, Costco before booking",
+        "Bring Louise's car seat — rental companies are unreliable on car seats"
+      ],
+      "passengers": "Driver: Michael Francese",
+      "order": 2
+    },
+    {
+      "id": "lodging",
+      "category": "lodging",
+      "label": "Lodging in St. Augustine",
+      "status": "pending",
+      "carrier": "TBD",
+      "detail": "Coordinate with Brett — staying with him? Or group Airbnb / beach house?",
+      "date": "Jul 15–18",
+      "time": "—",
+      "duration": "3 nights",
+      "confirmation": "—",
+      "cost": "TBD",
+      "paidWith": "TBD",
+      "notes": "Meghan's brother Brett lives in St. Augustine. Kim and Chris also coming with families — a single beach-house rental near Vilano Beach or Crescent Beach could fit everyone if Brett has space limits.",
+      "passengers": "Michael, Meghan, Kenna, Louise",
+      "order": 3
+    }
+  ],
+  "timeline": [
+    {
+      "id": "day_wed",
+      "day": "Wed",
+      "dayNum": "15",
+      "month": "JUL",
+      "title": "Fly to Jacksonville + Drive to St. Augustine",
+      "section": "Travel Day",
+      "order": 0,
+      "events": [
+        { "time": "~07:00", "text": "Wake up, final pack, kids ready" },
+        { "time": "~08:00", "text": "Uber to STL airport" },
+        { "time": "10:15", "text": "✈ WN 3771 · STL → JAX (nonstop, 2h)", "status": "pending", "statusLabel": "Recommended" },
+        { "time": "13:15 ET", "text": "Land JAX. Walk to ground transport / car rental" },
+        { "time": "~14:00", "text": "🚗 Pick up rental car" },
+        { "time": "~14:30", "text": "Drive JAX → St. Augustine (~50 min, I-95 S to SR-16 E)" },
+        { "time": "~15:30", "text": "Arrive St. Augustine. Unpack, settle in" },
+        { "time": "Evening", "text": "Family dinner — see Brett & crew, casual catch-up" }
+      ],
+      "details": [
+        {
+          "icon": "🎒",
+          "title": "Prepare the Night Before",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "warn", "text": "<strong>SET ALARM: 10:15 AM Tue Jul 14</strong> — Southwest 24-hr check-in opens for boarding positions. Both Michael and Meghan check in simultaneously" },
+            { "type": "info", "text": "Pack swimsuits, sunscreen (SPF 50+), bug spray, hats, sunglasses for everyone" },
+            { "type": "info", "text": "Pack Louise's car seat (rental companies don't reliably stock them)" },
+            { "type": "info", "text": "Swim diapers for Louise if she's still in them" },
+            { "type": "info", "text": "Charge iPad + headphones for the flight + drive" }
+          ]
+        },
+        {
+          "icon": "✈️",
+          "title": "Flight Logistics",
+          "color": "#4a90d9",
+          "items": [
+            { "type": "info", "text": "Southwest WN 3771 · STL 10:15 AM → JAX 1:15 PM ET (nonstop, 2h)" },
+            { "type": "info", "text": "Time zone: STL is CT, JAX is ET — 1 hour ahead. Adjust kids' watches/phones" },
+            { "type": "tip", "text": "Southwest carry-on + personal item included on all fares. No bag fees" },
+            { "type": "warn", "text": "This is the only nonstop on Jul 15 — book early" }
+          ]
+        },
+        {
+          "icon": "🚗",
+          "title": "Drive to St. Augustine",
+          "color": "#4a90d9",
+          "items": [
+            { "type": "info", "text": "JAX → St. Augustine: 47 mi, ~50 min (I-95 S → SR-16 E or US-1 S)" },
+            { "type": "tip", "text": "Stop at Buc-ee's at Daytona Beach if you've never been (45 min south of St. A) — but only on a separate day, not arrival" },
+            { "type": "tip", "text": "Quick grocery run on the way: Publix on Anastasia Blvd or US-1 has everything for the weekend" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day_thu",
+      "day": "Thu",
+      "dayNum": "16",
+      "month": "JUL",
+      "title": "Beach Day with the Cousins",
+      "section": "St. Augustine",
+      "order": 1,
+      "events": [
+        { "time": "Morning", "text": "Breakfast at the house. Sunscreen on the kids early" },
+        { "time": "~10:00", "text": "🏖 Beach day — St. Augustine Beach or Crescent Beach" },
+        { "time": "~13:00", "text": "Lunch on the beach or back at the house. Louise nap" },
+        { "time": "Afternoon", "text": "Pool time / more beach / cousin time" },
+        { "time": "Evening", "text": "Family cookout / dinner together" }
+      ],
+      "details": [
+        {
+          "icon": "🏖",
+          "title": "Beach Picks",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "<strong>St. Augustine Beach:</strong> Wide, gentle, family-friendly. Pier at A St. has parking, restrooms, food. Best for kids" },
+            { "type": "tip", "text": "<strong>Crescent Beach:</strong> Quieter, can drive on the sand (Matanzas Inlet area). Good if a big family group wants room to spread" },
+            { "type": "tip", "text": "<strong>Vilano Beach:</strong> North of town, less crowded. Steeper drop-off so watch Louise" },
+            { "type": "info", "text": "July sea temp ~84°F. Air ~90°F. Plan beach for early morning or late afternoon — midday sun is brutal" }
+          ]
+        },
+        {
+          "icon": "⚠️",
+          "title": "Florida Beach Pitfalls",
+          "color": "#e8c55c",
+          "items": [
+            { "type": "warn", "text": "<strong>Sun:</strong> Reapply SPF every 90 min on the kids. Florida sun in July will burn through cheap sunscreen" },
+            { "type": "warn", "text": "<strong>Jellyfish + rip currents:</strong> Check daily flag at the lifeguard stand. Purple flag = stingers, red = rip current" },
+            { "type": "warn", "text": "<strong>Hydration:</strong> Bring a cooler with water + electrolytes. Heat exhaustion sneaks up on toddlers" },
+            { "type": "warn", "text": "<strong>Afternoon storms:</strong> July is daily-thunderstorm season. Pop-ups around 3-5 PM. Have a backup indoor plan" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day_fri",
+      "day": "Fri",
+      "dayNum": "17",
+      "month": "JUL",
+      "title": "Old Town + Castillo (or another beach day)",
+      "section": "St. Augustine",
+      "order": 2,
+      "events": [
+        { "time": "Morning", "text": "Breakfast. Decide: Old Town or beach?" },
+        { "time": "~10:00", "text": "Castillo de San Marcos / Old Town walking tour OR beach day round 2" },
+        { "time": "~13:00", "text": "Lunch in Old Town (Columbia, Catch 27, or food truck) — Louise nap if needed" },
+        { "time": "Afternoon", "text": "Pool / pirate museum / Old Jail / sea turtle hospital — kid-friendly options" },
+        { "time": "Evening", "text": "Family dinner — Cap's on the Water or back at the house" }
+      ],
+      "details": [
+        {
+          "icon": "🏰",
+          "title": "Old Town Highlights",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "tip", "text": "<strong>Castillo de San Marcos:</strong> Spanish stone fort from 1672. National Park, $15/adult, kids under 16 free. Great views from the gun deck. ~1.5 hrs" },
+            { "type": "tip", "text": "<strong>St. George Street:</strong> Pedestrian-only Old Town main drag. Shops, ice cream, street performers. Walkable with Louise" },
+            { "type": "tip", "text": "<strong>Old Trolley Tour:</strong> Hop-on/hop-off, 22 stops. Great way to do Old Town with a tired toddler — A/C bus" },
+            { "type": "tip", "text": "<strong>Pirate & Treasure Museum:</strong> Kenna will love it. Real pirate artifacts, interactive. ~$15/adult" }
+          ]
+        },
+        {
+          "icon": "🦌",
+          "title": "Kid-Friendly Alternatives",
+          "color": "#5ce892",
+          "items": [
+            { "type": "tip", "text": "<strong>St. Augustine Alligator Farm:</strong> 100+ alligators, croc feeding shows. ~$30/adult, $20/child. Half-day attraction" },
+            { "type": "tip", "text": "<strong>Marineland:</strong> Dolphin encounters (pricey but unforgettable). 20 min south of St. A" },
+            { "type": "tip", "text": "<strong>Whetstone Chocolate Factory tour:</strong> 30 min, free samples. Cool indoor break" },
+            { "type": "tip", "text": "<strong>Anastasia State Park:</strong> Calm-water lagoon (better for Louise than ocean), trails, beach access. $8/car" }
+          ]
+        },
+        {
+          "icon": "🍽",
+          "title": "Dinner Picks",
+          "color": "#4a90d9",
+          "items": [
+            { "type": "tip", "text": "<strong>Cap's on the Water:</strong> Sunset on the Intracoastal, fresh seafood, kid menu. Reservation needed" },
+            { "type": "tip", "text": "<strong>Catch 27:</strong> Locally caught fish, Old Town. Smaller, more refined" },
+            { "type": "tip", "text": "<strong>The Floridian:</strong> Farm-to-table, vegetarian-friendly, lively" },
+            { "type": "tip", "text": "Or just cook at the house — easier with toddlers and a big family group" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day_sat",
+      "day": "Sat",
+      "dayNum": "18",
+      "month": "JUL",
+      "title": "Last Beach Morning + Fly Home",
+      "section": "Return Day",
+      "order": 3,
+      "events": [
+        { "time": "Morning", "text": "Last beach swim. Soak up the salt water" },
+        { "time": "~12:00", "text": "Lunch + start packing" },
+        { "time": "~14:00", "text": "Showers, final pack, sweep the house" },
+        { "time": "~15:30", "text": "🚗 Drive St. Augustine → JAX (~50 min)" },
+        { "time": "~16:30", "text": "Return rental car at JAX" },
+        { "time": "~17:00", "text": "Through TSA, dinner at JAX, gate" },
+        { "time": "18:20", "text": "✈ WN 449 · JAX → STL (nonstop)", "status": "pending", "statusLabel": "Recommended" },
+        { "time": "19:30 CT", "text": "Land STL. Uber home" }
+      ],
+      "details": [
+        {
+          "icon": "⏰",
+          "title": "Saturday Timing",
+          "color": "#e8c55c",
+          "items": [
+            { "type": "warn", "text": "<strong>Leave St. Augustine by 3:30 PM.</strong> 50 min drive + 30 min car return + 1 hr TSA buffer = at gate by 5:50 PM for 6:20 PM flight" },
+            { "type": "info", "text": "JAX is a small, easy airport — 30 min from car return to gate is realistic on a Saturday evening" },
+            { "type": "tip", "text": "Check Saturday afternoon I-95 traffic — usually fine northbound, but storms can slow it" }
+          ]
+        },
+        {
+          "icon": "🎒",
+          "title": "Departure Checklist",
+          "color": "#b88ad9",
+          "items": [
+            { "type": "info", "text": "Sweep the house: chargers, swimsuits, sand toys, beach towels, sunscreen" },
+            { "type": "info", "text": "Empty fridge if it's a rental — consolidate or trash perishables" },
+            { "type": "info", "text": "Get Louise's car seat back in the rental for the JAX drive" },
+            { "type": "warn", "text": "Last-minute pickle: Louise will be sandy + tired. Quick rinse + change of clothes before the airport" }
+          ]
+        },
+        {
+          "icon": "✈️",
+          "title": "Flight Home",
+          "color": "#4a90d9",
+          "items": [
+            { "type": "info", "text": "Southwest WN 449 · JAX 6:20 PM → STL 7:30 PM CT (nonstop, 2h 10m)" },
+            { "type": "info", "text": "Southwest open seating — check in at 6:20 PM ET on Fri 7/17 (24 hr before)" },
+            { "type": "tip", "text": "Family boarding for Louise: between A and B. No need to scramble for early A positions" }
+          ]
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "confirmed": [],
+    "estimated": [
+      { "item": "Outbound flight (WN 3771, 4 pax)", "cost": "~$714", "note": "STL→JAX nonstop" },
+      { "item": "Return flight (WN 449, 4 pax)", "cost": "~$754", "note": "JAX→STL nonstop" },
+      { "item": "Rental car (Standard SUV, 3 days)", "cost": "~$320–400", "note": "or ~32–40K Venture X miles" },
+      { "item": "Lodging (3 nights)", "cost": "TBD", "note": "depends on Brett's place vs. group rental" },
+      { "item": "Groceries + cookout supplies", "cost": "~$150–250", "note": "shared with family" },
+      { "item": "Dining out (1–2 meals)", "cost": "~$150–250", "note": "estimate" },
+      { "item": "Activities (Castillo, Pirate Museum, Alligator Farm)", "cost": "~$50–150", "note": "depends what you do" },
+      { "item": "Gas (rental car)", "cost": "~$30–40", "note": "JAX↔St. Augustine is short" }
+    ],
+    "confirmedTotal": "$0 — nothing booked yet",
+    "estimatedTotal": "~$2,170–2,560 (excl. lodging)",
+    "savingsNote": "If Brett hosts: save $400-800 on lodging. If Capital One miles for rental: save ~$320-400 cash."
+  },
+  "checklist": [
+    {
+      "id": "check_dates",
+      "text": "Confirm Jul 15–18 with Brett, Chris, Kim — everyone aligned?",
+      "done": false,
+      "urgent": true,
+      "group": "urgent",
+      "order": 0
+    },
+    {
+      "id": "check_lodging",
+      "text": "Decide lodging: Brett's place vs. group beach house rental",
+      "done": false,
+      "urgent": true,
+      "group": "urgent",
+      "order": 1
+    },
+    {
+      "id": "check_flights",
+      "text": "Book Southwest nonstops — WN 3771 out, WN 449 return. Single nonstop daily, will sell out",
+      "done": false,
+      "urgent": true,
+      "group": "urgent",
+      "order": 2
+    },
+    {
+      "id": "check_car",
+      "text": "Book rental car at JAX — compare Capital One Travel (miles), National (Executive Elite), Hertz (President's Circle), Costco",
+      "done": false,
+      "urgent": true,
+      "group": "urgent",
+      "order": 3
+    },
+    {
+      "id": "check_seats",
+      "text": "If booking via points: research which fare class works (Wanna Get Away+ for Cash + Points)",
+      "done": false,
+      "urgent": false,
+      "group": "this-week",
+      "order": 4
+    },
+    {
+      "id": "check_carseat",
+      "text": "Pack Louise's car seat for the rental — don't rely on rental company stock",
+      "done": false,
+      "urgent": false,
+      "group": "before-trip",
+      "order": 5
+    },
+    {
+      "id": "check_beach",
+      "text": "Beach gear: sunscreen SPF 50+, bug spray, swim diapers, hats, sand toys, beach umbrella",
+      "done": false,
+      "urgent": false,
+      "group": "before-trip",
+      "order": 6
+    },
+    {
+      "id": "check_dinner_plan",
+      "text": "Coordinate group meals with the Ryans — who's cooking which night?",
+      "done": false,
+      "urgent": false,
+      "group": "before-trip",
+      "order": 7
+    },
+    {
+      "id": "check_checkin_out",
+      "text": "Set alarm Tue Jul 14, 10:15 AM — Southwest 24-hr check-in for outbound (best boarding positions)",
+      "done": false,
+      "urgent": false,
+      "group": "before-trip",
+      "order": 8
+    },
+    {
+      "id": "check_checkin_ret",
+      "text": "Set alarm Fri Jul 17, 6:20 PM ET — Southwest 24-hr check-in for return",
+      "done": false,
+      "urgent": false,
+      "group": "before-trip",
+      "order": 9
+    },
+    {
+      "id": "check_brett_dinner",
+      "text": "Plan one dinner out — Cap's on the Water sunset reservation if going",
+      "done": false,
+      "urgent": false,
+      "group": "before-trip",
+      "order": 10
+    }
+  ]
+}
