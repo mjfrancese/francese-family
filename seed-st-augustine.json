@@ -135,7 +135,117 @@
         "days": 4,
         "total": 229
       }
-    }
+    },
+    "rentalCarOptions": [
+      {
+        "id": "hertz_blazer",
+        "brand": "Hertz",
+        "vehicle": "Std 5-Pax SUV (Chevy Blazer)",
+        "loyalty": "President's Circle",
+        "pricePerDay": 40,
+        "total": 229,
+        "days": 4,
+        "tags": ["Recommended"],
+        "notes": "Cheapest Std SUV; PC = skip-counter + likely free upgrade"
+      },
+      {
+        "id": "hertz_compass",
+        "brand": "Hertz",
+        "vehicle": "Midsize SUV AWD (Jeep Compass)",
+        "loyalty": "President's Circle",
+        "pricePerDay": 36,
+        "total": 211,
+        "days": 4,
+        "tags": ["Cheapest", "Stretch"],
+        "notes": "Stretch — book Midsize, PC will likely upgrade you"
+      },
+      {
+        "id": "hertz_edge",
+        "brand": "Hertz",
+        "vehicle": "Std SUV AWD (Ford Edge)",
+        "loyalty": "President's Circle",
+        "pricePerDay": 42,
+        "total": 239,
+        "days": 4,
+        "notes": "AWD upgrade vs Blazer for $10 more"
+      },
+      {
+        "id": "hertz_pathfinder",
+        "brand": "Hertz",
+        "vehicle": "7-Pax Std SUV (Nissan Pathfinder)",
+        "loyalty": "President's Circle",
+        "pricePerDay": 44,
+        "total": 249,
+        "days": 4,
+        "notes": "More room — overkill for 4 pax"
+      },
+      {
+        "id": "hertz_pacifica",
+        "brand": "Hertz",
+        "vehicle": "Minivan (Chrysler Pacifica)",
+        "loyalty": "President's Circle",
+        "pricePerDay": 55,
+        "total": 303,
+        "days": 4,
+        "notes": "Maximum sliding-door + cargo space"
+      },
+      {
+        "id": "avis_intermediate_suv",
+        "brand": "Avis",
+        "vehicle": "Intermediate SUV",
+        "loyalty": "President's Club",
+        "pricePerDay": 55,
+        "total": 220,
+        "days": 4,
+        "notes": "Smaller than Std (CR-V class)"
+      },
+      {
+        "id": "avis_standard_suv",
+        "brand": "Avis",
+        "vehicle": "Standard SUV",
+        "loyalty": "President's Club",
+        "pricePerDay": 61,
+        "total": 244,
+        "days": 4
+      },
+      {
+        "id": "avis_full_size_suv",
+        "brand": "Avis",
+        "vehicle": "Full-Size SUV (Tahoe class)",
+        "loyalty": "President's Club",
+        "pricePerDay": 95,
+        "total": 380,
+        "days": 4,
+        "notes": "Big — only if you want max space"
+      },
+      {
+        "id": "costco_suv",
+        "brand": "Costco Travel",
+        "vehicle": "SUV (cheapest aggregator)",
+        "loyalty": "Costco member",
+        "total": 248,
+        "days": 4,
+        "notes": "Aggregates Alamo / Avis / Budget / Enterprise"
+      },
+      {
+        "id": "capone_midsize_suv",
+        "brand": "Capital One Travel",
+        "vehicle": "Midsize SUV (any agency)",
+        "loyalty": "Venture X · 10X miles back",
+        "total": 248,
+        "days": 4,
+        "notes": "24,800 miles redemption — Meghan has 22.3K (short)"
+      },
+      {
+        "id": "capone_standard_suv",
+        "brand": "Capital One Travel",
+        "vehicle": "Standard SUV (any agency)",
+        "loyalty": "Venture X · 10X miles back",
+        "total": 275,
+        "days": 4,
+        "notes": "27,500 miles redemption (or pay cash)"
+      }
+    ]
   },
   "bookings": [
     {
