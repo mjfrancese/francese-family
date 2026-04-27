@@ -14,6 +14,61 @@
     "mfrancese@gmail.com": { "role": "owner", "name": "Michael" },
     "meghancryan@gmail.com": { "role": "owner", "name": "Meghan" }
   },
+  "travelers": {
+    "michael": {
+      "name": "Michael Francese",
+      "shortName": "Michael",
+      "order": 1,
+      "trustedTraveler": {
+        "ktn": "170118414",
+        "globalEntryExpires": "2031-06-27"
+      },
+      "loyalty": {
+        "Southwest Rapid Rewards": "20739436675",
+        "Delta SkyMiles": "9206206949",
+        "American AAdvantage": "55KW5Y4",
+        "British Airways Executive Club": "13470531",
+        "Club Eurostar": "308381100 50149485"
+      }
+    },
+    "meghan": {
+      "name": "Meghan Ryan",
+      "shortName": "Meghan",
+      "order": 2,
+      "trustedTraveler": {
+        "ktn": "170122305",
+        "globalEntryExpires": "2031-07-31"
+      },
+      "loyalty": {
+        "Southwest Rapid Rewards": "20581721893",
+        "British Airways Executive Club": "10565941"
+      }
+    },
+    "kenna": {
+      "name": "Kenna Holland",
+      "shortName": "Kenna",
+      "order": 3,
+      "trustedTraveler": {
+        "ktn": "170290523",
+        "globalEntryExpires": "2031-05-23"
+      },
+      "loyalty": {
+        "Southwest Rapid Rewards": "20629107133"
+      }
+    },
+    "louise": {
+      "name": "Louise Ryan",
+      "shortName": "Louise",
+      "order": 4,
+      "trustedTraveler": {
+        "ktn": "170127606",
+        "globalEntryExpires": "2031-10-20"
+      },
+      "loyalty": {
+        "Southwest Rapid Rewards": "22662008644"
+      }
+    }
+  },
   "bookings": [
     {
       "category": "flight",

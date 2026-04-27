@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { colors, fonts } from '../theme'
 import StatusBadge from './StatusBadge'
 import InfoRow from './InfoRow'
-import { Plane, Car, Hotel, Theater, Train, FerrisWheel, Utensils, Bus, ClipboardList, AlertTriangle, ChevronRight } from 'lucide-react'
+import { Plane, Car, Hotel, Theater, Train, FerrisWheel, Utensils, Bus, ClipboardList, AlertTriangle, ChevronRight, ShieldCheck } from 'lucide-react'
 
 const categoryIcons = {
   flight: Plane,
@@ -98,6 +98,38 @@ export default function BookingCard({ booking }) {
               lineHeight: 1.6,
             }}>
               {booking.notes}
+            </div>
+          )}
+          {booking.prefilled && (booking.prefilled.ktn || booking.prefilled.passport) && (
+            <div style={{
+              marginTop: 8,
+              padding: '8px 12px',
+              background: 'rgba(45, 107, 69, 0.10)',
+              border: `1px solid ${colors.status.confirmed.border}`,
+              borderRadius: 4,
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                fontSize: 10,
+                color: colors.status.confirmed.color,
+                textTransform: 'uppercase',
+                letterSpacing: 1,
+                fontWeight: 600,
+                marginBottom: booking.prefilled.note ? 4 : 0,
+              }}>
+                <ShieldCheck size={11} />
+                {[
+                  booking.prefilled.ktn && 'KTN entered',
+                  booking.prefilled.passport && 'Passport entered',
+                ].filter(Boolean).join(' · ')}
+              </div>
+              {booking.prefilled.note && (
+                <div style={{ fontSize: 11, color: colors.textMuted, lineHeight: 1.5 }}>
+                  {booking.prefilled.note}
+                </div>
+              )}
             </div>
           )}
           {booking.alertNotes && booking.alertNotes.length > 0 && (
