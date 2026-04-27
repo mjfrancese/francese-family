@@ -28,6 +28,61 @@
       "name": "Meghan"
     }
   },
+  "travelers": {
+    "michael": {
+      "name": "Michael Francese",
+      "shortName": "Michael",
+      "order": 1,
+      "trustedTraveler": {
+        "ktn": "170118414",
+        "globalEntryExpires": "2031-06-27"
+      },
+      "loyalty": {
+        "Southwest Rapid Rewards": "20739436675",
+        "Delta SkyMiles": "9206206949",
+        "American AAdvantage": "55KW5Y4",
+        "British Airways Executive Club": "13470531",
+        "Club Eurostar": "308381100 50149485"
+      }
+    },
+    "meghan": {
+      "name": "Meghan Ryan",
+      "shortName": "Meghan",
+      "order": 2,
+      "trustedTraveler": {
+        "ktn": "170122305",
+        "globalEntryExpires": "2031-07-31"
+      },
+      "loyalty": {
+        "Southwest Rapid Rewards": "20581721893",
+        "British Airways Executive Club": "10565941"
+      }
+    },
+    "kenna": {
+      "name": "Kenna Holland",
+      "shortName": "Kenna",
+      "order": 3,
+      "trustedTraveler": {
+        "ktn": "170290523",
+        "globalEntryExpires": "2031-05-23"
+      },
+      "loyalty": {
+        "Southwest Rapid Rewards": "20629107133"
+      }
+    },
+    "louise": {
+      "name": "Louise Ryan",
+      "shortName": "Louise",
+      "order": 4,
+      "trustedTraveler": {
+        "ktn": "170127606",
+        "globalEntryExpires": "2031-10-20"
+      },
+      "loyalty": {
+        "Southwest Rapid Rewards": "22662008644"
+      }
+    }
+  },
   "bookings": [
     {
       "category": "flight",
@@ -40,7 +95,13 @@
       "confirmation": "YUAD5K",
       "cost": "260,000 Avios + $1,083.86",
       "paidWith": "Avios + taxes",
-      "notes": "Heathrow Terminal 5. World Traveller (economy)."
+      "notes": "Heathrow Terminal 5. World Traveller (economy).",
+      "prefilled": {
+        "ktn": true,
+        "passport": true,
+        "enteredOn": "2026-04-27",
+        "note": "KTN entered for all 4. Verify TSA PRE✓ prints on outbound boarding pass when online check-in opens (~24h before BA220 on Jun 6)."
+      }
     },
     {
       "category": "train",
@@ -53,7 +114,12 @@
       "confirmation": "QRXPZK",
       "cost": "$368 (Apple Pay)",
       "paidWith": "Apple Pay",
-      "notes": "Kenna API is BLOCKED \u2014 passport pending. Louise API completed."
+      "notes": "Passport details entered for all 4 travelers.",
+      "prefilled": {
+        "passport": true,
+        "enteredOn": "2026-04-27",
+        "note": "All 4 Advance Passenger Information records complete via Eurostar Manage Booking."
+      }
     },
     {
       "category": "transport",
@@ -1858,7 +1924,7 @@
   "checklist": [
     {
       "id": "check_1",
-      "text": "Global Entry \u2014 Michael, Meghan, Louise \u2014 APPROVED. Michael: 170118414 (exp Oct 2031), Meghan: 170122305, Louise: 170127606 (exp Oct 2031). Use PASS IDs as Known Traveler Numbers when booking flights. Includes TSA PreCheck.",
+      "text": "Global Entry \u2014 all 4 travelers APPROVED. KTNs and expirations stored in Profile tab. Use as Known Traveler Number on every flight booking; includes TSA PreCheck.",
       "done": true,
       "urgent": false,
       "group": "completed",
@@ -1866,10 +1932,10 @@
     },
     {
       "id": "check_2",
-      "text": "\u26a0\ufe0f Global Entry \u2014 Kenna \u2014 Passport arriving Apr 14! Once in hand: apply at ttp.dhs.gov (free for minors), get conditional approval, schedule interview. All must happen before Jun 7. If Kenna doesn't have GE, one parent must go through regular customs with her on return.",
-      "done": false,
-      "urgent": true,
-      "group": "this-week",
+      "text": "Global Entry \u2014 Kenna \u2014 APPROVED. KTN: 170290523 (exp May 2031). All 4 travelers now have Global Entry + TSA PreCheck. See Profile tab for full IDs.",
+      "done": true,
+      "urgent": false,
+      "group": "completed",
       "order": 2
     },
     {
@@ -1890,10 +1956,10 @@
     },
     {
       "id": "check_5",
-      "text": "Kenna's passport \u2014 ARRIVING Apr 14! \u2014 Passport expected in mail. Once received: immediately start UK ETA, Eurostar API, BA Passenger Info, and Global Entry applications.",
-      "done": false,
-      "urgent": true,
-      "group": "this-week",
+      "text": "Kenna's passport \u2014 RECEIVED. UK ETA, Eurostar API, BA APIS, and Global Entry all complete. See Profile tab and individual booking cards.",
+      "done": true,
+      "urgent": false,
+      "group": "completed",
       "order": 5
     },
     {
@@ -1922,18 +1988,18 @@
     },
     {
       "id": "check_8",
-      "text": "Eurostar API for Kenna Holland \u2014 eurostar.com \u2192 Manage Booking \u2192 QRXPZK. BLOCKED until passport arrives.",
-      "done": false,
+      "text": "Eurostar API \u2014 passports entered for all 4 (eurostar.com \u2192 Manage Booking \u2192 QRXPZK).",
+      "done": true,
       "urgent": false,
-      "group": "april",
+      "group": "completed",
       "order": 8
     },
     {
       "id": "check_9",
-      "text": "BA Advance Passenger Info \u2014 all 4 \u2014 ba.com \u2192 Manage My Booking \u2192 YUAD5K. Passport + contact details for each passenger.",
-      "done": false,
+      "text": "BA Advance Passenger Info \u2014 all 4 \u2014 passport + KTN entered (ba.com \u2192 Manage My Booking \u2192 YUAD5K). Verify TSA PRE\u2713 prints when boarding pass releases ~24h before BA220.",
+      "done": true,
       "urgent": false,
-      "group": "april",
+      "group": "completed",
       "order": 9
     },
     {
@@ -1946,10 +2012,10 @@
     },
     {
       "id": "check_11",
-      "text": "Notify Capital One (Venture X) of travel \u2014 Set travel notifications for UK and France, June 7-16. Prevents fraud blocks on international purchases. No foreign transaction fees on Venture X.",
-      "done": false,
+      "text": "Travel notifications \u2014 not required. Capital One (and Chase / Amex) no longer use travel notices; their fraud systems pick up itinerary signals automatically. No foreign transaction fees on Venture X.",
+      "done": true,
       "urgent": false,
-      "group": "april",
+      "group": "completed",
       "order": 11
     },
     {
@@ -2090,10 +2156,10 @@
     },
     {
       "id": "check_29",
-      "text": "Passports for all 4 \u2014 verify before leaving \u2014 Michael \u2705, Meghan \u2705, Louise \u2705, Kenna \u26a0\ufe0f (still pending \u2014 status: In Process Again as of ~Mar 28. Locator: 433376153). All 4 needed for BA flights, Eurostar, and UK ETA.",
-      "done": false,
+      "text": "Passports for all 4 \u2014 IN HAND \u2014 Michael, Meghan, Louise, Kenna all received. Bring physical passports; APIS/ETA already on file with BA, Eurostar, and UK ETA.",
+      "done": true,
       "urgent": false,
-      "group": "packing",
+      "group": "completed",
       "order": 29
     },
     {
@@ -2207,6 +2273,30 @@
       "urgent": false,
       "group": "completed",
       "order": 43
+    },
+    {
+      "id": "check_45",
+      "text": "Verify TSA PRE\u2713 on BA boarding passes \u2014 Online check-in opens ~24h before BA220 (Jun 6). Confirm 'TSA PRE\u2713' prints on the outbound pass and the GE/Trusted Traveler indicator on the return. If missing, call BA before heading to STL.",
+      "done": false,
+      "urgent": false,
+      "group": "june",
+      "order": 45
+    },
+    {
+      "id": "check_46",
+      "text": "Disneyland Paris online check-in \u2014 Window opens ~7 days before arrival (around Jun 6 for the Jun 13 Dream Castle stay). Disneyland Paris app \u2192 check in for 32984124 + H-DKH4WQD368V2. Activates digital MagicPass + meal vouchers + park tickets.",
+      "done": false,
+      "urgent": false,
+      "group": "june",
+      "order": 46
+    },
+    {
+      "id": "check_47",
+      "text": "State Department STEP enrollment \u2014 Free, 5 min \u2014 step.state.gov. Lets the embassy reach you in an emergency and emails travel advisories. Worth doing for both UK and France legs.",
+      "done": false,
+      "urgent": false,
+      "group": "may",
+      "order": 47
     }
   ]
 }

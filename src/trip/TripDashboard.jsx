@@ -5,11 +5,12 @@ import { useTripData } from '../hooks/useTripData'
 import { useChecklist } from '../hooks/useChecklist'
 import { useAccess } from '../hooks/useAccess'
 import { colors, fonts, styles } from '../theme'
-import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Settings, Plane } from 'lucide-react'
+import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Settings, Plane, ShieldCheck } from 'lucide-react'
 import DayByDay from './DayByDay'
 import Reservations from './Reservations'
 import Budget from './Budget'
 import Checklist from './Checklist'
+import TravelProfile from './TravelProfile'
 import SharePanel from '../components/SharePanel'
 import TripIcon from '../components/TripIcon'
 import TripSettings from '../components/TripSettings'
@@ -21,6 +22,7 @@ const TABS = [
   { key: 'reservations', label: 'Reservations', Icon: ClipboardList },
   { key: 'budget', label: 'Budget', Icon: DollarSign },
   { key: 'todo', label: 'To Do', Icon: CheckSquare },
+  { key: 'profile', label: 'Profile', Icon: ShieldCheck },
   { key: 'flights', label: 'Flights', Icon: Plane },
 ]
 
@@ -28,7 +30,7 @@ export default function TripDashboard() {
   const { slug } = useParams()
   const navigate = useNavigate()
   const { user } = useAuth()
-  const { meta, timeline, bookings, budget, flightOptions, loading: dataLoading } = useTripData(slug)
+  const { meta, timeline, bookings, budget, flightOptions, travelers, loading: dataLoading } = useTripData(slug)
   const { items: checklistItems, loading: checkLoading, toggle } = useChecklist(slug)
   const { hasAccess, isOwner, accessList, loading: accessLoading, addAccess, removeAccess } = useAccess(slug, user)
   const [activeTab, setActiveTab] = useState('daybyday')
@@ -70,8 +72,13 @@ export default function TripDashboard() {
     )
   }
 
-  // Only show flights tab if trip has flight options (planning mode)
-  const availableTabs = flightOptions ? TABS : TABS.filter(t => t.key !== 'flights')
+  // Hide flights tab unless trip has flight options (planning mode)
+  // Hide profile tab unless trip has traveler profiles
+  const availableTabs = TABS.filter(t => {
+    if (t.key === 'flights') return !!flightOptions
+    if (t.key === 'profile') return !!travelers
+    return true
+  })
 
   const doneCount = checklistItems.filter(i => i.done).length
 
@@ -213,6 +220,7 @@ export default function TripDashboard() {
         {activeTab === 'reservations' && <Reservations bookings={bookings} />}
         {activeTab === 'budget' && <Budget budget={budget} />}
         {activeTab === 'todo' && <Checklist items={checklistItems} toggle={toggle} />}
+        {activeTab === 'profile' && <TravelProfile travelers={travelers} />}
         {activeTab === 'flights' && (
           flightOptions
             ? <FlightPlanner flightOptions={flightOptions} />

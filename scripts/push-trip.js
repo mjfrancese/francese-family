@@ -103,6 +103,10 @@ function transformData(data, isNew) {
     result.flightOptions = data.flightOptions
   }
 
+  if (data.travelers) {
+    result.travelers = data.travelers
+  }
+
   return result
 }
 

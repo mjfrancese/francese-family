@@ -3,7 +3,7 @@ import { ref, get } from 'firebase/database'
 import { db } from '../firebase'
 
 export function useTripData(slug) {
-  const [data, setData] = useState({ meta: null, timeline: [], bookings: [], budget: null, flightOptions: null })
+  const [data, setData] = useState({ meta: null, timeline: [], bookings: [], budget: null, flightOptions: null, travelers: null })
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export function useTripData(slug) {
         const raw = snapshot.val()
 
         if (!raw) {
-          setData({ meta: null, timeline: [], bookings: [], budget: null })
+          setData({ meta: null, timeline: [], bookings: [], budget: null, flightOptions: null, travelers: null })
           setLoading(false)
           return
         }
@@ -36,6 +36,7 @@ export function useTripData(slug) {
           bookings,
           budget: raw.budget || null,
           flightOptions: raw.flightOptions || null,
+          travelers: raw.travelers || null,
         })
       } catch (err) {
         console.error('Failed to load trip data:', err)
