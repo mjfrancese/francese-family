@@ -10,12 +10,20 @@ import NewTripForm from './NewTripForm'
 import StatusBadge from '../components/StatusBadge'
 import TripIcon from '../components/TripIcon'
 
+function getTodayDateStr() {
+  const now = new Date()
+  const chicagoStr = now.toLocaleString('en-US', { timeZone: 'America/Chicago' })
+  const chicagoDate = new Date(chicagoStr)
+  return chicagoDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
+}
+
 export default function Landing() {
   const { user, signOut } = useAuth()
   const { trips, loading } = useTrips(user)
   const navigate = useNavigate()
   const [showNewTrip, setShowNewTrip] = useState(false)
   const canCreate = user && isOwnerEmail(user.email)
+  const todayDateStr = getTodayDateStr()
 
   return (
     <div style={{ minHeight: '100vh', background: colors.bg, fontFamily: fonts.body }}>
@@ -109,8 +117,52 @@ export default function Landing() {
         </div>
       </header>
 
+      {/* Today's Brief Card */}
+      <div style={{ padding: '20px 24px 0' }}>
+        <div
+          onClick={() => navigate('/today')}
+          style={{
+            background: 'linear-gradient(135deg, #1a2040 0%, #141420 100%)',
+            border: `1px solid ${colors.accent}44`,
+            borderRadius: 12,
+            padding: '16px 20px',
+            cursor: 'pointer',
+            marginBottom: 16,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            transition: 'opacity 0.15s',
+          }}
+          onMouseOver={e => e.currentTarget.style.opacity = '0.85'}
+          onMouseOut={e => e.currentTarget.style.opacity = '1'}
+        >
+          <div>
+            <div style={{
+              fontSize: 18,
+              fontWeight: 700,
+              color: colors.text,
+              fontFamily: fonts.body,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              marginBottom: 4,
+            }}>
+              ☀️ Today's Brief
+            </div>
+            <div style={{ color: colors.textDim, fontSize: 13 }}>{todayDateStr}</div>
+          </div>
+          <div style={{
+            fontSize: 22,
+            color: colors.accent,
+            opacity: 0.7,
+          }}>
+            ›
+          </div>
+        </div>
+      </div>
+
       {/* Map */}
-      <div style={{ padding: '32px 24px 16px' }}>
+      <div style={{ padding: '16px 24px 16px' }}>
         <WorldMap trips={trips} />
       </div>
 

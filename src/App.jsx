@@ -4,6 +4,7 @@ import LoginPage from './auth/LoginPage'
 import Landing from './landing/Landing'
 import TripDashboard from './trip/TripDashboard'
 import ImportTool from './admin/ImportTool'
+import TodayDashboard from './today/TodayDashboard'
 import { isOwnerEmail } from './firebase'
 import { colors } from './theme'
 
@@ -38,6 +39,9 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={user ? <Landing /> : <LoginPage />} />
+      <Route path="/today" element={
+        <ProtectedRoute><TodayDashboard /></ProtectedRoute>
+      } />
       <Route path="/trip/:slug" element={
         <ProtectedRoute><TripDashboard /></ProtectedRoute>
       } />
