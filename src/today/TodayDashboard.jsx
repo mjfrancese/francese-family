@@ -11,7 +11,7 @@ import LoopsSection from './LoopsSection'
 import TripCountdowns from './TripCountdowns'
 
 const DB_URL = import.meta.env.VITE_FIREBASE_DATABASE_URL
-const DB_SECRET=import...CRET
+const DB_SECRET = import.meta.env.VITE_FIREBASE_DATABASE_SECRET
 
 async function firebaseRestPut(path, value) {
   const url = `${DB_URL}/${path}.json?auth=${DB_SECRET}`
