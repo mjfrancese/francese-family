@@ -10,6 +10,10 @@ import ProjectPulse from './ProjectPulse'
 import LoopsSection from './LoopsSection'
 import HouseholdSection from './HouseholdSection'
 import TripCountdowns from './TripCountdowns'
+import LiturgicalBanner from './LiturgicalBanner'
+import TomorrowPreview from './TomorrowPreview'
+import DinnerPlanner from './DinnerPlanner'
+import TomorrowIntention from './TomorrowIntention'
 
 const DB_URL = import.meta.env.VITE_FIREBASE_DATABASE_URL
 const DB_SECRET = import.meta.env.VITE_FIREBASE_DATABASE_SECRET
@@ -31,11 +35,21 @@ async function firebaseRestPut(path, value) {
 export default function TodayDashboard() {
   const { data: rawData, loading, error, todayDate, viewerKey } = useTodayData()
   const [localData, setLocalData] = useState(null)
+  const [dinnerData, setDinnerData] = useState(null)
+
+  // isEvening: true if current Chicago time is 7pm or later
+  const currentHour = parseInt(new Date().toLocaleString('en-US', { timeZone: 'America/Chicago', hour: 'numeric', hour12: false }))
+  const isEvening = currentHour >= 19
 
   const data = localData || rawData
 
   // viewerCalendar: prefer per-user calendar, fall back to global
   const viewerCalendar = data?.users?.[viewerKey]?.calendar || data?.calendar || []
+
+  // Sync dinnerData from Firebase data
+  if (data?.dinners && !dinnerData) {
+    setDinnerData(data.dinners)
+  }
 
   // hasKidLogistics: at least one unconfirmed logistics entry
   const hasKidLogistics = data?.kids && Object.values(data.kids).some(
@@ -180,6 +194,25 @@ export default function TodayDashboard() {
     }
   }
 
+  async function handleDinnerUpdate(weekKey, dayKey, value) {
+    setDinnerData(prev => {
+      const base = prev || {}
+      const isToday = data?.dinners?.week_key === weekKey && dayKey === getDayKey(todayDate || '')
+      if (isToday) return { ...base, today: value }
+      return { ...base, tomorrow: value }
+    })
+    try {
+      await firebaseRestPut(`dinners/${weekKey}/${dayKey}`, value)
+    } catch (e) {
+      console.error('Failed to update dinner:', e)
+    }
+  }
+
+  function getDayKey(dateStr) {
+    const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
+    return days[new Date(dateStr + 'T12:00:00').getDay()]
+  }
+
   if (loading) {
     return (
       <div style={{
@@ -239,6 +272,9 @@ export default function TodayDashboard() {
           michaelCalendar={data?.users?.michael?.calendar || []}
           meghanCalendar={data?.users?.meghan?.calendar || []}
         />
+      {viewerKey === 'meghan' && (
+        <LiturgicalBanner liturgicalSeason={data?.liturgical_season} />
+      )}
       <DaySummary summary={data.summary} />
       <IntentionSetter
         todayDate={todayDate}
@@ -246,6 +282,19 @@ export default function TodayDashboard() {
         viewerKey={viewerKey}
         onSet={handleSetIntention}
       />
+      {isEvening && (
+        <div style={{ padding: '12px 20px 0', fontSize: 12, color: '#8a8aaa', letterSpacing: '0.08em' }}>
+          🌙 End of day — how did it go?
+        </div>
+      )}
+      {isEvening && (
+        <TomorrowIntention
+          todayDate={todayDate}
+          viewerKey={viewerKey}
+          currentValue={data?.intentions?.[viewerKey + '_tomorrow']}
+          onSet={(text) => firebaseRestPut(`today/${todayDate}/intentions/${viewerKey}_tomorrow`, text)}
+        />
+      )}
       {hasKidLogistics && (
         <KidsSection
           kids={data.kids}
@@ -256,6 +305,11 @@ export default function TodayDashboard() {
         />
       )}
       <CalendarSection events={viewerCalendar} viewerKey={viewerKey} />
+      <DinnerPlanner
+        dinnerData={dinnerData || data?.dinners}
+        todayDate={todayDate}
+        onDinnerUpdate={handleDinnerUpdate}
+      />
       <HouseholdSection household={data.household} viewerKey={viewerKey} />
       <ProjectPulse
         projects={data?.users?.[viewerKey]?.projects || data?.projects || {}}
@@ -268,6 +322,10 @@ export default function TodayDashboard() {
         todayDate={todayDate}
         onDone={handleLoopDone}
         onSnooze={handleLoopSnooze}
+      />
+      <TomorrowPreview
+        data={data}
+        viewerKey={viewerKey}
       />
       {data.trip_countdowns?.length > 0 && (
         <TripCountdowns countdowns={data.trip_countdowns} />

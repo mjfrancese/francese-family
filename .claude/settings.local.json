@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://127.0.0.1:4001/docs -o /dev/null -w \"%{http_code}\")",
+      "Bash(python server/search_pwm.py)",
+      "Bash(find . -name *vite* -o -name vite.config.*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python -c \"import json; json.load\\(open\\(''seed-new-hampshire.json''\\)\\); print\\(''Valid JSON ✓''\\)\")",
+      "Bash(python -c \"import json; json.load\\(open\\(''seed-new-hampshire.json'', encoding=''utf-8''\\)\\); print\\(''Valid JSON''\\)\")",
+      "Bash(npm run:*)"
+    ]
+  }
+}
