@@ -20,7 +20,9 @@ export function useTodayData() {
   const todayDate = getTodayDateChicago()
 
   const { user } = useAuth()
-  const viewerKey = user?.email === 'meghancryan@gmail.com' ? 'meghan' : 'michael'
+  // Meghan may log in with either of her Google accounts
+  const MEGHAN_EMAILS = new Set(['meghancryan@gmail.com', 'megc.holland@gmail.com', 'meghan@saint-tims.org'])
+  const viewerKey = user?.email && MEGHAN_EMAILS.has(user.email) ? 'meghan' : 'michael'
 
   useEffect(() => {
     const r = ref(db, `today/${todayDate}`)

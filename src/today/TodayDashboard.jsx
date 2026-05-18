@@ -232,7 +232,13 @@ export default function TodayDashboard() {
       paddingBottom: 80,
       fontFamily: fonts.body,
     }}>
-      <WeatherBar weather={data.weather} todayDate={todayDate} allCalendar={data.calendar} />
+      <WeatherBar
+          weather={data.weather}
+          todayDate={todayDate}
+          viewerKey={viewerKey}
+          michaelCalendar={data?.users?.michael?.calendar || []}
+          meghanCalendar={data?.users?.meghan?.calendar || []}
+        />
       <DaySummary summary={data.summary} />
       <IntentionSetter
         todayDate={todayDate}

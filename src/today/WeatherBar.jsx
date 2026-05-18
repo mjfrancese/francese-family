@@ -53,25 +53,9 @@ function formatDisplayDate(dateStr) {
   return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
 }
 
-function getNextEventByPerson(allCalendar, person) {
-  if (!allCalendar || !Array.isArray(allCalendar)) return null
-  const now = new Date()
-  const today = new Date(now.toDateString())
-
-  // Filter to timed events for this person
-  const mine = allCalendar.filter(e => {
-    if (e.all_day) return false
-    if (person === 'michael') {
-      // Michael's own events have no label or label doesn't contain Meghan/St.Tims as sole owner
-      return !e.label || (!e.label.includes('Meghan') && !e.label.includes('meghan'))
-    } else {
-      return e.label && e.label.toLowerCase().includes('meghan')
-    }
-  })
-
-  if (mine.length === 0) return null
-  // Return first in time order
-  return mine[0]
+function getFirstTimedEvent(calendar) {
+  if (!calendar || !Array.isArray(calendar)) return null
+  return calendar.find(e => !e.all_day && e.time_str) || null
 }
 
 function getLeftBorderStyle(precip) {
@@ -80,7 +64,7 @@ function getLeftBorderStyle(precip) {
   return 'none'
 }
 
-export default function WeatherBar({ weather, todayDate, allCalendar }) {
+export default function WeatherBar({ weather, todayDate, viewerKey, michaelCalendar, meghanCalendar }) {
   const emoji = getWeatherEmoji(weather?.condition)
   const dayContext = getDayContext(todayDate)
   const displayDate = formatDisplayDate(todayDate)
@@ -88,9 +72,9 @@ export default function WeatherBar({ weather, todayDate, allCalendar }) {
   const precip = weather?.precip_pct ?? 0
   const leftBorder = getLeftBorderStyle(precip)
 
-  // Next event previews for both parents
-  const michaelNext = getNextEventByPerson(allCalendar, 'michael')
-  const meghanNext = getNextEventByPerson(allCalendar, 'meghan')
+  // Next event previews -- use pre-filtered per-user calendars
+  const michaelNext = getFirstTimedEvent(michaelCalendar)
+  const meghanNext = getFirstTimedEvent(meghanCalendar)
 
   const parentPreviews = []
   if (michaelNext) parentPreviews.push(`Michael: ${michaelNext.summary}${michaelNext.time_str ? ' ' + michaelNext.time_str : ''}`)
