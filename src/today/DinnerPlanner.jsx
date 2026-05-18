@@ -30,7 +30,7 @@ function getDayKey(dateStr) {
 function DinnerRow({ label, mealData, weekKey, dayKey, onUpdate, isToday }) {
   const [editing, setEditing] = useState(false)
   const [meal, setMeal] = useState(mealData?.meal || '')
-  const [cook, setCook] = useState(mealData?.cook || 'Michael')
+  const [cook, setCook] = useState(mealData?.cook || 'Meghan')
   const [note, setNote] = useState(mealData?.note || '')
   const [optimistic, setOptimistic] = useState(null)
 
@@ -38,7 +38,7 @@ function DinnerRow({ label, mealData, weekKey, dayKey, onUpdate, isToday }) {
 
   function startEdit() {
     setMeal(mealData?.meal || '')
-    setCook(mealData?.cook || 'Michael')
+    setCook(mealData?.cook || 'Meghan')
     setNote(mealData?.note || '')
     setEditing(true)
   }
@@ -233,27 +233,37 @@ function DinnerRow({ label, mealData, weekKey, dayKey, onUpdate, isToday }) {
   )
 }
 
+
+const DAYS_ORDER = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+const DAY_LABELS = {
+  monday: 'Monday', tuesday: 'Tuesday', wednesday: 'Wednesday',
+  thursday: 'Thursday', friday: 'Friday', saturday: 'Saturday', sunday: 'Sunday'
+}
+
+function getWeekDates(todayStr) {
+  // Returns array of {dateStr, dayKey, label, isToday} for Mon-Sun of this week
+  const today = new Date(todayStr + 'T12:00:00')
+  const dow = today.getDay() // 0=Sun
+  const monday = new Date(today)
+  monday.setDate(today.getDate() - ((dow + 6) % 7))
+  return DAYS_ORDER.map((key, i) => {
+    const d = new Date(monday)
+    d.setDate(monday.getDate() + i)
+    const dateStr = d.toISOString().slice(0, 10)
+    return { dateStr, dayKey: key, label: DAY_LABELS[key], isToday: dateStr === todayStr }
+  })
+}
+
 export default function DinnerPlanner({ dinnerData, todayDate, onDinnerUpdate }) {
   if (!todayDate) return null
 
-  const todayWeekKey = dinnerData?.week_key || getISOWeekKey(todayDate)
-  const todayDayKey = getDayKey(todayDate)
-
-  // Tomorrow's date
-  const tomorrowDate = (() => {
-    const d = new Date(todayDate + 'T12:00:00')
-    d.setDate(d.getDate() + 1)
-    return d.toISOString().slice(0, 10)
-  })()
-  const tomorrowWeekKey = getISOWeekKey(tomorrowDate)
-  const tomorrowDayKey = getDayKey(tomorrowDate)
-
-  const todayMeal = dinnerData?.today || null
-  const tomorrowMeal = dinnerData?.tomorrow || null
+  const weekKey = dinnerData?.week_key || getISOWeekKey(todayDate)
+  const weekData = dinnerData?.week || {}
+  const weekDays = getWeekDates(todayDate)
 
   return (
     <div style={{ marginBottom: 8 }}>
-      <div style={SECTION_HEADER}>🍽️ Dinner</div>
+      <div style={SECTION_HEADER}>🍽️ Dinners This Week</div>
       <div style={{
         margin: '0 20px',
         background: colors.card,
@@ -261,23 +271,19 @@ export default function DinnerPlanner({ dinnerData, todayDate, onDinnerUpdate })
         borderRadius: 14,
         padding: '4px 16px',
       }}>
-        <DinnerRow
-          label="Tonight"
-          mealData={todayMeal}
-          weekKey={todayWeekKey}
-          dayKey={todayDayKey}
-          onUpdate={onDinnerUpdate}
-          isToday={true}
-        />
-        <div style={{ height: 1, background: colors.divider }} />
-        <DinnerRow
-          label="Tomorrow"
-          mealData={tomorrowMeal}
-          weekKey={tomorrowWeekKey}
-          dayKey={tomorrowDayKey}
-          onUpdate={onDinnerUpdate}
-          isToday={false}
-        />
+        {weekDays.map(({ dayKey, label, isToday }, i) => (
+          <div key={dayKey}>
+            {i > 0 && <div style={{ height: 1, background: colors.divider }} />}
+            <DinnerRow
+              label={label + (isToday ? ' (today)' : '')}
+              mealData={weekData[dayKey] || null}
+              weekKey={weekKey}
+              dayKey={dayKey}
+              onUpdate={onDinnerUpdate}
+              isToday={isToday}
+            />
+          </div>
+        ))}
       </div>
     </div>
   )

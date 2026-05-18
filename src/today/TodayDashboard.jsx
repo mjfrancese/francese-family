@@ -37,6 +37,13 @@ export default function TodayDashboard() {
   const [localData, setLocalData] = useState(null)
   const [dinnerData, setDinnerData] = useState(null)
 
+  // Keep dinnerData in sync with Firebase data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const latestDinnersRef = data?.dinners
+  if (latestDinnersRef && (!dinnerData || latestDinnersRef.week_key !== dinnerData?.week_key)) {
+    setDinnerData(latestDinnersRef)
+  }
+
   // isEvening: true if current Chicago time is 7pm or later
   const currentHour = parseInt(new Date().toLocaleString('en-US', { timeZone: 'America/Chicago', hour: 'numeric', hour12: false }))
   const isEvening = currentHour >= 19
@@ -46,10 +53,17 @@ export default function TodayDashboard() {
   // viewerCalendar: prefer per-user calendar, fall back to global
   const viewerCalendar = data?.users?.[viewerKey]?.calendar || data?.calendar || []
 
+  // Filter projects by who field client-side -- single source of truth at data.projects
+  const viewerProjects = Object.fromEntries(
+    Object.entries(data?.projects || {}).filter(([, p]) => {
+      const who = p?.who || 'michael'
+      return who === 'both' || who === viewerKey
+    })
+  )
+
   // Sync dinnerData from Firebase data
-  if (data?.dinners && !dinnerData) {
-    setDinnerData(data.dinners)
-  }
+  // Sync dinnerData from Firebase when it changes (use useEffect to avoid setState-in-render)
+  // This is handled reactively via the onValue listener in useTodayData
 
   // hasKidLogistics: at least one unconfirmed logistics entry
   const hasKidLogistics = data?.kids && Object.values(data.kids).some(
@@ -195,11 +209,17 @@ export default function TodayDashboard() {
   }
 
   async function handleDinnerUpdate(weekKey, dayKey, value) {
+    // Update the week data in local state
     setDinnerData(prev => {
-      const base = prev || {}
-      const isToday = data?.dinners?.week_key === weekKey && dayKey === getDayKey(todayDate || '')
-      if (isToday) return { ...base, today: value }
-      return { ...base, tomorrow: value }
+      const base = prev || data?.dinners || {}
+      return {
+        ...base,
+        week_key: weekKey,
+        week: { ...(base.week || {}), [dayKey]: value },
+        // keep today/tomorrow in sync too
+        today: dayKey === getDayKey(todayDate || '') ? value : base.today,
+        tomorrow: base.tomorrow,
+      }
     })
     try {
       await firebaseRestPut(`dinners/${weekKey}/${dayKey}`, value)
@@ -312,7 +332,7 @@ export default function TodayDashboard() {
       />
       <HouseholdSection household={data.household} viewerKey={viewerKey} />
       <ProjectPulse
-        projects={data?.users?.[viewerKey]?.projects || data?.projects || {}}
+        projects={viewerProjects}
         todayDate={todayDate}
         onDone={handleProjectDone}
         onLog={handleProjectLog}
