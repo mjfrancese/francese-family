@@ -309,9 +309,7 @@ export default function TodayDashboard() {
       )}
       <CalendarSection events={viewerCalendar} viewerKey={viewerKey} />
       <DinnerPlanner
-        dinnerData={data?.dinners}
         todayDate={todayDate}
-        onDinnerUpdate={handleDinnerUpdate}
       />
       <HouseholdSection household={data.household} viewerKey={viewerKey} />
       <ProjectPulse
