@@ -258,7 +258,7 @@ export default function TodayDashboard() {
       <CalendarSection events={viewerCalendar} viewerKey={viewerKey} />
       <HouseholdSection household={data.household} viewerKey={viewerKey} />
       <ProjectPulse
-        projects={data.projects}
+        projects={data?.users?.[viewerKey]?.projects || data?.projects || {}}
         todayDate={todayDate}
         onDone={handleProjectDone}
         onLog={handleProjectLog}
