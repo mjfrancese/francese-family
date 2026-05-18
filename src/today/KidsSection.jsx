@@ -206,7 +206,7 @@ function AttendanceCard({ eventId, entry, kid, onConfirm, conflictWarning }) {
   )
 }
 
-function KidBlock({ kidKey, kidData, onConfirm, allCalendar }) {
+function KidBlock({ kidKey, kidData, onConfirm, michaelCalendar, meghanCalendar }) {
   const logistics = kidData?.logistics || {}
   const logisticsEntries = Object.entries(logistics).filter(([, e]) => !e.confirmed)
   if (logisticsEntries.length === 0) return null
@@ -221,16 +221,23 @@ function KidBlock({ kidKey, kidData, onConfirm, allCalendar }) {
       </div>
       <div style={{ padding: '0 20px' }}>
         {logisticsEntries.map(([eventId, entry]) => {
-          // Build conflict warning: check if either parent has an event close in time
+          // Check each parent's own calendar separately so attribution is correct
           let conflictWarning = null
-          if (allCalendar && entry.time_str) {
-            const closeEvent = allCalendar.find(e =>
-              !e.all_day && e.time_str && timesAreClose(e.time_str, entry.time_str) &&
-              e.summary !== entry.event_summary
-            )
-            if (closeEvent) {
-              const who = closeEvent.label?.toLowerCase().includes('meghan') ? 'Meghan' : 'Michael'
-              conflictWarning = `Heads up: ${who} has ${closeEvent.summary} at ${closeEvent.time_str} — this is close to ${entry.time_str}`
+          if (entry.time_str) {
+            const parentViews = [
+              { name: 'Michael', events: michaelCalendar || [] },
+              { name: 'Meghan', events: meghanCalendar || [] },
+            ]
+            for (const { name, events } of parentViews) {
+              const close = events.find(e =>
+                !e.all_day && e.time_str &&
+                timesAreClose(e.time_str, entry.time_str) &&
+                e.summary !== entry.event_summary
+              )
+              if (close) {
+                conflictWarning = `Heads up: ${name} has ${close.summary} at ${close.time_str} — this is close to ${entry.time_str}`
+                break
+              }
             }
           }
 
@@ -265,7 +272,7 @@ function KidBlock({ kidKey, kidData, onConfirm, allCalendar }) {
   )
 }
 
-export default function KidsSection({ kids, todayDate, allCalendar, onConfirm }) {
+export default function KidsSection({ kids, todayDate, michaelCalendar, meghanCalendar, onConfirm }) {
   if (!kids) return null
   const kidsWithPendingLogistics = Object.entries(kids).filter(
     ([, kidData]) => kidData?.logistics &&
@@ -282,7 +289,8 @@ export default function KidsSection({ kids, todayDate, allCalendar, onConfirm })
           kidKey={kidKey}
           kidData={kidData}
           onConfirm={onConfirm}
-          allCalendar={allCalendar}
+          michaelCalendar={michaelCalendar}
+          meghanCalendar={meghanCalendar}
         />
       ))}
     </div>

@@ -11,7 +11,7 @@ import LoopsSection from './LoopsSection'
 import TripCountdowns from './TripCountdowns'
 
 const DB_URL = import.meta.env.VITE_FIREBASE_DATABASE_URL
-const DB_SECRET = import.meta.env.VITE_FIREBASE_DATABASE_SECRET
+const DB_SECRET=import...CRET
 
 async function firebaseRestPut(path, value) {
   const url = `${DB_URL}/${path}.json?auth=${DB_SECRET}`
@@ -243,7 +243,8 @@ export default function TodayDashboard() {
         <KidsSection
           kids={data.kids}
           todayDate={todayDate}
-          allCalendar={data.calendar}
+          michaelCalendar={data?.users?.michael?.calendar || []}
+          meghanCalendar={data?.users?.meghan?.calendar || []}
           onConfirm={handleLogisticsConfirm}
         />
       )}
