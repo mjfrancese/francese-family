@@ -27,17 +27,24 @@ function getDayContext(dateStr) {
   if (!dateStr) return null
   const [, m, d] = dateStr.split('-').map(Number)
   const date = new Date(`${dateStr}T12:00:00`)
-  const dow = date.getDay() // 0=Sun, 3=Wed
+  const dow = date.getDay()
 
   const notes = []
   if (dow === 3) {
     notes.push('Vestry night')
     notes.push('WoW reset')
   }
-  if (m === 5 && d === 23) {
-    notes.push("🎂 Kenna's Birthday!")
-  }
+  if (m === 5 && d === 23) notes.push("🎂 Kenna's Birthday!")
+  if (m === 10 && d === 20) notes.push("🎂 Louise's Birthday!")
   return notes.length > 0 ? notes.join(' · ') : null
+}
+
+function isBirthday(dateStr) {
+  if (!dateStr) return null
+  const [, m, d] = dateStr.split('-').map(Number)
+  if (m === 5 && d === 23) return "🎂 Happy Birthday, Kenna!"
+  if (m === 10 && d === 20) return "🎂 Happy Birthday, Louise!"
+  return null
 }
 
 function formatDisplayDate(dateStr) {
@@ -46,17 +53,69 @@ function formatDisplayDate(dateStr) {
   return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
 }
 
-export default function WeatherBar({ weather, date }) {
+function getNextEventByPerson(allCalendar, person) {
+  if (!allCalendar || !Array.isArray(allCalendar)) return null
+  const now = new Date()
+  const today = new Date(now.toDateString())
+
+  // Filter to timed events for this person
+  const mine = allCalendar.filter(e => {
+    if (e.all_day) return false
+    if (person === 'michael') {
+      // Michael's own events have no label or label doesn't contain Meghan/St.Tims as sole owner
+      return !e.label || (!e.label.includes('Meghan') && !e.label.includes('meghan'))
+    } else {
+      return e.label && e.label.toLowerCase().includes('meghan')
+    }
+  })
+
+  if (mine.length === 0) return null
+  // Return first in time order
+  return mine[0]
+}
+
+function getLeftBorderStyle(precip) {
+  if (precip > 80) return '3px solid #e85c5c'
+  if (precip > 60) return '3px solid #e8c55c'
+  return 'none'
+}
+
+export default function WeatherBar({ weather, todayDate, allCalendar }) {
   const emoji = getWeatherEmoji(weather?.condition)
-  const dayContext = getDayContext(date)
-  const displayDate = formatDisplayDate(date)
+  const dayContext = getDayContext(todayDate)
+  const displayDate = formatDisplayDate(todayDate)
+  const birthdayBanner = isBirthday(todayDate)
+  const precip = weather?.precip_pct ?? 0
+  const leftBorder = getLeftBorderStyle(precip)
+
+  // Next event previews for both parents
+  const michaelNext = getNextEventByPerson(allCalendar, 'michael')
+  const meghanNext = getNextEventByPerson(allCalendar, 'meghan')
+
+  const parentPreviews = []
+  if (michaelNext) parentPreviews.push(`Michael: ${michaelNext.summary}${michaelNext.time_str ? ' ' + michaelNext.time_str : ''}`)
+  if (meghanNext) parentPreviews.push(`Meghan: ${meghanNext.summary}${meghanNext.time_str ? ' ' + meghanNext.time_str : ''}`)
 
   return (
     <div style={{
       padding: '20px 20px 16px',
       background: 'linear-gradient(180deg, #0e1020 0%, #0d0d18 100%)',
       borderBottom: `1px solid ${colors.divider}`,
+      borderLeft: leftBorder,
     }}>
+      {birthdayBanner && (
+        <div style={{
+          fontSize: 18,
+          fontWeight: 700,
+          color: '#e8c55c',
+          marginBottom: 10,
+          textAlign: 'center',
+          fontFamily: fonts.heading,
+        }}>
+          {birthdayBanner}
+        </div>
+      )}
+
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <div>
           <div style={{
@@ -80,6 +139,7 @@ export default function WeatherBar({ weather, date }) {
             </div>
           )}
         </div>
+
         {weather && (
           <div style={{
             display: 'flex',
@@ -96,7 +156,7 @@ export default function WeatherBar({ weather, date }) {
               {emoji} {weather.temp_f != null ? `${Math.round(weather.temp_f)}°` : ''}
             </div>
             {weather.precip_pct != null && weather.precip_pct > 20 && (
-              <div style={{ fontSize: 11, color: colors.textDim }}>
+              <div style={{ fontSize: 11, color: precip > 60 ? '#e8c55c' : colors.textDim }}>
                 💧 {weather.precip_pct}% rain
               </div>
             )}
@@ -108,6 +168,7 @@ export default function WeatherBar({ weather, date }) {
           </div>
         )}
       </div>
+
       {weather?.advice && (
         <div style={{
           marginTop: 10,
@@ -117,6 +178,19 @@ export default function WeatherBar({ weather, date }) {
           lineHeight: 1.5,
         }}>
           {weather.advice}
+        </div>
+      )}
+
+      {parentPreviews.length > 0 && (
+        <div style={{
+          marginTop: 10,
+          fontSize: 12,
+          color: colors.textDim,
+          lineHeight: 1.6,
+          borderTop: `1px solid ${colors.divider}`,
+          paddingTop: 8,
+        }}>
+          {parentPreviews.join(' · ')}
         </div>
       )}
     </div>

@@ -63,9 +63,7 @@ export default function TripCountdowns({ countdowns }) {
                   </div>
                 </div>
               </div>
-              <div style={{
-                fontSize: 11, color: colors.textDim, marginBottom: 10,
-              }}>
+              <div style={{ fontSize: 11, color: colors.textDim, marginBottom: 10 }}>
                 {formatTripDate(trip.date)}
               </div>
               {trip.open_items != null && (

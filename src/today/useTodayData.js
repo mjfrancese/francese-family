@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ref, onValue } from 'firebase/database'
 import { db } from '../firebase'
+import { useAuth } from '../auth/AuthContext'
 
 function getTodayDateChicago() {
   const now = new Date()
@@ -18,6 +19,9 @@ export function useTodayData() {
   const [error, setError] = useState(null)
   const todayDate = getTodayDateChicago()
 
+  const { user } = useAuth()
+  const viewerKey = user?.email === 'meghancryan@gmail.com' ? 'meghan' : 'michael'
+
   useEffect(() => {
     const r = ref(db, `today/${todayDate}`)
     const unsub = onValue(
@@ -34,5 +38,5 @@ export function useTodayData() {
     return () => unsub()
   }, [todayDate])
 
-  return { data, loading, error, todayDate }
+  return { data, loading, error, todayDate, viewerKey }
 }

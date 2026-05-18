@@ -3,9 +3,10 @@ import { colors, fonts } from '../theme'
 import { useTodayData } from './useTodayData'
 import WeatherBar from './WeatherBar'
 import DaySummary from './DaySummary'
+import IntentionSetter from './IntentionSetter'
 import KidsSection from './KidsSection'
 import CalendarSection from './CalendarSection'
-import ProjectsSection from './ProjectsSection'
+import ProjectPulse from './ProjectPulse'
 import LoopsSection from './LoopsSection'
 import TripCountdowns from './TripCountdowns'
 
@@ -27,13 +28,33 @@ async function firebaseRestPut(path, value) {
 }
 
 export default function TodayDashboard() {
-  const { data: rawData, loading, error, todayDate } = useTodayData()
+  const { data: rawData, loading, error, todayDate, viewerKey } = useTodayData()
   const [localData, setLocalData] = useState(null)
 
   const data = localData || rawData
 
+  // viewerCalendar: prefer per-user calendar, fall back to global
+  const viewerCalendar = data?.users?.[viewerKey]?.calendar || data?.calendar || []
+
+  // hasKidLogistics: at least one unconfirmed logistics entry
+  const hasKidLogistics = data?.kids && Object.values(data.kids).some(
+    k => k?.logistics && Object.values(k.logistics).some(e => !e.confirmed)
+  )
+
+  async function handleSetIntention(text) {
+    setLocalData(prev => {
+      const base = prev || rawData
+      if (!base) return base
+      return { ...base, intention: text }
+    })
+    try {
+      await firebaseRestPut(`today/${todayDate}/intentions/${viewerKey}`, text)
+    } catch (e) {
+      console.error('Failed to set intention:', e)
+    }
+  }
+
   async function handleLogisticsConfirm(kid, eventId, person) {
-    // Optimistic update
     setLocalData(prev => {
       const base = prev || rawData
       if (!base) return base
@@ -83,10 +104,7 @@ export default function TodayDashboard() {
         ...base,
         projects: {
           ...base.projects,
-          [slug]: {
-            ...base.projects?.[slug],
-            done_today: true,
-          },
+          [slug]: { ...base.projects?.[slug], done_today: true },
         },
       }
     })
@@ -97,16 +115,36 @@ export default function TodayDashboard() {
     }
   }
 
+  async function handleProjectLog(slug, text) {
+    setLocalData(prev => {
+      const base = prev || rawData
+      if (!base) return base
+      return {
+        ...base,
+        projects: {
+          ...base.projects,
+          [slug]: {
+            ...base.projects?.[slug],
+            todays_note: text,
+            last_log: text,
+          },
+        },
+      }
+    })
+    try {
+      await firebaseRestPut(`today/${todayDate}/projects/${slug}/todays_note`, text)
+    } catch (e) {
+      console.error('Failed to log project note:', e)
+    }
+  }
+
   async function handleLoopDone(id) {
     setLocalData(prev => {
       const base = prev || rawData
       if (!base) return base
       return {
         ...base,
-        loops: {
-          ...base.loops,
-          [id]: { ...base.loops?.[id], done: true },
-        },
+        loops: { ...base.loops, [id]: { ...base.loops?.[id], done: true } },
       }
     })
     try {
@@ -117,12 +155,9 @@ export default function TodayDashboard() {
   }
 
   async function handleLoopSnooze(id) {
-    // Compute next monday
     const now = new Date()
-    const day = now.getDay()
-    const daysUntilMonday = day === 0 ? 1 : 8 - day
     const next = new Date(now)
-    next.setDate(now.getDate() + daysUntilMonday)
+    next.setDate(now.getDate() + 7)
     next.setHours(0, 0, 0, 0)
     const snoozeUntil = next.toISOString()
 
@@ -144,19 +179,11 @@ export default function TodayDashboard() {
     }
   }
 
-  // Determine if there are kid events
-  const hasKidEvents = data?.kids && Object.values(data.kids).some(
-    k => k?.logistics && Object.keys(k.logistics).length > 0
-  )
-
   if (loading) {
     return (
       <div style={{
-        minHeight: '100vh',
-        background: colors.bg,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        minHeight: '100vh', background: colors.bg,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         fontFamily: fonts.body,
       }}>
         <div style={{ color: colors.textDim, fontSize: 14 }}>Loading today's brief...</div>
@@ -167,11 +194,8 @@ export default function TodayDashboard() {
   if (error) {
     return (
       <div style={{
-        minHeight: '100vh',
-        background: colors.bg,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        minHeight: '100vh', background: colors.bg,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         fontFamily: fonts.body,
       }}>
         <div style={{ color: colors.status.missing.color, fontSize: 14 }}>
@@ -184,14 +208,10 @@ export default function TodayDashboard() {
   if (!data) {
     return (
       <div style={{
-        minHeight: '100vh',
-        background: colors.bg,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: fonts.body,
-        padding: 24,
+        minHeight: '100vh', background: colors.bg,
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        fontFamily: fonts.body, padding: 24,
       }}>
         <div style={{ fontSize: 40, marginBottom: 16 }}>☀️</div>
         <div style={{ color: colors.textMuted, fontSize: 16, textAlign: 'center', lineHeight: 1.6 }}>
@@ -206,25 +226,33 @@ export default function TodayDashboard() {
     <div style={{
       maxWidth: 480,
       margin: '0 auto',
-      padding: '0 0 80px 0',
       background: colors.bg,
       minHeight: '100vh',
+      paddingBottom: 80,
       fontFamily: fonts.body,
     }}>
-      <WeatherBar weather={data.weather} date={todayDate} />
+      <WeatherBar weather={data.weather} todayDate={todayDate} allCalendar={data.calendar} />
       <DaySummary summary={data.summary} />
-      {hasKidEvents && (
+      <IntentionSetter
+        todayDate={todayDate}
+        currentIntention={data?.intentions?.[viewerKey] || data?.intention}
+        viewerKey={viewerKey}
+        onSet={handleSetIntention}
+      />
+      {hasKidLogistics && (
         <KidsSection
           kids={data.kids}
           todayDate={todayDate}
+          allCalendar={data.calendar}
           onConfirm={handleLogisticsConfirm}
         />
       )}
-      <CalendarSection events={data.calendar} />
-      <ProjectsSection
+      <CalendarSection events={viewerCalendar} viewerKey={viewerKey} />
+      <ProjectPulse
         projects={data.projects}
         todayDate={todayDate}
         onDone={handleProjectDone}
+        onLog={handleProjectLog}
       />
       <LoopsSection
         loops={data.loops}
