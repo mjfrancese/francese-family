@@ -8,10 +8,11 @@ import KidsSection from './KidsSection'
 import CalendarSection from './CalendarSection'
 import ProjectPulse from './ProjectPulse'
 import LoopsSection from './LoopsSection'
+import HouseholdSection from './HouseholdSection'
 import TripCountdowns from './TripCountdowns'
 
 const DB_URL = import.meta.env.VITE_FIREBASE_DATABASE_URL
-const DB_SECRET = import.meta.env.VITE_FIREBASE_DATABASE_SECRET
+const DB_SECRET=import...CRET
 
 async function firebaseRestPut(path, value) {
   const url = `${DB_URL}/${path}.json?auth=${DB_SECRET}`
@@ -249,6 +250,7 @@ export default function TodayDashboard() {
         />
       )}
       <CalendarSection events={viewerCalendar} viewerKey={viewerKey} />
+      <HouseholdSection household={data.household} viewerKey={viewerKey} />
       <ProjectPulse
         projects={data.projects}
         todayDate={todayDate}
