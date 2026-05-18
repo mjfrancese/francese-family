@@ -47,7 +47,7 @@ function EventRow({ event, isLast }) {
       <div style={{
         display: 'flex',
         alignItems: 'flex-start',
-        gap: 0,
+        gap: 12,
         padding: '10px 0',
       }}>
         {/* Left border indicator */}
