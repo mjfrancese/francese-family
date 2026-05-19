@@ -5,6 +5,7 @@ import Landing from './landing/Landing'
 import TripDashboard from './trip/TripDashboard'
 import ImportTool from './admin/ImportTool'
 import TodayDashboard from './today/TodayDashboard'
+import ProjectsReview from './today/ProjectsReview'
 import { isOwnerEmail } from './firebase'
 import { colors } from './theme'
 
@@ -41,6 +42,9 @@ function AppRoutes() {
       <Route path="/" element={user ? <Landing /> : <LoginPage />} />
       <Route path="/today" element={
         <ProtectedRoute><TodayDashboard /></ProtectedRoute>
+      } />
+      <Route path="/projects" element={
+        <ProtectedRoute><ProjectsReview /></ProtectedRoute>
       } />
       <Route path="/trip/:slug" element={
         <ProtectedRoute><TripDashboard /></ProtectedRoute>

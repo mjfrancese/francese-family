@@ -1,96 +1,38 @@
+// ProjectPulse.jsx - /today: focus cards + waiting strip
+// active_focus = full card | waiting = compact blocker row | active/dormant = hidden (see /projects)
+
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { colors, fonts } from '../theme'
 
-const SECTION_HEADER = {
-  fontSize: 11,
-  letterSpacing: '0.1em',
-  textTransform: 'uppercase',
-  color: colors.textDim,
-  fontFamily: fonts.body,
-  fontWeight: 600,
-  padding: '20px 20px 8px',
-}
-
-const PRIORITY_BADGE = {
-  high: { bg: '#3a1a1a', color: '#e85c5c', border: '#6b2d2d', label: 'HIGH' },
-  medium: { bg: '#3a2e1a', color: '#e8c55c', border: '#6b5a2d', label: 'MED' },
-  low: { bg: '#1a1a2a', color: colors.textDim, border: '#2a2a3a', label: 'LOW' },
-}
-
-const PRIORITY_ORDER = { high: 0, medium: 1, low: 2 }
 const HIDDEN_STATUSES = ['done', 'hiatus']
-const STALLED_STATUSES = ['stalled', 'blocked']
+const MODE_HIDDEN_ON_TODAY = new Set(['dormant', 'active'])
 
-function PriorityBadge({ priority }) {
-  const style = PRIORITY_BADGE[priority] || PRIORITY_BADGE.low
-  return (
-    <span style={{
-      fontSize: 9,
-      fontWeight: 700,
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
-      color: style.color,
-      background: style.bg,
-      border: `1px solid ${style.border}`,
-      borderRadius: 4,
-      padding: '2px 6px',
-    }}>
-      {style.label}
-    </span>
-  )
-}
-
-function DaysAgo({ days }) {
-  if (days == null) return null
-  const color = days > 30 ? '#e85c5c' : days > 14 ? '#e8c55c' : colors.textDark
-  return (
-    <span style={{ fontSize: 11, color, fontFamily: fonts.body }}>
-      {days}d
-    </span>
-  )
-}
-
-function ProjectCard({ slug, project, onDone, onLog }) {
-  const {
-    label, emoji, priority, status, next_action,
-    last_log, days_since_update, done_today,
-  } = project
-
+function FocusCard({ slug, project, onDone, onLog }) {
+  const { label, emoji, next_action, last_log, days_since_update, done_today } = project
   const [showNote, setShowNote] = useState(false)
   const [noteText, setNoteText] = useState('')
-  const [optimisticLastLog, setOptimisticLastLog] = useState(null)
+  const [optimisticLog, setOptimisticLog] = useState(null)
 
-  const isStalled = STALLED_STATUSES.includes(status)
-  const displayLastLog = optimisticLastLog || last_log
-  const truncated = displayLastLog && displayLastLog.length > 80
-    ? displayLastLog.slice(0, 80) + '…'
-    : displayLastLog
+  const displayLog = optimisticLog || last_log
+  const truncated = displayLog && displayLog.length > 80
+    ? displayLog.slice(0, 80) + '…'
+    : displayLog
 
   function handleNoteSubmit() {
     if (noteText.trim()) {
-      setOptimisticLastLog(noteText.trim())
+      setOptimisticLog(noteText.trim())
       onLog(slug, noteText.trim())
     }
     setShowNote(false)
     setNoteText('')
   }
 
-  function handleNoteKeyDown(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      handleNoteSubmit()
-    }
-    if (e.key === 'Escape') {
-      setShowNote(false)
-      setNoteText('')
-    }
-  }
-
   return (
     <div style={{
       background: colors.card,
-      border: `1px solid ${colors.cardBorder}`,
-      borderLeft: isStalled ? '3px solid #e8c55c' : `1px solid ${colors.cardBorder}`,
+      border: `1px solid #1a3a5e`,
+      borderLeft: '3px solid #4a9eff',
       borderRadius: 12,
       padding: 16,
       marginBottom: 10,
@@ -100,126 +42,99 @@ function ProjectCard({ slug, project, onDone, onLog }) {
       {done_today && (
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'rgba(26,58,42,0.75)',
+          background: 'rgba(26,58,42,0.80)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           borderRadius: 12, zIndex: 1,
         }}>
-          <span style={{ color: colors.status.booked.color, fontWeight: 700, fontSize: 15 }}>
+          <span style={{ color: '#7ec8a0', fontWeight: 700, fontSize: 15 }}>
             ✓ Done for today
           </span>
         </div>
       )}
 
       {/* Title row */}
-      <div style={{
-        display: 'flex', alignItems: 'center',
-        gap: 8, marginBottom: 12,
-      }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
         <span style={{ fontSize: 20 }}>{emoji}</span>
         <span style={{ fontSize: 15, fontWeight: 700, color: colors.text, flex: 1 }}>{label}</span>
-        <PriorityBadge priority={priority} />
-        <DaysAgo days={days_since_update} />
+        {days_since_update != null && days_since_update > 0 && (
+          <span style={{
+            fontSize: 11,
+            color: days_since_update > 21 ? '#e85c5c' : days_since_update > 10 ? '#e8c55c' : colors.textDark,
+          }}>
+            {days_since_update}d
+          </span>
+        )}
       </div>
 
-      {/* NEXT section */}
+      {/* Next action */}
       {next_action && (
         <div style={{ marginBottom: 10 }}>
           <div style={{
-            fontSize: 9, fontWeight: 700, letterSpacing: '0.12em',
-            textTransform: 'uppercase', color: '#e8c55c',
-            marginBottom: 4,
-          }}>
-            Next
-          </div>
+            fontSize: 9, fontWeight: 700, textTransform: 'uppercase',
+            letterSpacing: '0.12em', color: '#4a9eff', marginBottom: 4,
+          }}>Next</div>
           <div style={{ fontSize: 13, color: colors.textMuted, lineHeight: 1.5 }}>
             {next_action}
           </div>
         </div>
       )}
 
-      {/* LATEST section */}
+      {/* Latest log */}
       {truncated && (
-        <div style={{ marginBottom: 12 }}>
+        <div style={{ marginBottom: 10 }}>
           <div style={{
-            fontSize: 9, fontWeight: 700, letterSpacing: '0.12em',
-            textTransform: 'uppercase', color: colors.textDim,
-            marginBottom: 4,
-          }}>
-            Latest
-          </div>
-          <div style={{ fontSize: 12, color: colors.textDim, lineHeight: 1.5, fontStyle: 'italic' }}>
+            fontSize: 9, fontWeight: 700, textTransform: 'uppercase',
+            letterSpacing: '0.12em', color: colors.textDim, marginBottom: 4,
+          }}>Latest</div>
+          <div style={{ fontSize: 12, color: colors.textDim, fontStyle: 'italic', lineHeight: 1.5 }}>
             {truncated}
           </div>
         </div>
       )}
 
-      {/* Days since update note */}
-      {days_since_update != null && days_since_update > 0 && (
-        <div style={{
-          fontSize: 11, color: colors.textDark,
-          marginBottom: 12,
-          fontStyle: 'italic',
-        }}>
-          {days_since_update} day{days_since_update !== 1 ? 's' : ''} since last update
-        </div>
-      )}
-
-      {/* Inline note input */}
+      {/* Note input */}
       {showNote && (
         <textarea
           autoFocus
           value={noteText}
           onChange={e => setNoteText(e.target.value)}
           onBlur={handleNoteSubmit}
-          onKeyDown={handleNoteKeyDown}
+          onKeyDown={e => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleNoteSubmit() }
+            if (e.key === 'Escape') { setShowNote(false); setNoteText('') }
+          }}
           placeholder="Quick note… (Enter to save)"
           rows={2}
           style={{
-            width: '100%',
-            background: '#0d0d18',
-            border: `1px solid ${colors.cardBorder}`,
-            borderRadius: 8,
-            color: colors.text,
-            fontFamily: fonts.body,
-            fontSize: 13,
-            padding: '8px 10px',
-            outline: 'none',
-            resize: 'none',
-            boxSizing: 'border-box',
+            width: '100%', boxSizing: 'border-box',
+            background: '#0d0d18', border: `1px solid ${colors.cardBorder}`,
+            borderRadius: 8, color: colors.text, fontFamily: fonts.body,
+            fontSize: 13, padding: '8px 10px', outline: 'none', resize: 'none',
             marginBottom: 10,
           }}
         />
       )}
 
-      {/* Action buttons */}
+      {/* Buttons */}
       {!done_today && (
         <div style={{ display: 'flex', gap: 8 }}>
-          {!isStalled && (
-            <button
-              onClick={() => onDone(slug)}
-              style={{
-                flex: 1, minHeight: 36, borderRadius: 8,
-                background: colors.accent, border: 'none',
-                color: '#fff', fontFamily: fonts.body, fontSize: 12,
-                fontWeight: 600, cursor: 'pointer',
-              }}
-            >
-              ✓ Did the thing
-            </button>
-          )}
+          <button
+            onClick={() => onDone(slug)}
+            style={{
+              flex: 1, minHeight: 36, borderRadius: 8,
+              background: colors.accent, border: 'none',
+              color: '#fff', fontFamily: fonts.body, fontSize: 12,
+              fontWeight: 600, cursor: 'pointer',
+            }}
+          >
+            ✓ Did the thing
+          </button>
           <button
             onClick={() => { setShowNote(v => !v); setNoteText('') }}
             style={{
-              flex: isStalled ? 1 : 0,
-              minHeight: 36,
-              padding: isStalled ? undefined : '0 14px',
-              borderRadius: 8,
-              background: '#1a1a28',
-              border: `1px solid ${colors.cardBorder}`,
-              color: colors.textMuted,
-              fontFamily: fonts.body,
-              fontSize: 12,
-              cursor: 'pointer',
+              padding: '0 14px', minHeight: 36, borderRadius: 8,
+              background: '#1a1a28', border: `1px solid ${colors.cardBorder}`,
+              color: colors.textMuted, fontFamily: fonts.body, fontSize: 12, cursor: 'pointer',
             }}
           >
             📝 Note
@@ -230,49 +145,100 @@ function ProjectCard({ slug, project, onDone, onLog }) {
   )
 }
 
-export default function ProjectPulse({ projects, todayDate, onDone, onLog }) {
+function WaitingRow({ project }) {
+  const { label, emoji, waiting_on } = project
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'flex-start', gap: 8,
+      padding: '10px 0',
+      borderBottom: `1px solid ${colors.cardBorder}`,
+    }}>
+      <span style={{ fontSize: 16, lineHeight: '20px' }}>{emoji}</span>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: colors.textMuted }}>{label}</div>
+        {waiting_on && (
+          <div style={{ fontSize: 12, color: '#a08030', marginTop: 2, lineHeight: 1.4 }}>
+            ⏳ {waiting_on}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default function ProjectPulse({ projects, onDone, onLog }) {
   const [expanded, setExpanded] = useState(true)
 
   if (!projects) return null
 
-  const visibleProjects = Object.entries(projects)
-    .filter(([, p]) => !HIDDEN_STATUSES.includes(p.status))
-    .sort((a, b) => {
-      const pa = PRIORITY_ORDER[a[1].priority] ?? 2
-      const pb = PRIORITY_ORDER[b[1].priority] ?? 2
-      if (pa !== pb) return pa - pb
-      // Within same priority, stalled last
-      const as = STALLED_STATUSES.includes(a[1].status) ? 1 : 0
-      const bs = STALLED_STATUSES.includes(b[1].status) ? 1 : 0
-      return as - bs
-    })
+  const all = Object.entries(projects).filter(([, p]) => !HIDDEN_STATUSES.includes(p?.status))
 
-  if (visibleProjects.length === 0) return null
+  const focusItems = all.filter(([, p]) => (p?.mode || 'active') === 'active_focus')
+  const waitingItems = all.filter(([, p]) => (p?.mode || 'active') === 'waiting')
+  const otherCount = all.filter(([, p]) => MODE_HIDDEN_ON_TODAY.has(p?.mode || 'active')).length
+
+  if (focusItems.length === 0 && waitingItems.length === 0) return null
 
   return (
     <div style={{ marginBottom: 8 }}>
       <div
-        style={{ ...SECTION_HEADER, display: 'flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none' }}
+        style={{
+          fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase',
+          color: colors.textDim, fontFamily: fonts.body, fontWeight: 600,
+          padding: '20px 20px 8px',
+          display: 'flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none',
+        }}
         onClick={() => setExpanded(e => !e)}
       >
-        <span style={{ flex: 1 }}>🚀 Project Pulse</span>
+        <span style={{ flex: 1 }}>🎯 Focus</span>
         <span style={{
           marginRight: 20, fontSize: 14, color: colors.textDim,
           transition: 'transform 0.15s', display: 'inline-block',
           transform: expanded ? 'rotate(90deg)' : 'rotate(0deg)',
         }}>›</span>
       </div>
+
       {expanded && (
         <div style={{ padding: '0 20px' }}>
-          {visibleProjects.map(([slug, project]) => (
-            <ProjectCard
-              key={slug}
-              slug={slug}
-              project={project}
-              onDone={onDone}
-              onLog={onLog}
+          {/* Focus cards */}
+          {focusItems.map(([slug, project]) => (
+            <FocusCard
+              key={slug} slug={slug} project={project}
+              onDone={onDone} onLog={onLog}
             />
           ))}
+
+          {/* Waiting strip */}
+          {waitingItems.length > 0 && (
+            <div style={{
+              background: colors.card,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: 12,
+              padding: '0 16px',
+              marginBottom: 10,
+            }}>
+              <div style={{
+                fontSize: 9, fontWeight: 700, textTransform: 'uppercase',
+                letterSpacing: '0.12em', color: '#e8c55c',
+                padding: '12px 0 4px',
+              }}>
+                Waiting on someone
+              </div>
+              {waitingItems.map(([slug, project]) => (
+                <WaitingRow key={slug} slug={slug} project={project} />
+              ))}
+            </div>
+          )}
+
+          {/* Link to /projects */}
+          <Link to="/projects" style={{
+            display: 'block', textAlign: 'center',
+            padding: '10px', fontSize: 12,
+            color: colors.textDim, textDecoration: 'none',
+            marginBottom: 4,
+          }}>
+            {otherCount > 0 ? `+ ${otherCount} more · ` : ''}Weekly review →
+          </Link>
         </div>
       )}
     </div>
