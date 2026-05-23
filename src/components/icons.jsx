@@ -21,6 +21,15 @@ const STATE_VIEWBOX = {
   FL: "796.1 497.7 113.1 108.8",
 }
 
+// Rotation to level each state's bottom edge (degrees)
+// Computed from convex hull bottom-edge linear regression on simplemaps data.
+const STATE_ROTATE = {
+  MO: 0,     // already level (Missouri River survey line is E-W)
+  KY: 10,    // Ohio River border has ~10° tilt
+  NH: 6,     // slight NE tilt
+  FL: -15,   // panhandle leveled (peninsula skews PCA)
+}
+
 // ── Landmark paths (from Iconify API — Tabler & MDI, MIT licensed) ──────────
 
 const LANDMARK_PATHS = {
@@ -50,18 +59,29 @@ const LANDMARK_PATHS = {
 
 // ── React Components ─────────────────────────────────────────────────────────
 
-export function StateIcon({ state, size = 20, color = 'currentColor', style = {} }) {
+export function StateIcon({ state, size = 24, color = 'currentColor', style = {} }) {
   const path = STATE_PATHS[state]
   const viewBox = STATE_VIEWBOX[state]
+  const rotate = STATE_ROTATE[state] || 0
   if (!path || !viewBox) return null
+
+  // Compute center of viewBox for rotation origin
+  const [vbx, vby, vbw, vbh] = viewBox.split(' ').map(Number)
+  const cx = vbx + vbw / 2
+  const cy = vby + vbh / 2
 
   return createElement('svg', {
     width: size, height: size, viewBox,
-    fill: 'none', stroke: color, strokeWidth: 2,
+    fill: 'none', stroke: color, strokeWidth: 3,
     strokeLinecap: 'round', strokeLinejoin: 'round',
     style: { flexShrink: 0, ...style },
-  }, createElement('path', { d: path, fill: 'currentColor', stroke: 'none', opacity: 0.15, key: 'fill' }),
-     createElement('path', { d: path, fill: 'none', key: 'outline' }))
+  }, createElement('g', {
+    transform: `rotate(${rotate}, ${cx}, ${cy})`,
+    key: 'rotated',
+  },
+    createElement('path', { d: path, fill: 'currentColor', stroke: 'none', opacity: 0.15, key: 'fill' }),
+    createElement('path', { d: path, fill: 'none', key: 'outline' })
+  ))
 }
 
 export function LandmarkIcon({ landmark, size = 20, color = 'currentColor', style = {} }) {
