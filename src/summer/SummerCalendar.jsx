@@ -391,13 +391,13 @@ function EventModal({ event, onClose }) {
                   {event.logistics_type === 'transport' ? "Who's driving?" : "Who's attending?"}
                 </div>
                 <div style={{ display: 'flex', gap: 6 }}>
-                  {['michael', 'meghan'].map(person => (
+                  {['michael', 'meghan', 'both'].map(person => (
                     <button key={person} onClick={() => handleParentAssign(person)} disabled={saving} style={{
                       flex: 1, padding: '8px 0', borderRadius: 8, border: 'none',
                       fontSize: 12, fontWeight: parentPick === person ? 600 : 400, cursor: 'pointer',
                       background: parentPick === person ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.04)',
                       color: parentPick === person ? '#60a5fa' : colors.textDim,
-                    }}>{person === 'michael' ? 'Michael' : 'Meghan'}</button>
+                    }}>{person === 'michael' ? 'Michael' : person === 'meghan' ? 'Meghan' : 'Both'}</button>
                   ))}
                 </div>
                 {parentPick && (
