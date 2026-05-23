@@ -14,6 +14,7 @@ const CATS = {
   trip:     { label: 'Trip',    color: '#2dd4bf', bg: 'rgba(45,212,191,0.15)', emoji: '✈️' },
   camp:     { label: 'Camp',    color: '#34d399', bg: 'rgba(52,211,153,0.15)', emoji: '⛺' },
   school:   { label: 'School',  color: '#fb923c', bg: 'rgba(251,146,60,0.15)', emoji: '🍎' },
+  milestone: { label: 'Birthdays', color: '#9ca3af', bg: 'rgba(156,163,175,0.10)', emoji: '🎂' },
 }
 
 const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
@@ -625,6 +626,41 @@ export default function SummerCalendar() {
           </div>
         </div>
       )}
+
+      {/* Milestones (birthdays & anniversaries) */}
+      {data?.events && (() => {
+        const milestones = Object.values(data.events)
+          .filter(e => e.category === 'milestone')
+          .sort((a, b) => a.date.localeCompare(b.date))
+        if (milestones.length === 0) return null
+        return (
+          <div style={{ marginTop: 20 }}>
+            <div style={{
+              fontSize: 11, fontWeight: 600, color: colors.textDim,
+              textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 8,
+            }}>
+              🎂 Birthdays & Anniversaries
+            </div>
+            <div style={{
+              display: 'flex', flexWrap: 'wrap', gap: 6,
+            }}>
+              {milestones.map((m, i) => {
+                const d = new Date(m.date + 'T12:00:00')
+                return (
+                  <div key={i} style={{
+                    padding: '3px 10px', borderRadius: 12, fontSize: 10,
+                    background: 'rgba(156,163,175,0.08)',
+                    border: '1px solid rgba(156,163,175,0.12)',
+                    color: colors.textDim,
+                  }}>
+                    {MONTHS[d.getMonth()]} {d.getDate()} — {m.summary}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })()}
 
       {/* Legend */}
       <div style={{
