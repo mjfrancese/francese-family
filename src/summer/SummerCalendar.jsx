@@ -2,79 +2,177 @@ import { useState, useEffect, useMemo } from 'react'
 import { ref, onValue } from 'firebase/database'
 import { db } from '../firebase'
 import { colors } from '../theme'
-import { ChevronLeft, ChevronRight, MapPin, Clock, User, Car, Eye, AlertCircle, X } from 'lucide-react'
+import { MapPin, Clock, AlertCircle, X, Filter } from 'lucide-react'
 
 // ── Category config ──────────────────────────────────────────────────────────
 
-const CATEGORIES = {
-  louise:   { label: 'Louise',   color: '#f472b6', bg: 'rgba(244,114,182,0.15)' },
-  kenna:    { label: 'Kenna',    color: '#a78bfa', bg: 'rgba(167,139,250,0.15)' },
-  'both-kids': { label: 'Both Kids', color: '#fbbf24', bg: 'rgba(251,191,36,0.15)' },
-  family:   { label: 'Family',   color: '#60a5fa', bg: 'rgba(96,165,250,0.15)' },
-  trip:     { label: 'Trip',     color: '#2dd4bf', bg: 'rgba(45,212,191,0.15)' },
-  camp:     { label: 'Camp',     color: '#34d399', bg: 'rgba(52,211,153,0.15)' },
-  school:   { label: 'School',   color: '#fb923c', bg: 'rgba(251,146,60,0.15)' },
+const CATS = {
+  louise:   { label: 'Louise',  color: '#f472b6', bg: 'rgba(244,114,182,0.15)', emoji: '🎀' },
+  kenna:    { label: 'Kenna',   color: '#a78bfa', bg: 'rgba(167,139,250,0.15)', emoji: '📣' },
+  'both-kids': { label: 'Both', color: '#fbbf24', bg: 'rgba(251,191,36,0.15)', emoji: '👧👧' },
+  family:   { label: 'Family',  color: '#60a5fa', bg: 'rgba(96,165,250,0.15)', emoji: '👨‍👩‍👧‍👧' },
+  trip:     { label: 'Trip',    color: '#2dd4bf', bg: 'rgba(45,212,191,0.15)', emoji: '✈️' },
+  camp:     { label: 'Camp',    color: '#34d399', bg: 'rgba(52,211,153,0.15)', emoji: '⛺' },
+  school:   { label: 'School',  color: '#fb923c', bg: 'rgba(251,146,60,0.15)', emoji: '🍎' },
 }
 
-const LOGISTICS_ICONS = {
-  transport:  { icon: Car, label: 'Drop off / pick up — parent does NOT stay' },
-  attendance: { icon: Eye, label: 'Parent stays for this activity' },
-  travel:     { icon: MapPin, label: 'Travel — whole family' },
-  info:       { icon: AlertCircle, label: 'FYI — no action needed' },
-}
-
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
-
-function getDaysInMonth(year, month) {
-  return new Date(year, month + 1, 0).getDate()
-}
-
-function getFirstDayOfMonth(year, month) {
-  return new Date(year, month, 1).getDay()
-}
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
 function todayStr() {
   const d = new Date()
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`
 }
 
-// ── Components ───────────────────────────────────────────────────────────────
+function fmtDate(d) {
+  return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+}
 
-function EventChip({ event, onClick }) {
-  const cat = CATEGORIES[event.category] || CATEGORIES.family
+// ── Kenna Location Strip ─────────────────────────────────────────────────────
+
+function KennaStrip({ schedule, trips, events }) {
+  if (!schedule || schedule.length === 0) return null
+
+  const today = todayStr()
+  const weeks = []
+  const start = new Date('2026-05-23')
+  const end = new Date('2026-08-31')
+
+  // Build week blocks
+  let d = new Date(start)
+  while (d <= end) {
+    const weekEnd = new Date(d)
+    weekEnd.setDate(weekEnd.getDate() + 6)
+    if (weekEnd > end) weekEnd.setTime(end.getTime())
+
+    const dStr = d.toISOString().slice(0, 10)
+    const weStr = weekEnd.toISOString().slice(0, 10)
+
+    // Find Kenna's location for this week
+    let loc = 'unknown'
+    for (const s of schedule) {
+      if (s.start <= weStr && s.end > dStr) {
+        loc = s.location
+        break
+      }
+    }
+
+    // Check if this week has a trip
+    let tripLabel = null
+    for (const t of trips || []) {
+      if (t.start <= weStr && t.end >= dStr) {
+        tripLabel = t.label
+        break
+      }
+    }
+
+    // Count events this week
+    const weekEventCount = (events || []).filter(e => e.date >= dStr && e.date <= weStr).length
+
+    weeks.push({
+      start: dStr, end: weStr,
+      label: `${MONTHS[d.getMonth()]} ${d.getDate()}`,
+      location: loc,
+      tripLabel,
+      weekEventCount,
+      isCurrent: today >= dStr && today <= weStr,
+    })
+
+    d.setDate(d.getDate() + 7)
+  }
+
   return (
-    <div
-      onClick={(e) => { e.stopPropagation(); onClick(event) }}
-      style={{
-        fontSize: 10, lineHeight: 1.3,
-        padding: '1px 4px', marginBottom: 1, borderRadius: 3,
-        background: cat.bg, color: cat.color,
-        cursor: 'pointer', whiteSpace: 'nowrap',
-        overflow: 'hidden', textOverflow: 'ellipsis',
-        display: 'flex', alignItems: 'center', gap: 2,
-      }}
-      title={event.summary + (event.location ? ' @ ' + event.location : '')}
-    >
-      {event.logistics_type === 'transport' && <Car size={8} />}
-      {event.logistics_type === 'attendance' && <Eye size={8} />}
-      {event.time_str && <span style={{opacity:0.7,marginRight:1}}>{event.time_str}</span>}
-      <span style={{flex:1,overflow:'hidden',textOverflow:'ellipsis'}}>{event.summary}</span>
+    <div style={{ marginBottom: 16 }}>
+      <div style={{
+        display: 'flex', gap: 4, overflowX: 'auto', paddingBottom: 8,
+        WebkitOverflowScrolling: 'touch',
+      }}>
+        {weeks.map((w, i) => {
+          const isSTL = w.location === 'St. Louis'
+          const isKY = w.location === 'Kentucky'
+          return (
+            <div key={i} style={{
+              flex: '0 0 auto', minWidth: 64, padding: '6px 8px',
+              borderRadius: 8, textAlign: 'center', fontSize: 10,
+              background: w.tripLabel ? 'rgba(45,212,191,0.18)'
+                       : isSTL ? 'rgba(52,211,153,0.12)'
+                       : isKY ? 'rgba(96,165,250,0.10)'
+                       : 'rgba(255,255,255,0.03)',
+              border: w.isCurrent ? '1.5px solid rgba(244,114,182,0.4)'
+                    : '1px solid transparent',
+              color: w.tripLabel ? '#2dd4bf'
+                   : isSTL ? '#34d399'
+                   : isKY ? '#60a5fa'
+                   : colors.textDim,
+            }}>
+              <div style={{ fontWeight: 600, fontSize: 9, opacity: 0.7 }}>{w.label}</div>
+              <div style={{ fontSize: 12, fontWeight: 700, margin: '2px 0' }}>
+                {w.tripLabel ? '✈️' : isSTL ? '🏠' : '🏡'}
+              </div>
+              <div style={{ fontSize: 9 }}>
+                {w.tripLabel ? 'TRIP' : isSTL ? 'STL' : 'KY'}
+              </div>
+              {w.weekEventCount > 0 && (
+                <div style={{ fontSize: 8, marginTop: 2, opacity: 0.8 }}>
+                  {w.weekEventCount} event{w.weekEventCount !== 1 ? 's' : ''}
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+      <div style={{ display: 'flex', gap: 10, marginTop: 6, fontSize: 9, color: colors.textDim, justifyContent: 'center' }}>
+        <span>🏠 STL</span><span>🏡 Kentucky</span><span>✈️ Trip</span>
+      </div>
     </div>
   )
 }
 
-function MonthGrid({ year, month, eventsByDate, onEventClick }) {
-  const daysInMonth = getDaysInMonth(year, month)
-  const firstDay = getFirstDayOfMonth(year, month)
+// ── Trip Cards ────────────────────────────────────────────────────────────────
+
+function TripCards({ trips }) {
+  if (!trips || trips.length === 0) return null
+  return (
+    <div style={{ display: 'flex', gap: 8, overflowX: 'auto', marginBottom: 16, paddingBottom: 4 }}>
+      {trips.map((t, i) => (
+        <div key={i} style={{
+          flex: '0 0 auto', minWidth: 150, padding: '8px 12px',
+          borderRadius: 10, fontSize: 11,
+          background: 'rgba(45,212,191,0.10)',
+          border: '1px solid rgba(45,212,191,0.2)',
+        }}>
+          <div style={{ color: '#2dd4bf', fontWeight: 700, fontSize: 12 }}>{t.label}</div>
+          <div style={{ color: colors.textDim, fontSize: 10, marginTop: 2 }}>
+            {new Date(t.start + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+            {' – '}
+            {new Date(t.end + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+          </div>
+          {t.note && <div style={{ color: colors.textDim, fontSize: 9, marginTop: 2, opacity: 0.7 }}>{t.note}</div>}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ── Month Grid (compact, mobile-first) ────────────────────────────────────────
+
+function MonthGrid({ year, month, eventsByDate, onEventClick, kennaSchedule, trips }) {
+  const daysInMonth = new Date(year, month + 1, 0).getDate()
+  const firstDay = new Date(year, month, 1).getDay()
   const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7
   const today = todayStr()
-  const monthStart = new Date(year, month, 1)
-
-  // Days before May 23 are dimmed
   const HIDE_BEFORE = new Date(2026, 4, 23)
+
+  // Build lookup: is this date in a trip?
+  const tripDates = new Set()
+  for (const t of trips || []) {
+    let d = new Date(t.start + 'T12:00:00')
+    const end = new Date(t.end + 'T12:00:00')
+    while (d <= end) {
+      tripDates.add(d.toISOString().slice(0, 10))
+      d.setDate(d.getDate() + 1)
+    }
+  }
 
   const rows = []
   let cells = []
@@ -83,7 +181,6 @@ function MonthGrid({ year, month, eventsByDate, onEventClick }) {
       rows.push(<tr key={rows.length}>{cells}</tr>)
       cells = []
     }
-
     const dayNum = cell - firstDay + 1
     const inMonth = dayNum >= 1 && dayNum <= daysInMonth
     const dateObj = new Date(year, month, dayNum)
@@ -91,60 +188,86 @@ function MonthGrid({ year, month, eventsByDate, onEventClick }) {
     const isToday = dateStr === today
     const isBefore = dateObj < HIDE_BEFORE
     const dayEvents = eventsByDate[dateStr] || []
+    const isTrip = tripDates.has(dateStr)
+
+    // Kenna location
+    let kennaLoc = null
+    for (const s of kennaSchedule || []) {
+      if (s.start <= dateStr && s.end > dateStr) {
+        kennaLoc = s.location
+        break
+      }
+    }
 
     cells.push(
       <td key={cell} style={{
-        verticalAlign: 'top', padding: '2px 3px', height: 52,
-        textAlign: 'center', borderRadius: 6,
-        opacity: (!inMonth || isBefore) ? 0.25 : 1,
-        background: isToday ? 'rgba(244,114,182,0.12)' : 'transparent',
-        border: isToday ? '1px solid rgba(244,114,182,0.3)' : '1px solid transparent',
+        verticalAlign: 'top', padding: '1px 2px', height: 44, textAlign: 'center',
+        borderRadius: 4, position: 'relative',
+        opacity: (!inMonth || isBefore) ? 0.2 : 1,
+        background: isTrip ? 'rgba(45,212,191,0.08)' : 'transparent',
+        border: isToday ? '1.5px solid rgba(244,114,182,0.5)' : '1px solid transparent',
       }}>
-        {inMonth && (
+        {inMonth && !isBefore && (
           <>
             <div style={{
-              fontSize: 11, fontWeight: isToday ? 700 : 500,
-              color: isToday ? '#f472b6' : colors.textDim,
-              marginBottom: 2, lineHeight: 1,
+              fontSize: 10, fontWeight: isToday ? 700 : 400,
+              color: isToday ? '#f472b6' : isTrip ? '#2dd4bf' : colors.textDim,
+              marginBottom: 1, lineHeight: 1.2,
             }}>
               {dayNum}
             </div>
-            {dayEvents.slice(0, 3).map((ev, i) => (
-              <EventChip key={i} event={ev} onClick={onEventClick} />
-            ))}
-            {dayEvents.length > 3 && (
-              <div style={{fontSize:9,color:colors.textDim}}>+{dayEvents.length - 3} more</div>
+            {dayEvents.slice(0, 2).map((ev, i) => {
+              const cat = CATS[ev.category] || CATS.family
+              return (
+                <div key={i}
+                  onClick={(e) => { e.stopPropagation(); onEventClick(ev) }}
+                  style={{
+                    width: 8, height: 8, borderRadius: '50%',
+                    background: cat.color, display: 'inline-block', margin: '0 1px',
+                    cursor: 'pointer',
+                  }}
+                  title={ev.summary}
+                />
+              )
+            })}
+            {dayEvents.length > 2 && (
+              <span style={{ fontSize: 8, color: colors.textDim }}>+{dayEvents.length - 2}</span>
+            )}
+            {/* Kenna in KY indicator */}
+            {kennaLoc === 'Kentucky' && (
+              <div style={{
+                width: '100%', height: 2, background: 'rgba(96,165,250,0.3)',
+                borderRadius: 1, marginTop: 1,
+              }} />
             )}
           </>
         )}
       </td>
     )
   }
-
-  // Pad final row
-  while (cells.length < 7) {
-    cells.push(<td key={`pad-${cells.length}`} style={{opacity:0.2}}></td>)
-  }
+  while (cells.length < 7) cells.push(<td key={`pad-${cells.length}`} style={{ opacity: 0.2 }} />)
   rows.push(<tr key={rows.length}>{cells}</tr>)
+
+  const monthLabel = new Date(year, month, 1).toLocaleDateString('en-US', { month: 'long' })
 
   return (
     <div style={{
-      background: colors.card, borderRadius: 10, padding: '10px 8px',
-      border: `1px solid ${colors.cardBorder}`,
+      background: colors.card, borderRadius: 10, padding: '8px 10px',
+      border: `1px solid ${colors.cardBorder}`, marginBottom: 12,
     }}>
-      <h3 style={{
+      <div style={{
         textAlign: 'center', fontSize: 13, fontWeight: 600,
-        color: colors.text, marginBottom: 8,
+        color: colors.text, marginBottom: 6,
       }}>
-        {monthStart.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-      </h3>
+        {monthLabel}
+      </div>
       <table style={{ width: '100%', tableLayout: 'fixed', borderCollapse: 'collapse' }}>
         <thead>
           <tr>
             {DAYS.map(d => (
               <th key={d} style={{
-                fontSize: 9, fontWeight: 600, color: colors.textDim,
-                textTransform: 'uppercase', paddingBottom: 6, letterSpacing: 0.5,
+                fontSize: 8, fontWeight: 600, color: colors.textDim,
+                textTransform: 'uppercase', paddingBottom: 4, letterSpacing: 0.5,
               }}>{d}</th>
             ))}
           </tr>
@@ -155,51 +278,48 @@ function MonthGrid({ year, month, eventsByDate, onEventClick }) {
   )
 }
 
+// ── Event Detail Modal ────────────────────────────────────────────────────────
+
 function EventModal({ event, onClose }) {
   if (!event) return null
-  const cat = CATEGORIES[event.category] || CATEGORIES.family
-  const log = LOGISTICS_ICONS[event.logistics_type] || LOGISTICS_ICONS.info
-  const LogIcon = log.icon
+  const cat = CATS[event.category] || CATS.family
 
   return (
     <div onClick={onClose} style={{
-      position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      zIndex: 100, padding: 16,
+      position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.65)',
+      display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
+      zIndex: 100,
     }}>
       <div onClick={(e) => e.stopPropagation()} style={{
-        background: colors.card, borderRadius: 12, padding: 20,
-        maxWidth: 400, width: '100%', border: `1px solid ${colors.cardBorder}`,
-        position: 'relative',
+        background: colors.card, borderRadius: '16px 16px 0 0', padding: '20px 16px 28px',
+        maxWidth: 500, width: '100%', border: `1px solid ${colors.cardBorder}`,
+        maxHeight: '80vh', overflowY: 'auto',
       }}>
-        <button onClick={onClose} style={{
-          position: 'absolute', top: 12, right: 12,
-          background: 'none', border: 'none', color: colors.textDim,
-          cursor: 'pointer', padding: 4,
-        }}>
-          <X size={18} />
-        </button>
+        {/* Handle */}
+        <div style={{ width: 36, height: 4, borderRadius: 2, background: colors.divider, margin: '0 auto 14px' }} />
 
-        {/* Category badge */}
-        <div style={{
-          display: 'inline-block', padding: '2px 10px', borderRadius: 10,
-          background: cat.bg, color: cat.color, fontSize: 11, fontWeight: 600,
-          marginBottom: 8,
-        }}>
-          {cat.label}
+        {/* Header */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+          <span style={{
+            padding: '2px 8px', borderRadius: 8, fontSize: 10,
+            background: cat.bg, color: cat.color, fontWeight: 600,
+          }}>
+            {cat.emoji} {cat.label}
+          </span>
+          {event.confidence !== 'high' && (
+            <span style={{ fontSize: 10, color: '#fbbf24' }} title="Needs review">⚠️ review</span>
+          )}
         </div>
 
-        <h2 style={{ fontSize: 18, fontWeight: 700, color: colors.text, margin: '4px 0 8px' }}>
+        <h2 style={{ fontSize: 17, fontWeight: 700, color: colors.text, margin: '4px 0 10px' }}>
           {event.summary}
         </h2>
 
-        {/* Date & Time */}
+        {/* Date/Time */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, color: colors.textDim, fontSize: 13 }}>
           <Clock size={14} />
           <span>
-            {new Date(event.date + 'T12:00:00').toLocaleDateString('en-US', {
-              weekday: 'long', month: 'long', day: 'numeric'
-            })}
+            {fmtDate(new Date(event.date + 'T12:00:00'))}
             {event.time_str && ` at ${event.time_str}`}
             {event.all_day && ' (all day)'}
           </span>
@@ -215,54 +335,59 @@ function EventModal({ event, onClose }) {
 
         {/* Logistics */}
         <div style={{
-          display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 8,
-          padding: '8px 12px', borderRadius: 8,
-          background: 'rgba(255,255,255,0.03)', fontSize: 13,
+          margin: '10px 0', padding: '10px 12px', borderRadius: 8,
+          background: 'rgba(255,255,255,0.03)', fontSize: 12,
+          display: 'flex', alignItems: 'flex-start', gap: 8,
         }}>
-          <LogIcon size={16} style={{ color: cat.color, marginTop: 2 }} />
+          <span style={{ fontSize: 16 }}>
+            {event.logistics_type === 'transport' ? '🚗' :
+             event.logistics_type === 'attendance' ? '👀' :
+             event.logistics_type === 'travel' ? '✈️' : '📌'}
+          </span>
           <div>
-            <div style={{ color: colors.text, fontWeight: 600 }}>
+            <div style={{ color: colors.text, fontWeight: 600, fontSize: 13 }}>
               {event.logistics_type === 'transport' ? 'Drop off / Pick up' :
-               event.logistics_type === 'attendance' ? 'Stay & Watch' :
-               event.logistics_type === 'travel' ? 'Family Travel' : 'Heads Up'}
+               event.logistics_type === 'attendance' ? 'Parent stays' :
+               event.logistics_type === 'travel' ? 'Family travel' : 'Heads up'}
             </div>
-            <div style={{ color: colors.textDim, fontSize: 12 }}>
+            <div style={{ color: colors.textDim, fontSize: 11 }}>
               {event.parent_stays ? 'Parent stays for this activity' : 'Drop off and pick up — parent does NOT stay'}
             </div>
           </div>
         </div>
 
         {/* Who */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, color: colors.textDim, fontSize: 13 }}>
-          <User size={14} />
-          <span>
-            {event.who?.length > 0
-              ? event.who.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' + ')
-              : 'Family'}
-          </span>
+        <div style={{ fontSize: 12, color: colors.textDim, marginBottom: 4 }}>
+          👤 {event.who?.length > 0
+            ? event.who.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' + ')
+            : 'Family'}
+          {event.kenna_location && event.kenna_location !== 'St. Louis' && (
+            <span style={{ marginLeft: 8, color: '#60a5fa', fontSize: 10 }}>
+              (Kenna in {event.kenna_location})
+            </span>
+          )}
         </div>
 
         {/* Note */}
         {event.note && (
           <div style={{
             marginTop: 8, padding: '8px 12px', borderRadius: 8,
-            background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.2)',
-            fontSize: 12, color: colors.textDim,
+            background: 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.15)',
+            fontSize: 11, color: colors.textDim,
           }}>
             {event.note}
           </div>
         )}
 
-        {/* Confidence warning */}
-        {event.confidence !== 'high' && (
-          <div style={{
-            marginTop: 8, fontSize: 11, color: '#fbbf24',
-            display: 'flex', alignItems: 'center', gap: 4,
-          }}>
-            <AlertCircle size={12} />
-            Auto-classified — may need review
-          </div>
-        )}
+        {/* Close button */}
+        <button onClick={onClose} style={{
+          marginTop: 14, width: '100%', padding: '10px 0',
+          background: 'rgba(255,255,255,0.06)', border: 'none',
+          borderRadius: 10, color: colors.textDim, fontSize: 13,
+          cursor: 'pointer', fontWeight: 500,
+        }}>
+          Close
+        </button>
       </div>
     </div>
   )
@@ -271,70 +396,65 @@ function EventModal({ event, onClose }) {
 // ── Main Component ───────────────────────────────────────────────────────────
 
 export default function SummerCalendar() {
-  const [events, setEvents] = useState({})
+  const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [filter, setFilter] = useState('all') // all | louise | kenna | family | trip | camp | school
+  const [filter, setFilter] = useState('all')
   const [selectedEvent, setSelectedEvent] = useState(null)
+  const [showListView, setShowListView] = useState(true)
 
-  // Firebase subscription
   useEffect(() => {
-    const eventsRef = ref(db, 'kids-summer/2026/events')
-    const unsub = onValue(eventsRef, (snap) => {
-      const data = snap.val()
-      setEvents(data || {})
+    const ref2026 = ref(db, 'kids-summer/2026')
+    const unsub = onValue(ref2026, (snap) => {
+      setData(snap.val() || {})
       setLoading(false)
     }, (err) => {
-      console.error('Firebase read error:', err)
+      console.error('Firebase error:', err)
       setLoading(false)
     })
     return () => unsub()
   }, [])
 
-  // Filter events
+  const events = useMemo(() => {
+    if (!data?.events) return []
+    return Object.values(data.events)
+  }, [data])
+
   const filteredEvents = useMemo(() => {
-    const evs = Object.values(events)
-    if (filter === 'all') return evs
-    return evs.filter(e => e.category === filter)
+    if (filter === 'all') return events
+    if (filter === 'louise') return events.filter(e => e.who?.includes('louise'))
+    if (filter === 'kenna') return events.filter(e => e.who?.includes('kenna'))
+    return events.filter(e => e.category === filter)
   }, [events, filter])
 
-  // Group by date for grid
   const eventsByDate = useMemo(() => {
     const map = {}
     filteredEvents.forEach(e => {
       if (!map[e.date]) map[e.date] = []
       map[e.date].push(e)
     })
-    // Sort events within each day by time
-    Object.values(map).forEach(dayEvs => {
-      dayEvs.sort((a, b) => (a.time_str || '').localeCompare(b.time_str || ''))
-    })
     return map
   }, [filteredEvents])
 
-  // Months to show: May (partial), June, July, August
-  const MONTHS_TO_SHOW = [
-    { year: 2026, month: 4 },  // May (0-indexed)
-    { year: 2026, month: 5 },  // June
-    { year: 2026, month: 6 },  // July
-    { year: 2026, month: 7 },  // August
-  ]
+  const upcomingEvents = useMemo(() => {
+    const today = todayStr()
+    return filteredEvents.filter(e => e.date >= today).sort((a, b) => {
+      if (a.date !== b.date) return a.date.localeCompare(b.date)
+      return (a.time_str || '').localeCompare(b.time_str || '')
+    })
+  }, [filteredEvents])
 
-  // Filter pills
   const FILTERS = [
     { key: 'all', label: 'All' },
     { key: 'louise', label: 'Louise' },
     { key: 'kenna', label: 'Kenna' },
-    { key: 'both-kids', label: 'Both Kids' },
-    { key: 'family', label: 'Family' },
     { key: 'trip', label: 'Trips' },
     { key: 'camp', label: 'Camps' },
-    { key: 'school', label: 'School' },
   ]
 
   if (loading) {
     return (
       <div style={{ minHeight: '100vh', background: colors.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ color: colors.textDim, fontSize: 13 }}>Loading summer calendar...</div>
+        <div style={{ color: colors.textDim, fontSize: 13 }}>Loading...</div>
       </div>
     )
   }
@@ -342,141 +462,183 @@ export default function SummerCalendar() {
   return (
     <div style={{
       minHeight: '100vh', background: colors.bg, fontFamily: "'DM Sans', sans-serif",
-      color: colors.text, padding: '16px 20px', maxWidth: 1200, margin: '0 auto',
+      color: colors.text, padding: '12px 14px 40px', maxWidth: 600, margin: '0 auto',
     }}>
       {/* Header */}
-      <div style={{ marginBottom: 20 }}>
+      <div style={{ marginBottom: 12 }}>
         <h1 style={{
-          fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 600,
-          margin: '0 0 4px', letterSpacing: 0.5,
+          fontFamily: "'Playfair Display', serif", fontSize: 24, fontWeight: 600,
+          margin: '0 0 2px',
         }}>
-          ☀️ Kids Summer 2026
+          ☀️ Kids Summer
         </h1>
-        <p style={{ color: colors.textDim, fontSize: 13, margin: 0 }}>
-          {filteredEvents.length} events · May 23 – Aug 31 · Auto-classified from family calendars
+        <p style={{ color: colors.textDim, fontSize: 12, margin: 0 }}>
+          {events.length} events · May 23 – Aug 31
+          {data?.meta?.generated_at && (
+            <span style={{ fontSize: 10, opacity: 0.5, marginLeft: 8 }}>
+              Updated {new Date(data.meta.generated_at).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+            </span>
+          )}
         </p>
       </div>
 
-      {/* Filter bar */}
+      {/* Kenna Location Strip */}
+      <KennaStrip schedule={data?.kenna_schedule} trips={data?.trips} events={events} />
+
+      {/* Trip Cards */}
+      <TripCards trips={data?.trips} />
+
+      {/* Filter pills */}
       <div style={{
-        display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 20,
-        paddingBottom: 12, borderBottom: `1px solid ${colors.divider}`,
+        display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 14,
+        paddingBottom: 10, borderBottom: `1px solid ${colors.divider}`,
       }}>
         {FILTERS.map(f => {
-          const cat = CATEGORIES[f.key]
+          const cat = CATS[f.key]
           const active = filter === f.key
           return (
-            <button
-              key={f.key}
-              onClick={() => setFilter(f.key)}
-              style={{
-                padding: '6px 14px', borderRadius: 16, border: 'none',
-                fontSize: 12, fontWeight: active ? 600 : 400,
-                cursor: 'pointer',
-                background: active ? (cat?.bg || colors.cardHover) : 'transparent',
-                color: active ? (cat?.color || colors.text) : colors.textDim,
-                transition: 'all 0.15s',
-              }}
-            >
+            <button key={f.key} onClick={() => setFilter(f.key)} style={{
+              padding: '6px 14px', borderRadius: 16, border: 'none', fontSize: 12,
+              fontWeight: active ? 600 : 400, cursor: 'pointer',
+              background: active ? (cat?.bg || colors.cardHover) : 'transparent',
+              color: active ? (cat?.color || colors.text) : colors.textDim,
+            }}>
               {f.label}
             </button>
           )
         })}
+        <button onClick={() => setShowListView(!showListView)} style={{
+          padding: '6px 14px', borderRadius: 16, border: 'none', fontSize: 12,
+          fontWeight: 400, cursor: 'pointer', marginLeft: 'auto',
+          background: 'transparent', color: colors.textDim,
+        }}>
+          {showListView ? '📅 Grid' : '📋 List'}
+        </button>
       </div>
 
-      {/* Monthly grids */}
-      <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: 16,
-      }}>
-        {MONTHS_TO_SHOW.map(({ year, month }) => (
-          <MonthGrid
-            key={`${year}-${month}`}
-            year={year}
-            month={month}
-            eventsByDate={eventsByDate}
-            onEventClick={setSelectedEvent}
-          />
-        ))}
-      </div>
+      {/* Grid View */}
+      {!showListView && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 12 }}>
+          {[4, 5, 6, 7].map(m => (
+            <MonthGrid key={m} year={2026} month={m}
+              eventsByDate={eventsByDate}
+              onEventClick={setSelectedEvent}
+              kennaSchedule={data?.kenna_schedule}
+              trips={data?.trips}
+            />
+          ))}
+        </div>
+      )}
 
-      {/* Event list (chronological, below grids) */}
-      <div style={{ marginTop: 24 }}>
-        <h3 style={{ fontSize: 15, fontWeight: 600, color: colors.text, marginBottom: 12 }}>
-          All Events — Chronological
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          {filteredEvents.map((ev, i) => {
-            const cat = CATEGORIES[ev.category] || CATEGORIES.family
-            const d = new Date(ev.date + 'T12:00:00')
-            return (
-              <div
-                key={i}
-                onClick={() => setSelectedEvent(ev)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 10, padding: '6px 10px',
-                  borderRadius: 6, cursor: 'pointer', fontSize: 12,
-                  border: '1px solid transparent',
-                  transition: 'all 0.1s',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = colors.cardHover }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
-              >
-                <span style={{
-                  minWidth: 100, color: colors.textDim, fontSize: 11,
-                }}>
-                  {d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
-                  {ev.time_str && <span style={{marginLeft:4,opacity:0.7}}>{ev.time_str}</span>}
-                </span>
-                <span style={{
-                  flex: 1, color: colors.text, fontWeight: 500,
-                }}>
-                  {ev.summary}
-                  {ev.location && <span style={{color: colors.textDim, marginLeft: 6, fontSize: 10}}>@ {ev.location}</span>}
-                </span>
-                <span style={{
-                  padding: '1px 8px', borderRadius: 8, fontSize: 10,
-                  background: cat.bg, color: cat.color, fontWeight: 600,
-                  whiteSpace: 'nowrap',
-                }}>
-                  {cat.label}
-                </span>
-                <span style={{ fontSize: 10, color: colors.textDim }}>
-                  {ev.logistics_type === 'transport' ? '🚗' :
-                   ev.logistics_type === 'attendance' ? '👀' :
-                   ev.logistics_type === 'travel' ? '✈️' : '📌'}
-                </span>
-                {ev.confidence !== 'high' && (
-                  <span style={{ fontSize: 10, color: '#fbbf24' }} title="Needs review">⚠️</span>
-                )}
+      {/* List View (default for mobile) */}
+      {showListView && (
+        <div>
+          {/* Issues section */}
+          {data?.gaps && data.gaps.length > 0 && (
+            <div style={{
+              marginBottom: 14, padding: '10px 12px', borderRadius: 10,
+              background: 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.15)',
+              fontSize: 11,
+            }}>
+              <div style={{ fontWeight: 600, color: '#fbbf24', marginBottom: 6, fontSize: 12 }}>
+                ⚠️ {data.gaps.length} weeks with nothing scheduled
               </div>
-            )
-          })}
-          {filteredEvents.length === 0 && (
-            <div style={{ color: colors.textDim, fontSize: 13, padding: 20, textAlign: 'center' }}>
-              No events match this filter.
+              {data.gaps.slice(0, 3).map((g, i) => (
+                <div key={i} style={{ color: colors.textDim, fontSize: 10, marginBottom: 2 }}>
+                  · {g.label}: {g.note}
+                </div>
+              ))}
+              {data.gaps.length > 3 && (
+                <div style={{ color: colors.textDim, fontSize: 10, opacity: 0.5 }}>
+                  +{data.gaps.length - 3} more
+                </div>
+              )}
             </div>
           )}
+
+          {/* Event list */}
+          <div style={{ fontSize: 12 }}>
+            {upcomingEvents.length === 0 && (
+              <div style={{ color: colors.textDim, textAlign: 'center', padding: 30 }}>
+                No upcoming events with this filter.
+              </div>
+            )}
+            {upcomingEvents.map((ev, i) => {
+              const cat = CATS[ev.category] || CATS.family
+              const d = new Date(ev.date + 'T12:00:00')
+              const today = todayStr()
+              const isToday = ev.date === today
+              const isSoon = ev.date > today && ev.date <= new Date(Date.now() + 7 * 86400000).toISOString().slice(0, 10)
+
+              return (
+                <div key={i} onClick={() => setSelectedEvent(ev)} style={{
+                  display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px',
+                  borderRadius: 8, cursor: 'pointer',
+                  border: isToday ? '1px solid rgba(244,114,182,0.3)' : '1px solid transparent',
+                  background: isToday ? 'rgba(244,114,182,0.06)' : 'transparent',
+                  marginBottom: 2,
+                }}>
+                  {/* Date column */}
+                  <div style={{
+                    minWidth: 52, textAlign: 'center',
+                    color: isToday ? cat.color : colors.textDim, fontSize: 10,
+                  }}>
+                    <div style={{ fontWeight: 700, fontSize: 12 }}>
+                      {MONTHS[d.getMonth()]} {d.getDate()}
+                    </div>
+                    <div style={{ opacity: 0.6 }}>{DAYS[d.getDay()]}</div>
+                  </div>
+
+                  {/* Category dot */}
+                  <div style={{
+                    width: 8, height: 8, borderRadius: '50%', background: cat.color,
+                    flexShrink: 0,
+                  }} />
+
+                  {/* Event info */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ color: colors.text, fontWeight: 500, fontSize: 12 }}>
+                      {ev.summary}
+                      {ev.confidence !== 'high' && (
+                        <span style={{ color: '#fbbf24', fontSize: 10, marginLeft: 4 }}>⚠️</span>
+                      )}
+                    </div>
+                    <div style={{ color: colors.textDim, fontSize: 10 }}>
+                      {ev.time_str && <span>{ev.time_str} · </span>}
+                      {cat.emoji} {cat.label}
+                      {ev.location && <span> · {ev.location}</span>}
+                      {ev.kenna_location === 'Kentucky' && (
+                        <span style={{ color: '#60a5fa' }}> · Kenna in KY</span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Logistics icon */}
+                  <div style={{ fontSize: 14, flexShrink: 0 }}>
+                    {ev.logistics_type === 'transport' ? '🚗' :
+                     ev.logistics_type === 'attendance' ? '👀' :
+                     ev.logistics_type === 'travel' ? '✈️' : ''}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Legend */}
       <div style={{
-        marginTop: 24, padding: 12, borderRadius: 8,
+        marginTop: 20, padding: '10px 12px', borderRadius: 8,
         background: colors.card, border: `1px solid ${colors.cardBorder}`,
-        display: 'flex', flexWrap: 'wrap', gap: 16, fontSize: 11, color: colors.textDim,
+        fontSize: 10, color: colors.textDim, display: 'flex', flexWrap: 'wrap', gap: 10,
       }}>
-        <strong style={{color:colors.text}}>Logistics:</strong>
-        <span>🚗 Transport = drop off / pick up</span>
-        <span>👀 Attendance = parent stays</span>
-        <span>✈️ Travel = family trip</span>
-        <span>📌 Info = FYI only</span>
-        <span style={{marginLeft:'auto'}}>
-          <span style={{color:'#fbbf24'}}>⚠️</span> = auto-classified, needs review
-        </span>
+        <span>🚗 Drive</span><span>👀 Stay</span><span>✈️ Travel</span>
+        <span style={{ color: '#fbbf24' }}>⚠️ Needs review</span>
+        <span style={{ color: '#60a5fa' }}>— KY stripe</span>
+        <span style={{ color: '#2dd4bf' }}>— Trip week</span>
       </div>
 
-      {/* Event modal */}
+      {/* Bottom sheet modal */}
       {selectedEvent && (
         <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
       )}
