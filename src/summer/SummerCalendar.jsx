@@ -7,7 +7,7 @@ import {
   getLogisticsLabel, MapPin, Clock, AlertTriangle, User, ChevronRight,
   Calendar, Car, Eye, Plane, Flag,
 } from '../components/CategoryIcon'
-import { StateIcon, DestinationIcon } from '../components/icons'
+import { StateIcon, DestinationIcon, LandmarkIcon } from '../components/icons'
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -29,72 +29,88 @@ function KennaStrip({ schedule, trips }) {
   if (!schedule || schedule.length === 0) return null
 
   const today = todayStr()
-  const weeks = []
-  const start = new Date('2026-05-23')
-  const end = new Date('2026-08-31')
 
-  let d = new Date(start)
-  while (d <= end) {
-    const weekEnd = new Date(d); weekEnd.setDate(weekEnd.getDate() + 6)
-    if (weekEnd > end) weekEnd.setTime(end.getTime())
-    const dStr = d.toISOString().slice(0, 10)
-    const weStr = weekEnd.toISOString().slice(0, 10)
-
-    let loc = 'unknown'
-    for (const s of schedule) {
-      if (s.start <= weStr && s.end > dStr) { loc = s.location; break }
+  // Build transition markers from schedule
+  // Each pair of consecutive blocks creates: "[location] until [date]" + "→ [new location]"
+  const transitions = []
+  for (let i = 0; i < schedule.length; i++) {
+    const s = schedule[i]
+    const next = schedule[i + 1]
+    if (next && s.location !== next.location) {
+      transitions.push({
+        type: 'move',
+        from: s.location,
+        to: next.location,
+        date: next.start,
+        label: `${next.start === s.end ? 'same day' : ''}`,
+      })
     }
-
-    let tripLabel = null
-    for (const t of trips || []) {
-      if (t.start <= weStr && t.end >= dStr) { tripLabel = t.label; break }
-    }
-
-    weeks.push({
-      start: dStr, end: weStr,
-      label: `${MONTHS[d.getMonth()]} ${d.getDate()}`,
-      location: loc, tripLabel,
-      isCurrent: today >= dStr && today <= weStr,
-    })
-    d.setDate(d.getDate() + 7)
   }
+
+  // Build current location info
+  let currentLoc = 'unknown'
+  for (const s of schedule) {
+    if (s.start <= today && s.end > today) { currentLoc = s.location; break }
+  }
+
+  // Find next transition
+  const upcomingTransitions = transitions.filter(t => t.date >= today).sort((a, b) => a.date.localeCompare(b.date))
 
   return (
     <div style={{ marginBottom: 14 }}>
+      {/* Current location */}
       <div style={{
-        display: 'flex', gap: 4, overflowX: 'auto', paddingBottom: 6,
-        WebkitOverflowScrolling: 'touch',
+        display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10,
+        padding: '8px 12px', borderRadius: 10,
+        background: currentLoc === 'St. Louis' ? 'rgba(52,211,153,0.08)' : 'rgba(96,165,250,0.08)',
+        border: `1px solid ${currentLoc === 'St. Louis' ? 'rgba(52,211,153,0.18)' : 'rgba(96,165,250,0.18)'}`,
       }}>
-        {weeks.map((w, i) => {
-          const isSTL = w.location === 'St. Louis'
-          const isKY = w.location === 'Kentucky'
-          const tripColor = '#2dd4bf'
-          const stlColor = '#34d399'
-          const kyColor = '#60a5fa'
+        {currentLoc === 'St. Louis' ? (
+          <StateIcon state="MO" size={22} color="#34d399" />
+        ) : (
+          <StateIcon state="KY" size={22} color="#60a5fa" />
+        )}
+        <div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: colors.text }}>
+            Kenna is in {currentLoc === 'St. Louis' ? 'St. Louis' : 'Kentucky'}
+          </div>
+          {upcomingTransitions.length > 0 && (
+            <div style={{ fontSize: 11, color: colors.textDim, marginTop: 1 }}>
+              Next:{' '}
+              {upcomingTransitions[0].to === 'St. Louis' ? 'returns' : 'leaves for Kentucky'}{' '}
+              {new Date(upcomingTransitions[0].date + 'T12:00:00').toLocaleDateString('en-US', {
+                weekday: 'short', month: 'short', day: 'numeric',
+              })}
+            </div>
+          )}
+        </div>
+      </div>
 
+      {/* Transition timeline — compact scrolling list */}
+      <div style={{ display: 'flex', gap: 6, overflowX: 'auto', paddingBottom: 4, fontSize: 10 }}>
+        {schedule.filter(s => s.end > todayStr()).slice(0, 6).map((s, i) => {
+          const isSTL = s.location === 'St. Louis'
+          const startDate = new Date(s.start + 'T12:00:00')
+          const endDate = new Date(s.end + 'T12:00:00')
           return (
             <div key={i} style={{
-              flex: '0 0 auto', minWidth: 72, padding: '7px 8px 6px',
-              borderRadius: 10, textAlign: 'center', fontSize: 10,
-              background: w.tripLabel ? 'rgba(45,212,191,0.10)'
-                       : isSTL ? 'rgba(52,211,153,0.08)'
-                       : 'rgba(96,165,250,0.08)',
-              border: w.isCurrent ? '1.5px solid rgba(244,114,182,0.35)' : '1px solid transparent',
+              flex: '0 0 auto', padding: '5px 10px', borderRadius: 16,
+              background: isSTL ? 'rgba(52,211,153,0.06)' : 'rgba(96,165,250,0.06)',
+              border: `1px solid ${isSTL ? 'rgba(52,211,153,0.15)' : 'rgba(96,165,250,0.15)'}`,
+              display: 'flex', alignItems: 'center', gap: 5,
             }}>
-              <div style={{ fontSize: 9, opacity: 0.65, color: colors.textDim, marginBottom: 3 }}>
-                {w.label}
-              </div>
-              {w.tripLabel ? (
-                <Plane size={14} color={tripColor} />
-              ) : isSTL ? (
-                <StateIcon state="MO" size={18} color={stlColor} />
+              {isSTL ? (
+                <StateIcon state="MO" size={12} color="#34d399" />
               ) : (
-                <StateIcon state="KY" size={18} color={kyColor} />
+                <StateIcon state="KY" size={12} color="#60a5fa" />
               )}
-              <div style={{ fontSize: 9, marginTop: 2, fontWeight: 600,
-                color: w.tripLabel ? tripColor : isSTL ? stlColor : kyColor }}>
-                {w.tripLabel ? 'TRIP' : isSTL ? 'MO' : 'KY'}
-              </div>
+              <span style={{ color: colors.textDim }}>
+                {isSTL ? 'STL' : 'KY'}
+                {' · '}
+                {startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                {'–'}
+                {endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+              </span>
             </div>
           )
         })}
@@ -107,17 +123,33 @@ function KennaStrip({ schedule, trips }) {
 
 function TripCards({ trips }) {
   if (!trips || trips.length === 0) return null
+
+  // Map trip slugs to icons
+  const tripIconMap = {
+    'london-paris': { type: 'landmark', landmark: 'eiffel' },
+    'new-hampshire-july': { type: 'state', state: 'NH' },
+    'st-augustine': { type: 'state', state: 'FL' },
+  }
+
   return (
     <div style={{ display: 'flex', gap: 8, overflowX: 'auto', marginBottom: 14, paddingBottom: 2 }}>
-      {trips.map((t, i) => (
+      {trips.map((t, i) => {
+        const iconConf = tripIconMap[t.slug]
+        return (
         <div key={i} style={{
-          flex: '0 0 auto', minWidth: 160, padding: '10px 14px',
+          flex: '0 0 auto', minWidth: 170, padding: '10px 14px',
           borderRadius: 10, fontSize: 11,
           background: 'rgba(45,212,191,0.06)',
           border: '1px solid rgba(45,212,191,0.12)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-            <Plane size={14} color="#2dd4bf" />
+            {iconConf?.type === 'landmark' ? (
+              <LandmarkIcon landmark={iconConf.landmark} size={16} color="#2dd4bf" />
+            ) : iconConf?.type === 'state' ? (
+              <StateIcon state={iconConf.state} size={20} color="#2dd4bf" />
+            ) : (
+              <Plane size={14} color="#2dd4bf" />
+            )}
             <span style={{ color: '#2dd4bf', fontWeight: 700, fontSize: 12 }}>{t.label}</span>
           </div>
           <div style={{ color: colors.textDim, fontSize: 10 }}>
@@ -126,7 +158,8 @@ function TripCards({ trips }) {
             {new Date(t.end + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
           </div>
         </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

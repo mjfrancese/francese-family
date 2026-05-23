@@ -24,7 +24,7 @@ const STATE_VIEWBOX = {
 // Rotation to level each state's bottom edge (degrees)
 // Computed from convex hull bottom-edge linear regression on simplemaps data.
 const STATE_ROTATE = {
-  MO: 0,     // already level (Missouri River survey line is E-W)
+  MO: -3,    // slight correction to visually level the northern border
   KY: 10,    // Ohio River border has ~10° tilt
   NH: 6,     // slight NE tilt
   FL: -15,   // panhandle leveled (peninsula skews PCA)
