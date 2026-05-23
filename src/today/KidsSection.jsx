@@ -1,20 +1,17 @@
 import { colors, fonts } from '../theme'
+import { Music, Star, Car, Eye, Users, AlertTriangle } from 'lucide-react'
 
 const SECTION_HEADER = {
-  fontSize: 11,
-  letterSpacing: '0.1em',
-  textTransform: 'uppercase',
-  color: colors.textDim,
-  fontFamily: fonts.body,
-  fontWeight: 600,
-  padding: '20px 20px 8px',
+  fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase',
+  color: colors.textDim, fontFamily: fonts.body, fontWeight: 600,
+  padding: '20px 20px 8px', display: 'flex', alignItems: 'center', gap: 6,
 }
 
-const KID_EMOJIS = { louise: '🎵', kenna: '⭐' }
+const KID_ICONS = { louise: Music, kenna: Star }
+const KID_COLORS = { louise: '#f472b6', kenna: '#a78bfa' }
 const KID_NAMES = { louise: 'Louise', kenna: 'Kenna' }
 const DISPLAY_NAMES = { michael: 'Michael', meghan: 'Meghan' }
 
-// Check if two times are "close" (within 90 minutes)
 function timesAreClose(timeA, timeB) {
   if (!timeA || !timeB) return false
   function toMinutes(t) {
@@ -33,16 +30,12 @@ function timesAreClose(timeA, timeB) {
 function ConflictWarning({ text }) {
   return (
     <div style={{
-      background: '#3a2e1a',
-      border: `1px solid #6b5a2d`,
-      borderRadius: 8,
-      padding: '8px 12px',
-      marginBottom: 10,
-      fontSize: 12,
-      color: '#e8c55c',
-      lineHeight: 1.5,
+      background: '#3a2e1a', border: '1px solid #6b5a2d', borderRadius: 8,
+      padding: '8px 12px', marginBottom: 10, fontSize: 12, color: '#e8c55c',
+      lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: 6,
     }}>
-      ⚠️ {text}
+      <AlertTriangle size={14} style={{ flexShrink: 0, marginTop: 1 }} />
+      {text}
     </div>
   )
 }
@@ -52,21 +45,15 @@ function TransportCard({ eventId, entry, kid, onConfirm, conflictWarning }) {
 
   return (
     <div style={{
-      background: colors.card,
-      border: `1px solid ${colors.cardBorder}`,
-      borderRadius: 12,
-      padding: 16,
-      marginBottom: 8,
+      background: colors.card, border: `1px solid ${colors.cardBorder}`,
+      borderRadius: 12, padding: 16, marginBottom: 8,
     }}>
       <div style={{
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: '0.08em',
-        textTransform: 'uppercase',
-        color: colors.textDim,
-        marginBottom: 8,
+        fontSize: 11, fontWeight: 700, letterSpacing: '0.08em',
+        textTransform: 'uppercase', color: colors.textDim, marginBottom: 8,
+        display: 'flex', alignItems: 'center', gap: 6,
       }}>
-        🚗 Getting there
+        <Car size={13} color="#fbbf24" /> Getting there
       </div>
 
       {conflictWarning && <ConflictWarning text={conflictWarning} />}
@@ -75,19 +62,12 @@ function TransportCard({ eventId, entry, kid, onConfirm, conflictWarning }) {
         <div style={{ fontSize: 15, color: colors.text, fontWeight: 600, marginBottom: 2 }}>
           {event_summary}
         </div>
-        {time_str && (
-          <div style={{ fontSize: 12, color: colors.accent, fontWeight: 600 }}>{time_str}</div>
-        )}
-        {location && (
-          <div style={{ fontSize: 11, color: colors.textDim, marginTop: 2 }}>{location}</div>
-        )}
+        {time_str && <div style={{ fontSize: 12, color: colors.accent, fontWeight: 600 }}>{time_str}</div>}
+        {location && <div style={{ fontSize: 11, color: colors.textDim, marginTop: 2 }}>{location}</div>}
       </div>
 
       {confirmed ? (
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 6,
-          color: colors.status.booked.color, fontSize: 13, fontWeight: 600,
-        }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: colors.status.booked.color, fontSize: 13, fontWeight: 600 }}>
           ✓ {DISPLAY_NAMES[confirmed_person] || confirmed_person} is driving
         </div>
       ) : (
@@ -96,32 +76,15 @@ function TransportCard({ eventId, entry, kid, onConfirm, conflictWarning }) {
             Who's driving {KID_NAMES[kid]}?
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button
-              onClick={() => onConfirm(kid, eventId, 'michael')}
-              style={{
+            {['michael', 'meghan'].map(person => (
+              <button key={person} onClick={() => onConfirm(kid, eventId, person)} style={{
                 flex: 1, minHeight: 44, borderRadius: 8,
-                background: proposed_person === 'michael' ? colors.accent : '#1a1a28',
-                border: proposed_person === 'michael' ? 'none' : `1px solid ${colors.cardBorder}`,
-                color: proposed_person === 'michael' ? '#fff' : colors.textMuted,
-                fontFamily: fonts.body, fontSize: 14,
-                fontWeight: 600, cursor: 'pointer',
-              }}
-            >
-              Michael
-            </button>
-            <button
-              onClick={() => onConfirm(kid, eventId, 'meghan')}
-              style={{
-                flex: 1, minHeight: 44, borderRadius: 8,
-                background: proposed_person === 'meghan' ? colors.accent : '#1a1a28',
-                border: proposed_person === 'meghan' ? 'none' : `1px solid ${colors.cardBorder}`,
-                color: proposed_person === 'meghan' ? '#fff' : colors.textMuted,
-                fontFamily: fonts.body, fontSize: 14,
-                fontWeight: 600, cursor: 'pointer',
-              }}
-            >
-              Meghan
-            </button>
+                background: proposed_person === person ? colors.accent : '#1a1a28',
+                border: proposed_person === person ? 'none' : `1px solid ${colors.cardBorder}`,
+                color: proposed_person === person ? '#fff' : colors.textMuted,
+                fontFamily: fonts.body, fontSize: 14, fontWeight: 600, cursor: 'pointer',
+              }}>{DISPLAY_NAMES[person]}</button>
+            ))}
           </div>
         </div>
       )}
@@ -134,21 +97,15 @@ function AttendanceCard({ eventId, entry, kid, onConfirm, conflictWarning }) {
 
   return (
     <div style={{
-      background: colors.card,
-      border: `1px solid ${colors.cardBorder}`,
-      borderRadius: 12,
-      padding: 16,
-      marginBottom: 8,
+      background: colors.card, border: `1px solid ${colors.cardBorder}`,
+      borderRadius: 12, padding: 16, marginBottom: 8,
     }}>
       <div style={{
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: '0.08em',
-        textTransform: 'uppercase',
-        color: colors.textDim,
-        marginBottom: 8,
+        fontSize: 11, fontWeight: 700, letterSpacing: '0.08em',
+        textTransform: 'uppercase', color: colors.textDim, marginBottom: 8,
+        display: 'flex', alignItems: 'center', gap: 6,
       }}>
-        👀 Who's going?
+        <Eye size={13} color="#60a5fa" /> Who's going?
       </div>
 
       {conflictWarning && <ConflictWarning text={conflictWarning} />}
@@ -157,24 +114,15 @@ function AttendanceCard({ eventId, entry, kid, onConfirm, conflictWarning }) {
         <div style={{ fontSize: 15, color: colors.text, fontWeight: 600, marginBottom: 2 }}>
           {event_summary}
         </div>
-        {time_str && (
-          <div style={{ fontSize: 12, color: colors.accent, fontWeight: 600 }}>{time_str}</div>
-        )}
-        {location && (
-          <div style={{ fontSize: 11, color: colors.textDim, marginTop: 2 }}>{location}</div>
-        )}
+        {time_str && <div style={{ fontSize: 12, color: colors.accent, fontWeight: 600 }}>{time_str}</div>}
+        {location && <div style={{ fontSize: 11, color: colors.textDim, marginTop: 2 }}>{location}</div>}
       </div>
 
       {confirmed ? (
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 6,
-          color: colors.status.booked.color, fontSize: 13, fontWeight: 600,
-        }}>
-          ✓ {
-            confirmed_person === 'both' ? 'Both going' :
-            confirmed_person === 'neither' ? 'Neither (declined)' :
-            (DISPLAY_NAMES[confirmed_person] || confirmed_person) + ' is going'
-          }
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: colors.status.booked.color, fontSize: 13, fontWeight: 600 }}>
+          ✓ {confirmed_person === 'both' ? 'Both going' :
+             confirmed_person === 'neither' ? 'Neither (declined)' :
+             (DISPLAY_NAMES[confirmed_person] || confirmed_person) + ' is going'}
         </div>
       ) : (
         <div>
@@ -183,21 +131,12 @@ function AttendanceCard({ eventId, entry, kid, onConfirm, conflictWarning }) {
           </div>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
             {['michael', 'meghan', 'both', 'neither'].map(opt => (
-              <button
-                key={opt}
-                onClick={() => onConfirm(kid, eventId, opt)}
-                style={{
-                  flex: '1 1 auto', minHeight: 40, borderRadius: 8,
-                  background: '#1a1a28',
-                  border: `1px solid ${colors.cardBorder}`,
-                  color: colors.textMuted,
-                  fontFamily: fonts.body, fontSize: 13,
-                  fontWeight: 600, cursor: 'pointer',
-                  minWidth: 70,
-                }}
-              >
-                {opt.charAt(0).toUpperCase() + opt.slice(1)}
-              </button>
+              <button key={opt} onClick={() => onConfirm(kid, eventId, opt)} style={{
+                flex: '1 1 auto', minHeight: 40, borderRadius: 8,
+                background: '#1a1a28', border: `1px solid ${colors.cardBorder}`,
+                color: colors.textMuted, fontFamily: fonts.body, fontSize: 13,
+                fontWeight: 600, cursor: 'pointer', minWidth: 70,
+              }}>{opt.charAt(0).toUpperCase() + opt.slice(1)}</button>
             ))}
           </div>
         </div>
@@ -211,17 +150,16 @@ function KidBlock({ kidKey, kidData, onConfirm, michaelCalendar, meghanCalendar 
   const logisticsEntries = Object.entries(logistics).filter(([, e]) => !e.confirmed)
   if (logisticsEntries.length === 0) return null
 
+  const Icon = KID_ICONS[kidKey] || Star
+  const kidColor = KID_COLORS[kidKey] || colors.text
+
   return (
     <div style={{ marginBottom: 16 }}>
-      <div style={{
-        fontSize: 13, fontWeight: 700, color: colors.text,
-        padding: '8px 20px', display: 'flex', alignItems: 'center', gap: 6,
-      }}>
-        {KID_EMOJIS[kidKey]} {KID_NAMES[kidKey]}
+      <div style={{ fontSize: 13, fontWeight: 700, color: colors.text, padding: '8px 20px', display: 'flex', alignItems: 'center', gap: 6 }}>
+        <Icon size={16} color={kidColor} /> {KID_NAMES[kidKey]}
       </div>
       <div style={{ padding: '0 20px' }}>
         {logisticsEntries.map(([eventId, entry]) => {
-          // Check each parent's own calendar separately so attribution is correct
           let conflictWarning = null
           if (entry.time_str) {
             const parentViews = [
@@ -235,7 +173,7 @@ function KidBlock({ kidKey, kidData, onConfirm, michaelCalendar, meghanCalendar 
                 e.summary !== entry.event_summary
               )
               if (close) {
-                conflictWarning = `Heads up: ${name} has ${close.summary} at ${close.time_str} — this is close to ${entry.time_str}`
+                conflictWarning = `Heads up: ${name} has ${close.summary} at ${close.time_str}`
                 break
               }
             }
@@ -244,28 +182,10 @@ function KidBlock({ kidKey, kidData, onConfirm, michaelCalendar, meghanCalendar 
           const logisticsType = entry.logistics_type || 'transport'
 
           if (logisticsType === 'attendance') {
-            return (
-              <AttendanceCard
-                key={eventId}
-                eventId={eventId}
-                entry={entry}
-                kid={kidKey}
-                onConfirm={onConfirm}
-                conflictWarning={conflictWarning}
-              />
-            )
+            return <AttendanceCard key={eventId} eventId={eventId} entry={entry} kid={kidKey} onConfirm={onConfirm} conflictWarning={conflictWarning} />
           }
 
-          return (
-            <TransportCard
-              key={eventId}
-              eventId={eventId}
-              entry={entry}
-              kid={kidKey}
-              onConfirm={onConfirm}
-              conflictWarning={conflictWarning}
-            />
-          )
+          return <TransportCard key={eventId} eventId={eventId} entry={entry} kid={kidKey} onConfirm={onConfirm} conflictWarning={conflictWarning} />
         })}
       </div>
     </div>
@@ -275,23 +195,18 @@ function KidBlock({ kidKey, kidData, onConfirm, michaelCalendar, meghanCalendar 
 export default function KidsSection({ kids, todayDate, michaelCalendar, meghanCalendar, onConfirm }) {
   if (!kids) return null
   const kidsWithPendingLogistics = Object.entries(kids).filter(
-    ([, kidData]) => kidData?.logistics &&
-      Object.values(kidData.logistics).some(e => !e.confirmed)
+    ([, kidData]) => kidData?.logistics && Object.values(kidData.logistics).some(e => !e.confirmed)
   )
   if (kidsWithPendingLogistics.length === 0) return null
 
   return (
     <div style={{ marginBottom: 8 }}>
-      <div style={SECTION_HEADER}>👧 Kids Logistics</div>
+      <div style={SECTION_HEADER}>
+        <Users size={14} color={colors.textDim} /> Kids Logistics
+      </div>
       {kidsWithPendingLogistics.map(([kidKey, kidData]) => (
-        <KidBlock
-          key={kidKey}
-          kidKey={kidKey}
-          kidData={kidData}
-          onConfirm={onConfirm}
-          michaelCalendar={michaelCalendar}
-          meghanCalendar={meghanCalendar}
-        />
+        <KidBlock key={kidKey} kidKey={kidKey} kidData={kidData} onConfirm={onConfirm}
+          michaelCalendar={michaelCalendar} meghanCalendar={meghanCalendar} />
       ))}
     </div>
   )
