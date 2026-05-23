@@ -48,12 +48,11 @@ const LANDMARK_PATHS = {
     d: "M8.21 17c.44-.85.85-1.84 1.23-3H9v-2h1c.61-2.6 1-5.87 1-10h2c0 4.13.4 7.4 1 10h1v2h-.44c.38 1.16.79 2.15 1.23 3H17v2l2 3h-2.42c-.77-1.76-2.53-3-4.58-3s-3.81 1.24-4.58 3H5l2-3l-.03-2zm4.38-3h-1.18a22 22 0 0 1-1.13 3h3.44c-.4-.87-.79-1.87-1.13-3",
     stroke: false,
   },
-  // Tabler: building-big-ben approximation (using building + clock concept)
-  // Actually use Tabler clock + building-community combination, or just use landmark
-  // For Big Ben, use the generic landmark/building with clock
+  // Font Awesome: landmark (classical government building — for London)
   bigben: {
-    d: "M14 2H9a1 1 0 0 0-1 1v1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-3h3v3h5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V3a1 1 0 0 0-1-1m-2 4a3 3 0 0 1 0 6a3 3 0 0 1 0-6",
-    stroke: true,
+    d: "M501.62 92.11L267.24 2.04a31.96 31.96 0 0 0-22.47 0L10.38 92.11A16 16 0 0 0 0 107.09V144c0 8.84 7.16 16 16 16h480c8.84 0 16-7.16 16-16v-36.91c0-6.67-4.14-12.64-10.38-14.98M64 192v160H48c-8.84 0-16 7.16-16 16v48h448v-48c0-8.84-7.16-16-16-16h-16V192h-64v160h-96V192h-64v160h-96V192zm432 256H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h480c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16",
+    stroke: false,
+    viewBox: "0 0 512 512",
   },
 }
 
@@ -88,8 +87,9 @@ export function LandmarkIcon({ landmark, size = 20, color = 'currentColor', styl
   const data = LANDMARK_PATHS[landmark]
   if (!data) return null
 
+  const vb = data.viewBox || '0 0 24 24'
   const props = {
-    width: size, height: size, viewBox: '0 0 24 24',
+    width: size, height: size, viewBox: vb,
     style: { flexShrink: 0, ...style },
     ...(data.stroke
       ? { fill: 'none', stroke: color, strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round' }
