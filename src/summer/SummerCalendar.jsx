@@ -608,9 +608,6 @@ export default function SummerCalendar() {
                       {ev.time_str && <span>{ev.time_str} · </span>}
                       {cat.emoji} {cat.label}
                       {ev.location && <span> · {ev.location}</span>}
-                      {ev.kenna_location === 'Kentucky' && (
-                        <span style={{ color: '#60a5fa' }}> · Kenna in KY</span>
-                      )}
                     </div>
                   </div>
 
