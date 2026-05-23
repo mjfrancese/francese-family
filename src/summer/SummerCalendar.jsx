@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from 'react'
-import { ref, onValue } from 'firebase/database'
+import { ref, onValue, set, get } from 'firebase/database'
 import { db } from '../firebase'
 import { colors } from '../theme'
-import { MapPin, Clock, AlertCircle, X, Filter } from 'lucide-react'
+import { MapPin, Clock, AlertCircle, X, Filter, User } from 'lucide-react'
 
 // ── Category config ──────────────────────────────────────────────────────────
 
@@ -284,6 +284,36 @@ function MonthGrid({ year, month, eventsByDate, onEventClick, kennaSchedule, tri
 function EventModal({ event, onClose }) {
   if (!event) return null
   const cat = CATS[event.category] || CATS.family
+  const [parentPick, setParentPick] = useState(null)
+  const [saving, setSaving] = useState(false)
+  const needsDriver = event.logistics_type === 'transport' || event.logistics_type === 'attendance'
+
+  // Load existing confirmation
+  useEffect(() => {
+    if (!needsDriver || !event._id) return
+    const confirmRef = ref(db, `logistics/confirmations/${event.date}/${event._id}`)
+    get(confirmRef).then(snap => {
+      const data = snap.val()
+      if (data?.confirmed_person) setParentPick(data.confirmed_person)
+    }).catch(() => {})
+  }, [event._id, event.date, needsDriver])
+
+  const handleParentAssign = (person) => {
+    if (!event._id) return
+    setSaving(true)
+    const confirmRef = ref(db, `logistics/confirmations/${event.date}/${event._id}`)
+    const data = {
+      event_summary: event.summary,
+      logistics_type: event.logistics_type,
+      confirmed: true,
+      confirmed_person: person,
+      updated_at: new Date().toISOString(),
+    }
+    set(confirmRef, data).then(() => {
+      setParentPick(person)
+      setSaving(false)
+    }).catch(() => setSaving(false))
+  }
 
   return (
     <div onClick={onClose} style={{
@@ -369,6 +399,42 @@ function EventModal({ event, onClose }) {
           )}
         </div>
 
+        {/* Parent assignment (transport/attendance only) */}
+        {needsDriver && (
+          <div style={{
+            marginTop: 10, padding: '10px 12px', borderRadius: 8,
+            background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)',
+          }}>
+            <div style={{ fontSize: 11, color: colors.textDim, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+              <User size={12} />
+              {event.logistics_type === 'transport' ? "Who's driving?" : "Who's attending?"}
+            </div>
+            <div style={{ display: 'flex', gap: 6 }}>
+              {['michael', 'meghan'].map(person => (
+                <button key={person} onClick={() => handleParentAssign(person)} disabled={saving} style={{
+                  flex: 1, padding: '8px 0', borderRadius: 8, border: 'none',
+                  fontSize: 12, fontWeight: parentPick === person ? 600 : 400,
+                  cursor: 'pointer',
+                  background: parentPick === person ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.04)',
+                  color: parentPick === person ? '#60a5fa' : colors.textDim,
+                  transition: 'all 0.15s',
+                }}>
+                  {person === 'michael' ? '👨 Michael' : '👩 Meghan'}
+                </button>
+              ))}
+            </div>
+            {parentPick && (
+              <button onClick={() => handleParentAssign(null)} disabled={saving} style={{
+                marginTop: 4, width: '100%', padding: '4px 0', borderRadius: 6,
+                background: 'none', border: 'none', color: colors.textDark,
+                fontSize: 10, cursor: 'pointer',
+              }}>
+                Clear assignment
+              </button>
+            )}
+          </div>
+        )}
+
         {/* Note */}
         {event.note && (
           <div style={{
@@ -417,7 +483,7 @@ export default function SummerCalendar() {
 
   const events = useMemo(() => {
     if (!data?.events) return []
-    return Object.values(data.events)
+    return Object.entries(data.events).map(([key, ev]) => ({ ...ev, _id: key }))
   }, [data])
 
   const filteredEvents = useMemo(() => {
