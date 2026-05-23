@@ -244,6 +244,8 @@ function EventModal({ event, onClose }) {
   const catColor = getCategoryColor(event.category)
   const catBg = getCategoryBg(event.category)
   const [parentPick, setParentPick] = useState(null)
+  const [cancelled, setCancelled] = useState(false)
+  const [cancelReason, setCancelReason] = useState('')
   const [saving, setSaving] = useState(false)
   const needsDriver = event.logistics_type === 'transport' || event.logistics_type === 'attendance'
 
@@ -251,20 +253,38 @@ function EventModal({ event, onClose }) {
     if (!needsDriver || !event._id) return
     get(ref(db, `logistics/confirmations/${event.date}/${event._id}`)).then(snap => {
       const d = snap.val()
-      if (d?.confirmed_person) setParentPick(d.confirmed_person)
+      if (d?.cancelled) { setCancelled(true); setCancelReason(d.cancel_reason || '') }
+      else if (d?.confirmed_person) setParentPick(d.confirmed_person)
     }).catch(() => {})
   }, [event._id, event.date, needsDriver])
 
   const handleParentAssign = (person) => {
     if (!event._id) return
     setSaving(true)
+    setCancelled(false)
     set(ref(db, `logistics/confirmations/${event.date}/${event._id}`), {
       event_summary: event.summary,
       logistics_type: event.logistics_type,
       confirmed: true,
       confirmed_person: person,
+      cancelled: false,
       updated_at: new Date().toISOString(),
     }).then(() => { setParentPick(person); setSaving(false) })
+      .catch(() => setSaving(false))
+  }
+
+  const handleCancel = () => {
+    if (!event._id) return
+    setSaving(true)
+    set(ref(db, `logistics/confirmations/${event.date}/${event._id}`), {
+      event_summary: event.summary,
+      logistics_type: event.logistics_type,
+      confirmed: false,
+      confirmed_person: null,
+      cancelled: true,
+      cancel_reason: cancelReason,
+      updated_at: new Date().toISOString(),
+    }).then(() => { setCancelled(true); setSaving(false) })
       .catch(() => setSaving(false))
   }
 
@@ -352,28 +372,72 @@ function EventModal({ event, onClose }) {
             marginTop: 10, padding: '10px 14px', borderRadius: 8,
             background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)',
           }}>
-            <div style={{ fontSize: 11, color: colors.textDim, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
-              <User size={12} />
-              {event.logistics_type === 'transport' ? "Who's driving?" : "Who's attending?"}
-            </div>
-            <div style={{ display: 'flex', gap: 6 }}>
-              {['michael', 'meghan'].map(person => (
-                <button key={person} onClick={() => handleParentAssign(person)} disabled={saving} style={{
-                  flex: 1, padding: '8px 0', borderRadius: 8, border: 'none',
-                  fontSize: 12, fontWeight: parentPick === person ? 600 : 400, cursor: 'pointer',
-                  background: parentPick === person ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.04)',
-                  color: parentPick === person ? '#60a5fa' : colors.textDim,
-                }}>
-                  {person === 'michael' ? 'Michael' : 'Meghan'}
-                </button>
-              ))}
-            </div>
-            {parentPick && (
-              <button onClick={() => handleParentAssign(null)} disabled={saving} style={{
-                marginTop: 4, width: '100%', padding: '4px 0', borderRadius: 6,
-                background: 'none', border: 'none', color: colors.textDark, fontSize: 10, cursor: 'pointer',
-              }}>Clear</button>
+            {cancelled ? (
+              <div>
+                <div style={{ fontSize: 11, color: '#f87171', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <AlertTriangle size={12} /> Cancelled / didn't go
+                  {cancelReason && <span style={{ color: colors.textDim }}>— {cancelReason}</span>}
+                </div>
+                <button onClick={() => { setCancelled(false); setCancelReason('') }} style={{
+                  marginTop: 4, padding: '4px 8px', borderRadius: 6,
+                  background: 'none', border: '1px solid rgba(255,255,255,0.1)',
+                  color: colors.textDim, fontSize: 10, cursor: 'pointer',
+                }}>Undo — reassign driver</button>
+              </div>
+            ) : (
+              <>
+                <div style={{ fontSize: 11, color: colors.textDim, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <User size={12} />
+                  {event.logistics_type === 'transport' ? "Who's driving?" : "Who's attending?"}
+                </div>
+                <div style={{ display: 'flex', gap: 6 }}>
+                  {['michael', 'meghan'].map(person => (
+                    <button key={person} onClick={() => handleParentAssign(person)} disabled={saving} style={{
+                      flex: 1, padding: '8px 0', borderRadius: 8, border: 'none',
+                      fontSize: 12, fontWeight: parentPick === person ? 600 : 400, cursor: 'pointer',
+                      background: parentPick === person ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.04)',
+                      color: parentPick === person ? '#60a5fa' : colors.textDim,
+                    }}>{person === 'michael' ? 'Michael' : 'Meghan'}</button>
+                  ))}
+                </div>
+                {parentPick && (
+                  <button onClick={() => handleParentAssign(null)} disabled={saving} style={{
+                    marginTop: 4, width: '100%', padding: '4px 0', borderRadius: 6,
+                    background: 'none', border: 'none', color: colors.textDark, fontSize: 10, cursor: 'pointer',
+                  }}>Clear</button>
+                )}
+                {/* Cancel / didn't go */}
+                <div style={{ marginTop: 8, paddingTop: 8, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+                  <button onClick={() => setCancelled(true)} style={{
+                    padding: '4px 10px', borderRadius: 6, border: 'none',
+                    background: 'rgba(248,113,113,0.08)', color: '#f87171',
+                    fontSize: 10, cursor: 'pointer',
+                  }}>Didn't go / cancelled</button>
+                </div>
+              </>
             )}
+          </div>
+        )}
+
+        {/* Cancel reason input */}
+        {cancelled && needsDriver && (
+          <div style={{
+            marginTop: 6, padding: '8px 12px', borderRadius: 8,
+            background: 'rgba(248,113,113,0.04)', border: '1px solid rgba(248,113,113,0.12)',
+          }}>
+            <input
+              type="text"
+              placeholder="Optional: reason (e.g. cancelled, sick, etc.)"
+              value={cancelReason}
+              onChange={(e) => setCancelReason(e.target.value)}
+              onBlur={handleCancel}
+              onKeyDown={(e) => { if (e.key === 'Enter') handleCancel() }}
+              style={{
+                width: '100%', background: 'none', border: 'none',
+                color: colors.text, fontSize: 11, outline: 'none',
+                fontFamily: 'inherit',
+              }}
+            />
           </div>
         )}
 
@@ -420,10 +484,12 @@ export default function SummerCalendar() {
   }, [data])
 
   const filteredEvents = useMemo(() => {
-    if (filter === 'all') return events
-    if (filter === 'louise') return events.filter(e => e.who?.includes('louise'))
-    if (filter === 'kenna') return events.filter(e => e.who?.includes('kenna'))
-    return events.filter(e => e.category === filter)
+    let evs = events
+    if (filter === 'all') evs = events.filter(e => e.category !== 'milestone')
+    else if (filter === 'louise') evs = events.filter(e => e.who?.includes('louise'))
+    else if (filter === 'kenna') evs = events.filter(e => e.who?.includes('kenna'))
+    else evs = events.filter(e => e.category === filter)
+    return evs
   }, [events, filter])
 
   const eventsByDate = useMemo(() => {
@@ -471,7 +537,7 @@ export default function SummerCalendar() {
       {/* Header */}
       <div style={{ marginBottom: 14 }}>
         <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 26, fontWeight: 600, margin: '0 0 2px' }}>
-          Kids Summer
+          Family Calendar
         </h1>
         <p style={{ color: colors.textDim, fontSize: 12, margin: 0 }}>
           {events.length} events · May 23 – Aug 31

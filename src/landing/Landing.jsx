@@ -161,9 +161,9 @@ export default function Landing() {
           </div>
         </div>
 
-        {/* Kids Summer Card */}
+        {/* Family Calendar Card */}
         <div
-          onClick={() => navigate('/kids')}
+          onClick={() => navigate('/calendar')}
           style={{
             flex: '1 1 280px',
             background: 'linear-gradient(135deg, #2a1a2a 0%, #141420 100%)',
@@ -191,9 +191,9 @@ export default function Landing() {
               marginBottom: 4,
             }}>
               <Calendar size={18} color="#a78bfa" />
-              Kids Summer
+              Family Calendar
             </div>
-            <div style={{ color: colors.textDim, fontSize: 13 }}>Louise & Kenna · May–Aug</div>
+            <div style={{ color: colors.textDim, fontSize: 13 }}>Summer 2026 · May–Aug</div>
           </div>
           <div style={{
             fontSize: 22,

@@ -50,7 +50,7 @@ function AppRoutes() {
       <Route path="/trip/:slug" element={
         <ProtectedRoute><TripDashboard /></ProtectedRoute>
       } />
-      <Route path="/kids" element={
+      <Route path="/calendar" element={
         <ProtectedRoute><SummerCalendar /></ProtectedRoute>
       } />
       <Route path="/admin" element={
