@@ -26,8 +26,6 @@ const STATE_VIEWBOX = {
 const STATE_ROTATE = {
   MO: -3,    // slight correction to visually level the northern border
   KY: 10,    // Ohio River border has ~10° tilt
-  NH: 6,     // slight NE tilt
-  FL: -15,   // panhandle leveled (peninsula skews PCA)
 }
 
 // ── Landmark paths (from Iconify API — Tabler & MDI, MIT licensed) ──────────
@@ -59,7 +57,33 @@ const LANDMARK_PATHS = {
 // ── React Components ─────────────────────────────────────────────────────────
 
 export function StateIcon({ state, size = 24, color = 'currentColor', style = {} }) {
-  // Clean abbreviation badge — more readable than map outlines at icon sizes
+  const path = STATE_PATHS[state]
+  const viewBox = STATE_VIEWBOX[state]
+  const rotate = STATE_ROTATE[state]
+
+  // Use SVG outline if we have a verified path + rotation (MO, KY).
+  // Fall back to abbreviation badge for states where paths are too detailed
+  // at icon size (NH, FL) or not yet verified.
+  if (path && viewBox && rotate !== undefined) {
+    const [vbx, vby, vbw, vbh] = viewBox.split(' ').map(Number)
+    const cx = vbx + vbw / 2
+    const cy = vby + vbh / 2
+
+    return createElement('svg', {
+      width: size, height: size, viewBox,
+      fill: 'none', stroke: color, strokeWidth: 3,
+      strokeLinecap: 'round', strokeLinejoin: 'round',
+      style: { flexShrink: 0, ...style },
+    }, createElement('g', {
+      transform: `rotate(${rotate}, ${cx}, ${cy})`,
+      key: 'rotated',
+    },
+      createElement('path', { d: path, fill: 'currentColor', stroke: 'none', opacity: 0.15, key: 'fill' }),
+      createElement('path', { d: path, fill: 'none', key: 'outline' })
+    ))
+  }
+
+  // Abbreviation badge fallback
   const label = state || '?'
   return createElement('span', {
     style: {
