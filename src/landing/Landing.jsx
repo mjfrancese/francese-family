@@ -4,7 +4,7 @@ import { useAuth } from '../auth/AuthContext'
 import { useTrips } from '../hooks/useTrips'
 import { isOwnerEmail } from '../firebase'
 import { colors, fonts } from '../theme'
-import { Globe, Plus, Upload } from 'lucide-react'
+import { Globe, Plus, Upload, Calendar } from 'lucide-react'
 import WorldMap from './WorldMap'
 import NewTripForm from './NewTripForm'
 import StatusBadge from '../components/StatusBadge'
@@ -117,17 +117,18 @@ export default function Landing() {
         </div>
       </header>
 
-      {/* Today's Brief Card */}
-      <div style={{ padding: '20px 24px 0' }}>
+      {/* Quick-nav cards */}
+      <div style={{ padding: '20px 24px 0', display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+        {/* Today's Brief Card */}
         <div
           onClick={() => navigate('/today')}
           style={{
+            flex: '1 1 280px',
             background: 'linear-gradient(135deg, #1a2040 0%, #141420 100%)',
             border: `1px solid ${colors.accent}44`,
             borderRadius: 12,
             padding: '16px 20px',
             cursor: 'pointer',
-            marginBottom: 16,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -154,6 +155,49 @@ export default function Landing() {
           <div style={{
             fontSize: 22,
             color: colors.accent,
+            opacity: 0.7,
+          }}>
+            ›
+          </div>
+        </div>
+
+        {/* Kids Summer Card */}
+        <div
+          onClick={() => navigate('/kids')}
+          style={{
+            flex: '1 1 280px',
+            background: 'linear-gradient(135deg, #2a1a2a 0%, #141420 100%)',
+            border: `1px solid #a78bfa44`,
+            borderRadius: 12,
+            padding: '16px 20px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            transition: 'opacity 0.15s',
+          }}
+          onMouseOver={e => e.currentTarget.style.opacity = '0.85'}
+          onMouseOut={e => e.currentTarget.style.opacity = '1'}
+        >
+          <div>
+            <div style={{
+              fontSize: 18,
+              fontWeight: 700,
+              color: colors.text,
+              fontFamily: fonts.body,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              marginBottom: 4,
+            }}>
+              <Calendar size={18} color="#a78bfa" />
+              Kids Summer
+            </div>
+            <div style={{ color: colors.textDim, fontSize: 13 }}>Louise & Kenna · May–Aug</div>
+          </div>
+          <div style={{
+            fontSize: 22,
+            color: '#a78bfa',
             opacity: 0.7,
           }}>
             ›

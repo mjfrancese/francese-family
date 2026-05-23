@@ -6,6 +6,7 @@ import TripDashboard from './trip/TripDashboard'
 import ImportTool from './admin/ImportTool'
 import TodayDashboard from './today/TodayDashboard'
 import ProjectsReview from './today/ProjectsReview'
+import SummerCalendar from './summer/SummerCalendar'
 import { isOwnerEmail } from './firebase'
 import { colors } from './theme'
 
@@ -48,6 +49,9 @@ function AppRoutes() {
       } />
       <Route path="/trip/:slug" element={
         <ProtectedRoute><TripDashboard /></ProtectedRoute>
+      } />
+      <Route path="/kids" element={
+        <ProtectedRoute><SummerCalendar /></ProtectedRoute>
       } />
       <Route path="/admin" element={
         <ProtectedRoute ownerOnly><ImportTool /></ProtectedRoute>
