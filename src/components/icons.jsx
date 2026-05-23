@@ -59,28 +59,19 @@ const LANDMARK_PATHS = {
 // ── React Components ─────────────────────────────────────────────────────────
 
 export function StateIcon({ state, size = 24, color = 'currentColor', style = {} }) {
-  const path = STATE_PATHS[state]
-  const viewBox = STATE_VIEWBOX[state]
-  const rotate = STATE_ROTATE[state] || 0
-  if (!path || !viewBox) return null
-
-  // Compute center of viewBox for rotation origin
-  const [vbx, vby, vbw, vbh] = viewBox.split(' ').map(Number)
-  const cx = vbx + vbw / 2
-  const cy = vby + vbh / 2
-
-  return createElement('svg', {
-    width: size, height: size, viewBox,
-    fill: 'none', stroke: color, strokeWidth: 3,
-    strokeLinecap: 'round', strokeLinejoin: 'round',
-    style: { flexShrink: 0, ...style },
-  }, createElement('g', {
-    transform: `rotate(${rotate}, ${cx}, ${cy})`,
-    key: 'rotated',
-  },
-    createElement('path', { d: path, fill: 'currentColor', stroke: 'none', opacity: 0.15, key: 'fill' }),
-    createElement('path', { d: path, fill: 'none', key: 'outline' })
-  ))
+  // Clean abbreviation badge — more readable than map outlines at icon sizes
+  const label = state || '?'
+  return createElement('span', {
+    style: {
+      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      width: size, height: size, borderRadius: size / 4,
+      background: color + '18', border: `1.5px solid ${color}44`,
+      color, fontSize: size * 0.42, fontWeight: 700,
+      fontFamily: "'DM Sans', sans-serif",
+      letterSpacing: '0.02em',
+      flexShrink: 0, ...style,
+    },
+  }, label)
 }
 
 export function LandmarkIcon({ landmark, size = 20, color = 'currentColor', style = {} }) {
