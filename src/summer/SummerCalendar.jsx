@@ -529,7 +529,7 @@ export default function SummerCalendar() {
   return (
     <div style={{
       minHeight: '100vh', background: colors.bg, fontFamily: "'DM Sans', sans-serif",
-      color: colors.text, padding: '12px 14px 40px', maxWidth: 600, margin: '0 auto',
+      color: colors.text, padding: '12px 14px 40px', maxWidth: 900, margin: '0 auto',
     }}>
       {/* Header */}
       <div style={{ marginBottom: 12 }}>
@@ -585,7 +585,7 @@ export default function SummerCalendar() {
 
       {/* Grid View */}
       {!showListView && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 12 }}>
           {[4, 5, 6, 7].map(m => (
             <MonthGrid key={m} year={2026} month={m}
               eventsByDate={eventsByDate}

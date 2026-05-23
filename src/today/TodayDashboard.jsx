@@ -261,7 +261,7 @@ export default function TodayDashboard() {
 
   return (
     <div style={{
-      maxWidth: 480,
+      maxWidth: 900,
       margin: '0 auto',
       background: colors.bg,
       minHeight: '100vh',
