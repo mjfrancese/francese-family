@@ -7,7 +7,7 @@ import {
   getLogisticsLabel, MapPin, Clock, AlertTriangle, User, ChevronRight,
   Calendar, Car, Eye, Plane, Flag,
 } from '../components/CategoryIcon'
-import StateIcon from '../components/StateIcon'
+import { StateIcon, DestinationIcon } from '../components/icons'
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
