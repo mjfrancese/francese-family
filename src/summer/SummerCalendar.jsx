@@ -9,8 +9,6 @@ import {
 } from '../components/CategoryIcon'
 import { StateIcon, LandmarkIcon } from '../components/icons'
 
-// ── Constants ─────────────────────────────────────────────────────────────────
-
 const DAYS_ABBR = ['S','M','T','W','T','F','S']
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 const MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December']
@@ -28,26 +26,38 @@ function fmtDate(d) {
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
 }
 
+function getWeekStart(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00')
+  const day = d.getDay()
+  const diff = day === 0 ? -6 : 1 - day
+  const mon = new Date(d)
+  mon.setDate(d.getDate() + diff)
+  return mon.toISOString().slice(0, 10)
+}
+
+function getCurrentMonthIndex() {
+  const m = new Date().getMonth()
+  if (m < 4) return 4
+  if (m > 7) return 7
+  return m
+}
+
 // ── Kenna Location Strip ──────────────────────────────────────────────────────
 
 function KennaStrip({ schedule }) {
   if (!schedule || schedule.length === 0) return null
   const today = todayStr()
-
   const transitions = []
   for (let i = 0; i < schedule.length; i++) {
     const s = schedule[i], next = schedule[i + 1]
     if (next && s.location !== next.location)
       transitions.push({ to: next.location, date: next.start })
   }
-
   let currentLoc = 'unknown'
   for (const s of schedule) {
     if (s.start <= today && s.end > today) { currentLoc = s.location; break }
   }
-
   const upcoming = transitions.filter(t => t.date >= today).sort((a, b) => a.date.localeCompare(b.date))
-
   return (
     <div style={{ marginBottom: 14 }}>
       <div style={{
@@ -60,6 +70,7 @@ function KennaStrip({ schedule }) {
           color={currentLoc === 'St. Louis' ? '#34d399' : '#60a5fa'} />
         <div>
           <div style={{ fontSize: 13, fontWeight: 600, color: colors.text }}>
+            <span style={{ fontSize: 10, padding: '1px 5px', borderRadius: 3, background: '#fbbf2418', border: '1px solid #fbbf24', color: '#fbbf24', fontWeight: 800, marginRight: 6 }}>KH</span>
             Kenna is in {currentLoc === 'St. Louis' ? 'St. Louis' : 'Kentucky'}
           </div>
           {upcoming.length > 0 && (
@@ -70,7 +81,6 @@ function KennaStrip({ schedule }) {
           )}
         </div>
       </div>
-
       <div style={{ display: 'flex', gap: 6, overflowX: 'auto', paddingBottom: 4 }}>
         {schedule.filter(s => s.end > today).slice(0, 6).map((s, i) => {
           const isSTL = s.location === 'St. Louis'
@@ -96,6 +106,65 @@ function KennaStrip({ schedule }) {
   )
 }
 
+// ── Louise Activity Strip ─────────────────────────────────────────────────────
+
+function LouiseStrip({ events }) {
+  const today = todayStr()
+  const louiseEvs = events.filter(e => e.who?.includes('louise') && e.date >= today)
+  if (louiseEvs.length === 0) return null
+
+  const byWeek = {}
+  for (const ev of louiseEvs) {
+    const wk = getWeekStart(ev.date)
+    if (!byWeek[wk]) byWeek[wk] = []
+    byWeek[wk].push(ev)
+  }
+  const weekKeys = Object.keys(byWeek).sort()
+
+  return (
+    <div style={{ marginBottom: 14 }}>
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8,
+        padding: '8px 12px', borderRadius: 10,
+        background: 'rgba(244,114,182,0.06)',
+        border: '1px solid rgba(244,114,182,0.15)',
+      }}>
+        <span style={{ fontSize: 10, padding: '1px 5px', borderRadius: 3, background: '#f472b618', border: '1px solid #f472b6', color: '#f472b6', fontWeight: 800, flexShrink: 0 }}>LF</span>
+        <span style={{ fontSize: 13, fontWeight: 600, color: colors.text }}>Louise's Summer</span>
+        <span style={{ fontSize: 11, color: colors.textDim, marginLeft: 'auto' }}>{louiseEvs.length} events</span>
+      </div>
+      <div style={{ display: 'flex', gap: 6, overflowX: 'auto', paddingBottom: 4 }}>
+        {weekKeys.slice(0, 10).map(wk => {
+          const wkEvts = byWeek[wk]
+          const mon = new Date(wk + 'T12:00:00')
+          const label = mon.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+          const names = [...new Set(wkEvts.map(e =>
+            e.summary
+              .replace(/ — COCA.*$/, '')
+              .replace(/ \(Louise\)/g, '')
+              .replace(/Magnificent Me/, 'Mag. Me')
+              .replace(/In the Garden/, 'Garden')
+              .trim()
+          ))]
+          return (
+            <div key={wk} style={{
+              flex: '0 0 auto', minWidth: 100, padding: '6px 10px', borderRadius: 10,
+              background: 'rgba(244,114,182,0.06)',
+              border: '1px solid rgba(244,114,182,0.15)',
+            }}>
+              <div style={{ fontSize: 9, color: colors.textDim, marginBottom: 3 }}>Wk of {label}</div>
+              <div style={{ fontSize: 10, color: '#f472b6', fontWeight: 600, lineHeight: 1.4 }}>
+                {names.slice(0, 2).join(' · ')}
+                {names.length > 2 && <span style={{ color: colors.textDim }}> +{names.length - 2}</span>}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 // ── Trip Cards ─────────────────────────────────────────────────────────────────
 
 function TripCards({ trips }) {
@@ -107,7 +176,6 @@ function TripCards({ trips }) {
     'new-hampshire-july': { type: 'state', state: 'NH' },
     'st-augustine': { type: 'state', state: 'FL' },
   }
-
   return (
     <div style={{ display: 'flex', gap: 8, overflowX: 'auto', marginBottom: 14, paddingBottom: 2 }}>
       {upcoming.map((t, i) => {
@@ -160,7 +228,6 @@ function BirthdayCard({ event }) {
     if (summary.includes(k)) { color = c; break }
   }
   const daysUntil = Math.ceil((new Date(event.date + 'T12:00:00') - new Date()) / 86400000)
-
   return (
     <div style={{
       display: 'flex', alignItems: 'center', gap: 12,
@@ -183,23 +250,19 @@ function BirthdayCard({ event }) {
         <div style={{
           fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 8,
           background: `${color}18`, color, flexShrink: 0,
-        }}>
-          {daysUntil}d
-        </div>
+        }}>{daysUntil}d</div>
       )}
     </div>
   )
 }
 
 // ── Day Drawer ─────────────────────────────────────────────────────────────────
-// Opens when you tap a grid day cell. Shows all events for that day.
 
 function DayDrawer({ date, eventsByDate, onClose, onEventClick }) {
   if (!date) return null
   const d = new Date(date + 'T12:00:00')
   const dayEvents = eventsByDate[date] || []
   const isToday = date === todayStr()
-
   return (
     <div onClick={onClose} style={{
       position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.65)',
@@ -211,16 +274,12 @@ function DayDrawer({ date, eventsByDate, onClose, onEventClick }) {
         border: `1px solid ${colors.cardBorder}`, maxHeight: '80vh', overflowY: 'auto',
       }}>
         <div style={{ width: 36, height: 4, borderRadius: 2, background: colors.divider, margin: '0 auto 16px' }} />
-
         <div style={{ fontSize: 16, fontWeight: 700, color: isToday ? '#f472b6' : colors.text, marginBottom: 14 }}>
           {d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           {isToday && <span style={{ fontSize: 11, marginLeft: 8, color: '#f472b6' }}>Today</span>}
         </div>
-
         {dayEvents.length === 0 ? (
-          <div style={{ color: colors.textDim, fontSize: 13, textAlign: 'center', padding: '24px 0' }}>
-            Nothing scheduled
-          </div>
+          <div style={{ color: colors.textDim, fontSize: 13, textAlign: 'center', padding: '24px 0' }}>Nothing scheduled</div>
         ) : (
           dayEvents.map((ev, i) => (
             <div key={i} onClick={() => { onClose(); setTimeout(() => onEventClick(ev), 50) }} style={{
@@ -238,7 +297,6 @@ function DayDrawer({ date, eventsByDate, onClose, onEventClick }) {
             </div>
           ))
         )}
-
         <button onClick={onClose} style={{
           marginTop: 10, width: '100%', padding: '10px 0',
           background: 'rgba(255,255,255,0.06)', border: 'none', borderRadius: 10,
@@ -257,14 +315,12 @@ function MonthGrid({ year, month, eventsByDate, onDayClick, kennaSchedule, trips
   const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7
   const today = todayStr()
   const HIDE_BEFORE = new Date(2026, 4, 23)
-
   const tripDates = new Set()
   for (const t of trips || []) {
     let d = new Date(t.start + 'T12:00:00')
     const end = new Date(t.end + 'T12:00:00')
     while (d <= end) { tripDates.add(d.toISOString().slice(0,10)); d.setDate(d.getDate()+1) }
   }
-
   const rows = []
   let cells = []
   for (let cell = 0; cell < totalCells; cell++) {
@@ -277,24 +333,20 @@ function MonthGrid({ year, month, eventsByDate, onDayClick, kennaSchedule, trips
     const isBefore = dateObj < HIDE_BEFORE
     const dayEvents = inMonth && !isBefore ? (eventsByDate[dateStr] || []) : []
     const isTrip = tripDates.has(dateStr)
-
     let kennaLoc = null
     for (const s of kennaSchedule || []) {
       if (s.start <= dateStr && s.end > dateStr) { kennaLoc = s.location; break }
     }
-
     const clickable = inMonth && !isBefore
-
     cells.push(
       <td key={cell} onClick={() => clickable && onDayClick(dateStr)} style={{
-        verticalAlign: 'top', padding: '2px', height: 56, textAlign: 'left',
+        verticalAlign: 'top', padding: '2px', height: 58, textAlign: 'left',
         opacity: (!inMonth || isBefore) ? 0.15 : 1,
         background: kennaLoc === 'Kentucky' && clickable
           ? 'rgba(96,165,250,0.05)'
           : isTrip && clickable ? 'rgba(45,212,191,0.06)' : 'transparent',
         border: isToday ? '1.5px solid rgba(244,114,182,0.5)' : '1px solid transparent',
-        borderRadius: 6,
-        cursor: clickable ? 'pointer' : 'default',
+        borderRadius: 6, cursor: clickable ? 'pointer' : 'default',
       }}>
         {inMonth && (
           <>
@@ -302,9 +354,7 @@ function MonthGrid({ year, month, eventsByDate, onDayClick, kennaSchedule, trips
               fontSize: 10, fontWeight: isToday ? 700 : 400, lineHeight: 1.2,
               color: isToday ? '#f472b6' : isTrip ? '#2dd4bf' : colors.textDim,
               padding: '2px 3px 1px',
-            }}>
-              {dayNum}
-            </div>
+            }}>{dayNum}</div>
             <div style={{ padding: '0 2px', overflow: 'hidden' }}>
               {dayEvents.slice(0, 2).map((ev, i) => (
                 <div key={i} style={{
@@ -318,14 +368,12 @@ function MonthGrid({ year, month, eventsByDate, onDayClick, kennaSchedule, trips
                     .replace(/ — COCA \(Louise\)/g, '')
                     .replace(/ \(Louise\)/g, '')
                     .replace(/ \(Kenna\)/g, '')
-                    .replace(/Magnificent Me/, 'Mag. Me')
+                    .replace(/Magnificent Me/, 'Mag.Me')
                     .replace(/In the Garden/, 'Garden')}
                 </div>
               ))}
               {dayEvents.length > 2 && (
-                <div style={{ fontSize: 7, color: colors.textDim, padding: '0 2px' }}>
-                  +{dayEvents.length - 2}
-                </div>
+                <div style={{ fontSize: 7, color: colors.textDim, padding: '0 2px' }}>+{dayEvents.length - 2}</div>
               )}
             </div>
           </>
@@ -335,7 +383,6 @@ function MonthGrid({ year, month, eventsByDate, onDayClick, kennaSchedule, trips
   }
   while (cells.length < 7) cells.push(<td key={`p${cells.length}`} />)
   rows.push(<tr key={rows.length}>{cells}</tr>)
-
   return (
     <div style={{ background: colors.card, borderRadius: 10, padding: 10, border: `1px solid ${colors.cardBorder}` }}>
       <div style={{ textAlign: 'center', fontSize: 13, fontWeight: 600, color: colors.text, marginBottom: 6 }}>
@@ -364,7 +411,6 @@ function EventModal({ event, onClose }) {
   const [cancelReason, setCancelReason] = useState('')
   const [saving, setSaving] = useState(false)
   const needsDriver = event.logistics_type === 'transport' || event.logistics_type === 'attendance'
-
   useEffect(() => {
     if (!needsDriver || !event._id) return
     get(ref(db, `logistics/confirmations/${event.date}/${event._id}`)).then(snap => {
@@ -373,7 +419,6 @@ function EventModal({ event, onClose }) {
       else if (d?.confirmed_person) setParentPick(d.confirmed_person)
     }).catch(() => {})
   }, [event._id, event.date, needsDriver])
-
   const handleParentAssign = (person) => {
     if (!event._id) return
     setSaving(true); setCancelled(false)
@@ -383,7 +428,6 @@ function EventModal({ event, onClose }) {
       updated_at: new Date().toISOString(),
     }).then(() => { setParentPick(person); setSaving(false) }).catch(() => setSaving(false))
   }
-
   const handleCancel = () => {
     if (!event._id) return
     setSaving(true)
@@ -393,12 +437,10 @@ function EventModal({ event, onClose }) {
       cancel_reason: cancelReason, updated_at: new Date().toISOString(),
     }).then(() => { setCancelled(true); setSaving(false) }).catch(() => setSaving(false))
   }
-
   const CATEGORY_LABELS = {
     louise: 'Louise', kenna: 'Kenna', 'both-kids': 'Both Kids',
     trip: 'Trip', camp: 'Camp', school: 'School', family: 'Family',
   }
-
   return (
     <div onClick={onClose} style={{
       position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.65)',
@@ -410,7 +452,6 @@ function EventModal({ event, onClose }) {
         maxHeight: '80vh', overflowY: 'auto',
       }}>
         <div style={{ width: 36, height: 4, borderRadius: 2, background: colors.divider, margin: '0 auto 14px' }} />
-
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
           <span style={{ padding: '3px 10px', borderRadius: 8, fontSize: 10, background: catBg, color: catColor, fontWeight: 600 }}>
             <CategoryIcon category={event.category} size={12} />{' '}
@@ -422,9 +463,7 @@ function EventModal({ event, onClose }) {
             </span>
           )}
         </div>
-
         <h2 style={{ fontSize: 17, fontWeight: 700, color: colors.text, margin: '4px 0 10px' }}>{event.summary}</h2>
-
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, color: colors.textDim, fontSize: 13 }}>
           <Clock size={14} />
           <span>
@@ -433,13 +472,11 @@ function EventModal({ event, onClose }) {
             {event.all_day && ' (all day)'}
           </span>
         </div>
-
         {event.location && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, color: colors.textDim, fontSize: 13 }}>
             <MapPin size={14} /><span>{event.location.split('\n')[0]}</span>
           </div>
         )}
-
         <div style={{
           margin: '10px 0', padding: '10px 14px', borderRadius: 8,
           background: 'rgba(255,255,255,0.03)', fontSize: 12,
@@ -455,12 +492,10 @@ function EventModal({ event, onClose }) {
             </div>
           </div>
         </div>
-
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: colors.textDim, marginBottom: 4 }}>
           <User size={14} />
           {event.who?.length > 0 ? event.who.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' + ') : 'Family'}
         </div>
-
         {needsDriver && (
           <div style={{
             marginTop: 10, padding: '10px 14px', borderRadius: 8,
@@ -509,7 +544,6 @@ function EventModal({ event, onClose }) {
             )}
           </div>
         )}
-
         {cancelled && needsDriver && (
           <div style={{
             marginTop: 6, padding: '8px 12px', borderRadius: 8,
@@ -522,7 +556,6 @@ function EventModal({ event, onClose }) {
             />
           </div>
         )}
-
         {event.note && (
           <div style={{
             marginTop: 10, padding: '8px 12px', borderRadius: 8,
@@ -530,7 +563,6 @@ function EventModal({ event, onClose }) {
             fontSize: 11, color: colors.textDim,
           }}>{event.note}</div>
         )}
-
         <button onClick={onClose} style={{
           marginTop: 14, width: '100%', padding: '10px 0', background: 'rgba(255,255,255,0.06)',
           border: 'none', borderRadius: 10, color: colors.textDim, fontSize: 13, cursor: 'pointer', fontWeight: 500,
@@ -544,8 +576,6 @@ function EventModal({ event, onClose }) {
 
 function AgendaView({ events, milestones, onEventClick }) {
   const today = todayStr()
-
-  // Merge events + milestones, sorted by date then time
   const allItems = [
     ...events.map(e => ({ ...e, _isMilestone: false })),
     ...milestones.map(m => ({ ...m, _isMilestone: true })),
@@ -556,29 +586,23 @@ function AgendaView({ events, milestones, onEventClick }) {
      if (!a._isMilestone && b._isMilestone) return -1
      return (a.time_str || '').localeCompare(b.time_str || '')
    })
-
-  // Group by date
   const dateOrder = []
   const grouped = {}
   for (const ev of allItems) {
     if (!grouped[ev.date]) { grouped[ev.date] = []; dateOrder.push(ev.date) }
     grouped[ev.date].push(ev)
   }
-
   if (dateOrder.length === 0) {
     return <div style={{ color: colors.textDim, textAlign: 'center', padding: 40 }}>No upcoming events.</div>
   }
-
   return (
     <div>
       {dateOrder.map(dateStr => {
         const d = new Date(dateStr + 'T12:00:00')
         const isToday = dateStr === today
         const dayItems = grouped[dateStr]
-
         return (
           <div key={dateStr} style={{ marginBottom: 4 }}>
-            {/* Date header */}
             <div style={{
               padding: '10px 0 5px',
               borderBottom: `1px solid ${isToday ? 'rgba(244,114,182,0.35)' : colors.divider}`,
@@ -590,8 +614,6 @@ function AgendaView({ events, milestones, onEventClick }) {
               </span>
               {isToday && <span style={{ fontSize: 10, fontWeight: 700, color: '#f472b6', letterSpacing: '0.06em' }}>TODAY</span>}
             </div>
-
-            {/* Items */}
             {dayItems.map((ev, i) =>
               ev._isMilestone ? (
                 <BirthdayCard key={i} event={ev} />
@@ -599,7 +621,6 @@ function AgendaView({ events, milestones, onEventClick }) {
                 <div key={i} onClick={() => onEventClick(ev)} style={{
                   display: 'flex', alignItems: 'center', gap: 10,
                   padding: '8px 10px', borderRadius: 8, cursor: 'pointer', marginBottom: 2,
-                  transition: 'background 0.1s',
                 }}
                   onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
                   onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
@@ -641,6 +662,14 @@ export default function SummerCalendar() {
   const [selectedEvent, setSelectedEvent] = useState(null)
   const [selectedDay, setSelectedDay] = useState(null)
   const [view, setView] = useState('agenda')
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 640)
+  const [gridMonth, setGridMonth] = useState(getCurrentMonthIndex)
+
+  useEffect(() => {
+    const fn = () => setIsMobile(window.innerWidth < 640)
+    window.addEventListener('resize', fn)
+    return () => window.removeEventListener('resize', fn)
+  }, [])
 
   useEffect(() => {
     const unsub = onValue(ref(db, 'kids-summer/2026'), snap => {
@@ -668,7 +697,6 @@ export default function SummerCalendar() {
     return map
   }, [filteredEvents])
 
-  // Milestones: all birthdays/anniversaries and family events, chronological
   const milestones = useMemo(() => {
     if (!data?.events) return []
     return Object.values(data.events)
@@ -697,7 +725,6 @@ export default function SummerCalendar() {
       minHeight: '100vh', background: colors.bg, fontFamily: "'DM Sans', sans-serif",
       color: colors.text, padding: '16px 18px 48px', maxWidth: 900, margin: '0 auto',
     }}>
-      {/* Header */}
       <div style={{ marginBottom: 14 }}>
         <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 26, fontWeight: 600, margin: '0 0 2px' }}>
           Family Calendar
@@ -713,9 +740,9 @@ export default function SummerCalendar() {
       </div>
 
       <KennaStrip schedule={data?.kenna_schedule} />
+      <LouiseStrip events={events} />
       <TripCards trips={data?.trips} />
 
-      {/* Filter + view toggle */}
       <div style={{
         display: 'flex', alignItems: 'center', gap: 5, marginBottom: 14,
         paddingBottom: 10, borderBottom: `1px solid ${colors.divider}`, flexWrap: 'wrap',
@@ -731,9 +758,7 @@ export default function SummerCalendar() {
               background: active ? bgColor : 'transparent',
               color: active ? fgColor : colors.textDim,
               border: active ? 'none' : `1px solid ${colors.cardBorder}`,
-            }}>
-              {f.label}
-            </button>
+            }}>{f.label}</button>
           )
         })}
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 3 }}>
@@ -743,14 +768,11 @@ export default function SummerCalendar() {
               fontWeight: view === v ? 600 : 400,
               background: view === v ? 'rgba(255,255,255,0.08)' : 'transparent',
               color: view === v ? colors.text : colors.textDim,
-            }}>
-              {v === 'agenda' ? 'Agenda' : 'Grid'}
-            </button>
+            }}>{v === 'agenda' ? 'Agenda' : 'Grid'}</button>
           ))}
         </div>
       </div>
 
-      {/* Gaps warning */}
       {view === 'agenda' && data?.gaps && data.gaps.length > 0 && (
         <div style={{
           marginBottom: 14, padding: '10px 14px', borderRadius: 10,
@@ -765,7 +787,6 @@ export default function SummerCalendar() {
         </div>
       )}
 
-      {/* Agenda */}
       {view === 'agenda' && (
         <AgendaView
           events={filteredEvents}
@@ -774,19 +795,43 @@ export default function SummerCalendar() {
         />
       )}
 
-      {/* Grid */}
       {view === 'grid' && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 12 }}>
-          {[4, 5, 6, 7].map(m => (
-            <MonthGrid key={m} year={2026} month={m}
+        isMobile ? (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+              <button
+                onClick={() => setGridMonth(m => Math.max(4, m - 1))}
+                disabled={gridMonth <= 4}
+                style={{ padding: '6px 14px', borderRadius: 8, border: `1px solid ${colors.cardBorder}`,
+                  background: 'transparent', color: gridMonth <= 4 ? colors.textDim : colors.text,
+                  fontSize: 18, cursor: gridMonth <= 4 ? 'default' : 'pointer' }}
+              >‹</button>
+              <span style={{ fontSize: 15, fontWeight: 600, color: colors.text }}>{MONTHS_FULL[gridMonth]} 2026</span>
+              <button
+                onClick={() => setGridMonth(m => Math.min(7, m + 1))}
+                disabled={gridMonth >= 7}
+                style={{ padding: '6px 14px', borderRadius: 8, border: `1px solid ${colors.cardBorder}`,
+                  background: 'transparent', color: gridMonth >= 7 ? colors.textDim : colors.text,
+                  fontSize: 18, cursor: gridMonth >= 7 ? 'default' : 'pointer' }}
+              >›</button>
+            </div>
+            <MonthGrid year={2026} month={gridMonth}
               eventsByDate={eventsByDate} onDayClick={setSelectedDay}
               kennaSchedule={data?.kenna_schedule} trips={data?.trips}
             />
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 12 }}>
+            {[4, 5, 6, 7].map(m => (
+              <MonthGrid key={m} year={2026} month={m}
+                eventsByDate={eventsByDate} onDayClick={setSelectedDay}
+                kennaSchedule={data?.kenna_schedule} trips={data?.trips}
+              />
+            ))}
+          </div>
+        )
       )}
 
-      {/* Legend */}
       <div style={{
         marginTop: 24, padding: '10px 14px', borderRadius: 8,
         background: colors.card, border: `1px solid ${colors.cardBorder}`,
@@ -801,12 +846,9 @@ export default function SummerCalendar() {
         <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
           <StateIcon state="KY" size={12} color="#60a5fa" /> KY week
         </span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-          🎂 Birthday
-        </span>
+        <span>🎂 Birthday</span>
       </div>
 
-      {/* Day Drawer */}
       {selectedDay && (
         <DayDrawer
           date={selectedDay}
@@ -816,7 +858,6 @@ export default function SummerCalendar() {
         />
       )}
 
-      {/* Event Modal */}
       {selectedEvent && <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
     </div>
   )

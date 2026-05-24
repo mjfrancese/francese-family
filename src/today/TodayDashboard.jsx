@@ -307,7 +307,7 @@ export default function TodayDashboard() {
           onConfirm={handleLogisticsConfirm}
         />
       )}
-      <CalendarSection events={viewerCalendar} viewerKey={viewerKey} />
+      <CalendarSection events={viewerCalendar} viewerKey={viewerKey} upcomingBirthdays={data?.upcoming_birthdays} />
       <DinnerPlanner
         todayDate={todayDate}
       />

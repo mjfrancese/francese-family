@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { colors, fonts } from '../theme'
 
 const SECTION_HEADER = {
@@ -8,6 +9,10 @@ const SECTION_HEADER = {
   fontFamily: fonts.body,
   fontWeight: 600,
   padding: '20px 20px 8px',
+}
+
+const PERSON_COLORS = {
+  michael: '#60a5fa', meghan: '#a78bfa', kenna: '#fbbf24', louise: '#f472b6',
 }
 
 function parseTimeToMinutes(timeStr) {
@@ -21,11 +26,11 @@ function parseTimeToMinutes(timeStr) {
 }
 
 function getEventBorderColor(label) {
-  if (!label) return colors.accent    // Michael's own: accent blue
+  if (!label) return colors.accent
   const l = label.toLowerCase()
-  if (l.includes('meghan')) return null        // Meghan's: no border, muted
-  if (l.includes('st. tim') || l.includes('stim') || l.includes('vestry')) return '#e8c55c'  // amber
-  if (l.includes('family')) return '#5ce892'  // green
+  if (l.includes('meghan')) return null
+  if (l.includes('st. tim') || l.includes('stim') || l.includes('vestry')) return '#e8c55c'
+  if (l.includes('family')) return '#5ce892'
   return colors.accent
 }
 
@@ -45,58 +50,34 @@ function EventRow({ event, isLast }) {
   return (
     <div>
       <div style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: 12,
-        padding: '10px 0',
+        display: 'flex', alignItems: 'flex-start', gap: 12, padding: '10px 0',
       }}>
-        {/* Left border indicator */}
         <div style={{
-          width: 3,
-          alignSelf: 'stretch',
+          width: 3, alignSelf: 'stretch',
           background: borderColor || 'transparent',
-          borderRadius: 2,
-          marginRight: 12,
-          flexShrink: 0,
+          borderRadius: 2, marginRight: 12, flexShrink: 0,
         }} />
 
         <div style={{ minWidth: 54, flexShrink: 0 }}>
           {event.all_day ? (
             <span style={{
-              fontSize: 10,
-              color: colors.textDim,
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-            }}>
-              All day
-            </span>
+              fontSize: 10, color: colors.textDim,
+              textTransform: 'uppercase', letterSpacing: '0.08em',
+            }}>All day</span>
           ) : (
             <span style={{
-              fontSize: 13,
-              fontWeight: 700,
-              color: colors.accent,
-              fontFamily: fonts.body,
-            }}>
-              {event.time_str}
-            </span>
+              fontSize: 13, fontWeight: 700, color: colors.accent, fontFamily: fonts.body,
+            }}>{event.time_str}</span>
           )}
         </div>
 
         <div style={{ flex: 1, opacity }}>
-          <div style={{
-            fontSize: 14,
-            color: colors.text,
-            lineHeight: 1.3,
-          }}>
+          <div style={{ fontSize: 14, color: colors.text, lineHeight: 1.3 }}>
             {event.summary}
           </div>
           <div style={{ display: 'flex', gap: 8, marginTop: 2, flexWrap: 'wrap', alignItems: 'center' }}>
             {event.label && (
-              <span style={{
-                fontSize: 11,
-                color: colors.textDim,
-                fontStyle: 'italic',
-              }}>
+              <span style={{ fontSize: 11, color: colors.textDim, fontStyle: 'italic' }}>
                 {event.label}
               </span>
             )}
@@ -106,15 +87,11 @@ function EventRow({ event, isLast }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontSize: 11,
-                  color: colors.accent,
-                  textDecoration: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 2,
+                  fontSize: 11, color: colors.accent, textDecoration: 'none',
+                  display: 'flex', alignItems: 'center', gap: 2,
                 }}
               >
-                📍 {event.location}
+                📍 {event.location.split('\n')[0].split(',')[0]}
               </a>
             )}
           </div>
@@ -125,19 +102,67 @@ function EventRow({ event, isLast }) {
   )
 }
 
-export default function CalendarSection({ events, viewerKey }) {
-  const displayName = viewerKey === 'meghan' ? 'Meghan' : 'Michael'
+function ordinalSuffix(n) {
+  if (n >= 11 && n <= 13) return `${n}th`
+  const s = { 1: 'st', 2: 'nd', 3: 'rd' }
+  return `${n}${s[n % 10] || 'th'}`
+}
 
+function UpcomingBirthdays({ birthdays }) {
+  if (!birthdays || birthdays.length === 0) return null
+  return (
+    <div style={{
+      margin: '0 20px 12px',
+      padding: '10px 14px',
+      borderRadius: 10,
+      background: 'rgba(251,191,36,0.04)',
+      border: '1px solid rgba(251,191,36,0.12)',
+    }}>
+      <div style={{
+        fontSize: 10, fontWeight: 700, textTransform: 'uppercase',
+        letterSpacing: '0.08em', color: '#fbbf24', marginBottom: 8,
+      }}>🎂 Coming up</div>
+      {birthdays.map((b, i) => {
+        const color = PERSON_COLORS[b.person] || '#9ca3af'
+        return (
+          <div key={i} style={{
+            display: 'flex', alignItems: 'center', gap: 10, marginBottom: i < birthdays.length - 1 ? 6 : 0,
+          }}>
+            <div style={{
+              fontSize: 10, fontWeight: 700, minWidth: 28, textAlign: 'center',
+              padding: '2px 0', borderRadius: 6,
+              background: color + '18', color,
+            }}>
+              {b.days_until === 1 ? 'tmrw' : `${b.days_until}d`}
+            </div>
+            <div style={{ fontSize: 13, color: colors.text }}>
+              <span style={{ fontWeight: 600, color }}>{b.name}</span>
+              <span style={{ color: colors.textDim, fontSize: 12 }}>
+                {' '}turns {ordinalSuffix(b.age)}
+              </span>
+            </div>
+          </div>
+        )
+      })}
+      <Link to="/calendar" style={{
+        display: 'block', marginTop: 8, fontSize: 11, color: colors.textDim,
+        textDecoration: 'none', textAlign: 'right',
+      }}>
+        family calendar →
+      </Link>
+    </div>
+  )
+}
+
+export default function CalendarSection({ events, viewerKey, upcomingBirthdays }) {
   if (!events || events.length === 0) {
     return (
       <div style={{ marginBottom: 8 }}>
         <div style={SECTION_HEADER}>📅 Your Day</div>
-        <div style={{
-          padding: '8px 20px 16px',
-          fontSize: 13,
-          color: colors.textDim,
-          fontStyle: 'italic',
-        }}>
+        {upcomingBirthdays && upcomingBirthdays.length > 0 && (
+          <UpcomingBirthdays birthdays={upcomingBirthdays} />
+        )}
+        <div style={{ padding: '8px 20px 16px', fontSize: 13, color: colors.textDim, fontStyle: 'italic' }}>
           Nothing scheduled today
         </div>
       </div>
@@ -153,13 +178,12 @@ export default function CalendarSection({ events, viewerKey }) {
   return (
     <div style={{ marginBottom: 8 }}>
       <div style={SECTION_HEADER}>📅 Your Day</div>
+      {upcomingBirthdays && upcomingBirthdays.length > 0 && (
+        <UpcomingBirthdays birthdays={upcomingBirthdays} />
+      )}
       <div style={{ padding: '0 20px' }}>
         {sorted.map((event, i) => (
-          <EventRow
-            key={event.id || i}
-            event={event}
-            isLast={i === sorted.length - 1}
-          />
+          <EventRow key={event.id || i} event={event} isLast={i === sorted.length - 1} />
         ))}
       </div>
     </div>
