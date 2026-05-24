@@ -26,8 +26,8 @@ const STATE_VIEWBOX = {
 const STATE_ROTATE = {
   MO: -3,    // slight correction to visually level the northern border
   KY: 10,    // Ohio River border has ~10° tilt
-  NH: 0,     // no rotation — verify before adjusting
-  FL: 0,     // no rotation — verify before adjusting
+  // NH and FL intentionally omitted — paths too detailed at icon size,
+  // fall back to abbreviation badges which are always correct.
 }
 
 // ── Landmark paths (from Iconify API — Tabler & MDI, MIT licensed) ──────────
