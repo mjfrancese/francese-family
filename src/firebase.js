@@ -23,8 +23,36 @@ export function sanitizeEmail(email) {
   return email.replace(/\./g, '_')
 }
 
-export const OWNER_EMAILS = ['mfrancese@gmail.com', 'meghancryan@gmail.com']
+// All recognized family emails
+export const OWNER_EMAILS = ['mfrancese@gmail.com', 'meghancryan@gmail.com', 'megc.holland@gmail.com', 'meghan@saint-tims.org']
+export const MICHAEL_EMAILS = ['mfrancese@gmail.com']
+export const MEGHAN_EMAILS = ['meghancryan@gmail.com', 'megc.holland@gmail.com', 'meghan@saint-tims.org']
+export const KENNA_EMAILS = ['kennarholland@gmail.com']
 
 export function isOwnerEmail(email) {
   return OWNER_EMAILS.includes(email)
+}
+
+export function getPersonFromEmail(email) {
+  if (MICHAEL_EMAILS.includes(email)) return 'michael'
+  if (MEGHAN_EMAILS.includes(email)) return 'meghan'
+  if (KENNA_EMAILS.includes(email)) return 'kenna'
+  return null
+}
+
+// Route each person to their home view after login
+export function getHomeRouteForEmail(email) {
+  const person = getPersonFromEmail(email)
+  if (person === 'michael') return '/dashboard'
+  if (person === 'meghan') return '/home'
+  if (person === 'kenna') return '/kenna'
+  return '/'
+}
+
+// Per-person brand colors — used across all views
+export const PERSON_COLORS = {
+  michael: '#4a90d9',   // blue
+  meghan:  '#a78bfa',   // purple
+  kenna:   '#fbbf24',   // amber
+  louise:  '#f472b6',   // pink
 }

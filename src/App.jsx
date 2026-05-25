@@ -7,7 +7,12 @@ import ImportTool from './admin/ImportTool'
 import TodayDashboard from './today/TodayDashboard'
 import ProjectsReview from './today/ProjectsReview'
 import SummerCalendar from './summer/SummerCalendar'
-import { isOwnerEmail } from './firebase'
+import Dashboard from './dashboard/Dashboard'
+import Ambient from './dashboard/Ambient'
+import MeghanHome from './home/MeghanHome'
+import KennaView from './kenna/KennaView'
+import Kitchen from './kitchen/Kitchen'
+import { isOwnerEmail, getHomeRouteForEmail } from './firebase'
 import { colors } from './theme'
 
 function ProtectedRoute({ children, ownerOnly = false }) {
@@ -38,9 +43,37 @@ function AppRoutes() {
     )
   }
 
+  // After login, redirect based on who is signing in
+  const homeRoute = user ? getHomeRouteForEmail(user.email) : '/'
+
   return (
     <Routes>
-      <Route path="/" element={user ? <Landing /> : <LoginPage />} />
+      {/* Root: redirect logged-in users to their home view */}
+      <Route path="/" element={user ? <Navigate to={homeRoute} replace /> : <LoginPage />} />
+
+      {/* Michael */}
+      <Route path="/dashboard" element={
+        <ProtectedRoute><Dashboard /></ProtectedRoute>
+      } />
+      <Route path="/ambient" element={<Ambient />} />
+
+      {/* Meghan */}
+      <Route path="/home" element={
+        <ProtectedRoute><MeghanHome /></ProtectedRoute>
+      } />
+
+      {/* Kenna */}
+      <Route path="/kenna" element={
+        <ProtectedRoute><KennaView /></ProtectedRoute>
+      } />
+
+      {/* Kitchen — no auth, kiosk mode */}
+      <Route path="/kitchen" element={<Kitchen />} />
+
+      {/* Shared — trips, calendar, admin */}
+      <Route path="/landing" element={
+        <ProtectedRoute><Landing /></ProtectedRoute>
+      } />
       <Route path="/today" element={
         <ProtectedRoute><TodayDashboard /></ProtectedRoute>
       } />
