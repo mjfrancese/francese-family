@@ -5,12 +5,35 @@ import { useSequences } from '../hooks/useSequences'
 import { useFamilyStatus } from '../hooks/useFamilyStatus'
 import { useTrips } from '../hooks/useTrips'
 import { colors, fonts } from '../theme'
-import { Globe, Monitor, LogOut } from 'lucide-react'
+import { Globe, Monitor, LogOut, Map, CalendarDays, Sun, Settings } from 'lucide-react'
 import FamilyStatusPill from '../components/FamilyStatusPill'
 import OpenLoopsBoard from '../components/OpenLoopsBoard'
 import SequenceTracker from '../components/SequenceTracker'
-import TripCountdowns from '../today/TripCountdowns'
+import TripIcon from '../components/TripIcon'
 import ProjectPulse from '../today/ProjectPulse'
+
+function NavBtn({ icon, label, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        background: 'none',
+        border: `1px solid ${colors.border}`,
+        borderRadius: 6,
+        color: colors.textDim,
+        cursor: 'pointer',
+        padding: '5px 9px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 4,
+        fontSize: 11,
+        fontFamily: fonts.body,
+      }}
+    >
+      {icon} {label}
+    </button>
+  )
+}
 
 export default function Dashboard() {
   const { user, signOut } = useAuth()
@@ -65,53 +88,21 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           {!statusLoading && status && (
-            <FamilyStatusPill
-              overall={status.overall}
-              compact
-            />
+            <FamilyStatusPill overall={status.overall} compact />
           )}
-          <button
-            onClick={() => navigate('/ambient')}
-            title="Ambient panel"
-            style={{
-              background: 'none',
-              border: `1px solid ${colors.border}`,
-              borderRadius: 6,
-              color: colors.textDim,
-              cursor: 'pointer',
-              padding: '6px 10px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 5,
-              fontSize: 11,
-              fontFamily: fonts.body,
-            }}
-          >
-            <Monitor size={13} /> Ambient
-          </button>
-          <button
-            onClick={() => navigate('/')}
-            style={{
-              background: 'none',
-              border: `1px solid ${colors.border}`,
-              borderRadius: 6,
-              color: colors.textDim,
-              cursor: 'pointer',
-              padding: '6px 10px',
-              fontSize: 11,
-              fontFamily: fonts.body,
-            }}
-          >
-            Trips
-          </button>
+          <NavBtn icon={<Sun size={13}/>}    label="Today"    onClick={() => navigate('/today')} />
+          <NavBtn icon={<Map size={13}/>}     label="Trips"    onClick={() => navigate('/landing')} />
+          <NavBtn icon={<CalendarDays size={13}/>} label="Calendar" onClick={() => navigate('/calendar')} />
+          <NavBtn icon={<Monitor size={13}/>} label="Ambient"  onClick={() => navigate('/ambient')} />
+          <NavBtn icon={<Settings size={13}/>} label="Admin"   onClick={() => navigate('/admin')} />
           {user?.photoURL && (
-            <img src={user.photoURL} alt="" style={{ width: 28, height: 28, borderRadius: '50%' }} />
+            <img src={user.photoURL} alt="" style={{ width: 28, height: 28, borderRadius: '50%', marginLeft: 4 }} />
           )}
           <button onClick={signOut} style={{
             background: 'none', border: 'none',
-            color: colors.textDark, fontSize: 11, cursor: 'pointer', fontFamily: fonts.body,
+            color: colors.textDark, cursor: 'pointer', padding: '6px 4px',
           }}>
             <LogOut size={13} />
           </button>
@@ -191,7 +182,7 @@ export default function Dashboard() {
                           cursor: 'pointer',
                         }}
                       >
-                        <span style={{ fontSize: 20 }}>{trip.icon || '✈️'}</span>
+                        <TripIcon icon={trip.icon} size={32} tripColor={trip.color} />
                         <div style={{ flex: 1 }}>
                           <div style={{ fontSize: 13, fontWeight: 500, color: colors.text, fontFamily: fonts.body }}>
                             {trip.title}
