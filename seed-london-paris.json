@@ -95,7 +95,7 @@
       "confirmation": "YUAD5K",
       "cost": "260,000 Avios + $1,083.86",
       "paidWith": "Avios + taxes",
-      "notes": "Heathrow Terminal 5. World Traveller (economy).",
+      "notes": "Heathrow Terminal 5. World Traveller (economy). Seats: outbound row 23 (center block, together — good). RETURN BA221 needs fixing — Meghan isolated in 21C, family in 21H/J/K; BA Accessibility call to reseat all four together. Medical: Dr. Senol letters on file (aisle/extra legroom, early boarding, refrigerated meds + syringes in cabin for Meghan + Michael); DPNA codes for Michael + Kenna; Sunflower lanyards worn from STL.",
       "prefilled": {
         "ktn": true,
         "passport": true,
@@ -276,6 +276,45 @@
       "cost": "$0 (Full-board Extra Plus — last day voucher)",
       "paidWith": "Meal voucher",
       "notes": "Inside the Disneyland Hotel (castle building above park entrance). Exit park to reach it."
+    },
+    {
+      "category": "attraction",
+      "label": "Natural History Museum",
+      "status": "booked",
+      "carrier": null,
+      "detail": "Free timed entry · Michael + Louise · General Admission, South Kensington",
+      "date": "Jun 12",
+      "time": "10:00",
+      "confirmation": "20260506-S16729453",
+      "cost": "£0 (free)",
+      "paidWith": null,
+      "notes": "E-ticket PDF saved. Last entry 17:30. Nearest Tube: South Kensington."
+    },
+    {
+      "category": "transport",
+      "label": "Uber to STL — Departure",
+      "status": "booked",
+      "carrier": "Uber",
+      "detail": "Sun Jun 7 · UberX · Home → STL Terminal 2 · pickup 7:20 PM (dropoff ~7:36 PM)",
+      "date": "Jun 7",
+      "time": "19:20",
+      "confirmation": null,
+      "cost": "$33.94",
+      "paidWith": "Uber (reserved)",
+      "notes": "Reserved ride, driver assigned. 4 passengers."
+    },
+    {
+      "category": "transport",
+      "label": "Uber from STL — Return",
+      "status": "booked",
+      "carrier": "Uber",
+      "detail": "Tue Jun 16 · UberXL · STL → Home · flight-tracked to BA221 (lands ~7:30 PM)",
+      "date": "Jun 16",
+      "time": "~19:45",
+      "confirmation": null,
+      "cost": "$45.97",
+      "paidWith": "Apple Pay Visa ••6866",
+      "notes": "Reservation confirmed, priority pickup at STL. Auto-adjusts to flight arrival."
     }
   ],
   "timeline": [
@@ -288,9 +327,9 @@
       "order": 0,
       "events": [
         {
-          "text": "⏰ ALARM: Jun 6 at 9:55 PM — BA check-in opens for FREE seat selection!",
+          "text": "⏰ Jun 6: online check-in opens (~10 PM CDT). Seats are already assigned — just check in and verify TSA PRE✓. Do NOT re-shuffle seats (BA Accessibility owns the return fix).",
           "status": "action",
-          "statusLabel": "SET ALARM"
+          "statusLabel": "CHECK-IN"
         },
         {
           "time": "22:00",
@@ -331,29 +370,29 @@
           ]
         },
         {
-          "icon": "💺",
-          "title": "⏰ SEAT STRATEGY — $0 cost",
-          "color": "#d94a8a",
+          "icon": "♿",
+          "title": "Accessibility & Medical — Departure",
+          "color": "#5ce892",
           "items": [
             {
+              "type": "tip",
+              "text": "<strong>Wear the Hidden Disabilities Sunflower lanyards (all 4) from STL.</strong> Recognized at Heathrow, St Pancras/Gare du Nord, and Disneyland Paris — discreet, patient assistance at every checkpoint."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Refrigerated meds + syringes stay in carry-on</strong> (Meghan: Benlysta + GLP-1; Michael: Repatha). Keep Dr. Senol's letters printed AND on your phone. Declare medically-necessary liquids/gel packs at security — allowed over 100ml."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Michael's rescue inhaler within reach</strong> for the flight — not buried in the overhead bag."
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Early/pre-boarding:</strong> ask at the gate — it's logged on the booking via the BA Accessibility call. Helps you get settled and stow the medical cooler."
+            },
+            {
               "type": "warn",
-              "text": "<strong>SET ALARM: Jun 6 at 9:55 PM CDT.</strong> BA online check-in opens at exactly 10:00 PM CDT (24 hrs before 10 PM Jun 7 departure). This is your FREE seat selection window!"
-            },
-            {
-              "type": "info",
-              "text": "Both Michael and Meghan: log in simultaneously on separate devices at ba.com → Manage My Booking → YUAD5K. Select seats for all 4 passengers the instant they appear"
-            },
-            {
-              "type": "info",
-              "text": "Target a row of 3 (A-B-C or H-J-K) for Michael+Kenna+Louise, with Meghan in the middle section same row (D-E-F). Or grab any 4 adjacent seats"
-            },
-            {
-              "type": "tip",
-              "text": "If free seats don't put you together, DO NOT PAY. At the airport check-in desk, say: \"We have a 5-year-old who needs to be seated next to a parent.\" UK CAA guidance requires airlines to seat children under 12 with an accompanying adult at no charge. Gate agents handle this daily"
-            },
-            {
-              "type": "tip",
-              "text": "Check back at 12 hrs, 6 hrs, and 2 hrs before departure — seats shuffle as others check in, cancel, or upgrade"
+              "text": "Seats are already assigned (outbound row 23, together). The return BA221 reseat is handled through BA Accessibility — skip the T-24h seat lottery."
             }
           ]
         },
@@ -386,12 +425,12 @@
           "color": "#e8c55c",
           "items": [
             {
-              "type": "warn",
-              "text": "UK ETA required for all 4 passengers — must be approved BEFORE boarding. Apply well in advance!"
+              "type": "info",
+              "text": "✅ UK ETA approved for all 4 — have the confirmation emails on your phones at the gate."
             },
             {
-              "type": "warn",
-              "text": "BA Advance Passenger Info must be completed on ba.com → Manage My Booking → YUAD5K"
+              "type": "info",
+              "text": "✅ BA Advance Passenger Info complete for all 4 (passport + KTN on file)."
             },
             {
               "type": "warn",
@@ -1487,9 +1526,9 @@
         },
         {
           "time": "17:25",
-          "text": "⏰ BA RETURN CHECK-IN OPENS — grab free seats on phone NOW!",
+          "text": "⏰ Return check-in opens (BA221). Seats already sorted via BA Accessibility — just check in and confirm the four of you are together.",
           "status": "action",
-          "statusLabel": "SET ALARM"
+          "statusLabel": "CHECK-IN"
         },
         {
           "time": "~18:30",
@@ -1539,25 +1578,25 @@
           ]
         },
         {
-          "icon": "💺",
-          "title": "⏰ RETURN FLIGHT CHECK-IN",
-          "color": "#d94a8a",
+          "icon": "♿",
+          "title": "Accessibility & Medical — Return",
+          "color": "#5ce892",
           "items": [
             {
-              "type": "warn",
-              "text": "<strong>SET ALARM: Jun 15 at 5:20 PM Paris time (10:20 AM CDT).</strong> BA return check-in opens at exactly 5:25 PM CEST (24 hrs before 4:25 PM BST Jun 16 departure). You'll be in Disneyland Park — do this from your phone during a break!"
-            },
-            {
               "type": "info",
-              "text": "Same strategy: both log in on separate phones at ba.com → YUAD5K. Grab 4 adjacent seats instantly"
-            },
-            {
-              "type": "info",
-              "text": "If free seats don't work, handle at Heathrow T5 check-in desk on Jun 16 — same \"5-year-old must sit with parent\" rule applies"
+              "text": "<strong>Return check-in opens ~5:25 PM Paris time (Jun 15).</strong> Just check in and confirm your assigned seats — the family-together reseat on BA221 was handled by the BA Accessibility call. Don't undo it with the seat-selection tool."
             },
             {
               "type": "tip",
-              "text": "Good time to do this: right before or after Disney Stars on Parade (~2:30-3:00 PM park time). Take 5 min, grab seats, get back to the magic"
+              "text": "<strong>Sunflower lanyards on</strong> for the Gare du Nord → St Pancras → Heathrow → STL journey. Keep Dr. Senol's letters and the medical cooler accessible."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Refrigerated meds:</strong> repack the cooler with fresh frozen gel packs (hotel ice works) the morning of departure for the long travel day home."
+            },
+            {
+              "type": "info",
+              "text": "Michael's inhaler within reach; early boarding available at LHR T5 — ask at the gate."
             }
           ]
         },
@@ -1937,6 +1976,11 @@
         "item": "Eiffel Tower (4 tickets, summit)",
         "cost": "$125.66",
         "note": "€101.00"
+      },
+      {
+        "item": "Airport transfers (Uber STL ×2)",
+        "cost": "$79.91",
+        "note": "UberX + UberXL"
       }
     ],
     "estimated": [
@@ -1964,10 +2008,15 @@
         "item": "Premier Access (optional)",
         "cost": "~$100–200",
         "note": "PA One passes"
+      },
+      {
+        "item": "Travel insurance (family, medical)",
+        "cost": "~$150",
+        "note": "emergency medical + evac"
       }
     ],
-    "confirmedTotal": "~$5,528",
-    "estimatedTotal": "~$6,382–6,727",
+    "confirmedTotal": "~$5,608",
+    "estimatedTotal": "~$6,612–6,957",
     "savingsNote": "260K Avios (~$4,000+ value) + 64,795 C1 miles ($648) + $300 Venture X credit = ~$4,948+ total savings"
   },
   "checklist": [
@@ -2029,10 +2078,10 @@
     },
     {
       "id": "check_7",
-      "text": "UK ETA — all 4 passengers — gov.uk/apply-electronic-travel-authorisation. £10/person. Apply once all passports are in hand. Takes a few days to process.",
-      "done": false,
+      "text": "UK ETA — all 4 passengers APPROVED — Michael, Meghan, Kenna, and Louise all hold approved UK Electronic Travel Authorisations linked to their passports. Have the confirmation emails on your phones.",
+      "done": true,
       "urgent": false,
-      "group": "april",
+      "group": "completed",
       "order": 7
     },
     {
@@ -2053,10 +2102,10 @@
     },
     {
       "id": "check_10",
-      "text": "BA seat selection — check if needed — Manage My Booking → YUAD5K. Check if seats are assigned. BA charges ~$25-50/seat in economy but worth it to sit together with 2 kids on an 8-hr overnight flight.",
+      "text": "📞 CALL BA ACCESSIBILITY (+1-800-247-9297) — booking YUAD5K. The linchpin task. In one call: (1) FIX RETURN BA221 — Meghan is isolated in 21C; seat all four together with two aisle seats for the adults (outbound row 23 is fine — leave it). (2) Log refrigerated meds + syringes for Meghan (Benlysta, GLP-1) and Michael (Repatha); ask where to send Dr. Senol's letters. (3) Add DPNA assistance codes for Michael and Kenna. (4) Get written confirmation + a case number.",
       "done": false,
-      "urgent": false,
-      "group": "april",
+      "urgent": true,
+      "group": "this-week",
       "order": 10
     },
     {
@@ -2072,20 +2121,20 @@
       "text": "Data plan decision — Magenta MAX gives 5GB/line free — You get 5GB high-speed data per line in UK+France, then unlimited 2G. For a 10-day trip, 5GB is tight with maps/photos. Options: (1) Just use the 5GB and lean on hotel WiFi, (2) Add T-Mobile International Pass ($50/15GB/line for 30 days), or (3) Buy an Airalo Europe eSIM (~$16/10GB as backup). Enable data roaming on both phones before departure.",
       "done": false,
       "urgent": false,
-      "group": "april",
+      "group": "june",
       "order": 12
     },
     {
       "id": "check_13",
-      "text": "Travel insurance — consider a family policy — Venture X covers trip cancellation + lost bags but NOT medical expenses abroad. World Nomads or Allianz family plans ~$100-150 for 10 days. One ER visit without insurance could cost thousands with 2 kids.",
+      "text": "🛡️ Travel insurance — Buy a family policy with emergency medical + medical evacuation that covers ACUTE episodes of pre-existing conditions (lupus/APS). The pre-existing 'waiver' window (14–21 days from first deposit) has likely closed, so read the medical terms carefully and don't assume trip-cancellation covers pre-existing. One ER visit abroad with two kids can run into the thousands.",
       "done": false,
       "urgent": false,
-      "group": "april",
+      "group": "this-week",
       "order": 13
     },
     {
       "id": "check_14",
-      "text": "Sky Garden (Jun 12) — book Mon May 25 at 5 AM CDT — Free. Released Mondays 10am London / 5am CDT. skygarden.london. Set alarm!",
+      "text": "Sky Garden (Jun 12) — booking window passed — Free slots release Mondays ~3 weeks out, so the main window is gone. Optional. Check skygarden.london for any last-minute released slots; otherwise skip.",
       "done": false,
       "urgent": false,
       "group": "may",
@@ -2093,15 +2142,15 @@
     },
     {
       "id": "check_15",
-      "text": "NHM timed entry (Jun 12) — book ~mid-May — Free. nhm.ac.uk. Michael + Louise day.",
-      "done": false,
+      "text": "Natural History Museum — BOOKED — Free timed entry, Thu Jun 12 at 10:00 AM (Michael + Louise). Booking ref 20260506-S16729453. General Admission, South Kensington. E-ticket PDF saved; last entry 17:30.",
+      "done": true,
       "urgent": false,
-      "group": "may",
+      "group": "completed",
       "order": 15
     },
     {
       "id": "check_16",
-      "text": "V&A Fashion Tour (Jun 10) — book closer to date — 12:30 PM slot. vam.ac.uk. ⚠ Only 25 min buffer to Matilda.",
+      "text": "V&A Fashion Tour (Jun 10) — BOOK or DROP — Recommendation: drop it. The 12:30 slot leaves only a 25-min buffer to Matilda's 2:00 PM curtain with two kids. Browse the V&A casually instead, or skip entirely to remove the stress.",
       "done": false,
       "urgent": false,
       "group": "may",
@@ -2109,18 +2158,18 @@
     },
     {
       "id": "check_17",
-      "text": "Book Uber to STL — Jun 7 departure — Schedule for ~7:00 PM pickup (flight departs 10 PM, arrive 2.5 hrs early). Book at earliest available date in Uber app. Cheaper than STL long-term parking.",
-      "done": false,
+      "text": "Uber to STL — BOOKED — Reserved UberX, Sun Jun 7, 7:20 PM pickup from home → STL Terminal 2 (dropoff ~7:36 PM). $33.94, driver assigned, seats 4.",
+      "done": true,
       "urgent": false,
-      "group": "may",
+      "group": "completed",
       "order": 17
     },
     {
       "id": "check_18",
-      "text": "Book Uber from STL — Jun 16 return — BA221 arrives STL 7:30 PM. Schedule pickup for ~8:15 PM (allow for customs/baggage). If you have Global Entry, you'll be out faster!",
-      "done": false,
+      "text": "Uber from STL — BOOKED — Reserved UberXL, Tue Jun 16, pickup at STL on arrival of BA221 (lands ~7:30 PM) → home. $45.97, Apple Pay. Flight-tracked, auto-adjusts for delays.",
+      "done": true,
       "urgent": false,
-      "group": "may",
+      "group": "completed",
       "order": 18
     },
     {
@@ -2341,11 +2390,91 @@
     },
     {
       "id": "check_47",
-      "text": "State Department STEP enrollment — Free, 5 min — step.state.gov. Lets the embassy reach you in an emergency and emails travel advisories. Worth doing for both UK and France legs.",
+      "text": "State Department STEP enrollment — OPTIONAL — Free, 5 min, step.state.gov. Lets the US embassy reach you in an emergency and sends UK/France safety alerts. Mild upside given the medical picture; fine to skip if you'd rather not.",
       "done": false,
       "urgent": false,
       "group": "may",
       "order": 47
+    },
+    {
+      "id": "check_48",
+      "group": "this-week",
+      "done": false,
+      "urgent": false,
+      "order": 11,
+      "text": "✉️ Email Dr. Senol's letters to BA — Send Meghan's + Michael's MDVIP accommodation letters to the address BA Accessibility gives you on the call. Save the reply as written proof of receipt."
+    },
+    {
+      "id": "check_49",
+      "group": "this-week",
+      "done": false,
+      "urgent": false,
+      "order": 49,
+      "text": "🧊 Travelodge medical fridge — Call Travelodge Kings Cross (ref 164080202) to arrange an in-room fridge for refrigerated meds (Benlysta, GLP-1, Repatha). Standard rooms have none — request it as a medical need before arrival."
+    },
+    {
+      "id": "check_50",
+      "group": "this-week",
+      "done": false,
+      "urgent": false,
+      "order": 50,
+      "text": "🧊 Confirm fridges at Dream Castle + Art of Marvel — Verify both Disney hotel rooms have a usable fridge/minibar for refrigerated meds; request one if not."
+    },
+    {
+      "id": "check_51",
+      "group": "packing",
+      "done": false,
+      "urgent": false,
+      "order": 51,
+      "text": "🧳 Medical travel cooler + frozen gel packs — For the in-transit gaps with no fridge (flights, Eurostar, park days). Confirm each medication's room-temp tolerance window with the pharmacist so you know which one is the real constraint."
+    },
+    {
+      "id": "check_53",
+      "group": "packing",
+      "done": false,
+      "urgent": false,
+      "order": 53,
+      "text": "💊 Pack the medical bag (carry-on) — Printed letters + copies on phones; medical cooler; a small sharps container; Michael's rescue inhaler within reach. All meds + syringes stay in the cabin, never checked."
+    },
+    {
+      "id": "check_54",
+      "group": "packing",
+      "done": false,
+      "urgent": false,
+      "order": 54,
+      "text": "🌻 Wear the Sunflower lanyards (×4) from STL onward — Recognized at Heathrow, St Pancras/Gare du Nord (Eurostar), and Disneyland Paris. Wear them visibly from departure for discreet assistance."
+    },
+    {
+      "id": "check_56",
+      "group": "completed",
+      "done": true,
+      "urgent": false,
+      "order": 56,
+      "text": "Dr. Senol accommodation letters — IN HAND — MDVIP letters for Meghan (lupus + clotting disorders) and Michael (cardiovascular + asthma): aisle/extra legroom, early boarding, carry refrigerated meds + syringes in cabin. Used in place of a BA MEDIF form (lighter-weight, correct vehicle)."
+    },
+    {
+      "id": "check_57",
+      "group": "completed",
+      "done": true,
+      "urgent": false,
+      "order": 57,
+      "text": "Rheumatology (Dr. Nagam) — CLEARED — Confirmed Dr. Senol's letter suffices; no separate APS letter and no prophylactic LMWH needed for the flights. APS medication thread closed."
+    },
+    {
+      "id": "check_58",
+      "group": "completed",
+      "done": true,
+      "urgent": false,
+      "order": 58,
+      "text": "Hidden Disabilities Sunflower lanyards — IN HAND — 4 received (Lupus UK option for Meghan). See the packing reminder to wear them from STL."
+    },
+    {
+      "id": "check_59",
+      "group": "completed",
+      "done": true,
+      "urgent": false,
+      "order": 59,
+      "text": "Disneyland Paris Priority Card — SECURED — Ref PMR-Y1O-KGA-273-FRD. Pick up at Art of Marvel concierge on Jun 13 (bring the original disability document). Covers Meghan + all 4, both park days. Unlocked by Meghan's disabled parking placard."
     }
   ]
 }
