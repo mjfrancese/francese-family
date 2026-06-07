@@ -2414,11 +2414,11 @@
     },
     {
       "id": "check_50",
-      "group": "this-week",
-      "done": false,
+      "group": "completed",
+      "done": true,
       "urgent": false,
       "order": 50,
-      "text": "🧊 Call Dream Castle + Art of Marvel to confirm in-room fridge/minibar — for refrigerated meds; request one if not standard. Secondary to the Travelodge call, but still needed before those stays (Jun 13–15)."
+      "text": "🧊 Disney hotel fridges — NOT NEEDED. All refrigerated meds are dosed during the London leg (done before you move on to Paris), so there's nothing to store at Dream Castle or Art of Marvel. (If any refrigerated item does carry into the Disney days, just ask the front desk to store it.)"
     },
     {
       "id": "check_51",
