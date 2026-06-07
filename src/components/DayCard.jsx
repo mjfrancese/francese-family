@@ -4,13 +4,14 @@ import DetailSection from './DetailSection'
 import { renderBullets } from './Bullet'
 import { ChevronRight } from 'lucide-react'
 
-export default function DayCard({ day, dayNum, month, title, events = [], details = [], expanded, onToggle }) {
+export default function DayCard({ day, dayNum, month, title, events = [], details = [], expanded, onToggle, isToday = false, currentEventIndex = -1 }) {
   const hasDetails = details && details.length > 0
 
   return (
     <div style={{
       background: colors.card,
-      border: `1px solid ${expanded ? colors.cardBorderActive : colors.cardBorder}`,
+      border: `1px solid ${isToday ? colors.accent : expanded ? colors.cardBorderActive : colors.cardBorder}`,
+      borderLeft: isToday ? `3px solid ${colors.accent}` : undefined,
       borderRadius: 8,
       marginBottom: 8,
       transition: 'border-color 0.15s ease',
@@ -57,21 +58,53 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
             fontWeight: 600,
             color: colors.text,
             marginBottom: 6,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
           }}>
-            {title}
+            {isToday && (
+              <span style={{
+                fontFamily: fonts.mono,
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: 1,
+                color: '#fff',
+                background: colors.accent,
+                borderRadius: 4,
+                padding: '1px 6px',
+                flexShrink: 0,
+              }}>
+                TODAY
+              </span>
+            )}
+            <span>{title}</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            {events.slice(0, expanded ? events.length : 4).map((evt, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: colors.textMuted }}>
-                {evt.time && (
-                  <span style={{ fontFamily: fonts.mono, fontSize: 10, color: colors.textDim, minWidth: 56, flexShrink: 0 }}>
-                    {evt.time}
-                  </span>
-                )}
-                <span style={{ flex: 1, minWidth: 0 }}>{evt.text}</span>
-                {evt.status && <StatusBadge status={evt.status} label={evt.statusLabel} />}
-              </div>
-            ))}
+            {events.slice(0, expanded ? events.length : 4).map((evt, i) => {
+              const isCurrent = i === currentEventIndex
+              return (
+                <div key={i} style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  fontSize: 11,
+                  color: isCurrent ? colors.text : colors.textMuted,
+                  background: isCurrent ? 'rgba(74,144,217,0.10)' : 'transparent',
+                  borderRadius: isCurrent ? 4 : 0,
+                  padding: isCurrent ? '2px 6px' : 0,
+                  margin: isCurrent ? '0 -6px' : 0,
+                  fontWeight: isCurrent ? 600 : 400,
+                }}>
+                  {evt.time && (
+                    <span style={{ fontFamily: fonts.mono, fontSize: 10, color: isCurrent ? colors.accent : colors.textDim, minWidth: 56, flexShrink: 0 }}>
+                      {evt.time}
+                    </span>
+                  )}
+                  <span style={{ flex: 1, minWidth: 0 }}>{evt.text}</span>
+                  {evt.status && <StatusBadge status={evt.status} label={evt.statusLabel} />}
+                </div>
+              )
+            })}
             {!expanded && events.length > 4 && (
               <div style={{ fontSize: 10, color: colors.textDark }}>+{events.length - 4} more...</div>
             )}

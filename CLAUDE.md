@@ -15,6 +15,23 @@ React/Vite family travel planning app backed by Firebase Realtime Database. Depl
 - `npm run build` — Production build
 - Trip seed data lives in `seed-*.json` files; push to Firebase via `npm run push-trip`
 
+## Time-aware trips (the "trip clock")
+The Day-by-Day tab is timezone-aware: it auto-surfaces the current day at the
+top (a "You are here" banner with the now/next event + today's warnings),
+collapses finished days behind a fold, and highlights today. Engine lives in
+`src/utils/tripClock.js` (pure, dependency-free, `Intl`-based); UI in
+`src/components/NowBanner.jsx`; wired through `src/trip/DayByDay.jsx`.
+
+To make ANY trip time-aware, add two fields to each timeline day in its seed:
+- `"date": "YYYY-MM-DD"` — the absolute calendar date of that day
+- `"tz": "America/New_York"` — IANA timezone (e.g. NH/FL = `America/New_York`)
+
+Single-timezone trips just need the same `tz` on every day. For travel days
+that cross zones, add a per-event `"tz"` override on individual events (see
+`seed-london-paris.json` Jun 13/16 for the pattern). Trips WITHOUT `date`/`tz`
+render normally (the feature self-disables). Preview any moment with the
+`?now=YYYY-MM-DDTHH:MM` URL param (treated as wall-clock in each day's zone).
+
 ## Deployment — Two-Step Process (IMPORTANT)
 
 The live site has **two independent layers** that must both be updated:

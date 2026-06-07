@@ -323,6 +323,8 @@
       "dayNum": "7",
       "month": "JUN",
       "title": "Fly to London",
+      "date": "2026-06-07",
+      "tz": "America/Chicago",
       "section": "Departure",
       "order": 0,
       "events": [
@@ -445,6 +447,8 @@
       "dayNum": "8",
       "month": "JUN",
       "title": "Arrival Day — Kings Cross",
+      "date": "2026-06-08",
+      "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 1,
       "events": [
@@ -574,6 +578,8 @@
       "dayNum": "9",
       "month": "JUN",
       "title": "Westminster + London Eye + Thames",
+      "date": "2026-06-09",
+      "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 2,
       "events": [
@@ -699,6 +705,8 @@
       "dayNum": "10",
       "month": "JUN",
       "title": "West End Matinee Day",
+      "date": "2026-06-10",
+      "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 3,
       "events": [
@@ -829,6 +837,8 @@
       "dayNum": "11",
       "month": "JUN",
       "title": "British Museum + Regent's Park",
+      "date": "2026-06-11",
+      "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 4,
       "events": [
@@ -914,6 +924,8 @@
       "dayNum": "12",
       "month": "JUN",
       "title": "Museums (Split Day) + Pack for Paris",
+      "date": "2026-06-12",
+      "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 5,
       "events": [
@@ -1029,15 +1041,19 @@
       "dayNum": "13",
       "month": "JUN",
       "title": "London → Paris → Disneyland",
+      "date": "2026-06-13",
+      "tz": "Europe/Paris",
       "section": "Channel Crossing",
       "order": 6,
       "events": [
         {
           "time": "05:15",
+          "tz": "Europe/London",
           "text": "Wake up. Walk to St Pancras (5 min)"
         },
         {
           "time": "06:31",
+          "tz": "Europe/London",
           "text": "🚄 Eurostar 9002 · Coach 10 · Seats 18,17,13,14",
           "status": "booked",
           "statusLabel": "QRXPZK"
@@ -1181,6 +1197,8 @@
       "dayNum": "14",
       "month": "JUN",
       "title": "Disney Day 1 — Disney Adventure World",
+      "date": "2026-06-14",
+      "tz": "Europe/Paris",
       "section": "Disneyland Paris · Days 7–8",
       "order": 7,
       "events": [
@@ -1482,6 +1500,8 @@
       "dayNum": "15",
       "month": "JUN",
       "title": "Disney Day 2 — Disneyland Park",
+      "date": "2026-06-15",
+      "tz": "Europe/Paris",
       "section": "Disneyland Paris · Days 7–8",
       "order": 8,
       "events": [
@@ -1772,6 +1792,8 @@
       "dayNum": "16",
       "month": "JUN",
       "title": "Disney → Paris → London → Home",
+      "date": "2026-06-16",
+      "tz": "Europe/Paris",
       "section": "Return Journey",
       "order": 9,
       "events": [
@@ -1797,30 +1819,36 @@
         },
         {
           "time": "12:30",
+          "tz": "Europe/London",
           "text": "Arrive London St Pancras"
         },
         {
           "time": "~12:45",
+          "tz": "Europe/London",
           "text": "Walk/Tube to Paddington (~15 min)"
         },
         {
           "time": "~13:00",
+          "tz": "Europe/London",
           "text": "🚄 Heathrow Express (15 min)",
           "status": "booked",
           "statusLabel": "c44d65da"
         },
         {
           "time": "~13:15",
+          "tz": "Europe/London",
           "text": "Arrive Heathrow T5 — 3 hr 10 min buffer ✅"
         },
         {
           "time": "16:25",
+          "tz": "Europe/London",
           "text": "✈ BA221 · LHR → STL",
           "status": "booked",
           "statusLabel": "YUAD5K"
         },
         {
           "time": "19:30",
+          "tz": "America/Chicago",
           "text": "Arrive St. Louis! Welcome home 🏠"
         }
       ],

@@ -216,7 +216,7 @@ export default function TripDashboard() {
 
       {/* Tab content */}
       <div style={{ padding: '20px 24px 48px', maxWidth: 800, margin: '0 auto' }}>
-        {activeTab === 'daybyday' && <DayByDay timeline={timeline} />}
+        {activeTab === 'daybyday' && <DayByDay timeline={timeline} meta={meta} />}
         {activeTab === 'reservations' && <Reservations bookings={bookings} />}
         {activeTab === 'budget' && <Budget budget={budget} />}
         {activeTab === 'todo' && <Checklist items={checklistItems} toggle={toggle} />}
