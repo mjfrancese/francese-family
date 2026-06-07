@@ -89,13 +89,13 @@
       "label": "British Airways · Round Trip",
       "status": "booked",
       "carrier": "British Airways",
-      "detail": "Outbound: Jun 7 · BA220 · STL→LHR 21:40→11:40+1 | Return: Jun 16 · BA221 · LHR→STL 16:25→19:30",
+      "detail": "Outbound: Jun 7 · BA220 · STL→LHR 21:40→11:24+1 | Return: Jun 16 · BA221 · LHR→STL 16:25→19:30",
       "date": "Jun 7–16",
       "time": "21:40 / 16:25",
       "confirmation": "YUAD5K",
       "cost": "260,000 Avios + $1,083.86",
       "paidWith": "Avios + taxes",
-      "notes": "Heathrow Terminal 5. World Traveller (economy) both ways — no upgrade (yet). SEATS CONFIRMED. Outbound BA220: Michael 20D, Louise 20E, Meghan 20F — row 20 is the bulkhead (extra legroom), all three together; Kenna one row back at 21K (window). Return BA221: Meghan 20F (bulkhead, extra legroom), Michael 21J, Kenna 21H, Louise 21K (row 21 together). Both Meghan & Michael have Dr. Senol letters (aisle/extra legroom, early boarding, refrigerated meds + syringes in cabin). BA declined an emailed copy — bring the printed letters to the desk. Online check-in is erroring; check in at the STL counter and ask the agent about a World Traveller Plus upgrade or holding the row 20 bulkhead. Sunflower lanyards worn from STL. (Note: BA seat page shows 21:40 departure / 8h00 — arrival computed ~11:40; verify in the BA app.)",
+      "notes": "Heathrow Terminal 5. World Traveller (economy) both ways — no upgrade (yet). SEATS CONFIRMED. Outbound BA220: Michael 20D, Louise 20E, Meghan 20F — row 20 is the bulkhead (extra legroom), all three together; Kenna one row back at 21K (window). Return BA221: Meghan 20F (bulkhead, extra legroom), Michael 21J, Kenna 21H, Louise 21K (row 21 together). Both Meghan & Michael have Dr. Senol letters (aisle/extra legroom, early boarding, refrigerated meds + syringes in cabin). BA declined an emailed copy — bring the printed letters to the desk. Online check-in is erroring; check in at the STL counter and ask the agent about a World Traveller Plus upgrade or holding the row 20 bulkhead. Sunflower lanyards worn from STL. (BA confirms 21:40 departure, on time; arriving LHR T5 ~11:24, tracking 16 min early — 7h44m flight.)",
       "prefilled": {
         "ktn": true,
         "passport": true,
@@ -338,7 +338,7 @@
           "statusLabel": "YUAD5K"
         },
         {
-          "text": "Overnight flight — arrives June 8 at ~11:40 AM (Terminal 5)"
+          "text": "Overnight flight — arrives June 8 at ~11:24 AM (Terminal 5)"
         }
       ],
       "details": [
@@ -403,7 +403,7 @@
           "items": [
             {
               "type": "info",
-              "text": "BA220 · STL → LHR · Departs 21:40, arrives ~11:40+1 · Terminal 5"
+              "text": "BA220 · STL → LHR · Departs 21:40, arrives ~11:24+1 · Terminal 5 (7h44m, tracking early)"
             },
             {
               "type": "info",
@@ -449,8 +449,8 @@
       "order": 1,
       "events": [
         {
-          "time": "11:40",
-          "text": "Arrive LHR Terminal 5 (~11:40). Early check-in booked from 12pm!"
+          "time": "11:24",
+          "text": "Arrive LHR Terminal 5 (~11:24). Early check-in booked from 12pm!"
         },
         {
           "time": "~13:00",
