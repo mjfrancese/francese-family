@@ -223,7 +223,7 @@
       "confirmation": "601617735",
       "cost": "£110 (~$138)",
       "paidWith": null,
-      "notes": "Fixed time — 1:00 PM."
+      "notes": "Fixed time — 1:00 PM. ♿ Meghan: bring a Blue Badge / PIP or DLA letter (or Access Card) for a FREE carer ticket + FastTrack boarding — skip the main queue. Up to 2 wheelchairs per pod."
     },
     {
       "category": "attraction",
@@ -269,7 +269,7 @@
       "label": "Royal Banquet (character dining)",
       "status": "booked",
       "carrier": "Disney",
-      "detail": "Princess character dining — starter + main + dessert. Expect Anna, Elsa, Rapunzel, Cinderella, Aurora. Allow 75-90 min.",
+      "detail": "⚠️ Verify characters — Royal Banquet (Disneyland Hotel) features Mickey, Minnie, Donald, Daisy & Goofy in ROYAL dress, NOT princesses. Princess dining is Auberge de Cendrillon (inside the park). Starter + main + dessert; allow 75–90 min. Confirm which one you actually booked.",
       "date": "Jun 15",
       "time": "12:30",
       "confirmation": null,
@@ -468,10 +468,10 @@
           "text": "WiFi code: TVLRTFRPK · Breakfast included all 5 mornings"
         },
         {
-          "text": "Explore Coal Drops Yard / St Pancras area"
+          "text": "⭐ Right by the hotel: Platform 9¾ + Harry Potter shop (King's Cross — the kids will love it), Granary Square fountains (1,080 jets — Louise will go wild on a warm afternoon), Coal Drops Yard, St Pancras. All a 5–10 min walk."
         },
         {
-          "text": "Early dinner — Dishoom or Pizza Union"
+          "text": "Early dinner — Pizza Union (fast, cheap, walk-in) is ideal for a tired arrival day; save Dishoom for a lunch another day (its dinner queue runs 30–60 min)."
         }
       ],
       "details": [
@@ -608,7 +608,7 @@
           "text": "Explore South Bank"
         },
         {
-          "text": "Dinner at Southbank Centre Food Market"
+          "text": "Dinner near the South Bank — ⚠️ Southbank Centre Food Market is Fri–Sun only (CLOSED Tue). Try Borough Market (open Tue, ~10-min walk), the Royal Festival Hall cafés, or Wahaca on the South Bank."
         }
       ],
       "details": [
@@ -836,7 +836,7 @@
           "text": "British Museum (mummies, Greek marbles)"
         },
         {
-          "text": "Regent's Park playgrounds / pedal boats"
+          "text": "Regent's Park playgrounds / pedal boats. ⭐ Or swap in the Postal Museum + Mail Rail (15-min walk from the hotel — an underground train ride kids adore; BOOK the Mail Rail slot ahead, it sells out in summer). The British Library (free, 5 min away) is worth a quick Treasures-gallery peek."
         },
         {
           "text": "Dinner near Kings Cross"
@@ -1104,7 +1104,7 @@
           "items": [
             {
               "type": "info",
-              "text": "<strong>Leg 1:</strong> Walk to St Pancras (5 min). Check-in opens 5:46 AM. Gates close 6:01 AM. Be there 5:45"
+              "text": "<strong>Leg 1:</strong> Walk to St Pancras (5 min). Aim to be there ~05:15 — Eurostar suggests 75 min ahead (60 with assistance); it's a quiet early Saturday but there are 5 stages: ticket → UK exit → security → French entry → board. Gates close 6:01. Use Eurostar Assist at Booth 5 for Meghan. Don't stop for coffee until you're past French control."
             },
             {
               "type": "info",
@@ -1139,7 +1139,7 @@
             },
             {
               "type": "warn",
-              "text": "Arrive at Trocadéro by ~10:15 for photos, then walk to tower entrance for 11:00 entry. Allow 20-30 min in the security + elevator queue even with timed tickets."
+              "text": "Arrive at Trocadéro by ~10:15 for photos, then walk to the tower for 11:00 entry. Allow 20–30 min in the security + elevator queue even with timed tickets. ♿ <strong>Summit accessibility:</strong> the very top is NOT permitted for guests who can't walk unaided (evacuation is stair-only) — if Meghan is using a cane / limited that day, staff may stop her at the 2nd floor (still spectacular at 115m). Have a Plan B; the 2nd-floor view works for everyone. Present her access pass at the West pillar for priority entry."
             },
             {
               "type": "warn",
@@ -1208,9 +1208,9 @@
           "text": "All 4 together: Crush's Coaster (Louise clears 107cm!), Spider-Man W.E.B., then split for Avengers Assemble"
         },
         {
-          "text": "📱 OPEN APP AT 08:30: Join Anna & Elsa Royal Encounter Virtual Queue — FREE but fills in minutes. Must be physically inside the park. Louise will want this. Do it before your first ride.",
+          "text": "📱 Anna & Elsa Royal Encounter Virtual Queue — the EMT drop is ~08:45 (also 09:45 & 14:00), FREE but gone in under a minute. Be inside the park with the app open + tickets linked by 08:43. Louise's can't-miss moment — grab it before any ride.",
           "status": "action",
-          "statusLabel": "VQ NOW"
+          "statusLabel": "VQ 08:45"
         },
         {
           "time": "09:30",
@@ -1346,11 +1346,11 @@
             },
             {
               "type": "warn",
-              "text": "<strong>⚠️ CLOSED June 14:</strong> Cars Road Trip (June 8-19), Slinky Dog ZigZag Spin (June 1-26). Both were in the original plan. Use RC Racer and Toy Soldiers Parachute Drop instead in Toy Story Playland."
+              "text": "<strong>⚠️ CLOSED June 14:</strong> Cars ROAD TRIP (June 8-19), Slinky Dog ZigZag Spin (June 1-26). Use Toy Soldiers Parachute Drop (81cm — Louise's fine) instead. Note RC Racer needs 120cm, so it's Kenna/adults only, not Louise."
             },
             {
               "type": "warn",
-              "text": "<strong>Anna & Elsa Royal Encounter: FREE virtual queue, but it fills in minutes.</strong> The moment you enter the park at 08:30 during EMT, have the DLP app open and join the VQ before touching a single ride. This is Louise's can't-miss moment. If you miss the morning release, watch for an afternoon drop."
+              "text": "<strong>Anna & Elsa Royal Encounter: FREE virtual queue, gone in under a minute.</strong> Enter at 08:30; the VQ drop is ~08:45 — have the DLP app open + tickets linked by 08:43 and join before touching a single ride. Louise's can't-miss moment. Afternoon drops at 09:45 & 14:00 if you miss it."
             }
           ]
         },
@@ -1369,7 +1369,7 @@
             },
             {
               "type": "tip",
-              "text": "<strong>World of Frozen strategy:</strong> Frozen Ever After (boat ride) — <strong>best at 9-10pm (22 min avg wait vs 93 min at 9am).</strong> Use Priority Card during the day for a manageable wait anytime. Single Rider available. Royal Encounter (Anna & Elsa meet): <strong>FREE virtual queue required — join via DLP app at 08:30 inside the park, one slot per group, fills in minutes.</strong> Second release in the afternoon — check app if you miss morning. A Celebration in Arendelle outdoor show: stand at the Arendelle Bay fjord railing, arrive 15-20 min early (no seating). Free-roaming robotic Olaf animatronic wanders the area — legitimately impressive."
+              "text": "<strong>World of Frozen strategy:</strong> Frozen Ever After (boat ride) — <strong>best at 9-10pm (22 min avg wait vs 93 min at 9am).</strong> Use Priority Card during the day for a manageable wait anytime. Single Rider available. Royal Encounter (Anna & Elsa meet): <strong>FREE virtual queue — drops ~08:45 during EMT (also 09:45 & 14:00), one slot per group, gone in under a minute. Have the app open + tickets linked by 08:43.</strong> A Celebration in Arendelle outdoor show: stand at the Arendelle Bay fjord railing, arrive 15-20 min early (no seating). Free-roaming robotic Olaf animatronic wanders the area — legitimately impressive."
             },
             {
               "type": "tip",
@@ -1397,7 +1397,7 @@
             },
             {
               "type": "tip",
-              "text": "<strong>A Million Splashes of Colour (Adventure Way, multiple daily):</strong> Outdoor character show on Adventure Way. Good for filling gaps between meals — check app for exact times. Also: Disney Marching Band (12 musicians) roams Adventure Way throughout the day."
+              "text": "<strong>🎭 Mickey and the Magician — FINAL performance is TODAY, June 14</strong> at the Studio Theater (this park) before a long break — check the app for showtimes and work it in; it's gone after tonight. <strong>Disney Marching Band (Minnie's)</strong> roams Adventure Way multiple times daily — great no-queue gap-filler. (Note: \"A Million Splashes of Colour\" is in the OTHER park, Disneyland Park — not here.)"
             },
             {
               "type": "tip",
@@ -1507,22 +1507,24 @@
           "text": "Park opens to public. Crowds arrive — switch to lower-wait rides"
         },
         {
+          "time": "11:30",
+          "text": "Disney Stars on Parade — now runs 11:30 (moved earlier in 2026), BEFORE lunch. Modified route: sharp right via Discoveryland due to the Sleeping Beauty Castle bridge refurb; the big Princess float is swapped for carriages. Position on the Discoveryland side of Main Street. Confirm the time in the app.",
+          "status": "action",
+          "statusLabel": "PARADE 11:30"
+        },
+        {
           "time": "12:30",
-          "text": "🍽️ Lunch: Royal Banquet — LAST DAY VOUCHER + character dining 👸",
+          "text": "🍽️ Lunch: Royal Banquet — LAST DAY VOUCHER + character dining",
           "status": "booked",
           "statusLabel": "DINING"
         },
         {
           "time": "~14:00",
-          "text": "Afternoon: Snow White's Scary Adventures (just reopened June 13!), Phantom Manor, Peter Pan's Flight (Priority Card!), Le Pays des Contes de Fées"
-        },
-        {
-          "time": "~14:40",
-          "text": "Disney Stars on Parade — modified route this year (sharp right via Discoveryland due to castle bridge work). Position on Discoveryland side of Main Street. Check app for exact time (~14:40 est)."
+          "text": "Afternoon: \"it's a small world\", Le Pays des Contes de Fées (storybook boats), Casey Jr., Buzz Lightyear (refurbished), Phantom Manor, Peter Pan's Flight (Priority Card!), Star Tours, Meet Mickey. ⚠️ Snow White is CLOSED (refurb until late July — it did NOT reopen June 13)."
         },
         {
           "time": "~16:05",
-          "text": "🦁 The Lion King: Rhythms of the Pride Lands (Frontierland) — one of DLP's best shows. Also at 12:30, 13:30, 17:05. AND: 🎭 Mickey and the Magician is FINAL DAY today (June 15) — check app for times if kids want it."
+          "text": "🦁 The Lion King: Rhythms of the Pride Lands (Frontierland) — one of DLP's best shows, back as of June 13. Showtimes 12:30, 13:30, 16:05, 17:05 — the 16:05 fits nicely after lunch. (Note: Mickey and the Magician is in the OTHER park and its FINAL show is June 14 — catch it on Day 1, not today.)"
         },
         {
           "time": "17:25",
@@ -1543,7 +1545,7 @@
         },
         {
           "time": "~22:40",
-          "text": "✨ Disney Tales of Magic — castle projections + fireworks + drones at Sleeping Beauty Castle (park closing spectacular). Priority Card = dedicated accessible viewing area front-left of castle."
+          "text": "✨ Disney Tales of Magic — castle projections + fireworks at Sleeping Beauty Castle (park closing spectacular). Note: drones (removed Apr 1) and fountains (removed May 4) are OUT during the castle bridge refurb — extra pyro replaces them. Priority Card = dedicated accessible viewing area front-left of castle."
         },
         {
           "time": "~22:50",
@@ -1626,7 +1628,7 @@
           "items": [
             {
               "type": "warn",
-              "text": "<strong>⚠️ CLOSED June 15: Pirates of the Caribbean (June 15-30), Alice's Curious Labyrinth (all June through July 3), Dumbo the Flying Elephant (June 8-19).</strong> All three were in the original afternoon plan — all removed. Replaced with: Snow White's Scary Adventures, Le Pays des Contes de Fées, Carrousel de Lancelot, Lion King show."
+              "text": "<strong>⚠️ CLOSED June 15: Pirates of the Caribbean (June 15–July 4), Alice's Curious Labyrinth (through ~July 4), and Snow White's Scary Adventures (refurb until late July — it did NOT reopen June 13).</strong> Dumbo may also be down (June 8–19 per one tracker — verify in the app). Use instead: \"it's a small world\", Le Pays des Contes de Fées, Casey Jr., Carrousel de Lancelot, Buzz Lightyear, Star Tours, Meet Mickey, Princess Pavilion, and the Lion King show."
             },
             {
               "type": "warn",
@@ -1665,11 +1667,11 @@
             },
             {
               "type": "tip",
-              "text": "<strong>Post-9:30:</strong> Snow White's Scary Adventures (just reopened June 13 — Louise's movie!), Phantom Manor, Buzz Lightyear (all family-friendly, all 4 together). Use Priority Card throughout."
+              "text": "<strong>Post-9:30:</strong> \"it's a small world\", Phantom Manor, Buzz Lightyear (refurbished), Meet Mickey, Princess Pavilion (a real princess meet — grab a slot early) — all family-friendly, all 4 together. Use Priority Card throughout. (Snow White is closed.)"
             },
             {
               "type": "tip",
-              "text": "<strong>After Royal Banquet (~14:00):</strong> Le Pays des Contes de Fées (fairy-tale boat ride through storybook scenes — no height req, virtually no wait, Louise will love it), Carrousel de Lancelot (open, no queue), Mad Hatter's Tea Cups, Snow White if not done yet. <strong>⚠️ Pirates, Alice's Labyrinth, and Dumbo are all CLOSED — do not plan these.</strong>"
+              "text": "<strong>After lunch (~14:00):</strong> \"it's a small world\" (Louise will love it), Le Pays des Contes de Fées (storybook boats — no height req, low wait), Casey Jr. (circus train), Carrousel de Lancelot, Mad Hatter's Tea Cups, Buzz Lightyear (refurbished), Star Tours, Meet Mickey. <strong>⚠️ Pirates, Alice's Labyrinth, and Snow White are CLOSED — don't plan these. Verify Dumbo in the app.</strong>"
             },
             {
               "type": "tip",
@@ -1677,7 +1679,7 @@
             },
             {
               "type": "tip",
-              "text": "<strong>Parade Strategy (~14:40):</strong> Disney Stars on Parade runs a <strong>modified route this year</strong> — takes a sharp right via Discoveryland entrance (Sleeping Beauty Castle bridge under refurbishment). Large Princess float replaced by carriages temporarily. Best viewing: Discoveryland side of Main Street, or in Discoveryland itself. OR skip the parade and ride headliners during the 45-min window when queues drop 30-50%."
+              "text": "<strong>Parade Strategy (11:30):</strong> Disney Stars on Parade now runs at <strong>11:30</strong> (moved earlier in 2026) on a <strong>modified route</strong> — sharp right via the Discoveryland entrance (Sleeping Beauty Castle bridge under refurb), big Princess float swapped for carriages. Catch it BEFORE your 12:30 lunch. Best viewing: Discoveryland side of Main Street. OR skip it and ride headliners while the crowd watches."
             },
             {
               "type": "tip",
@@ -1685,7 +1687,7 @@
             },
             {
               "type": "tip",
-              "text": "<strong>~22:40 — Disney Tales of Magic:</strong> Castle projections + fireworks + drones at Sleeping Beauty Castle (this is the park's closing spectacular — not \"Illuminations,\" that was the old show). Claim a spot in Central Plaza 20-30 min early. <strong>Priority Card: dedicated accessible viewing area front-left of castle — show card to Cast Member.</strong> Castle bridge scaffolding affects some angles but the show compensates with extra fireworks."
+              "text": "<strong>~22:40 — Disney Tales of Magic:</strong> Castle projections + fireworks at Sleeping Beauty Castle (the park's closing spectacular — replaced \"Illuminations\"). Note: drones (removed Apr 1) and fountains (removed May 4) are OUT during the castle bridge refurb — extra pyro replaces them. Claim a spot in Central Plaza 20-30 min early. <strong>Priority Card: dedicated accessible viewing area front-left of castle — show card to Cast Member.</strong>"
             },
             {
               "type": "tip",
@@ -1701,7 +1703,7 @@
             },
             {
               "type": "tip",
-              "text": "<strong>Crowd intel:</strong> June 15 (Monday) is one of the lightest crowd days of the entire month — noticeably better than June 14 (Sunday). Combined with Priority Card access, this is about as manageable as DLP gets in summer. Headliner waits will be shorter than Day 1 across the board."
+              "text": "<strong>Crowd intel:</strong> Forecasts put June 15 around 70%+ (above-average for June — not the light day once hoped), but Monday still tends to beat the Sunday before, and your Priority Card is the great equalizer. Lean on it for headliners; don't bank on short standby lines."
             }
           ]
         },
@@ -1747,7 +1749,7 @@
             },
             {
               "type": "info",
-              "text": "<strong>12:30 PM — Royal Banquet → LAST DAY VOUCHER + CHARACTER DINING.</strong> Princess dining! The character meal REPLACES a regular voucher (not extra). Starter + main + dessert. Expect Anna, Elsa, Rapunzel, Cinderella, Aurora visiting your table. Allow 75-90 min"
+              "text": "<strong>12:30 PM — Royal Banquet → LAST DAY VOUCHER + CHARACTER DINING.</strong> ⚠️ Royal Banquet (Disneyland Hotel) = Mickey & friends in royal dress, NOT princesses — for princesses you'd need Auberge de Cendrillon (in-park). Verify your booking! The character meal REPLACES a regular voucher (not extra). Starter + main + dessert. Allow 75–90 min"
             },
             {
               "type": "warn",
@@ -1857,7 +1859,7 @@
           "items": [
             {
               "type": "info",
-              "text": "<strong>Leg 1:</strong> Art of Marvel → Marne-la-Vallée station (~15 min walk). RER A → Châtelet-Les Halles. RER B → Gare du Nord. Total ~50-60 min. ~€5/person"
+              "text": "<strong>Leg 1:</strong> Art of Marvel → Marne-la-Vallée/Chessy station (~15 min walk) — be there by ~07:45. RER A → Châtelet-Les Halles, then RER B → Gare du Nord (1 stop). Total ~50–60 min. €5/adult, €2.50/child. THIS IS THE TIGHTEST LINK of the trip — out the door by 07:25; there's no earlier Eurostar to fall back on."
             },
             {
               "type": "info",
@@ -1865,7 +1867,7 @@
             },
             {
               "type": "info",
-              "text": "<strong>Leg 3:</strong> Arrive St Pancras 12:30 (UK time — gain 1 hour). Walk/Tube to Paddington (~15 min)"
+              "text": "<strong>Leg 3:</strong> Arrive St Pancras 12:30 (UK — gain 1 hour). Take the <strong>Elizabeth line</strong> from King's Cross/St Pancras → Paddington — step-free, direct, ~12 min (better than Circle/H&C with luggage)."
             },
             {
               "type": "info",
@@ -1900,7 +1902,7 @@
             },
             {
               "type": "warn",
-              "text": "If ANY leg is delayed, you still have 3+ hours buffer at Heathrow. Don't panic"
+              "text": "If ANY leg is delayed, you still have ~3 hours buffer at Heathrow. At T5 go STRAIGHT to the BA counter (online check-in is erroring; long-haul desks open ~3–4h out) before duty-free — the counter queue is the only real variable. Check-in closes 60 min before (15:25)."
             }
           ]
         },
