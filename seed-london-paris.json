@@ -570,6 +570,68 @@
               "text": "<strong>Adults + transport:</strong> Apple Pay on your iPhones works on all London transport (Tube, buses, Thames Clipper). Just tap at the yellow readers. Auto-caps at daily rate. No Oyster card needed for adults"
             }
           ]
+        },
+        {
+          "icon": "💷",
+          "title": "Money, Tipping & Connectivity",
+          "color": "#4a90d9",
+          "items": [
+            {
+              "type": "info",
+              "text": "<strong>Cash:</strong> London is tap-everywhere — carry just £50–80. Paris needs more (~€100–150): the Metro will NOT take a bank-card tap, so buy a <strong>Navigo Easy card (€2)</strong> at Gare du Nord and load trips. Disney is card-friendly; ~€30–50 cash for tips."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Tipping:</strong> UK — a 12.5% service charge (if it's on the bill) legally goes to staff; otherwise ~10–12.5%. France — service is included ('service compris'); just round up or leave €1–2pp. Hotel housekeeping £1–2 / €2–5 a night (cash). Uber: no tip expected either country."
+            },
+            {
+              "type": "warn",
+              "text": "<strong>Data:</strong> T-Mobile gives 5GB/line then throttles to ~2G (too slow for maps). Lean on offline Google Maps + a backup Airalo/Saily eSIM, and turn off photo auto-sync on cellular. WhatsApp for calls/texts."
+            },
+            {
+              "type": "tip",
+              "text": "<strong>VAT refund:</strong> UK tax-free shopping is gone. France's détaxe only pays off on €100+ single-store buys, validated at the Gare du Nord PABLO kiosks when you leave Jun 16 — worth it only for a big purchase."
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Delay safety net (no insurance):</strong> UK261 owes ~£520pp for a 3h+ BA delay/cancel PLUS meals/hotel — demand the care and keep receipts. Eurostar owes refunds/free rebooking; a missed Jun 16 return can still catch BA221 via the 12:12 train."
+            }
+          ]
+        },
+        {
+          "icon": "🆘",
+          "title": "Emergency & Medical — tap if you need it",
+          "color": "#e85c5c",
+          "items": [
+            {
+              "type": "info",
+              "text": "<strong>Emergency numbers:</strong> UK <strong>999</strong> or 112 · France <strong>112</strong> (any) / <strong>15</strong> (medical, SAMU) · Paris urgent house-call doctor SOS Médecins <strong>+33 1 47 07 77 77</strong> · France on-duty pharmacy <strong>3237</strong>."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Nearest ER:</strong> London → <strong>UCLH, 235 Euston Rd</strong> (10 min from the hotel). Disney → <strong>GHEF Marne-la-Vallée</strong> (+33 1 64 77 64 77). Central Paris → <strong>Hôtel-Dieu</strong> (by Notre-Dame), or the bilingual <strong>American Hospital of Paris</strong>."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Pharmacy:</strong> UK 'chemist' = Boots (King's Cross station ~7am–10pm; 24h at Leicester Sq). France 'pharmacie' = green cross; Val d'Europe (1 RER stop from Disney) is well-stocked. Kids' Tylenol = <strong>Calpol</strong> (UK) / <strong>Doliprane</strong> (France)."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Paying (no insurance):</strong> UK A&E treatment is FREE — only hospital ADMISSION is billed to visitors. France = pay then keep the receipt. Get itemized bills for any care."
+            },
+            {
+              "type": "warn",
+              "text": "<strong>Lost / warm refrigerated med?</strong> Benlysta is fragile (discard if out >12h). Replace abroad via a private GP (London: DocTap King's Cross) or médecin (SOS Médecins) → local prescription; bring Dr. Senol's letter + a copy of the Rx. <strong>Disney First Aid refrigerates injectables in-park.</strong>"
+            },
+            {
+              "type": "warn",
+              "text": "<strong>Meghan / long flights (APS):</strong> compression stockings, aisle access, water every hour, move every 2 hrs, skip alcohol — and confirm any clot prophylaxis with her doctor. Same care on long park days."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Louise + June heat at Disney:</strong> offer water every 15–20 min (don't wait for her to ask), SPF50, shaded breaks; watch for heat exhaustion. Disney rents wheelchairs/ECVs at the entrance (reserve ahead — June sells out)."
+            }
+          ]
         }
       ]
     },
@@ -612,6 +674,10 @@
         {
           "time": "~15:00",
           "text": "Explore South Bank"
+        },
+        {
+          "time": "~16:00",
+          "text": "⭐ Horse Guards Cavalry Dismount (Whitehall) — armored Household Cavalry up close, no crowd. Beats the Buckingham scrum, and it's right on your route."
         },
         {
           "text": "Dinner near the South Bank — ⚠️ Southbank Centre Food Market is Fri–Sun only (CLOSED Tue). Try Borough Market (open Tue, ~10-min walk), the Royal Festival Hall cafés, or Wahaca on the South Bank."
@@ -742,6 +808,9 @@
           "text": "Show ends"
         },
         {
+          "text": "⭐ Gems right here: Neal's Yard (secret color courtyard, 2 min away) + Rock & Sole Plaice (London's oldest chippy, 1871) for a cheap, great lunch; Paddington Bear statue if you pass through Paddington."
+        },
+        {
           "text": "Dinner in Covent Garden or Chinatown"
         }
       ],
@@ -846,6 +915,10 @@
           "text": "British Museum (mummies, Greek marbles)"
         },
         {
+          "time": "10:30",
+          "text": "⭐ Jason's narrowboat — Little Venice → Camden through the Maida Hill tunnel (45 min, a real 100-yr-old boat). Pairs perfectly with Regent's Park. Call ahead about stepping aboard for Meghan."
+        },
+        {
           "text": "Regent's Park playgrounds / pedal boats. ⭐ Or swap in the Postal Museum + Mail Rail (15-min walk from the hotel — an underground train ride kids adore; BOOK the Mail Rail slot ahead, it sells out in summer). The British Library (free, 5 min away) is worth a quick Treasures-gallery peek."
         },
         {
@@ -944,6 +1017,9 @@
           "text": "Optional: Sky Garden (free, book 3 wks ahead)",
           "status": "action",
           "statusLabel": "BOOK MAY 25"
+        },
+        {
+          "text": "⭐ Gems today: Ampersand 'Science' afternoon tea (dinosaur + petri-dish themed, next to the NHM — book ahead) and Tate Modern's Level 10 free skyline view (better than paying for the Shard)."
         },
         {
           "text": "⚠ Pack tonight — 5:15 AM wake-up tomorrow!"
@@ -1067,6 +1143,9 @@
           "text": "Metro to Trocadéro → photos, then walk to tower entrance"
         },
         {
+          "text": "⭐ Grab award-winning croissants at Maison Carton (2 min from Gare du Nord, opens 6am) for the train; at Trocadéro, the Belle Époque carousel spins with the tower right behind it (~€3 — Louise's photo)."
+        },
+        {
           "time": "11:00",
           "text": "🗼 Eiffel Tower · Summit by Elevator (4 tickets)",
           "status": "booked"
@@ -1086,7 +1165,7 @@
           "statusLabel": "H-KTXPJ3X4HJ4C"
         },
         {
-          "text": "Kids: castle pool & water slide! Evening: Disney Village"
+          "text": "Kids: castle pool & water slide! Evening: dinner in Disney Village — OUT OF POCKET (the meal plan starts tomorrow at Art of Marvel). Annette's Diner or Rainforest Café are the easy kid picks; the Steakhouse takes reservations."
         }
       ],
       "details": [
@@ -1490,6 +1569,37 @@
             {
               "type": "tip",
               "text": "<strong>$0 out of pocket for all food + drinks today</strong>"
+            }
+          ]
+        },
+        {
+          "icon": "🎟️",
+          "title": "First-Timer Know-How",
+          "color": "#d94a8a",
+          "items": [
+            {
+              "type": "tip",
+              "text": "<strong>Buy PhotoPass+ on Day 1 (~€90):</strong> covers all ride photos, roaming photographers, and likely the character-dining shots — worth it across 2 park days + 2 kids. Buying on Day 2 loses Day 1's photos."
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Baby Switch (free):</strong> for the 120cm rides Louise can't do (Avengers Flight Force, Hyperspace Mtn, Indiana Jones), one adult rides with Kenna, then swaps — Kenna often re-rides on the second pass. Ask the Cast Member at the entrance; it stacks with the Priority Card."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Heights:</strong> no all-day wristband — Louise (115cm) is measured at each restricted ride. Put her in firm-soled shoes and check in the morning (people are tallest then)."
+            },
+            {
+              "type": "info",
+              "text": "<strong>Into the park:</strong> reusable water bottles + snacks are allowed (no glass); power banks fine; selfie sticks banned. Lockers sit outside the gates (10am–5pm only). Bring sunscreen + hats — in-park prices are brutal."
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Hidden gems:</strong> the fire-breathing dragon UNDER the castle (La Tanière du Dragon), Adventure Isle (caves, Skull Rock, pirate ship), the castle walk-through, and pin trading — buy Kenna a starter set at Pueblo Trading Post and she can trade with Cast Members all day."
+            },
+            {
+              "type": "warn",
+              "text": "<strong>Late nights (Louise, 5):</strong> closing shows run ~22:40. Art of Marvel is a 5-min walk — the easiest plan is one parent takes Louise back after dinner while the other stays with Kenna for the fireworks. Push late ONE night, not both."
             }
           ]
         }
