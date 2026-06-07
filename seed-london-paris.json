@@ -2204,10 +2204,10 @@
     },
     {
       "id": "check_19",
-      "text": "Download offline maps — Google Maps: download London, Paris, and Marne-la-Vallée/Disney area for offline use. Essential for navigation without burning through data.",
+      "text": "📵 Connectivity setup (TONIGHT, on home WiFi) — Download Google Maps OFFLINE for London, Paris, and Marne-la-Vallée/Disney. T-Mobile gives only 5GB high-speed/line then throttles to ~2G (too slow for maps) — buy a backup Airalo or Saily Europe eSIM (~$16–28) as overflow, and turn OFF photo auto-sync on cellular so it doesn't burn the 5GB. Install the Disneyland Paris + Île-de-France Mobilités apps now too.",
       "done": false,
-      "urgent": false,
-      "group": "june",
+      "urgent": true,
+      "group": "this-week",
       "order": 19
     },
     {
@@ -2252,10 +2252,10 @@
     },
     {
       "id": "check_25",
-      "text": "Enable T-Mobile data roaming on both phones — Settings → Cellular → Data Roaming → ON. Phone will connect automatically when you land in London. If using a travel eSIM instead, install it before departure.",
+      "text": "Enable T-Mobile data roaming on both phones (TONIGHT) — Settings → Cellular → Data Roaming → ON. Connects automatically on landing in London. If you bought a travel eSIM, install + label it before departure.",
       "done": false,
       "urgent": false,
-      "group": "june",
+      "group": "this-week",
       "order": 25
     },
     {
@@ -2481,6 +2481,22 @@
       "urgent": true,
       "order": 60,
       "text": "🚗 Departure-day final check (before 7:20 PM Uber) — Confirm the reserved UberX to STL Terminal 2 (pickup 7:20 PM, dropoff ~7:36 PM). Aim to be at STL by ~7:30 PM. Verify every phone has: passport details, the UK ETA approval email, and the BA220 boarding pass saved offline."
+    },
+    {
+      "id": "check_61",
+      "group": "this-week",
+      "done": false,
+      "urgent": true,
+      "order": 61,
+      "text": "⚠️ VERIFY EUROSTAR (QRXPZK) — A national SNCF strike on Jun 10 has triggered Eurostar cancellations at Paris Gare du Nord (windows reported Jun 8–13 and Jun 15–18 — covering BOTH your trains). Check eurostar.com Manage Booking + /travel-updates NOW; if a train is cancelled you're owed a free refund/exchange. Re-check after 5 PM Jun 9 (revised timetable) for the Jun 13 outbound, and again before the Jun 16 return."
+    },
+    {
+      "id": "check_62",
+      "group": "this-week",
+      "done": false,
+      "urgent": true,
+      "order": 62,
+      "text": "🛂 Border docs for the kids (different surnames) — UK Border Force / French police can question adults traveling with minors who don't share their surname (especially Kenna Holland). Carry Kenna's + Louise's birth certificates (showing Meghan as mother) AND a signed consent letter from the children's other parent(s) authorizing the trip, with a copy of their ID. Notarized is best. Keep in a folder for St Pancras."
     },
     {
       "id": "check_56",
