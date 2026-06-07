@@ -2406,11 +2406,11 @@
     },
     {
       "id": "check_49",
-      "group": "this-week",
-      "done": false,
-      "urgent": true,
+      "group": "completed",
+      "done": true,
+      "urgent": false,
       "order": 49,
-      "text": "🧊 Call Travelodge Kings Cross for a medical fridge (TOP CALL TO MAKE) — ref 164080202. Standard rooms have no fridge; request one as a medical need (Benlysta, GLP-1, Repatha) before arrival Jun 8. This is the most important hotel call still outstanding."
+      "text": "🧊 Travelodge meds storage — SORTED. Meghan called: no in-room fridges, but reception stores refrigerated meds in the downstairs staff fridge — hand them over at check-in (ref 164080202). All doses (Meghan: Benlysta + GLP-1; Michael: Repatha) are given before you leave for Paris, so nothing gets left behind. Only thing to track: take each dose on the right day and collect it from reception when due."
     },
     {
       "id": "check_50",
