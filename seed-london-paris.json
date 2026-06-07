@@ -269,7 +269,7 @@
       "label": "Royal Banquet (character dining)",
       "status": "booked",
       "carrier": "Disney",
-      "detail": "⚠️ Verify characters — Royal Banquet (Disneyland Hotel) features Mickey, Minnie, Donald, Daisy & Goofy in ROYAL dress, NOT princesses. Princess dining is Auberge de Cendrillon (inside the park). Starter + main + dessert; allow 75–90 min. Confirm which one you actually booked.",
+      "detail": "Character dining with Mickey, Minnie, Donald, Daisy & Goofy in royal dress (not princesses). Starter + main + dessert; allow 75–90 min. It's just outside the park entrance — exit and re-enter with your MagicPass. For Louise's princess fix, do the in-park Princess Pavilion meet.",
       "date": "Jun 15",
       "time": "12:30",
       "confirmation": null,
@@ -1377,11 +1377,11 @@
             },
             {
               "type": "tip",
-              "text": "<strong>Disney Cascade of Lights (22:40 — park closing show):</strong> Fireworks, water-screen projections, drones, and aquatic drones on Adventure Bay. Get to the lakefront by 22:00 for a good general standing spot. <strong>Priority Card holders: show card at the dedicated accessible viewing area — Cast Members seat you with the best view (up to 2 companions).</strong> This is the DAW equivalent of Illuminations — don't miss it. Park closes immediately after at 22:40."
+              "text": "<strong>Disney Cascade of Lights (22:40 — park closing show):</strong> Fireworks, water-screen projections, drones, and aquatic drones on Adventure Bay. Get to the lakefront by 22:00 for a good general standing spot. <strong>Priority Card holders: show card at the dedicated accessible viewing area — Cast Members seat you with the best view (up to 2 companions).</strong> This is the DAW equivalent of Illuminations — don't miss it. Park closes immediately after at 22:40. Paid reserved viewing (~€24–29/person) exists, but your Priority Card already gets you a dedicated accessible spot — only buy reserved if you want a guaranteed specific location."
             },
             {
               "type": "tip",
-              "text": "<strong>Avengers Assemble: Flight Force (120cm):</strong> Louise can't ride. Parent Swap — one adult rides with Kenna, then swaps. Free!"
+              "text": "<strong>Avengers Assemble: Flight Force (120cm):</strong> Louise can't ride. Parent Swap — one adult rides with Kenna, then swaps. Free! ⭐ <strong>Hero Training Center (Avengers Campus):</strong> meet Spider-Man, Black Panther & other heroes via a FREE virtual queue — great for Kenna; join in the app (slots ~09:45 & 14:00) if the Anna & Elsa VQ doesn't pan out."
             },
             {
               "type": "tip",
@@ -1636,7 +1636,7 @@
             },
             {
               "type": "warn",
-              "text": "Character dining takes ~75-90 min with princesses visiting tables. Don't rush — this is a highlight for the kids"
+              "text": "Character dining takes ~75-90 min with Mickey & friends (in royal dress) visiting tables. Don't rush — this is a highlight for the kids"
             },
             {
               "type": "warn",
@@ -1749,7 +1749,7 @@
             },
             {
               "type": "info",
-              "text": "<strong>12:30 PM — Royal Banquet → LAST DAY VOUCHER + CHARACTER DINING.</strong> ⚠️ Royal Banquet (Disneyland Hotel) = Mickey & friends in royal dress, NOT princesses — for princesses you'd need Auberge de Cendrillon (in-park). Verify your booking! The character meal REPLACES a regular voucher (not extra). Starter + main + dessert. Allow 75–90 min"
+              "text": "<strong>12:30 PM — Royal Banquet → LAST DAY VOUCHER + CHARACTER DINING.</strong> Mickey, Minnie, Donald, Daisy & Goofy in royal dress (not princesses — grab the in-park Princess Pavilion for Louise's princess moment). The character meal REPLACES a regular voucher (not extra). Starter + main + dessert. Allow 75–90 min"
             },
             {
               "type": "warn",
