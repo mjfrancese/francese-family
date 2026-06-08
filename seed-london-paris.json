@@ -720,7 +720,7 @@
           "items": [
             {
               "type": "info",
-              "text": "<strong>Kings Cross → St Paul's:</strong> Tube ~15–20 min (e.g. Northern line to Bank, short walk; or Central line to St Paul's). Aim to arrive ~8:45."
+              "text": "<strong>START — Travelodge → St Paul's (~8:45):</strong> walk 5 min to St Pancras, take <strong>Thameslink to City Thameslink</strong> (direct, ~5 min ride, every ~10 min), then a 5-min walk. Or a black cab/Uber straight to the cathedral steps (~£14, ~15 min, no stairs) — easy for four in the morning."
             },
             {
               "type": "info",
@@ -729,6 +729,10 @@
             {
               "type": "info",
               "text": "<strong>Afternoon is all flat & walkable:</strong> Eye → Westminster Bridge → St James's Park → Horse Guards → Trafalgar → Chinatown. Grab a black cab/Uber only to skip a leg."
+            },
+            {
+              "type": "info",
+              "text": "<strong>END — Chinatown → Travelodge:</strong> Leicester Square is a 3-min walk from Chinatown → <strong>Piccadilly line direct to King's Cross St Pancras</strong> (~10 min, no change). With a tired Louise at night, a black cab/Uber is the easy call (~£14, door to door)."
             }
           ]
         },
