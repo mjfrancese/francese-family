@@ -639,27 +639,29 @@
       "day": "Tue",
       "dayNum": "9",
       "month": "JUN",
-      "title": "Westminster + London Eye + Thames",
+      "title": "Dome, the Eye & the Cavalry",
       "date": "2026-06-09",
       "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 2,
       "events": [
         {
+          "time": "~08:45",
+          "text": "🏛️ St Paul's Cathedral (opens 8:30) — floor, the Quire & the Crypt (Nelson, Wellington, Wren). Book tickets online the night before: cheaper + a timed slot, Louise free.",
+          "status": "action",
+          "statusLabel": "BUY TIX"
+        },
+        {
           "time": "~09:30",
-          "text": "Big Ben, Westminster Abbey"
+          "text": "⛪ Climb the Dome — all four of you: Whispering Gallery (257) → Stone → Golden Gallery (528 steps) for the best view in London. (Louise may want a carry up top.)"
         },
         {
           "time": "~11:00",
-          "text": "St James's Park playground (Louise)"
-        },
-        {
-          "time": "~11:30",
-          "text": "Walk to Buckingham Palace"
+          "text": "Cross the Millennium Bridge (dome behind you) → stroll the South Bank west toward the Eye, or hop the Uber Boat (Bankside → Eye pier)."
         },
         {
           "time": "~12:15",
-          "text": "Walk back to South Bank. Quick lunch"
+          "text": "Lunch on the South Bank near the Eye (Gabriel's Wharf, Royal Festival Hall, or Wahaca)."
         },
         {
           "time": "13:00",
@@ -668,19 +670,23 @@
           "statusLabel": "#601617735"
         },
         {
-          "time": "~13:45",
-          "text": "Walk to London Eye Pier → Thames Clipper boat ride"
+          "time": "~13:50",
+          "text": "Cross Westminster Bridge → Big Ben & the Houses of Parliament (right on your path) for photos."
         },
         {
-          "time": "~15:00",
-          "text": "Explore South Bank"
+          "time": "14:30",
+          "text": "🦢 St James's Park pelican feeding at Duck Island Cottage (daily ~2:30 PM) — surreal, and Louise's favorite. Great playground in the park too."
         },
         {
-          "time": "~16:00",
-          "text": "⭐ Horse Guards Cavalry Dismount (Whitehall) — armored Household Cavalry up close, no crowd. Beats the Buckingham scrum, and it's right on your route."
+          "time": "16:00",
+          "text": "🐎 Horse Guards '4 o'clock' Dismount (Whitehall) — armored Household Cavalry up close, almost no crowd."
         },
         {
-          "text": "Dinner near the South Bank — ⚠️ Southbank Centre Food Market is Fri–Sun only (CLOSED Tue). Try Borough Market (open Tue, ~10-min walk), the Royal Festival Hall cafés, or Wahaca on the South Bank."
+          "time": "~16:20",
+          "text": "Trafalgar Square — climb the lions & the fountains. National Gallery is free (open till 6) if you're still flying."
+        },
+        {
+          "text": "🍜 Dinner in Chinatown (5–10 min from Trafalgar) — saving Covent Garden for tomorrow's Matilda day."
         }
       ],
       "details": [
@@ -691,38 +697,38 @@
           "items": [
             {
               "type": "info",
-              "text": "First breakfast at Travelodge — check time/location at front desk"
+              "text": "🎟️ Book St Paul's tickets ONLINE tonight — cheaper than the gate (~£25 adult, Kenna child rate, Louise free) and you get a timed slot. Opens 8:30, last entry 4 PM."
             },
             {
               "type": "info",
-              "text": "Save London Eye e-ticket on phone (Order #601617735). Screenshot as backup"
+              "text": "Save the London Eye e-ticket on your phone (Order #601617735) + a screenshot backup."
             },
             {
               "type": "info",
-              "text": "Check weather — this is a heavily outdoor day (Westminster, parks, river)"
+              "text": "Showers are likely tomorrow — pack rain jackets + a layer. Indoor bailouts are all built in: St Paul's, the Eye's enclosed pods, the National Gallery."
             },
             {
               "type": "info",
-              "text": "Pack layers, rain jackets, comfy walking shoes — BIG walking day"
+              "text": "Comfy shoes — the dome is 528 steps and there's good walking. A water bottle each. Quick Travelodge breakfast, then out the door for ~8:45 at St Paul's."
             }
           ]
         },
         {
           "icon": "🚆",
-          "title": "Travel Requirements",
+          "title": "Route & Transport",
           "color": "#4a90d9",
           "items": [
             {
               "type": "info",
-              "text": "Travelodge → Westminster: Tube from Kings Cross (Northern or Victoria line). ~15 min"
+              "text": "<strong>Kings Cross → St Paul's:</strong> Tube ~15–20 min (e.g. Northern line to Bank, short walk; or Central line to St Paul's). Aim to arrive ~8:45."
             },
             {
               "type": "info",
-              "text": "Thames Clipper: Buy tickets at pier (Oyster/contactless works). Runs every 20 min"
+              "text": "<strong>St Paul's → the Eye:</strong> cross the Millennium Bridge to the South Bank, then walk west ~25 min (Tate Modern, the Globe), OR hop the Uber Boat (Bankside Pier → London Eye/Waterloo Pier, ~15 min). Contactless taps for everything."
             },
             {
               "type": "info",
-              "text": "All walking between Westminster, St James's Park, Buckingham Palace, and South Bank is doable (~25 min stretches)"
+              "text": "<strong>Afternoon is all flat & walkable:</strong> Eye → Westminster Bridge → St James's Park → Horse Guards → Trafalgar → Chinatown. Grab a black cab/Uber only to skip a leg."
             }
           ]
         },
@@ -733,15 +739,19 @@
           "items": [
             {
               "type": "warn",
-              "text": "London Eye at 1:00 PM is a FIXED time. Work backwards from this — don't linger at Buckingham Palace"
+              "text": "<strong>London Eye 1:00 PM is FIXED.</strong> Be at St Paul's by 8:45 so the dome + crypt don't run long — leave St Paul's by ~11:15 to make lunch + the Eye comfortably."
             },
             {
               "type": "warn",
-              "text": "Changing of the Guard only happens certain days — check online. Huge crowds if it's on"
+              "text": "<strong>Pelican feeding is ~2:30 PM</strong> (runs to ~3). Head straight from the Eye across Westminster Bridge so you don't miss it — Big Ben photos happen on the way, no detour."
             },
             {
               "type": "warn",
-              "text": "South Bank can be overwhelming with 2 kids. Pick a focused stretch near London Eye rather than walking end to end"
+              "text": "<strong>Changing of the Guard is NOT on Tuesdays</strong> — don't go looking for it. The 4 PM Horse Guards Dismount is your cavalry moment instead."
+            },
+            {
+              "type": "warn",
+              "text": "<strong>Dinner is Chinatown</strong> — Southbank Food Market is closed Tuesdays and Borough Market shuts at 5, and you're saving Covent Garden for Matilda tomorrow."
             }
           ]
         },
@@ -752,15 +762,19 @@
           "items": [
             {
               "type": "tip",
-              "text": "St James's Park playground is excellent for Louise — perfect mid-morning energy burn"
+              "text": "<strong>The dome payoff:</strong> the Golden Gallery (very top) is THE photo — 360° over the City. The Whispering Gallery on the way up is a fun trick: a whisper carries clear across the dome."
             },
             {
               "type": "tip",
-              "text": "Southbank Centre Food Market (Fri-Sun) has great diverse food at reasonable prices"
+              "text": "<strong>Pelicans:</strong> they've lived in St James's Park since 1664 (a gift from a Russian ambassador). Hand-fed mackerel at Duck Island Cottage — arrive a few minutes early for a good spot."
             },
             {
               "type": "tip",
-              "text": "Thames Clipper is both transport AND sightseeing — great for tired legs after the Eye"
+              "text": "<strong>Horse Guards:</strong> the 4 PM Dismount (the 'punishment parade') dates to 1894, when Queen Victoria caught the guards slacking. Tiny crowd, big spectacle."
+            },
+            {
+              "type": "tip",
+              "text": "<strong>Access (fallback — Meghan's doing it all):</strong> if she ever wants them, St Paul's has a step-free North Transept entrance (floor + Crypt step-free) and the Eye gives a free carer ticket + FastTrack with a Blue Badge/PIP. Bring the doc just in case."
             }
           ]
         }
