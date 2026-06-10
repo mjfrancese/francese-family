@@ -100,7 +100,7 @@ export default function Checklist({ items, toggle }) {
         return (
           <div key={groupKey} style={{ marginBottom: 16 }}>
             <div style={{
-              fontSize: 11,
+              fontSize: 12,
               fontFamily: fonts.mono,
               letterSpacing: 1.5,
               color: config.label,
@@ -162,8 +162,8 @@ function ChecklistItem({ item, onToggle }) {
         display: 'flex',
         alignItems: 'flex-start',
         gap: 12,
-        padding: '10px 12px',
-        marginBottom: 4,
+        padding: '11px 12px',
+        marginBottom: 8,
         borderRadius: 6,
         cursor: 'pointer',
         background: item.done ? 'rgba(52,211,153,0.04)' : 'transparent',
@@ -174,9 +174,9 @@ function ChecklistItem({ item, onToggle }) {
     >
       {/* Checkbox */}
       <div style={{
-        width: 18,
-        height: 18,
-        borderRadius: 4,
+        width: 22,
+        height: 22,
+        borderRadius: 5,
         border: item.done ? 'none' : `2px solid ${colors.border}`,
         background: item.done ? '#059669' : 'transparent',
         display: 'flex',

@@ -8,7 +8,7 @@ export const colors = {
   text: '#e8e4df',
   textMuted: '#c8c4bf',
   textDim: '#8a8aaa',
-  textDark: '#6a6a8a',
+  textDark: '#7e7e9e',
   accent: '#4a90d9',
   divider: '#1a1a2a',
   border: '#2a2a3a',
@@ -83,7 +83,7 @@ export const styles = {
     overflowX: 'auto',
   },
   tab: (active) => ({
-    padding: '12px 20px',
+    padding: '11px 15px',
     background: 'none',
     border: 'none',
     borderBottom: active ? `2px solid ${colors.accent}` : '2px solid transparent',

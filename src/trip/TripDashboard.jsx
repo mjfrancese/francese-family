@@ -90,7 +90,7 @@ export default function TripDashboard() {
     <div style={{ minHeight: '100vh', background: colors.bg, fontFamily: fonts.body }}>
       {/* Header */}
       <header style={{
-        padding: '24px 24px 0',
+        padding: '14px 16px 0',
         textAlign: 'center',
         borderBottom: `1px solid ${colors.divider}`,
       }}>
@@ -99,7 +99,7 @@ export default function TripDashboard() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          marginBottom: 20,
+          marginBottom: 12,
         }}>
           <button
             onClick={() => navigate('/')}
@@ -155,11 +155,11 @@ export default function TripDashboard() {
 
         {/* Trip title */}
         <div style={{ marginBottom: 4, display: 'flex', justifyContent: 'center' }}>
-          <TripIcon icon={meta.icon || meta.emoji} size={40} tripColor={meta.color} />
+          <TripIcon icon={meta.icon || meta.emoji} size={32} tripColor={meta.color} />
         </div>
         <h1 style={{
           fontFamily: fonts.heading,
-          fontSize: 28,
+          fontSize: 22,
           fontWeight: 700,
           color: colors.text,
           letterSpacing: 0.5,
@@ -178,7 +178,7 @@ export default function TripDashboard() {
           {meta.dates}
         </div>
         {meta.travelers && (
-          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 6, marginBottom: 16 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 6, marginBottom: 10 }}>
             {meta.travelers.map(t => (
               <span key={t} style={{
                 padding: '3px 10px',

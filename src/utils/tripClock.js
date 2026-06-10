@@ -109,11 +109,53 @@ function daysBetween(a, b) {
   return Math.round((ymdToUTC(b) - ymdToUTC(a)) / 86400000)
 }
 
+// Normalize a Build-Your-Own slot's stored value to { optionId: true|{...} }.
+// (Kept inline so tripClock stays dependency-light; mirrors selectionUtils.)
+function normSlotLocal(raw) {
+  if (!raw) return {}
+  if (typeof raw === 'string') return { [raw]: true }
+  return raw
+}
+
+// Build a day's unified, time-sorted agenda from BOTH `events` and the `plan`,
+// honoring the user's selections. This is what makes "you are here" roll with
+// the choice system instead of going stale. Each item: { min, time, text, tz,
+// source: 'event'|'fixed'|'choice', chosen }.
+export function buildDayAgenda(day, daySelections = {}) {
+  const items = []
+  const dayTz = day?.tz || null
+
+  for (const e of day?.events || []) {
+    items.push({ min: parseEventMinutes(e.time), time: e.time || null, text: e.text || '', tz: e.tz || dayTz, source: 'event', chosen: true })
+  }
+
+  for (const slot of day?.plan?.slots || []) {
+    if (slot.fixed) {
+      items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: slot.label || slot.title || '', tz: dayTz, source: 'fixed', chosen: true })
+      continue
+    }
+    const map = normSlotLocal(daySelections[slot.id])
+    const chosen = (slot.options || []).filter((o) => o.id in map)
+    if (chosen.length === 0) {
+      items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: `${slot.title} — choose`, tz: dayTz, source: 'choice', chosen: false })
+    } else {
+      for (const opt of chosen) {
+        items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: opt.label, tz: dayTz, source: 'choice', chosen: true })
+      }
+    }
+  }
+
+  const timed = items.filter((i) => i.min != null).sort((a, b) => a.min - b.min)
+  const untimed = items.filter((i) => i.min == null)
+  return [...timed, ...untimed]
+}
+
 // --- the engine --------------------------------------------------------------
 
-// timeline: array of day objects (already sorted). meta: trip meta. nowInput: see buildNow.
+// timeline: array of day objects (already sorted). meta: trip meta. nowInput: see
+// buildNow. selections: shared Build-Your-Own picks (so now/next reflect choices).
 // Returns a clock describing where "now" falls in the trip.
-export function getTripClock(timeline, meta, nowInput) {
+export function getTripClock(timeline, meta, nowInput, selections = {}) {
   const empty = { enabled: false, status: 'unknown' }
   if (!Array.isArray(timeline) || timeline.length === 0) return empty
 
@@ -166,31 +208,39 @@ export function getTripClock(timeline, meta, nowInput) {
 
   if (status === 'active' && todayIdx !== -1) {
     const today = days[todayIdx]
-    const evts = (today.raw.events || []).map((e, i) => ({
-      i, event: e, min: parseEventMinutes(e.time), tz: e.tz || today.tz,
-    }))
-    const timed = evts.filter((e) => e.min != null)
-    // nowMin must be measured in each event's own zone; group by zone lazily.
-    const nowMinFor = (tz) => now.mode === 'wall' ? now.minutes : minutesInTz(now.date, tz)
+    // Unified agenda from events + plan + selections, so now/next reflect choices.
+    const agenda = buildDayAgenda(today.raw, selections[today.id] || {})
+    const timed = agenda.filter((a) => a.min != null)
+    // nowMin measured in each item's own zone (travel days cross zones).
+    const nowMinFor = (tz) => now.mode === 'wall' ? now.minutes : minutesInTz(now.date, tz || today.tz)
     let current = null
     let next = null
-    for (const e of timed) {
-      if (e.min <= nowMinFor(e.tz)) current = e
+    for (const a of timed) {
+      if (a.min <= nowMinFor(a.tz)) current = a
     }
-    for (const e of timed) {
-      if (e.min > nowMinFor(e.tz)) { next = e; break }
+    for (const a of timed) {
+      if (a.min > nowMinFor(a.tz)) { next = a; break }
     }
     clock.today = today
-    clock.currentEventIndex = current ? current.i : -1
-    clock.currentEvent = current ? current.event : null
-    clock.nextEvent = next ? next.event : null
-    // If nothing later today, look to the next future day's first event.
+    clock.agenda = agenda
+    clock.currentItem = current
+    clock.nextItem = next
+    // Legacy: DayCard highlights an event row by index. Only events (not plan
+    // items) live in day.events, so map back when the current item is an event.
+    clock.currentEventIndex = current && current.source === 'event'
+      ? (today.raw.events || []).findIndex((e) => e.text === current.text && e.time === current.time)
+      : -1
+    // If nothing later today, fall to the IMMEDIATELY following day's first
+    // agenda item — never skip days to a distant reminder.
     if (!next) {
-      const fut = days.slice(todayIdx + 1).find((d) => (d.raw.events || []).length)
-      if (fut) {
-        clock.nextDay = fut
-        clock.nextEvent = fut.raw.events[0]
-        clock.nextIsTomorrow = true
+      const tomorrow = days[todayIdx + 1]
+      if (tomorrow) {
+        const tAgenda = buildDayAgenda(tomorrow.raw, selections[tomorrow.id] || {})
+        if (tAgenda.length) {
+          clock.nextDay = tomorrow
+          clock.nextItem = tAgenda[0]
+          clock.nextIsTomorrow = true
+        }
       }
     }
     // Local clock label for the banner.

@@ -121,7 +121,7 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
                   display: 'flex',
                   alignItems: 'center',
                   gap: 8,
-                  fontSize: 11,
+                  fontSize: 12,
                   color: isCurrent ? colors.text : colors.textMuted,
                   background: isCurrent ? 'rgba(74,144,217,0.10)' : 'transparent',
                   borderRadius: isCurrent ? 4 : 0,
@@ -162,7 +162,7 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
       {/* Expanded: Build-Your-Own plan + detail sections */}
       {expanded && hasExpandable && (
         <div style={{
-          padding: '0 16px 16px 82px',
+          padding: '0 16px 16px 16px',
           borderTop: `1px solid ${colors.divider}`,
           paddingTop: 16,
           background: 'linear-gradient(180deg, #12121f 0%, transparent 100%)',

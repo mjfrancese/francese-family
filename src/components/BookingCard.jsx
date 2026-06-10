@@ -58,7 +58,7 @@ export default function BookingCard({ booking }) {
             {booking.label}
           </div>
           {booking.detail && (
-            <div style={{ fontSize: 11, color: colors.textMuted }}>{booking.detail}</div>
+            <div style={{ fontSize: 12, color: colors.textMuted }}>{booking.detail}</div>
           )}
         </div>
         <StatusBadge status={booking.status} label={booking.confirmation} />
@@ -93,7 +93,7 @@ export default function BookingCard({ booking }) {
               padding: '8px 12px',
               background: '#1a1a2a',
               borderRadius: 4,
-              fontSize: 11,
+              fontSize: 12,
               color: colors.textMuted,
               lineHeight: 1.6,
             }}>
@@ -142,7 +142,7 @@ export default function BookingCard({ booking }) {
             }}>
               {booking.alertNotes.map((note, i) => (
                 <div key={i} style={{
-                  fontSize: 11,
+                  fontSize: 12,
                   color: '#e8c55c',
                   lineHeight: 1.6,
                   display: 'flex',

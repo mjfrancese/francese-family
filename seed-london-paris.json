@@ -417,7 +417,7 @@
             },
             {
               "type": "info",
-              "text": "Flight is ~8 hours. Meal service included. Try to sleep — you land midday and need to power through Day 1"
+              "text": "Flight is ~7h44m. Meal service included. Try to sleep — you land midday and need to power through Day 1"
             }
           ]
         },
@@ -810,7 +810,12 @@
                 "summary": "Covent Garden's 'Magic Corner' runs world-class street magicians from 11 AM — they pull little kids into the tricks. Pair it with the rainbow Neal's Yard courtyard 2 min away.",
                 "cost": "Free (tip the performer)",
                 "travel": "Piccadilly line: King's Cross → Covent Garden, ~12 min.",
-                "notes": [{ "type": "tip", "text": "Arrive ~11 for a full 30-min set; stand near the front so Louise gets picked." }],
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Arrive ~11 for a full 30-min set; stand near the front so Louise gets picked."
+                  }
+                ],
                 "then": "You're a 5-min walk from the Cambridge Theatre for Matilda."
               },
               {
@@ -821,7 +826,12 @@
                 "summary": "Seven Dials boutiques + vintage (Goldsmith, Size?) → Carnaby Street (Brandy Melville, Monki) → Liberty London (the Tudor building + the famous scarf hall).",
                 "cost": "Free to browse",
                 "travel": "Piccadilly line to Covent Garden; it's all walkable up to Carnaby/Liberty (~10 min).",
-                "notes": [{ "type": "tip", "text": "Liberty's Tudor halls + scarf room are the most fashion-immersive free spot in London." }],
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Liberty's Tudor halls + scarf room are the most fashion-immersive free spot in London."
+                  }
+                ],
                 "then": "Loop back down to Seven Dials for the theatre."
               },
               {
@@ -834,8 +844,14 @@
                 "cost": "Free",
                 "travel": "Piccadilly line to Holborn (~10 min), then a 4-min walk to Lincoln's Inn Fields.",
                 "notes": [
-                  { "type": "tip", "text": "Go at the 10 AM opening — it's small and gets crowded. Allow 45 min." },
-                  { "type": "warn", "text": "Add Goodwin's Court nearby — a gas-lit 'Diagon Alley' cobbled passage, free." }
+                  {
+                    "type": "tip",
+                    "text": "Go at the 10 AM opening — it's small and gets crowded. Allow 45 min."
+                  },
+                  {
+                    "type": "warn",
+                    "text": "Add Goodwin's Court nearby — a gas-lit 'Diagon Alley' cobbled passage, free."
+                  }
                 ],
                 "then": "Walk ~12 min to the Cambridge Theatre."
               }
@@ -872,7 +888,10 @@
             "status": "booked",
             "statusLabel": "26042Q",
             "notes": [
-              { "type": "info", "text": "Arrive by ~1:35 (Cambridge Theatre, Seven Dials). Runs 2h40 — ends ~4:30. Chinatown's a 5-min walk after." }
+              {
+                "type": "info",
+                "text": "Arrive by ~1:35 (Cambridge Theatre, Seven Dials). Runs 2h40 — ends ~4:30. Chinatown's a 5-min walk after."
+              }
             ]
           },
           {
@@ -905,92 +924,7 @@
         ]
       },
       "events": [],
-      "details": [
-        {
-          "icon": "🎒",
-          "title": "Prepare the Night Before",
-          "color": "#b88ad9",
-          "items": [
-            {
-              "type": "info",
-              "text": "Download Matilda e-tickets to phone. Ref: 26042Q-6YAMRCW8CJ"
-            },
-            {
-              "type": "info",
-              "text": "Cambridge Theatre, Seven Dials (Covent Garden area). Dress Circle Row A, Seats 23-26"
-            },
-            {
-              "type": "info",
-              "text": "Book V&A Fashion Tour if not done yet (vam.ac.uk, 12:30 PM slot)"
-            },
-            {
-              "type": "info",
-              "text": "Plan the tight transfer: V&A → Matilda has only a 25 min buffer"
-            }
-          ]
-        },
-        {
-          "icon": "🚆",
-          "title": "Travel Requirements",
-          "color": "#4a90d9",
-          "items": [
-            {
-              "type": "info",
-              "text": "Kings Cross → Covent Garden: Piccadilly line, ~10 min"
-            },
-            {
-              "type": "info",
-              "text": "Covent Garden → V&A (South Kensington): Piccadilly line, ~10 min"
-            },
-            {
-              "type": "info",
-              "text": "V&A → Cambridge Theatre: Tube South Ken → Leicester Square (Piccadilly, ~12 min) + 5 min walk"
-            }
-          ]
-        },
-        {
-          "icon": "⚠️",
-          "title": "Potential Pitfalls",
-          "color": "#e8c55c",
-          "items": [
-            {
-              "type": "warn",
-              "text": "⏱ TIGHT TRANSFER: V&A tour ends ~1:15 PM. Matilda curtain is 2:00 PM sharp. Only ~45 min door-to-door with Tube. If tour runs over, you're sprinting"
-            },
-            {
-              "type": "warn",
-              "text": "Contingency: If running late, skip Tube and taxi V&A → Cambridge Theatre (~15 min, ~£12)"
-            },
-            {
-              "type": "warn",
-              "text": "Alternative: Drop V&A tour entirely. Museum is free to explore casually instead — zero stress"
-            },
-            {
-              "type": "warn",
-              "text": "Matilda is 2 hrs 40 min. Louise (age 5) needs to sit through the whole show — bring a quiet snack"
-            }
-          ]
-        },
-        {
-          "icon": "💡",
-          "title": "Local Intel",
-          "color": "#5ce892",
-          "items": [
-            {
-              "type": "tip",
-              "text": "Covent Garden street performers are free and kids love them — perfect morning entertainment"
-            },
-            {
-              "type": "tip",
-              "text": "Dress Circle Row A is phenomenal — front of the upper level with full unobstructed stage view"
-            },
-            {
-              "type": "tip",
-              "text": "Post-show: you're in Seven Dials/Covent Garden. Chinatown is a 5-min walk for dinner"
-            }
-          ]
-        }
-      ]
+      "details": []
     },
     {
       "day": "Thu",
@@ -1018,7 +952,12 @@
                 "summary": "Climb aboard a full-size Tudor galleon (Drake's ship) 2 min from Borough — three decks, cannons, captain's cabin. A real pirate ship.",
                 "cost": "£6 all ages",
                 "travel": "Thameslink St Pancras → London Bridge (~6 min) or Northern line (~12 min); 5-min walk to St Mary Overie Dock.",
-                "notes": [{ "type": "tip", "text": "Do it FIRST at 10 AM while Louise is fresh and before the market packs out." }],
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Do it FIRST at 10 AM while Louise is fresh and before the market packs out."
+                  }
+                ],
                 "then": "Borough Market is right next door."
               },
               {
@@ -1029,7 +968,12 @@
                 "summary": "Graze the stalls before the crowds build: Kappacasein grilled cheese, Bread Ahead doughnuts, Turnips chocolate strawberries.",
                 "cost": "~£5–10pp grazing",
                 "travel": "Thameslink St Pancras → London Bridge (~6 min); 3-min walk.",
-                "notes": [{ "type": "tip", "text": "Kappacasein's queue gets long — head there first." }]
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Kappacasein's queue gets long — head there first."
+                  }
+                ]
               }
             ]
           },
@@ -1123,72 +1067,7 @@
         ]
       },
       "events": [],
-      "details": [
-        {
-          "icon": "🎒",
-          "title": "Prepare the Night Before",
-          "color": "#b88ad9",
-          "items": [
-            {
-              "type": "info",
-              "text": "Flex day — no fixed bookings! Sleep in if jet lag is still lingering"
-            },
-            {
-              "type": "info",
-              "text": "British Museum is free, no timed entry needed. Opens 10 AM"
-            }
-          ]
-        },
-        {
-          "icon": "🚆",
-          "title": "Travel Requirements",
-          "color": "#4a90d9",
-          "items": [
-            {
-              "type": "info",
-              "text": "Kings Cross → British Museum: 20 min walk through Bloomsbury, or Tube 1 stop to Russell Square"
-            },
-            {
-              "type": "info",
-              "text": "British Museum → Regent's Park: 15 min walk north"
-            }
-          ]
-        },
-        {
-          "icon": "⚠️",
-          "title": "Potential Pitfalls",
-          "color": "#e8c55c",
-          "items": [
-            {
-              "type": "warn",
-              "text": "British Museum is ENORMOUS. Don't try to see everything. Pick 2-3 highlights: Egyptian mummies, Rosetta Stone, Greek marbles"
-            },
-            {
-              "type": "warn",
-              "text": "Museum fatigue is real with kids. 2 hours max, then get outside to Regent's Park"
-            }
-          ]
-        },
-        {
-          "icon": "💡",
-          "title": "Local Intel",
-          "color": "#5ce892",
-          "items": [
-            {
-              "type": "tip",
-              "text": "Regent's Park has fantastic playgrounds and pedal boats on the boating lake"
-            },
-            {
-              "type": "tip",
-              "text": "This is your buffer/recovery day. If something from earlier was missed, today is the makeup day"
-            },
-            {
-              "type": "tip",
-              "text": "Close to hotel — easy to pop back for an afternoon rest if Louise needs it"
-            }
-          ]
-        }
-      ]
+      "details": []
     },
     {
       "day": "Fri",
@@ -1210,7 +1089,10 @@
             "status": "booked",
             "statusLabel": "S16729453",
             "notes": [
-              { "type": "info", "text": "Hintze Hall blue whale + the dinosaur gallery. Allow ~90 min. South Kensington." }
+              {
+                "type": "info",
+                "text": "Hintze Hall blue whale + the dinosaur gallery. Allow ~90 min. South Kensington."
+              }
             ]
           },
           {
@@ -1275,7 +1157,12 @@
                 "summary": "First UK retrospective of NIGO (BAPE / KENZO) — streetwear as culture, opening with his recreated teenage bedroom. The standout teen pick.",
                 "cost": "£15 adult / £7.65 child",
                 "travel": "~15-min walk or short bus to Kensington High Street.",
-                "notes": [{ "type": "tip", "text": "Has a free permanent gallery + garden too." }]
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Has a free permanent gallery + garden too."
+                  }
+                ]
               },
               {
                 "id": "saatchi",
@@ -1295,92 +1182,7 @@
           "text": "⚠ Pack for Paris TONIGHT — 5:15 AM Eurostar wake-up tomorrow"
         }
       ],
-      "details": [
-        {
-          "icon": "🎒",
-          "title": "Prepare the Night Before",
-          "color": "#b88ad9",
-          "items": [
-            {
-              "type": "info",
-              "text": "Confirm Natural History Museum timed entry (nhm.ac.uk)"
-            },
-            {
-              "type": "info",
-              "text": "Confirm Sky Garden booking if secured (booked May 25)"
-            },
-            {
-              "type": "info",
-              "text": "⚠️ SET ALARM FOR 5:15 AM TOMORROW! Pack bags for Paris TONIGHT"
-            },
-            {
-              "type": "info",
-              "text": "Print/save Eurostar tickets. Ref: QRXPZK. Check-in opens 45 min before departure"
-            },
-            {
-              "type": "info",
-              "text": "Lay out tomorrow's clothes. Bags by the door. Everyone in bed by 9 PM"
-            }
-          ]
-        },
-        {
-          "icon": "🚆",
-          "title": "Travel Requirements",
-          "color": "#4a90d9",
-          "items": [
-            {
-              "type": "info",
-              "text": "Split day: Decide morning meeting point for Michael+Louise and Meghan+Kenna"
-            },
-            {
-              "type": "info",
-              "text": "NHM: Tube to South Kensington (Piccadilly line, ~15 min from Kings Cross)"
-            },
-            {
-              "type": "info",
-              "text": "Tate Modern: Tube to Southwark or St Paul's + walk across Millennium Bridge"
-            }
-          ]
-        },
-        {
-          "icon": "⚠️",
-          "title": "Potential Pitfalls",
-          "color": "#e8c55c",
-          "items": [
-            {
-              "type": "warn",
-              "text": "CRITICAL: Pack for Paris tonight. You will NOT have time tomorrow morning — Eurostar departs 6:31 AM"
-            },
-            {
-              "type": "warn",
-              "text": "Eurostar API must be completed for Kenna and Louise before departure. Do this NOW if not done"
-            },
-            {
-              "type": "warn",
-              "text": "Early dinner tonight. Everyone in bed by 9 PM — tomorrow is brutal"
-            }
-          ]
-        },
-        {
-          "icon": "💡",
-          "title": "Local Intel",
-          "color": "#5ce892",
-          "items": [
-            {
-              "type": "tip",
-              "text": "NHM dinosaur gallery is the highlight for Louise. Blue whale in Hintze Hall is jaw-dropping"
-            },
-            {
-              "type": "tip",
-              "text": "Tate Modern is free. Kenna (12) may enjoy the immersive installations on upper floors"
-            },
-            {
-              "type": "tip",
-              "text": "Sky Garden is free — 360° views from the 35th floor of the Walkie Talkie building"
-            }
-          ]
-        }
-      ]
+      "details": []
     },
     {
       "day": "Sat",
@@ -1760,7 +1562,7 @@
             },
             {
               "type": "tip",
-              "text": "<strong>Louise highlights:</strong> Frozen Ever After (boat ride!), Raiponce Tangled Spin (lanterns!), Ratatouille, Cars Road Trip, A Celebration in Arendelle show, Anna & Elsa meet and greet"
+              "text": "<strong>Louise highlights:</strong> Frozen Ever After (boat ride!), Raiponce Tangled Spin (lanterns!), Ratatouille, Toy Soldiers Parachute Drop, A Celebration in Arendelle show, Anna & Elsa meet and greet"
             },
             {
               "type": "tip",
@@ -1795,7 +1597,7 @@
             },
             {
               "type": "tip",
-              "text": "Skip PA for: Cars Road Trip (short waits), Tower of Terror (preshow means PA still takes 15-20 min)"
+              "text": "Skip PA for: Tower of Terror (preshow means PA still takes 15-20 min)"
             },
             {
               "type": "info",
@@ -1967,7 +1769,7 @@
             },
             {
               "type": "info",
-              "text": "Check parade and show times in app tonight. Plan around Disney Stars on Parade + Illuminations"
+              "text": "Check parade and show times in app tonight. Plan around Disney Stars on Parade + Disney Tales of Magic (castle closing show)"
             },
             {
               "type": "info",
@@ -2099,7 +1901,7 @@
             },
             {
               "type": "tip",
-              "text": "<strong>🎭 Mickey and the Magician — FINAL DAY (June 15):</strong> This fan-favorite Disney Adventure World show ends its run today. If you haven't seen it, check the app for showtimes and work it in. After June 15 it's gone until its next run."
+              "text": "<strong>🎭 Mickey and the Magician — already ended (June 14)</strong> over in the other park; its run is finished, so don't plan for it today."
             },
             {
               "type": "tip",
@@ -2126,7 +1928,7 @@
             },
             {
               "type": "tip",
-              "text": "Skip PA for: Phantom Manor (rarely 25+ min), Pirates (walk-on after 5 PM), Buzz (moderate waits)"
+              "text": "Skip PA for: Phantom Manor (rarely 25+ min), Buzz (moderate waits)"
             },
             {
               "type": "info",
@@ -2240,7 +2042,7 @@
           "items": [
             {
               "type": "info",
-              "text": "PACK EVERYTHING after Illuminations tonight. Checkout is 7:30 AM"
+              "text": "PACK EVERYTHING after Disney Tales of Magic tonight. Checkout is 7:30 AM"
             },
             {
               "type": "info",
@@ -2421,12 +2223,12 @@
       },
       {
         "item": "Travel insurance (family, medical)",
-        "cost": "~$150",
-        "note": "emergency medical + evac"
+        "cost": "$0",
+        "note": "Skipped — decided not to buy"
       }
     ],
     "confirmedTotal": "~$5,608",
-    "estimatedTotal": "~$6,612–6,957",
+    "estimatedTotal": "~$6,462–6,807",
     "savingsNote": "260K Avios (~$4,000+ value) + 64,795 C1 miles ($648) + $300 Venture X credit = ~$4,948+ total savings"
   },
   "checklist": [
@@ -2544,10 +2346,10 @@
     },
     {
       "id": "check_14",
-      "text": "Sky Garden (Jun 12) — booking window passed — Free slots release Mondays ~3 weeks out, so the main window is gone. Optional. Check skygarden.london for any last-minute released slots; otherwise skip.",
-      "done": false,
+      "text": "Sky Garden (Jun 12) — SKIPPED. Booking window passed; not on the Jun 12 plan.",
+      "done": true,
       "urgent": false,
-      "group": "may",
+      "group": "completed",
       "order": 14
     },
     {
@@ -2560,10 +2362,10 @@
     },
     {
       "id": "check_16",
-      "text": "V&A Fashion Tour (Jun 10) — BOOK or DROP — Recommendation: drop it. The 12:30 slot leaves only a 25-min buffer to Matilda's 2:00 PM curtain with two kids. Browse the V&A casually instead, or skip entirely to remove the stress.",
-      "done": false,
+      "text": "V&A Fashion Tour (Jun 10) — DROPPED. Day 10 is Build-Your-Own; the tour was removed to avoid the tight Matilda transfer. Browse the free V&A galleries if you pick that morning.",
+      "done": true,
       "urgent": false,
-      "group": "may",
+      "group": "completed",
       "order": 16
     },
     {

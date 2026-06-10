@@ -71,7 +71,7 @@ export default function DayPlan({ plan, daySelections = {}, travelers = [], onTo
               if (!opt) return null
               const who = whoOf(map[id])
               return (
-                <div key={id}>
+                <div key={id} style={isSplit ? splitOptionCard : undefined}>
                   <OptionDetail opt={opt} showHeader={selectedIds.length > 1} />
                   {isSplit && (
                     <div style={whoRow}>
@@ -167,8 +167,8 @@ function FixedEntry({ slot }) {
   )
 }
 
-const introStyle = { fontSize: 11.5, color: colors.textDim, marginBottom: 14, lineHeight: 1.5 }
-const hintStyle = { fontSize: 11, color: colors.textDark, fontStyle: 'italic', marginTop: 8 }
+const introStyle = { fontSize: 12, color: colors.textDim, marginBottom: 14, lineHeight: 1.5 }
+const hintStyle = { fontSize: 12, color: colors.textDim, fontStyle: 'italic', marginTop: 8 }
 
 const slotHeader = {
   display: 'flex', alignItems: 'center', gap: 8,
@@ -187,19 +187,23 @@ const connector = { width: 2, height: 10, background: colors.cardBorder, marginL
 
 function chipStyle(selected, gem) {
   return {
-    fontFamily: fonts.body, fontSize: 12, fontWeight: selected ? 600 : 400,
-    padding: '6px 11px', borderRadius: 16, cursor: 'pointer', transition: 'all 0.12s ease',
+    fontFamily: fonts.body, fontSize: 12.5, fontWeight: selected ? 600 : 400,
+    padding: '9px 14px', minHeight: 40, borderRadius: 20, cursor: 'pointer', transition: 'all 0.12s ease',
+    display: 'inline-flex', alignItems: 'center',
     color: selected ? '#fff' : colors.textMuted,
     background: selected ? colors.accent : 'transparent',
     border: `1px solid ${selected ? colors.accent : gem ? '#3a5a3a' : colors.border}`,
   }
 }
 
-const whoRow = { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 5, marginTop: 6, marginLeft: 2 }
-const whoLabel = { fontFamily: fonts.mono, fontSize: 10, color: colors.textDim, marginRight: 2 }
+// Ties a split option's detail card to its who-chips with a left accent.
+const splitOptionCard = { borderLeft: `2px solid ${colors.cardBorderActive}`, paddingLeft: 10, marginTop: 10 }
+const whoRow = { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 8, marginLeft: 2 }
+const whoLabel = { fontFamily: fonts.mono, fontSize: 11, color: colors.textDim, marginRight: 2 }
 function whoChip(on) {
   return {
-    fontFamily: fonts.body, fontSize: 11, padding: '2px 9px', borderRadius: 12, cursor: 'pointer',
+    fontFamily: fonts.body, fontSize: 12, padding: '6px 12px', minHeight: 36, borderRadius: 16, cursor: 'pointer',
+    display: 'inline-flex', alignItems: 'center',
     color: on ? '#fff' : colors.textMuted,
     background: on ? '#2d6b45' : 'transparent',
     border: `1px solid ${on ? '#2d6b45' : colors.border}`,

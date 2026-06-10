@@ -51,8 +51,8 @@ export default function DayByDay({ timeline, meta, selections = {}, travelers = 
   const nowOverride = searchParams.get('now') || undefined
 
   const clock = useMemo(
-    () => getTripClock(timeline || [], meta || {}, nowOverride),
-    [timeline, meta, nowOverride]
+    () => getTripClock(timeline || [], meta || {}, nowOverride, selections),
+    [timeline, meta, nowOverride, selections]
   )
 
   // Default the open day to today (when the trip is active).
@@ -108,10 +108,10 @@ const foldBtn = {
   border: 'none',
   color: colors.textDim,
   fontFamily: fonts.body,
-  fontSize: 12,
+  fontSize: 13,
   cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
   gap: 6,
-  padding: '4px 0',
+  padding: '10px 4px',
 }

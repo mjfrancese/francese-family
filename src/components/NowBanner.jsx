@@ -6,12 +6,23 @@ function stripHtml(s) {
   return String(s || '').replace(/<[^>]+>/g, '').trim()
 }
 
-// Pull the most useful heads-up items from a day's detail sections (warnings first).
+// Pull the most useful heads-up items from a day's detail sections AND its
+// Build-Your-Own plan option notes (warnings first).
 function dayHeadsUp(day, max = 3) {
   const items = []
   for (const section of day?.details || []) {
     for (const it of section.items || []) {
       if (it.type === 'warn') items.push(stripHtml(it.text))
+    }
+  }
+  for (const slot of day?.plan?.slots || []) {
+    for (const opt of slot.options || []) {
+      for (const note of opt.notes || []) {
+        if (note.type === 'warn') items.push(stripHtml(note.text))
+      }
+    }
+    for (const note of slot.notes || []) {
+      if (note.type === 'warn') items.push(stripHtml(note.text))
     }
   }
   return items.slice(0, max)
@@ -77,8 +88,8 @@ export default function NowBanner({ clock, onJumpToday }) {
   // ---- Active: you-are-here ------------------------------------------------
   if (clock.status !== 'active' || !clock.today) return null
   const today = clock.today.raw
-  const cur = clock.currentEvent
-  const next = clock.nextEvent
+  const cur = clock.currentItem
+  const next = clock.nextItem
   const heads = dayHeadsUp(today)
 
   return (
@@ -103,7 +114,7 @@ export default function NowBanner({ clock, onJumpToday }) {
         {cur && (
           <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12.5, color: colors.text }}>
             <span style={{ ...pill, background: '#1a3a2a', border: '1px solid #2d6b45', color: colors.bullet.tip }}>NOW</span>
-            <span style={{ flex: 1 }}>
+            <span style={{ flex: 1, fontStyle: cur.chosen ? 'normal' : 'italic', opacity: cur.chosen ? 1 : 0.7 }}>
               {cur.time ? <strong style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.textDim, marginRight: 6 }}>{cur.time}</strong> : null}
               {stripHtml(cur.text)}
             </span>
@@ -114,14 +125,14 @@ export default function NowBanner({ clock, onJumpToday }) {
             <span style={{ ...pill, background: '#3a2e1a', border: '1px solid #6b5a2d', color: colors.bullet.warn }}>
               {clock.nextIsTomorrow ? 'NEXT DAY' : 'NEXT'}
             </span>
-            <span style={{ flex: 1 }}>
+            <span style={{ flex: 1, fontStyle: next.chosen ? 'normal' : 'italic', opacity: next.chosen ? 1 : 0.7 }}>
               {next.time ? <strong style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.textDim, marginRight: 6 }}>{next.time}</strong> : null}
               {stripHtml(next.text)}
             </span>
           </div>
         )}
         {!cur && !next && (
-          <div style={{ fontSize: 12, color: colors.textDim }}>No timed events left today — enjoy.</div>
+          <div style={{ fontSize: 12, color: colors.textDim }}>Nothing scheduled right now — enjoy.</div>
         )}
       </div>
 
@@ -167,8 +178,8 @@ const jumpBtn = {
   borderRadius: 6,
   color: colors.textMuted,
   fontFamily: fonts.body,
-  fontSize: 11,
-  padding: '5px 10px',
+  fontSize: 12,
+  padding: '8px 14px',
   cursor: 'pointer',
   display: 'inline-flex',
   alignItems: 'center',
