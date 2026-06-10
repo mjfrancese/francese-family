@@ -3,25 +3,31 @@ import StatusBadge from './StatusBadge'
 import DetailSection from './DetailSection'
 import DayPlan from './DayPlan'
 import { renderBullets } from './Bullet'
+import { normSlot, whoOf } from '../utils/selectionUtils'
 import { ChevronRight } from 'lucide-react'
 
-export default function DayCard({ day, dayNum, month, title, events = [], details = [], expanded, onToggle, isToday = false, currentEventIndex = -1, plan = null, daySelections = {}, onSelectOption }) {
+export default function DayCard({ day, dayNum, month, title, events = [], details = [], expanded, onToggle, isToday = false, currentEventIndex = -1, plan = null, daySelections = {}, travelers = [], onToggleOption, onToggleTraveler }) {
   const hasDetails = details && details.length > 0
   const hasPlan = !!(plan && plan.slots && plan.slots.length > 0)
   const hasExpandable = hasDetails || hasPlan
+  const travLabel = (id) => (travelers.find(t => t.id === id) || {}).label || id
   // For plan days, build the collapsed preview from the plan itself so fixed
-  // (booked) items sit in line at their time and choices show their status —
-  // all in chronological order. When expanded, DayPlan renders the full flow,
-  // so the header preview steps aside to avoid duplication.
+  // (booked) items sit in line at their time and choices show their status (and
+  // who, when split) — all in chronological order. When expanded, DayPlan
+  // renders the full flow, so the header preview steps aside to avoid dupes.
   const planPreview = hasPlan
     ? plan.slots.map(s => {
         if (s.fixed) {
           return { time: s.time, text: s.label, status: s.status, statusLabel: s.statusLabel }
         }
-        const chosen = s.options.find(o => o.id === daySelections[s.id])
-        return chosen
-          ? { time: s.time, text: `${s.title}: ${chosen.label}`, status: 'confirmed' }
-          : { time: s.time, text: `${s.title} — tap to choose` }
+        const map = normSlot(daySelections[s.id])
+        const chosen = s.options.filter(o => o.id in map)
+        if (chosen.length === 0) return { time: s.time, text: `${s.title} — tap to choose` }
+        const parts = chosen.map(o => {
+          const who = whoOf(map[o.id]).map(travLabel)
+          return o.label + (who.length ? ` (${who.join(', ')})` : '')
+        })
+        return { time: s.time, text: `${s.title}: ${parts.join(' · ')}`, status: 'confirmed' }
       })
     : []
   const headerItems = hasPlan ? (expanded ? events : [...planPreview, ...events]) : events
@@ -165,7 +171,9 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
             <DayPlan
               plan={plan}
               daySelections={daySelections}
-              onSelect={(slotId, optId) => onSelectOption && onSelectOption(slotId, optId)}
+              travelers={travelers}
+              onToggleOption={(slotId, optId) => onToggleOption && onToggleOption(slotId, optId)}
+              onToggleTraveler={(slotId, optId, travId) => onToggleTraveler && onToggleTraveler(slotId, optId, travId)}
             />
           )}
           {details.map((section, i) => (

@@ -8,7 +8,7 @@ import { colors, fonts } from '../theme'
 import { MapPin, ChevronRight } from 'lucide-react'
 
 // Render a run of days with section headers, as DayCards.
-function renderDays(days, { expandedDay, setExpandedDay, clock, todayRef, selections, setSelection }) {
+function renderDays(days, { expandedDay, setExpandedDay, clock, todayRef, selections, travelers, toggleOption, toggleTraveler }) {
   let currentSection = null
   const out = []
   for (const day of days) {
@@ -36,7 +36,9 @@ function renderDays(days, { expandedDay, setExpandedDay, clock, todayRef, select
           currentEventIndex={isToday ? clock?.currentEventIndex ?? -1 : -1}
           plan={day.plan || null}
           daySelections={(selections && selections[day.id]) || {}}
-          onSelectOption={(slotId, optId) => setSelection && setSelection(day.id, slotId, optId)}
+          travelers={travelers}
+          onToggleOption={(slotId, optId) => toggleOption && toggleOption(day.id, slotId, optId)}
+          onToggleTraveler={(slotId, optId, travId) => toggleTraveler && toggleTraveler(day.id, slotId, optId, travId)}
         />
       </div>
     )
@@ -44,7 +46,7 @@ function renderDays(days, { expandedDay, setExpandedDay, clock, todayRef, select
   return out
 }
 
-export default function DayByDay({ timeline, meta, selections = {}, setSelection }) {
+export default function DayByDay({ timeline, meta, selections = {}, travelers = [], toggleOption, toggleTraveler }) {
   const [searchParams] = useSearchParams()
   const nowOverride = searchParams.get('now') || undefined
 
@@ -72,7 +74,7 @@ export default function DayByDay({ timeline, meta, selections = {}, setSelection
   const pastDays = isActiveAware ? timeline.slice(0, clock.todayIndex) : []
   const restDays = isActiveAware ? timeline.slice(clock.todayIndex) : timeline
 
-  const shared = { expandedDay, setExpandedDay, clock, todayRef, selections, setSelection }
+  const shared = { expandedDay, setExpandedDay, clock, todayRef, selections, travelers, toggleOption, toggleTraveler }
 
   return (
     <div>

@@ -35,11 +35,16 @@ render normally (the feature self-disables). Preview any moment with the
 ## Build-Your-Own days (adaptive, shared, sticky plans)
 Any timeline day can carry a `plan` that turns it into an interactive
 "choose at each step" day. Tapping an option reveals ITS OWN travel + notes,
-so the plan reshapes as you pick. Selections are stored in Firebase at
-`trips/{slug}/selections/{dayId}/{slotId}` and read with `onValue`, so they
-**sync across all viewers** (like checklist toggles), **stick**, and toggle
-on/off. Engine: `src/hooks/useSelections.js` + `src/components/DayPlan.jsx`,
-wired through DayCard/DayByDay/TripDashboard.
+so the plan reshapes as you pick. Options are **multi-select**: pick two+ in a
+slot and the group "splits" — each chosen option grows per-traveler **"who?"**
+chips (progressive disclosure — the who-UI only appears once you split). The
+traveler presets come from `meta.travelers`. Selections are stored in Firebase
+at `trips/{slug}/selections/{dayId}/{slotId}/{optionId}` = `true` (whole group)
+or `{ travelerId: true }` (assigned), read with `onValue`, so they **sync
+across all viewers** (like checklist toggles), **stick**, and toggle on/off.
+Fixed/booked items are `fixed: true` slots, rendered in line at their time with
+no options. Engine: `src/hooks/useSelections.js` + `src/utils/selectionUtils.js`
++ `src/components/DayPlan.jsx`, wired through DayCard/DayByDay/TripDashboard.
 
 Schema on a day:
 ```

@@ -33,7 +33,7 @@ export default function TripDashboard() {
   const { user } = useAuth()
   const { meta, timeline, bookings, budget, flightOptions, travelers, loading: dataLoading } = useTripData(slug)
   const { items: checklistItems, loading: checkLoading, toggle } = useChecklist(slug)
-  const { selections, setSelection } = useSelections(slug)
+  const { selections, toggleOption, toggleTraveler } = useSelections(slug)
   const { hasAccess, isOwner, accessList, loading: accessLoading, addAccess, removeAccess } = useAccess(slug, user)
   const [activeTab, setActiveTab] = useState('daybyday')
   const [showShare, setShowShare] = useState(false)
@@ -83,6 +83,8 @@ export default function TripDashboard() {
   })
 
   const doneCount = checklistItems.filter(i => i.done).length
+  // Traveler presets for Build-Your-Own "who's doing what" when the group splits.
+  const partyPresets = (meta.travelers || []).map(n => ({ id: n.toLowerCase().replace(/[^a-z0-9]/g, ''), label: n }))
 
   return (
     <div style={{ minHeight: '100vh', background: colors.bg, fontFamily: fonts.body }}>
@@ -218,7 +220,7 @@ export default function TripDashboard() {
 
       {/* Tab content */}
       <div style={{ padding: '20px 24px 48px', maxWidth: 800, margin: '0 auto' }}>
-        {activeTab === 'daybyday' && <DayByDay timeline={timeline} meta={meta} selections={selections} setSelection={setSelection} />}
+        {activeTab === 'daybyday' && <DayByDay timeline={timeline} meta={meta} selections={selections} travelers={partyPresets} toggleOption={toggleOption} toggleTraveler={toggleTraveler} />}
         {activeTab === 'reservations' && <Reservations bookings={bookings} />}
         {activeTab === 'budget' && <Budget budget={budget} />}
         {activeTab === 'todo' && <Checklist items={checklistItems} toggle={toggle} />}
