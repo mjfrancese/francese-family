@@ -4,6 +4,7 @@ import { db, sanitizeEmail, isOwnerEmail } from '../firebase'
 
 export function useAccess(slug, user) {
   const [role, setRole] = useState(null)
+  const [hideSurprise, setHideSurprise] = useState(false)
   const [accessList, setAccessList] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -13,6 +14,7 @@ export function useAccess(slug, user) {
   useEffect(() => {
     if (!slug || !user?.email) {
       setRole(null)
+      setHideSurprise(false)
       setLoading(false)
       return
     }
@@ -22,6 +24,7 @@ export function useAccess(slug, user) {
       const data = snapshot.val()
       if (!data) {
         setRole(null)
+        setHideSurprise(false)
         setAccessList([])
         setLoading(false)
         return
@@ -30,6 +33,7 @@ export function useAccess(slug, user) {
       const sanitized = sanitizeEmail(user.email)
       const userAccess = data[sanitized]
       setRole(userAccess?.role || null)
+      setHideSurprise(!!userAccess?.hideSurprise)
 
       const list = Object.entries(data).map(([key, val]) => ({
         email: key.replace(/_/g, '.'),
@@ -53,5 +57,5 @@ export function useAccess(slug, user) {
     await remove(ref(db, `trips/${slug}/access/${sanitized}`))
   }
 
-  return { role, hasAccess, isOwner, accessList, loading, addAccess, removeAccess }
+  return { role, hasAccess, isOwner, hideSurprise, accessList, loading, addAccess, removeAccess }
 }

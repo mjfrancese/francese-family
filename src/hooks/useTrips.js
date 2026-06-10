@@ -26,11 +26,17 @@ export function useTrips(user) {
       const accessible = []
 
       for (const [slug, trip] of Object.entries(data)) {
-        if (trip.access && trip.access[sanitized]) {
+        const entry = trip.access && trip.access[sanitized]
+        if (entry) {
+          // Surprise-hidden viewers get the trip's meta.surprise overrides
+          // (e.g. a London-only title/icon/dates) so the card reveals nothing.
+          const override = entry.hideSurprise && trip.meta?.surprise ? trip.meta.surprise : null
           accessible.push({
             slug,
             ...trip.meta,
-            role: trip.access[sanitized].role,
+            ...(override || {}),
+            surprise: undefined,
+            role: entry.role,
           })
         }
       }

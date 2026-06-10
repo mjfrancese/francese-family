@@ -34,7 +34,7 @@ export default function TripDashboard() {
   const { meta, timeline, bookings, budget, flightOptions, travelers, loading: dataLoading } = useTripData(slug)
   const { items: checklistItems, loading: checkLoading, toggle } = useChecklist(slug)
   const { selections, toggleOption, toggleTraveler } = useSelections(slug)
-  const { hasAccess, isOwner, accessList, loading: accessLoading, addAccess, removeAccess } = useAccess(slug, user)
+  const { hasAccess, isOwner, hideSurprise, accessList, loading: accessLoading, addAccess, removeAccess } = useAccess(slug, user)
   const [activeTab, setActiveTab] = useState('daybyday')
   const [showShare, setShowShare] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
@@ -74,15 +74,40 @@ export default function TripDashboard() {
     )
   }
 
-  // Hide flights tab unless trip has flight options (planning mode)
-  // Hide profile tab unless trip has traveler profiles
+  // --- Surprise filtering ---------------------------------------------------
+  // A "surprise-hidden" viewer (e.g. Kenna) must see ZERO of the tagged
+  // content. We strip it at every level: whole days/bookings, individual
+  // events/detail-items/plan options, and apply the meta.surprise overrides.
+  const stripDay = (d) => ({
+    ...d,
+    events: (d.events || []).filter(e => !e.surprise),
+    details: (d.details || [])
+      .filter(s => !s.surprise)
+      .map(s => ({ ...s, items: (s.items || []).filter(it => !it.surprise) }))
+      .filter(s => (s.items || []).length > 0),
+    plan: d.plan ? {
+      ...d.plan,
+      slots: (d.plan.slots || [])
+        .filter(s => !s.surprise)
+        .map(s => s.options ? { ...s, options: s.options.filter(o => !o.surprise) } : s),
+    } : d.plan,
+  })
+  const viewMeta = hideSurprise && meta.surprise ? { ...meta, ...meta.surprise } : meta
+  const viewTimeline = hideSurprise ? (timeline || []).filter(d => !d.surprise).map(stripDay) : timeline
+  const viewBookings = hideSurprise ? (bookings || []).filter(b => !b.surprise) : bookings
+  const viewChecklist = hideSurprise ? checklistItems.filter(i => !i.surprise) : checklistItems
+
+  // Hide flights tab unless trip has flight options (planning mode).
+  // Surprise-hidden viewers get only Day-by-Day + Reservations (everything
+  // else risks leaking, so it's withheld entirely).
   const availableTabs = TABS.filter(t => {
+    if (hideSurprise) return t.key === 'daybyday' || t.key === 'reservations'
     if (t.key === 'flights') return !!flightOptions
     if (t.key === 'profile') return !!travelers
     return true
   })
 
-  const doneCount = checklistItems.filter(i => i.done).length
+  const doneCount = viewChecklist.filter(i => i.done).length
   // Traveler presets for Build-Your-Own "who's doing what" when the group splits.
   const partyPresets = (meta.travelers || []).map(n => ({ id: n.toLowerCase().replace(/[^a-z0-9]/g, ''), label: n }))
 
@@ -155,7 +180,7 @@ export default function TripDashboard() {
 
         {/* Trip title */}
         <div style={{ marginBottom: 4, display: 'flex', justifyContent: 'center' }}>
-          <TripIcon icon={meta.icon || meta.emoji} size={32} tripColor={meta.color} />
+          <TripIcon icon={viewMeta.icon || viewMeta.emoji} size={32} tripColor={viewMeta.color} />
         </div>
         <h1 style={{
           fontFamily: fonts.heading,
@@ -165,7 +190,7 @@ export default function TripDashboard() {
           letterSpacing: 0.5,
           marginBottom: 4,
         }}>
-          {meta.title}
+          {viewMeta.title}
         </h1>
         <div style={{
           fontFamily: fonts.mono,
@@ -175,11 +200,11 @@ export default function TripDashboard() {
           textTransform: 'uppercase',
           marginBottom: 12,
         }}>
-          {meta.dates}
+          {viewMeta.dates}
         </div>
-        {meta.travelers && (
+        {viewMeta.travelers && (
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 6, marginBottom: 10 }}>
-            {meta.travelers.map(t => (
+            {viewMeta.travelers.map(t => (
               <span key={t} style={{
                 padding: '3px 10px',
                 background: '#1a1a2e',
@@ -204,13 +229,13 @@ export default function TripDashboard() {
             >
               <tab.Icon size={14} style={{ marginRight: 4, verticalAlign: -2 }} />
               {tab.label}
-              {tab.key === 'todo' && checklistItems.length > 0 && (
+              {tab.key === 'todo' && viewChecklist.length > 0 && (
                 <span style={{
                   marginLeft: 6,
                   fontSize: 10,
                   color: colors.textDark,
                 }}>
-                  {doneCount}/{checklistItems.length}
+                  {doneCount}/{viewChecklist.length}
                 </span>
               )}
             </button>
@@ -220,10 +245,10 @@ export default function TripDashboard() {
 
       {/* Tab content */}
       <div style={{ padding: '20px 24px 48px', maxWidth: 800, margin: '0 auto' }}>
-        {activeTab === 'daybyday' && <DayByDay timeline={timeline} meta={meta} selections={selections} travelers={partyPresets} toggleOption={toggleOption} toggleTraveler={toggleTraveler} />}
-        {activeTab === 'reservations' && <Reservations bookings={bookings} />}
+        {activeTab === 'daybyday' && <DayByDay timeline={viewTimeline} meta={viewMeta} selections={selections} travelers={partyPresets} toggleOption={toggleOption} toggleTraveler={toggleTraveler} />}
+        {activeTab === 'reservations' && <Reservations bookings={viewBookings} />}
         {activeTab === 'budget' && <Budget budget={budget} />}
-        {activeTab === 'todo' && <Checklist items={checklistItems} toggle={toggle} />}
+        {activeTab === 'todo' && <Checklist items={viewChecklist} toggle={toggle} />}
         {activeTab === 'profile' && <TravelProfile travelers={travelers} />}
         {activeTab === 'flights' && (
           flightOptions

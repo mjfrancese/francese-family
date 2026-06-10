@@ -16,7 +16,13 @@
       "lat": 51.507,
       "lng": -0.128
     },
-    "color": "#e8c55c"
+    "color": "#e8c55c",
+    "surprise": {
+      "title": "London 2026",
+      "dates": "Jun 7–12, 2026",
+      "description": "A family adventure in London.",
+      "icon": "ferriswheel"
+    }
   },
   "access": {
     "mfrancese@gmail.com": {
@@ -26,6 +32,11 @@
     "meghancryan@gmail.com": {
       "role": "owner",
       "name": "Meghan"
+    },
+    "kennarholland@gmail.com": {
+      "role": "viewer",
+      "name": "Kenna",
+      "hideSurprise": true
     }
   },
   "travelers": {
@@ -101,7 +112,8 @@
         "passport": true,
         "enteredOn": "2026-04-27",
         "note": "KTN entered for all 4. Verify TSA PRE✓ prints on outbound boarding pass when online check-in opens (~24h before BA220 on Jun 6)."
-      }
+      },
+      "surprise": true
     },
     {
       "category": "train",
@@ -119,7 +131,8 @@
         "passport": true,
         "enteredOn": "2026-04-27",
         "note": "All 4 Advance Passenger Information records complete via Eurostar Manage Booking."
-      }
+      },
+      "surprise": true
     },
     {
       "category": "transport",
@@ -145,7 +158,8 @@
       "confirmation": "c44d65da",
       "cost": "£40 total (both legs)",
       "paidWith": null,
-      "notes": null
+      "notes": null,
+      "surprise": true
     },
     {
       "category": "hotel",
@@ -171,7 +185,8 @@
       "confirmation": "H-KTXPJ3X4HJ4C",
       "cost": "$0 (C1 $300 travel credit)",
       "paidWith": "Capital One Venture X $300 travel credit",
-      "notes": null
+      "notes": null,
+      "surprise": true
     },
     {
       "category": "hotel",
@@ -184,7 +199,8 @@
       "confirmation": "32984124",
       "cost": "$1,733.68 (hotel+tickets+meals)",
       "paidWith": "PAID IN FULL (Mar 19, 2026)",
-      "notes": "Full-board Extra Plus meal plan included. Call +33 1 60 30 60 53 to link rooms for both nights."
+      "notes": "Full-board Extra Plus meal plan included. Call +33 1 60 30 60 53 to link rooms for both nights.",
+      "surprise": true
     },
     {
       "category": "hotel",
@@ -197,7 +213,8 @@
       "confirmation": "H-DKH4WQD368V2",
       "cost": "$0 (64,795 C1 miles + $26.85)",
       "paidWith": "64,795 Capital One miles + $26.85",
-      "notes": "Request same room as Night 1 at check-in."
+      "notes": "Request same room as Night 1 at check-in.",
+      "surprise": true
     },
     {
       "category": "show",
@@ -236,7 +253,8 @@
       "confirmation": null,
       "cost": "€101.00 (~$121)",
       "paidWith": null,
-      "notes": "Purchased Apr 13. E-tickets sent via email (PDF). Print or have on phone. Arrive at Trocadéro first for photos, then walk to tower entrance."
+      "notes": "Purchased Apr 13. E-tickets sent via email (PDF). Print or have on phone. Arrive at Trocadéro first for photos, then walk to tower entrance.",
+      "surprise": true
     },
     {
       "category": "dining",
@@ -249,7 +267,8 @@
       "confirmation": null,
       "cost": "$0 (Full-board Extra Plus)",
       "paidWith": "Meal voucher",
-      "notes": "Order all 3 courses — they're included."
+      "notes": "Order all 3 courses — they're included.",
+      "surprise": true
     },
     {
       "category": "dining",
@@ -262,7 +281,8 @@
       "confirmation": null,
       "cost": "$0 (Full-board Extra Plus)",
       "paidWith": "Meal voucher",
-      "notes": "Go back for seconds — best calorie-per-voucher value."
+      "notes": "Go back for seconds — best calorie-per-voucher value.",
+      "surprise": true
     },
     {
       "category": "dining",
@@ -275,7 +295,8 @@
       "confirmation": null,
       "cost": "$0 (Full-board Extra Plus — last day voucher)",
       "paidWith": "Meal voucher",
-      "notes": "Inside the Disneyland Hotel (castle building above park entrance). Exit park to reach it."
+      "notes": "Inside the Disneyland Hotel (castle building above park entrance). Exit park to reach it.",
+      "surprise": true
     },
     {
       "category": "attraction",
@@ -314,7 +335,8 @@
       "confirmation": null,
       "cost": "$45.97",
       "paidWith": "Apple Pay Visa ••6866",
-      "notes": "Reservation confirmed, priority pickup at STL. Auto-adjusts to flight arrival."
+      "notes": "Reservation confirmed, priority pickup at STL. Auto-adjusts to flight arrival.",
+      "surprise": true
     }
   ],
   "timeline": [
@@ -396,7 +418,8 @@
               "type": "tip",
               "text": "<strong>Seats CONFIRMED — outbound you're in the row 20 bulkhead:</strong> Michael 20D, Louise 20E, Meghan 20F (extra legroom), Kenna one row back at 21K. Don't let online tools or the desk move you out of row 20. Return: Meghan 20F bulkhead, the other three together in row 21."
             }
-          ]
+          ],
+          "surprise": true
         },
         {
           "icon": "✈️",
@@ -596,7 +619,8 @@
               "type": "tip",
               "text": "<strong>Delay safety net (no insurance):</strong> UK261 owes ~£520pp for a 3h+ BA delay/cancel PLUS meals/hotel — demand the care and keep receipts. Eurostar owes refunds/free rebooking; a missed Jun 16 return can still catch BA221 via the 12:12 train."
             }
-          ]
+          ],
+          "surprise": true
         },
         {
           "icon": "🆘",
@@ -631,7 +655,8 @@
               "type": "info",
               "text": "<strong>Louise + June heat at Disney:</strong> offer water every 15–20 min (don't wait for her to ask), SPF50, shaded breaks; watch for heat exhaustion. Disney rents wheelchairs/ECVs at the entrance (reserve ahead — June sells out)."
             }
-          ]
+          ],
+          "surprise": true
         }
       ]
     },
@@ -956,7 +981,12 @@
                 "summary": "Hop a regular red double-decker (Route 91) from King's Cross and grab the top-front seats — the exact iconic bus Louise wants. Ride ~20 min to Trafalgar, then walk over Westminster Bridge to the Eye / County Hall.",
                 "cost": "~£4 (2 adult taps; Louise FREE, Kenna 50% w/ Young Visitor discount)",
                 "travel": "Board at King's Cross St Pancras (Stop R). Contactless tap — under-11s ride free, no ticket.",
-                "notes": [{ "type": "tip", "text": "Same red double-decker as the tour buses, for pennies — and it drops you a short walk from County Hall." }],
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Same red double-decker as the tour buses, for pennies — and it drops you a short walk from County Hall."
+                  }
+                ],
                 "then": "Walk Westminster Bridge → County Hall (Dungeon / Paddington below)."
               },
               {
@@ -968,7 +998,12 @@
                 "cost": "~£63–98 family (book online)",
                 "book": "Book online (tootbus.com); Kids Tour sells out in summer",
                 "travel": "Closest hop-on is King's Cross & St Pancras (Tootbus Green Route — right by the hotel), but it's a ~hourly connector: ride it to Trafalgar and switch to the main Yellow loop (London Eye stop for County Hall). Or Tube ~8 min to Trafalgar and board the frequent Yellow directly — also where the 45-min Kids Tour departs.",
-                "notes": [{ "type": "tip", "text": "Worth it as a tour + Louise's bus, not a 3-hr loop. Open top; lower deck is covered if it rains." }]
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Worth it as a tour + Louise's bus, not a 3-hr loop. Open top; lower deck is covered if it rains."
+                  }
+                ]
               },
               {
                 "id": "tube",
@@ -995,7 +1030,12 @@
                 "cost": "~£27 child + ~£27 adult",
                 "book": "Book a timed slot (thedungeons.com)",
                 "travel": "County Hall, by the London Eye — Tube to Waterloo/Westminster (~12 min from King's Cross).",
-                "notes": [{ "type": "tip", "text": "It's scares-plus-comedy, not horror; actors don't touch you. ~90 min." }]
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "It's scares-plus-comedy, not horror; actors don't touch you. ~90 min."
+                  }
+                ]
               },
               {
                 "id": "paddington",
@@ -1007,7 +1047,12 @@
                 "cost": "~£24 child + ~£34 adult",
                 "book": "Book a timed slot (paddingtonbearexperience.com)",
                 "travel": "Same building as the Dungeon (County Hall) — start ~20 min after the Dungeon so the two parties finish together.",
-                "notes": [{ "type": "tip", "text": "Buggy park + loos; reviews love it for 5-year-olds." }]
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Buggy park + loos; reviews love it for 5-year-olds."
+                  }
+                ]
               },
               {
                 "id": "skip-ch",
@@ -1159,7 +1204,7 @@
       "section": "London · Days 1–5",
       "order": 5,
       "plan": {
-        "intro": "Everything's a 5-minute walk apart in South Kensington. The NHM at 10 is booked — then tap your afternoon. (Pack for Paris tonight — 5:15 AM Eurostar!)",
+        "intro": "Everything's a 5-minute walk apart in South Kensington. The NHM at 10 is booked — then tap your afternoon.",
         "slots": [
           {
             "id": "nhm",
@@ -1259,7 +1304,8 @@
       },
       "events": [
         {
-          "text": "⚠ Pack for Paris TONIGHT — 5:15 AM Eurostar wake-up tomorrow"
+          "text": "⚠ Pack for Paris TONIGHT — 5:15 AM Eurostar wake-up tomorrow",
+          "surprise": true
         }
       ],
       "details": []
@@ -1421,7 +1467,8 @@
             }
           ]
         }
-      ]
+      ],
+      "surprise": true
     },
     {
       "day": "Sun",
@@ -1755,7 +1802,8 @@
             }
           ]
         }
-      ]
+      ],
+      "surprise": true
     },
     {
       "day": "Mon",
@@ -2047,7 +2095,8 @@
             }
           ]
         }
-      ]
+      ],
+      "surprise": true
     },
     {
       "day": "Tue",
@@ -2219,7 +2268,8 @@
             }
           ]
         }
-      ]
+      ],
+      "surprise": true
     }
   ],
   "budget": {
