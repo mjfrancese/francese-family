@@ -9,12 +9,22 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
   const hasDetails = details && details.length > 0
   const hasPlan = !!(plan && plan.slots && plan.slots.length > 0)
   const hasExpandable = hasDetails || hasPlan
-  // Labels of currently-chosen options, for a compact "your picks" preview.
-  const pickLabels = hasPlan
-    ? plan.slots
-        .map(s => { const o = s.options.find(o => o.id === daySelections[s.id]); return o ? o.label : null })
-        .filter(Boolean)
+  // For plan days, build the collapsed preview from the plan itself so fixed
+  // (booked) items sit in line at their time and choices show their status —
+  // all in chronological order. When expanded, DayPlan renders the full flow,
+  // so the header preview steps aside to avoid duplication.
+  const planPreview = hasPlan
+    ? plan.slots.map(s => {
+        if (s.fixed) {
+          return { time: s.time, text: s.label, status: s.status, statusLabel: s.statusLabel }
+        }
+        const chosen = s.options.find(o => o.id === daySelections[s.id])
+        return chosen
+          ? { time: s.time, text: `${s.title}: ${chosen.label}`, status: 'confirmed' }
+          : { time: s.time, text: `${s.title} — tap to choose` }
+      })
     : []
+  const headerItems = hasPlan ? (expanded ? events : [...planPreview, ...events]) : events
 
   return (
     <div style={{
@@ -97,21 +107,9 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
               </span>
             )}
           </div>
-          {pickLabels.length > 0 && (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 6 }}>
-              {pickLabels.map((l, i) => (
-                <span key={i} style={{
-                  fontSize: 10, color: colors.text, background: 'rgba(74,144,217,0.12)',
-                  border: `1px solid ${colors.cardBorderActive}`, borderRadius: 10, padding: '1px 8px',
-                }}>
-                  ✓ {l}
-                </span>
-              ))}
-            </div>
-          )}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            {events.slice(0, expanded ? events.length : 4).map((evt, i) => {
-              const isCurrent = i === currentEventIndex
+            {headerItems.slice(0, expanded ? headerItems.length : 5).map((evt, i) => {
+              const isCurrent = !hasPlan && i === currentEventIndex
               return (
                 <div key={i} style={{
                   display: 'flex',
@@ -135,8 +133,8 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
                 </div>
               )
             })}
-            {!expanded && events.length > 4 && (
-              <div style={{ fontSize: 10, color: colors.textDark }}>+{events.length - 4} more...</div>
+            {!expanded && headerItems.length > 5 && (
+              <div style={{ fontSize: 10, color: colors.textDark }}>+{headerItems.length - 5} more...</div>
             )}
           </div>
         </div>

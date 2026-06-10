@@ -27,6 +27,16 @@ export default function DayPlan({ plan, daySelections = {}, onSelect }) {
       )}
 
       {plan.slots.map((slot, si) => {
+        // Fixed entries (booked, set-time certainties) render in line at their
+        // time with no options — just a confirmed timeline card.
+        if (slot.fixed) {
+          return (
+            <div key={slot.id} style={{ marginBottom: 18 }}>
+              {si > 0 && <div style={connector} />}
+              <FixedEntry slot={slot} />
+            </div>
+          )
+        }
         const selectedId = daySelections[slot.id] || null
         const selected = slot.options.find((o) => o.id === selectedId) || null
         return (
@@ -114,6 +124,56 @@ function OptionDetail({ opt }) {
       )}
     </div>
   )
+}
+
+function FixedEntry({ slot }) {
+  const hasBody = slot.summary || slot.travel || slot.notes
+  return (
+    <div>
+      <div style={fixedRow}>
+        {slot.time && <span style={timeChip}>{slot.time}</span>}
+        <span style={{ flex: 1, fontFamily: fonts.heading, fontSize: 13, fontWeight: 600, color: colors.text }}>
+          {slot.label}
+        </span>
+        <span style={bookedBadge}>{slot.statusLabel || 'BOOKED'}</span>
+      </div>
+      {hasBody && (
+        <div style={{ ...detailCard, background: 'rgba(92,232,146,0.05)', borderColor: '#2d6b45' }}>
+          {slot.summary && (
+            <div style={{ fontSize: 12.5, color: colors.text, lineHeight: 1.5, marginBottom: slot.travel || slot.notes ? 8 : 0 }}>
+              {slot.summary}
+            </div>
+          )}
+          {slot.travel && (
+            <div style={{ display: 'flex', gap: 8, fontSize: 12, color: colors.textMuted, marginBottom: slot.notes ? 6 : 0, lineHeight: 1.5 }}>
+              <span style={{ flexShrink: 0 }}>🚇</span>
+              <span dangerouslySetInnerHTML={{ __html: slot.travel }} />
+            </div>
+          )}
+          {slot.notes && renderBullets(slot.notes)}
+        </div>
+      )}
+    </div>
+  )
+}
+
+const fixedRow = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+  padding: '7px 11px',
+  background: 'rgba(92,232,146,0.07)',
+  border: '1px solid #2d6b45',
+  borderRadius: 8,
+}
+
+const bookedBadge = {
+  fontFamily: fonts.mono,
+  fontSize: 9,
+  fontWeight: 700,
+  letterSpacing: 1,
+  color: colors.bullet.tip,
+  flexShrink: 0,
 }
 
 const slotHeader = {

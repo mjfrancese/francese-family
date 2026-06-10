@@ -865,6 +865,17 @@
             ]
           },
           {
+            "id": "matilda",
+            "fixed": true,
+            "time": "14:00",
+            "label": "🎭 Matilda the Musical · Dress Circle Row A · Seats 23-26",
+            "status": "booked",
+            "statusLabel": "26042Q",
+            "notes": [
+              { "type": "info", "text": "Arrive by ~1:35 (Cambridge Theatre, Seven Dials). Runs 2h40 — ends ~4:30. Chinatown's a 5-min walk after." }
+            ]
+          },
+          {
             "id": "evening",
             "title": "Evening (after the show)",
             "time": "~17:00",
@@ -893,21 +904,7 @@
           }
         ]
       },
-      "events": [
-        {
-          "text": "👇 Build your own below — tap options to shape the morning, lunch & evening. Matilda is the 2 PM anchor."
-        },
-        {
-          "time": "14:00",
-          "text": "🎭 Matilda the Musical · Dress Circle Row A · Seats 23-26",
-          "status": "booked",
-          "statusLabel": "26042Q"
-        },
-        {
-          "time": "~16:30",
-          "text": "Show ends — Chinatown is a 5-min walk"
-        }
-      ],
+      "events": [],
       "details": [
         {
           "icon": "🎒",
@@ -1125,18 +1122,7 @@
           }
         ]
       },
-      "events": [
-        {
-          "text": "👇 Build your own below — Borough Market anchors a flexible South Bank day. Tap to choose your stops."
-        },
-        {
-          "time": "~10:00",
-          "text": "🧀 Borough Market — the day's anchor (open from 10)"
-        },
-        {
-          "text": "Dinner near King's Cross / Coal Drops Yard"
-        }
-      ],
+      "events": [],
       "details": [
         {
           "icon": "🎒",
@@ -1217,6 +1203,17 @@
         "intro": "Everything's a 5-minute walk apart in South Kensington. The NHM at 10 is booked — then tap your afternoon. (Pack for Paris tonight — 5:15 AM Eurostar!)",
         "slots": [
           {
+            "id": "nhm",
+            "fixed": true,
+            "time": "10:00",
+            "label": "🦖 Natural History Museum (booked)",
+            "status": "booked",
+            "statusLabel": "S16729453",
+            "notes": [
+              { "type": "info", "text": "Hintze Hall blue whale + the dinosaur gallery. Allow ~90 min. South Kensington." }
+            ]
+          },
+          {
             "id": "midday",
             "title": "Hands-on midday",
             "time": "~13:00",
@@ -1294,15 +1291,6 @@
         ]
       },
       "events": [
-        {
-          "text": "👇 Build your own below — the museum quarter clusters NHM, Science Museum, V&A & Design Museum within 5 min. Tap to choose."
-        },
-        {
-          "time": "10:00",
-          "text": "🦖 Natural History Museum (booked) — Hintze Hall whale, dinosaurs",
-          "status": "booked",
-          "statusLabel": "S16729453"
-        },
         {
           "text": "⚠ Pack for Paris TONIGHT — 5:15 AM Eurostar wake-up tomorrow"
         }
