@@ -808,12 +808,16 @@
                 "for": "Everyone",
                 "tier": "gem",
                 "summary": "Covent Garden's 'Magic Corner' runs world-class street magicians from 11 AM — they pull little kids into the tricks. Pair it with the rainbow Neal's Yard courtyard 2 min away.",
-                "cost": "Free (tip the performer)",
+                "cost": "Free (tip optional)",
                 "travel": "Piccadilly line: King's Cross → Covent Garden, ~12 min.",
                 "notes": [
                   {
                     "type": "tip",
                     "text": "Arrive ~11 for a full 30-min set; stand near the front so Louise gets picked."
+                  },
+                  {
+                    "type": "warn",
+                    "text": "Cash for tips: you've been cashless — many performers now take contactless/tap-to-pay, or break a £10 note for coins at any Tesco. Don't plan around it."
                   }
                 ],
                 "then": "You're a 5-min walk from the Cambridge Theatre for Matilda."
@@ -936,12 +940,50 @@
       "section": "London · Days 1–5",
       "order": 4,
       "plan": {
-        "intro": "Meghan's South Bank string-of-pearls. Borough Market anchors it — tap the stops that fit the mood. It's too much to do all of it; pick a lane.",
+        "intro": "Meghan's South Bank day. Optionally split the morning at County Hall (by the Eye): pick BOTH the Dungeon and Paddington and use the 👥 who-chips to split (e.g. Meghan + Kenna → Dungeon, Michael + Louise → Paddington — same building, reconvene at the riverside). Then walk east to Borough. Tap the stops that fit the mood; it's too much to do all.",
         "slots": [
           {
-            "id": "start",
-            "title": "Start the day",
+            "id": "county-hall",
+            "title": "Morning — County Hall (by the Eye), or straight to the river",
             "time": "~10:00",
+            "options": [
+              {
+                "id": "london-dungeon",
+                "label": "London Dungeon",
+                "icon": "🏰",
+                "for": "Kenna",
+                "tier": "gem",
+                "summary": "A 90-min live-actor walk through London's dark history (Jack the Ripper, the Plague) — theatrical and darkly funny, designed for age 12+. Kenna's exactly the target age.",
+                "cost": "~£27 child + ~£27 adult",
+                "book": "Book a timed slot (thedungeons.com)",
+                "travel": "County Hall, by the London Eye — Tube to Waterloo/Westminster (~12 min from King's Cross).",
+                "notes": [{ "type": "tip", "text": "It's scares-plus-comedy, not horror; actors don't touch you. ~90 min." }]
+              },
+              {
+                "id": "paddington",
+                "label": "Paddington Bear Experience",
+                "icon": "🐻",
+                "for": "Louise",
+                "tier": "gem",
+                "summary": "A 70-min immersive theatre journey from Paddington Station to 32 Windsor Gardens — gentle, magical, no scares. Age 4+; perfect for Louise.",
+                "cost": "~£24 child + ~£34 adult",
+                "book": "Book a timed slot (paddingtonbearexperience.com)",
+                "travel": "Same building as the Dungeon (County Hall) — start ~20 min after the Dungeon so the two parties finish together.",
+                "notes": [{ "type": "tip", "text": "Buggy park + loos; reviews love it for 5-year-olds." }]
+              },
+              {
+                "id": "skip-ch",
+                "label": "Skip County Hall — straight to the river",
+                "icon": "🚶",
+                "for": "Everyone",
+                "summary": "Head straight to London Bridge for the Golden Hinde / Borough Market below."
+              }
+            ]
+          },
+          {
+            "id": "start",
+            "title": "Midday — Borough & the river",
+            "time": "~12:00",
             "options": [
               {
                 "id": "golden-hinde",

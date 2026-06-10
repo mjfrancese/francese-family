@@ -34,7 +34,7 @@ export function useChecklist(slug) {
     const item = items.find(i => i.id === id)
     if (!item) return
     const itemRef = ref(db, `trips/${slug}/checklist/${id}`)
-    update(itemRef, { done: !item.done })
+    update(itemRef, { done: !item.done }).catch((e) => console.error('Checklist write failed (check Firebase rules):', e))
   }, [slug, items])
 
   return { items, loading, toggle }

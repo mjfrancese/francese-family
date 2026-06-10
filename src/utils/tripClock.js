@@ -126,21 +126,23 @@ export function buildDayAgenda(day, daySelections = {}) {
   const dayTz = day?.tz || null
 
   for (const e of day?.events || []) {
-    items.push({ min: parseEventMinutes(e.time), time: e.time || null, text: e.text || '', tz: e.tz || dayTz, source: 'event', chosen: true })
+    items.push({ min: parseEventMinutes(e.time), time: e.time || null, text: e.text || '', tz: e.tz || dayTz, source: 'event', chosen: true, slotId: null, who: [] })
   }
 
   for (const slot of day?.plan?.slots || []) {
     if (slot.fixed) {
-      items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: slot.label || slot.title || '', tz: dayTz, source: 'fixed', chosen: true })
+      items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: slot.label || slot.title || '', tz: dayTz, source: 'fixed', chosen: true, slotId: slot.id, who: [] })
       continue
     }
     const map = normSlotLocal(daySelections[slot.id])
     const chosen = (slot.options || []).filter((o) => o.id in map)
     if (chosen.length === 0) {
-      items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: `${slot.title} — choose`, tz: dayTz, source: 'choice', chosen: false })
+      items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: `${slot.title} — choose`, tz: dayTz, source: 'choice', chosen: false, slotId: slot.id, who: [] })
     } else {
       for (const opt of chosen) {
-        items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: opt.label, tz: dayTz, source: 'choice', chosen: true })
+        const rawWho = map[opt.id]
+        const who = (rawWho && typeof rawWho === 'object') ? Object.keys(rawWho) : []
+        items.push({ min: parseEventMinutes(slot.time), time: slot.time || null, text: opt.label, tz: dayTz, source: 'choice', chosen: true, slotId: slot.id, who })
       }
     }
   }
@@ -148,6 +150,20 @@ export function buildDayAgenda(day, daySelections = {}) {
   const timed = items.filter((i) => i.min != null).sort((a, b) => a.min - b.min)
   const untimed = items.filter((i) => i.min == null)
   return [...timed, ...untimed]
+}
+
+// Group a day's timed agenda into buckets sharing a slot+time. The two arms of
+// a SPLIT (same slot, same minute) group together; everything else is its own
+// bucket. Order is preserved.
+function makeBuckets(timed) {
+  const buckets = []
+  const byKey = new Map()
+  timed.forEach((a, idx) => {
+    const key = (a.source === 'choice' && a.slotId != null) ? `slot:${a.slotId}:${a.min}` : `item:${idx}`
+    if (byKey.has(key)) byKey.get(key).push(a)
+    else { const b = [a]; buckets.push(b); byKey.set(key, b) }
+  })
+  return buckets
 }
 
 // --- the engine --------------------------------------------------------------
@@ -213,32 +229,40 @@ export function getTripClock(timeline, meta, nowInput, selections = {}) {
     const timed = agenda.filter((a) => a.min != null)
     // nowMin measured in each item's own zone (travel days cross zones).
     const nowMinFor = (tz) => now.mode === 'wall' ? now.minutes : minutesInTz(now.date, tz || today.tz)
-    let current = null
-    let next = null
-    for (const a of timed) {
-      if (a.min <= nowMinFor(a.tz)) current = a
+    // Group timed items into buckets that share a slot+time — the arms of a
+    // SPLIT (two options chosen in one slot, with different travelers) belong
+    // together so the banner can show both with who's on each.
+    const buckets = makeBuckets(timed)
+    let currentBucket = null
+    let nextBucket = null
+    for (const b of buckets) {
+      if (b[0].min <= nowMinFor(b[0].tz)) currentBucket = b
     }
-    for (const a of timed) {
-      if (a.min > nowMinFor(a.tz)) { next = a; break }
+    for (const b of buckets) {
+      if (b[0].min > nowMinFor(b[0].tz)) { nextBucket = b; break }
     }
     clock.today = today
     clock.agenda = agenda
-    clock.currentItem = current
-    clock.nextItem = next
+    clock.currentItems = currentBucket || []
+    clock.nextItems = nextBucket || []
+    clock.currentItem = currentBucket ? currentBucket[0] : null // back-compat
+    clock.nextItem = nextBucket ? nextBucket[0] : null
     // Legacy: DayCard highlights an event row by index. Only events (not plan
     // items) live in day.events, so map back when the current item is an event.
+    const current = clock.currentItem
     clock.currentEventIndex = current && current.source === 'event'
       ? (today.raw.events || []).findIndex((e) => e.text === current.text && e.time === current.time)
       : -1
     // If nothing later today, fall to the IMMEDIATELY following day's first
-    // agenda item — never skip days to a distant reminder.
-    if (!next) {
+    // time-slot (as a group) — never skip days to a distant reminder.
+    if (!nextBucket) {
       const tomorrow = days[todayIdx + 1]
       if (tomorrow) {
-        const tAgenda = buildDayAgenda(tomorrow.raw, selections[tomorrow.id] || {})
-        if (tAgenda.length) {
+        const tBuckets = makeBuckets(buildDayAgenda(tomorrow.raw, selections[tomorrow.id] || {}).filter((a) => a.min != null))
+        if (tBuckets.length) {
           clock.nextDay = tomorrow
-          clock.nextItem = tAgenda[0]
+          clock.nextItems = tBuckets[0]
+          clock.nextItem = tBuckets[0][0]
           clock.nextIsTomorrow = true
         }
       }

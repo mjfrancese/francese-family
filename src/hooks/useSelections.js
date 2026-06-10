@@ -25,6 +25,7 @@ export function useSelections(slug) {
     if (!slug || !dayId || !slotId) return
     const path = `trips/${slug}/selections/${dayId}/${slotId}`
     set(ref(db, path), Object.keys(map).length ? map : null)
+      .catch((e) => console.error('Selection write failed (check Firebase rules):', e))
   }, [slug])
 
   // Add/remove an option in a slot (multi-select; toggles on/off).

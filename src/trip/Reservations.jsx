@@ -28,9 +28,8 @@ export default function Reservations({ bookings }) {
     groups[cat].push(b)
   }
 
-  const sortedCategories = Object.keys(groups).sort((a, b) => {
-    return (categoryOrder.indexOf(a) ?? 99) - (categoryOrder.indexOf(b) ?? 99)
-  })
+  const rank = (c) => { const i = categoryOrder.indexOf(c); return i === -1 ? 99 : i }
+  const sortedCategories = Object.keys(groups).sort((a, b) => rank(a) - rank(b))
 
   return (
     <div>

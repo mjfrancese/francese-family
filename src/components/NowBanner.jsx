@@ -48,8 +48,10 @@ const kicker = {
   marginBottom: 8,
 }
 
-export default function NowBanner({ clock, onJumpToday }) {
+export default function NowBanner({ clock, travelers = [], onJumpToday }) {
   if (!clock || !clock.enabled) return null
+  const travelerMap = Object.fromEntries((travelers || []).map((t) => [t.id, t.label]))
+  const whoLabel = (ids) => (ids && ids.length ? ids.map((id) => travelerMap[id] || id).join(', ') : '')
 
   // ---- Upcoming: countdown -------------------------------------------------
   if (clock.status === 'upcoming') {
@@ -88,8 +90,8 @@ export default function NowBanner({ clock, onJumpToday }) {
   // ---- Active: you-are-here ------------------------------------------------
   if (clock.status !== 'active' || !clock.today) return null
   const today = clock.today.raw
-  const cur = clock.currentItem
-  const next = clock.nextItem
+  const curItems = clock.currentItems || []
+  const nextItems = clock.nextItems || []
   const heads = dayHeadsUp(today)
 
   return (
@@ -109,29 +111,45 @@ export default function NowBanner({ clock, onJumpToday }) {
         {today.day} {today.dayNum} {today.month} — {today.title}
       </div>
 
-      {/* Now / next */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 8 }}>
-        {cur && (
+      {/* Now / next — each is a GROUP, so a split shows both arms with who */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 8 }}>
+        {curItems.length > 0 && (
           <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12.5, color: colors.text }}>
             <span style={{ ...pill, background: '#1a3a2a', border: '1px solid #2d6b45', color: colors.bullet.tip }}>NOW</span>
-            <span style={{ flex: 1, fontStyle: cur.chosen ? 'normal' : 'italic', opacity: cur.chosen ? 1 : 0.7 }}>
-              {cur.time ? <strong style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.textDim, marginRight: 6 }}>{cur.time}</strong> : null}
-              {stripHtml(cur.text)}
-            </span>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 3 }}>
+              {curItems.map((item, i) => {
+                const who = whoLabel(item.who)
+                return (
+                  <span key={i} style={{ fontStyle: item.chosen ? 'normal' : 'italic', opacity: item.chosen ? 1 : 0.7 }}>
+                    {item.time && i === 0 ? <strong style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.textDim, marginRight: 6 }}>{item.time}</strong> : null}
+                    {who ? <strong style={{ color: colors.accent }}>{who}: </strong> : null}
+                    {stripHtml(item.text)}
+                  </span>
+                )
+              })}
+            </div>
           </div>
         )}
-        {next && (
+        {nextItems.length > 0 && (
           <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12.5, color: colors.textMuted }}>
             <span style={{ ...pill, background: '#3a2e1a', border: '1px solid #6b5a2d', color: colors.bullet.warn }}>
               {clock.nextIsTomorrow ? 'NEXT DAY' : 'NEXT'}
             </span>
-            <span style={{ flex: 1, fontStyle: next.chosen ? 'normal' : 'italic', opacity: next.chosen ? 1 : 0.7 }}>
-              {next.time ? <strong style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.textDim, marginRight: 6 }}>{next.time}</strong> : null}
-              {stripHtml(next.text)}
-            </span>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 3 }}>
+              {nextItems.map((item, i) => {
+                const who = whoLabel(item.who)
+                return (
+                  <span key={i} style={{ fontStyle: item.chosen ? 'normal' : 'italic', opacity: item.chosen ? 1 : 0.7 }}>
+                    {item.time && i === 0 ? <strong style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.textDim, marginRight: 6 }}>{item.time}</strong> : null}
+                    {who ? <strong style={{ color: colors.accent }}>{who}: </strong> : null}
+                    {stripHtml(item.text)}
+                  </span>
+                )
+              })}
+            </div>
           </div>
         )}
-        {!cur && !next && (
+        {curItems.length === 0 && nextItems.length === 0 && (
           <div style={{ fontSize: 12, color: colors.textDim }}>Nothing scheduled right now — enjoy.</div>
         )}
       </div>

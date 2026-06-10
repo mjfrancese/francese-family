@@ -8,7 +8,7 @@ import { colors, fonts } from '../theme'
 import { MapPin, ChevronRight } from 'lucide-react'
 
 // Render a run of days with section headers, as DayCards.
-function renderDays(days, { expandedDay, setExpandedDay, clock, todayRef, selections, travelers, toggleOption, toggleTraveler }) {
+function renderDays(days, { expandedDays, toggleDay, clock, todayRef, selections, travelers, toggleOption, toggleTraveler }) {
   let currentSection = null
   const out = []
   for (const day of days) {
@@ -30,8 +30,8 @@ function renderDays(days, { expandedDay, setExpandedDay, clock, todayRef, select
           title={day.title}
           events={day.events || []}
           details={day.details || []}
-          expanded={expandedDay === day.id}
-          onToggle={() => setExpandedDay(expandedDay === day.id ? null : day.id)}
+          expanded={expandedDays.has(day.id)}
+          onToggle={() => toggleDay(day.id)}
           isToday={isToday}
           currentEventIndex={isToday ? clock?.currentEventIndex ?? -1 : -1}
           plan={day.plan || null}
@@ -55,8 +55,14 @@ export default function DayByDay({ timeline, meta, selections = {}, travelers = 
     [timeline, meta, nowOverride, selections]
   )
 
-  // Default the open day to today (when the trip is active).
-  const [expandedDay, setExpandedDay] = useState(() => clock.todayId || null)
+  // Days expand independently (a Set), so opening another day never collapses
+  // today. Today starts open.
+  const [expandedDays, setExpandedDays] = useState(() => new Set(clock.todayId ? [clock.todayId] : []))
+  const toggleDay = (id) => setExpandedDays((prev) => {
+    const n = new Set(prev)
+    n.has(id) ? n.delete(id) : n.add(id)
+    return n
+  })
   const [showPast, setShowPast] = useState(false)
   const todayRef = useRef(null)
 
@@ -65,7 +71,7 @@ export default function DayByDay({ timeline, meta, selections = {}, travelers = 
   }
 
   const jumpToday = () => {
-    setExpandedDay(clock.todayId)
+    setExpandedDays((prev) => new Set(prev).add(clock.todayId))
     todayRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
@@ -74,11 +80,11 @@ export default function DayByDay({ timeline, meta, selections = {}, travelers = 
   const pastDays = isActiveAware ? timeline.slice(0, clock.todayIndex) : []
   const restDays = isActiveAware ? timeline.slice(clock.todayIndex) : timeline
 
-  const shared = { expandedDay, setExpandedDay, clock, todayRef, selections, travelers, toggleOption, toggleTraveler }
+  const shared = { expandedDays, toggleDay, clock, todayRef, selections, travelers, toggleOption, toggleTraveler }
 
   return (
     <div>
-      <NowBanner clock={clock} onJumpToday={isActiveAware ? jumpToday : undefined} />
+      <NowBanner clock={clock} travelers={travelers} onJumpToday={isActiveAware ? jumpToday : undefined} />
 
       {/* Earlier days (collapsed) */}
       {pastDays.length > 0 && (
