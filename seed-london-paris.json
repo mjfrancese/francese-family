@@ -1110,6 +1110,27 @@
                     "text": "Kappacasein's queue gets long — head there first."
                   }
                 ]
+              },
+              {
+                "id": "bank-gold",
+                "label": "Bank of England — lift the gold bar",
+                "icon": "🪙",
+                "for": "Louise",
+                "tier": "gem",
+                "summary": "Right after the market, walk over London Bridge into the City to the Bank of England Museum. Louise can reach into the case and try to lift a real 13kg (28lb) gold bar — plus a crack-the-safe game and the gold-vault display. Free, no ticket needed.",
+                "cost": "Free",
+                "travel": "~10-min walk north over London Bridge from Borough Market to Bartholomew Lane, EC2R 8AH (Bank station).",
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Allow ~45 min. The gold bar is the headline — head straight to the rotunda gold display so Louise gets her hands on it first."
+                  },
+                  {
+                    "type": "warn",
+                    "text": "Weekday-only: open Mon–Fri 10–5 (last entry 4:30), closed weekends. Jun 11 is your window — pairs perfectly with this Borough day."
+                  }
+                ],
+                "then": "Walk back across the river for your afternoon pick (Tate Modern / British Museum)."
               }
             ]
           },
