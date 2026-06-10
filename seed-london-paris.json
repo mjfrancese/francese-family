@@ -19,8 +19,8 @@
     "color": "#e8c55c",
     "surprise": {
       "title": "London 2026",
-      "dates": "Jun 7–12, 2026",
-      "description": "A family adventure in London.",
+      "dates": "Jun 7–16, 2026",
+      "description": "A 10-day family adventure in London.",
       "icon": "ferriswheel"
     }
   },
@@ -112,8 +112,7 @@
         "passport": true,
         "enteredOn": "2026-04-27",
         "note": "KTN entered for all 4. Verify TSA PRE✓ prints on outbound boarding pass when online check-in opens (~24h before BA220 on Jun 6)."
-      },
-      "surprise": true
+      }
     },
     {
       "category": "train",
@@ -158,8 +157,7 @@
       "confirmation": "c44d65da",
       "cost": "£40 total (both legs)",
       "paidWith": null,
-      "notes": null,
-      "surprise": true
+      "notes": null
     },
     {
       "category": "hotel",
@@ -335,8 +333,21 @@
       "confirmation": null,
       "cost": "$45.97",
       "paidWith": "Apple Pay Visa ••6866",
-      "notes": "Reservation confirmed, priority pickup at STL. Auto-adjusts to flight arrival.",
-      "surprise": true
+      "notes": "Reservation confirmed, priority pickup at STL. Auto-adjusts to flight arrival."
+    },
+    {
+      "category": "hotel",
+      "label": "Travelodge London Covent Garden",
+      "status": "booked",
+      "carrier": "Travelodge",
+      "detail": "Jun 13–16 (3 nights). Central location for the weekend. Breakfast included.",
+      "date": "Jun 13–16",
+      "time": "15:00 check-in",
+      "confirmation": "164080319",
+      "cost": "£612 (~$765)",
+      "paidWith": null,
+      "notes": "Switched hotels for the second half — closer to the West End and the river. Breakfast included all 3 mornings.",
+      "decoy": true
     }
   ],
   "timeline": [
@@ -2270,6 +2281,245 @@
         }
       ],
       "surprise": true
+    },
+    {
+      "day": "Sat",
+      "dayNum": "13",
+      "month": "JUN",
+      "title": "Tower of London & Tower Bridge",
+      "date": "2026-06-13",
+      "tz": "Europe/London",
+      "section": "London · Weekend",
+      "order": 6,
+      "decoy": true,
+      "events": [
+        {
+          "time": "~09:00",
+          "text": "Switch hotels — bags to the Travelodge Covent Garden (drop and go; room's ready at 3). Then ride the Tube to Tower Hill."
+        },
+        {
+          "time": "10:00",
+          "text": "🏰 Tower of London — the Crown Jewels first (the queue builds fast), then a Yeoman Warder 'Beefeater' tour. Ravens, the White Tower, the armoury.",
+          "status": "action",
+          "statusLabel": "BUY TIX"
+        },
+        {
+          "time": "~12:30",
+          "text": "Lunch at the riverside by St Katharine Docks — quieter than Tower Hill, boats to look at."
+        },
+        {
+          "time": "~14:00",
+          "text": "🌉 Walk across Tower Bridge — the glass-floor walkway high over the road, then the Victorian engine rooms below."
+        },
+        {
+          "time": "~16:00",
+          "text": "Riverside stroll to a viewpoint, ice cream, easy afternoon. Dinner near Covent Garden by the new hotel."
+        }
+      ],
+      "details": [
+        {
+          "icon": "🎟️",
+          "title": "Book ahead",
+          "color": "#b88ad9",
+          "items": [
+            {
+              "type": "info",
+              "text": "Buy Tower of London tickets online the night before — cheaper and a timed slot. Louise is free; Kenna's a child rate."
+            },
+            {
+              "type": "tip",
+              "text": "Get there for the 10:00 opening and head straight to the Crown Jewels before the coach crowds arrive."
+            }
+          ]
+        },
+        {
+          "icon": "💡",
+          "title": "Local intel",
+          "color": "#5ce892",
+          "items": [
+            {
+              "type": "tip",
+              "text": "The Yeoman Warder tours leave every 30 min from just inside the gate and are included — funny, full of grim stories the kids will love."
+            },
+            {
+              "type": "tip",
+              "text": "Tower Bridge lifts for tall ships on a published schedule (tap 'Bridge Lift Times' on the day) — catching one is a thrill."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Sun",
+      "dayNum": "14",
+      "month": "JUN",
+      "title": "Greenwich by River",
+      "date": "2026-06-14",
+      "tz": "Europe/London",
+      "section": "London · Weekend",
+      "order": 7,
+      "decoy": true,
+      "events": [
+        {
+          "time": "~10:00",
+          "text": "🚢 Uber Boat (Thames Clipper) downriver to Greenwich — a proper boat ride past the Tower, the bridges and Canary Wharf (Louise's favourite kind of transport)."
+        },
+        {
+          "time": "~11:00",
+          "text": "⛵ Cutty Sark — climb aboard the last great tea clipper; you can stand right under the hull."
+        },
+        {
+          "time": "~12:30",
+          "text": "Greenwich Market for lunch — street food stalls, crafts, sweets."
+        },
+        {
+          "time": "~14:00",
+          "text": "🌍 Walk up through Greenwich Park to the Royal Observatory — stand on the Prime Meridian (one foot in each hemisphere) and see the famous time ball."
+        },
+        {
+          "time": "~16:00",
+          "text": "Run around the park with the best skyline view in London, then the boat back. Relaxed dinner near the hotel."
+        }
+      ],
+      "details": [
+        {
+          "icon": "💡",
+          "title": "Local intel",
+          "color": "#5ce892",
+          "items": [
+            {
+              "type": "tip",
+              "text": "The boat is the whole point — sit up top on the open deck. Contactless taps the same as the Tube; under-11s ride free."
+            },
+            {
+              "type": "tip",
+              "text": "The Prime Meridian courtyard photo (standing on the line) is the classic Greenwich shot. The Observatory's planetarium has short kid shows if it rains."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Mon",
+      "dayNum": "15",
+      "month": "JUN",
+      "title": "Harry Potter Studio Tour",
+      "date": "2026-06-15",
+      "tz": "Europe/London",
+      "section": "London · Weekend",
+      "order": 8,
+      "decoy": true,
+      "events": [
+        {
+          "time": "~08:30",
+          "text": "🚆 Out to Watford for the Warner Bros. Studio Tour — 'The Making of Harry Potter'. Train from Euston (~20 min) + the studio shuttle bus."
+        },
+        {
+          "time": "10:00",
+          "text": "🪄 Studio Tour entry — the real Great Hall, Diagon Alley, the Hogwarts Express platform, Gringotts, and the giant castle model. Allow 3.5–4 hours.",
+          "status": "action",
+          "statusLabel": "BUY TIX"
+        },
+        {
+          "time": "~12:30",
+          "text": "Butterbeer in the backlot (the foamy non-alcoholic kind) + lunch at the studio café."
+        },
+        {
+          "time": "~14:30",
+          "text": "Finish the tour, the gift shop (wands!), then the shuttle + train back to London."
+        },
+        {
+          "time": "~17:00",
+          "text": "Last London evening — Covent Garden buskers, a final dinner, and pack for the morning."
+        }
+      ],
+      "details": [
+        {
+          "icon": "🎟️",
+          "title": "Book ahead — this one sells out",
+          "color": "#b88ad9",
+          "items": [
+            {
+              "type": "warn",
+              "text": "Studio Tour tickets MUST be pre-booked for a timed slot — they sell out weeks ahead, never sold at the door. Lock in the ~10:00 entry."
+            },
+            {
+              "type": "tip",
+              "text": "It ties right back to Platform 9¾ at King's Cross from arrival day — Kenna and Louise will both be buzzing."
+            }
+          ]
+        },
+        {
+          "icon": "🚆",
+          "title": "Getting there",
+          "color": "#4a90d9",
+          "items": [
+            {
+              "type": "info",
+              "text": "London Euston → Watford Junction (~20 min, frequent), then the dedicated Studio Tour shuttle bus (~15 min). Or a direct coach option from central London."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tue",
+      "dayNum": "16",
+      "month": "JUN",
+      "title": "Fly Home",
+      "date": "2026-06-16",
+      "tz": "Europe/London",
+      "section": "Return Journey",
+      "order": 9,
+      "decoy": true,
+      "events": [
+        {
+          "time": "~09:30",
+          "text": "Slow morning — breakfast, last-minute packing, check out and leave bags at reception if you want a final wander."
+        },
+        {
+          "time": "~12:45",
+          "text": "Tube/Elizabeth line to Paddington (~15 min with the bags)."
+        },
+        {
+          "time": "~13:00",
+          "text": "🚄 Heathrow Express → Terminal 5 (15 min)",
+          "status": "booked",
+          "statusLabel": "c44d65da"
+        },
+        {
+          "time": "~13:15",
+          "text": "Arrive Heathrow T5 — comfortable buffer before the flight ✅"
+        },
+        {
+          "time": "16:25",
+          "text": "✈ BA221 · LHR → STL",
+          "status": "booked",
+          "statusLabel": "YUAD5K"
+        },
+        {
+          "time": "19:30",
+          "tz": "America/Chicago",
+          "text": "Arrive St. Louis! Welcome home 🏠"
+        }
+      ],
+      "details": [
+        {
+          "icon": "🎒",
+          "title": "Before you leave",
+          "color": "#b88ad9",
+          "items": [
+            {
+              "type": "info",
+              "text": "Have the BA221 boarding passes and passports ready. Check-in closes 60 min before departure (15:25) — be at the T5 counter with time to spare."
+            },
+            {
+              "type": "info",
+              "text": "An Uber is booked to pick you up at STL when BA221 lands (~7:30 PM) and bring everyone home."
+            }
+          ]
+        }
+      ]
     }
   ],
   "budget": {

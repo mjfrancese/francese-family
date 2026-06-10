@@ -6,7 +6,7 @@ import { useChecklist } from '../hooks/useChecklist'
 import { useSelections } from '../hooks/useSelections'
 import { useAccess } from '../hooks/useAccess'
 import { colors, fonts, styles } from '../theme'
-import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Settings, Plane, ShieldCheck } from 'lucide-react'
+import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Settings, Plane, ShieldCheck, Eye, EyeOff } from 'lucide-react'
 import DayByDay from './DayByDay'
 import Reservations from './Reservations'
 import Budget from './Budget'
@@ -38,6 +38,7 @@ export default function TripDashboard() {
   const [activeTab, setActiveTab] = useState('daybyday')
   const [showShare, setShowShare] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
+  const [previewSurprise, setPreviewSurprise] = useState(false) // owners preview Kenna's view
 
   const loading = dataLoading || checkLoading || accessLoading
 
@@ -75,33 +76,40 @@ export default function TripDashboard() {
   }
 
   // --- Surprise filtering ---------------------------------------------------
-  // A "surprise-hidden" viewer (e.g. Kenna) must see ZERO of the tagged
-  // content. We strip it at every level: whole days/bookings, individual
-  // events/detail-items/plan options, and apply the meta.surprise overrides.
+  // Two viewer modes share one pipeline:
+  //   • surprise-hidden viewer (e.g. Kenna) OR an owner previewing her view
+  //     → surpriseView = true. They must see ZERO `surprise:true` content,
+  //       but DO see `decoy:true` content (the fake London days that fill
+  //       her trip so it reads as a complete, coherent week).
+  //   • the real owner view → surpriseView = false. Sees all real content,
+  //       and NEVER sees decoy content (it would pollute the true itinerary).
+  // The `visible` predicate captures both rules with one flag.
+  const surpriseView = hideSurprise || previewSurprise
+  const visible = (x) => surpriseView ? !x.surprise : !x.decoy
   const stripDay = (d) => ({
     ...d,
-    events: (d.events || []).filter(e => !e.surprise),
+    events: (d.events || []).filter(visible),
     details: (d.details || [])
-      .filter(s => !s.surprise)
-      .map(s => ({ ...s, items: (s.items || []).filter(it => !it.surprise) }))
+      .filter(visible)
+      .map(s => ({ ...s, items: (s.items || []).filter(visible) }))
       .filter(s => (s.items || []).length > 0),
     plan: d.plan ? {
       ...d.plan,
       slots: (d.plan.slots || [])
-        .filter(s => !s.surprise)
-        .map(s => s.options ? { ...s, options: s.options.filter(o => !o.surprise) } : s),
+        .filter(visible)
+        .map(s => s.options ? { ...s, options: s.options.filter(visible) } : s),
     } : d.plan,
   })
-  const viewMeta = hideSurprise && meta.surprise ? { ...meta, ...meta.surprise } : meta
-  const viewTimeline = hideSurprise ? (timeline || []).filter(d => !d.surprise).map(stripDay) : timeline
-  const viewBookings = hideSurprise ? (bookings || []).filter(b => !b.surprise) : bookings
-  const viewChecklist = hideSurprise ? checklistItems.filter(i => !i.surprise) : checklistItems
+  const viewMeta = surpriseView && meta.surprise ? { ...meta, ...meta.surprise } : meta
+  const viewTimeline = (timeline || []).filter(visible).map(stripDay)
+  const viewBookings = (bookings || []).filter(visible)
+  const viewChecklist = checklistItems.filter(visible)
 
   // Hide flights tab unless trip has flight options (planning mode).
   // Surprise-hidden viewers get only Day-by-Day + Reservations (everything
   // else risks leaking, so it's withheld entirely).
   const availableTabs = TABS.filter(t => {
-    if (hideSurprise) return t.key === 'daybyday' || t.key === 'reservations'
+    if (surpriseView) return t.key === 'daybyday' || t.key === 'reservations'
     if (t.key === 'flights') return !!flightOptions
     if (t.key === 'profile') return !!travelers
     return true
@@ -113,6 +121,23 @@ export default function TripDashboard() {
 
   return (
     <div style={{ minHeight: '100vh', background: colors.bg, fontFamily: fonts.body }}>
+      {isOwner && previewSurprise && (
+        <div style={{
+          background: colors.accent,
+          color: '#fff',
+          fontSize: 12,
+          fontFamily: fonts.body,
+          textAlign: 'center',
+          padding: '7px 12px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 8,
+        }}>
+          <Eye size={13} />
+          Previewing Kenna's view — Disney &amp; Paris hidden, decoy London days shown
+        </div>
+      )}
       {/* Header */}
       <header style={{
         padding: '14px 16px 0',
@@ -142,8 +167,24 @@ export default function TripDashboard() {
           >
             <ArrowLeft size={14} /> Home
           </button>
-          {isOwner && (
+          {isOwner && !surpriseView && (
             <div style={{ display: 'flex', gap: 8 }}>
+              <button
+                onClick={() => setPreviewSurprise(true)}
+                title="Preview Kenna's view"
+                style={{
+                  padding: '6px 10px',
+                  background: 'none',
+                  border: `1px solid ${colors.border}`,
+                  borderRadius: 6,
+                  color: colors.textMuted,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Eye size={14} />
+              </button>
               <button
                 onClick={() => setShowSettings(true)}
                 style={{
@@ -175,6 +216,26 @@ export default function TripDashboard() {
                 Share
               </button>
             </div>
+          )}
+          {isOwner && previewSurprise && (
+            <button
+              onClick={() => setPreviewSurprise(false)}
+              style={{
+                padding: '6px 14px',
+                background: colors.accent,
+                border: 'none',
+                borderRadius: 6,
+                color: '#fff',
+                fontSize: 11,
+                cursor: 'pointer',
+                fontFamily: fonts.body,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
+            >
+              <EyeOff size={14} /> Exit preview
+            </button>
           )}
         </div>
 
