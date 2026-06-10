@@ -943,6 +943,44 @@
         "intro": "Meghan's South Bank day. Optionally split the morning at County Hall (by the Eye): pick BOTH the Dungeon and Paddington and use the 👥 who-chips to split (e.g. Meghan + Kenna → Dungeon, Michael + Louise → Paddington — same building, reconvene at the riverside). Then walk east to Borough. Tap the stops that fit the mood; it's too much to do all.",
         "slots": [
           {
+            "id": "getting-there",
+            "title": "Start the day — Louise's double-decker 🚌",
+            "time": "~9:00",
+            "options": [
+              {
+                "id": "red-bus",
+                "label": "Normal red double-decker (the smart pick)",
+                "icon": "🚌",
+                "for": "Louise",
+                "tier": "gem",
+                "summary": "Hop a regular red double-decker (Route 91) from King's Cross and grab the top-front seats — the exact iconic bus Louise wants. Ride ~20 min to Trafalgar, then walk over Westminster Bridge to the Eye / County Hall.",
+                "cost": "~£4 (2 adult taps; Louise FREE, Kenna 50% w/ Young Visitor discount)",
+                "travel": "Board at King's Cross St Pancras (Stop R). Contactless tap — under-11s ride free, no ticket.",
+                "notes": [{ "type": "tip", "text": "Same red double-decker as the tour buses, for pennies — and it drops you a short walk from County Hall." }],
+                "then": "Walk Westminster Bridge → County Hall (Dungeon / Paddington below)."
+              },
+              {
+                "id": "hoho",
+                "label": "Tootbus hop-on-hop-off tour",
+                "icon": "🎫",
+                "for": "Everyone",
+                "summary": "Open-top sightseeing bus — board at Trafalgar, hop off at the London Eye for County Hall, then keep using the all-day pass (Borough, Tower, etc.). Add the 45-min live-guided Kids Tour — the real gem for a 5-year-old.",
+                "cost": "~£63–98 family (book online)",
+                "book": "Book online (tootbus.com); Kids Tour sells out in summer",
+                "travel": "Start from Trafalgar Sq (every ~15 min), not the slow King's Cross connector.",
+                "notes": [{ "type": "tip", "text": "Worth it as a tour + Louise's bus, not a 3-hr loop. Open top; lower deck is covered if it rains." }]
+              },
+              {
+                "id": "tube",
+                "label": "Skip the bus — just Tube it",
+                "icon": "🚇",
+                "for": "Everyone",
+                "summary": "Tube to Waterloo (~15 min), 3-min walk to County Hall. Fastest, no fuss.",
+                "cost": "~£3 (Louise free)"
+              }
+            ]
+          },
+          {
             "id": "county-hall",
             "title": "Morning — County Hall (by the Eye), or straight to the river",
             "time": "~10:00",
