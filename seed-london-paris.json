@@ -788,32 +788,114 @@
       "day": "Wed",
       "dayNum": "10",
       "month": "JUN",
-      "title": "West End Matinee Day",
+      "title": "West End — Magic, Fashion & Matilda",
       "date": "2026-06-10",
       "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 3,
+      "plan": {
+        "intro": "Tap a choice at each step to shape the day — picks stick and sync for both of you. Matilda at 2 PM is the fixed point.",
+        "slots": [
+          {
+            "id": "morning",
+            "title": "Morning — pick your vibe",
+            "time": "~10:30",
+            "options": [
+              {
+                "id": "magic",
+                "label": "Street magic + Neal's Yard",
+                "icon": "🎩",
+                "for": "Everyone",
+                "tier": "gem",
+                "summary": "Covent Garden's 'Magic Corner' runs world-class street magicians from 11 AM — they pull little kids into the tricks. Pair it with the rainbow Neal's Yard courtyard 2 min away.",
+                "cost": "Free (tip the performer)",
+                "travel": "Piccadilly line: King's Cross → Covent Garden, ~12 min.",
+                "notes": [{ "type": "tip", "text": "Arrive ~11 for a full 30-min set; stand near the front so Louise gets picked." }],
+                "then": "You're a 5-min walk from the Cambridge Theatre for Matilda."
+              },
+              {
+                "id": "fashion",
+                "label": "Fashion loop for Kenna",
+                "icon": "👗",
+                "for": "Kenna",
+                "summary": "Seven Dials boutiques + vintage (Goldsmith, Size?) → Carnaby Street (Brandy Melville, Monki) → Liberty London (the Tudor building + the famous scarf hall).",
+                "cost": "Free to browse",
+                "travel": "Piccadilly line to Covent Garden; it's all walkable up to Carnaby/Liberty (~10 min).",
+                "notes": [{ "type": "tip", "text": "Liberty's Tudor halls + scarf room are the most fashion-immersive free spot in London." }],
+                "then": "Loop back down to Seven Dials for the theatre."
+              },
+              {
+                "id": "soanes",
+                "label": "Sir John Soane's Museum",
+                "icon": "🏛️",
+                "for": "Everyone",
+                "tier": "gem",
+                "summary": "A Georgian house crammed with antiquities — walls that swing open to reveal hidden paintings, and an Egyptian sarcophagus in a candlelit crypt. Free and wonderfully weird.",
+                "cost": "Free",
+                "travel": "Piccadilly line to Holborn (~10 min), then a 4-min walk to Lincoln's Inn Fields.",
+                "notes": [
+                  { "type": "tip", "text": "Go at the 10 AM opening — it's small and gets crowded. Allow 45 min." },
+                  { "type": "warn", "text": "Add Goodwin's Court nearby — a gas-lit 'Diagon Alley' cobbled passage, free." }
+                ],
+                "then": "Walk ~12 min to the Cambridge Theatre."
+              }
+            ]
+          },
+          {
+            "id": "lunch",
+            "title": "Lunch (near the theatre)",
+            "time": "~12:30",
+            "options": [
+              {
+                "id": "seven-dials",
+                "label": "Seven Dials Market",
+                "icon": "🍜",
+                "for": "Everyone",
+                "summary": "Covered food hall, ~20 vendors (Bleecker burgers, Pizza Pilgrims, dumplings) — 2 min from the Cambridge Theatre.",
+                "cost": "~£8–14pp"
+              },
+              {
+                "id": "chippy",
+                "label": "Rock & Sole Plaice",
+                "icon": "🐟",
+                "for": "Everyone",
+                "summary": "London's oldest chippy (1871), 3 min from Covent Garden — proper cod & chips at tables out in the alley.",
+                "cost": "~£15pp"
+              }
+            ]
+          },
+          {
+            "id": "evening",
+            "title": "Evening (after the show)",
+            "time": "~17:00",
+            "options": [
+              {
+                "id": "chinatown",
+                "label": "Chinatown dinner",
+                "icon": "🥟",
+                "for": "Everyone",
+                "summary": "Gerrard Street is a 5-min walk from the theatre — dumplings, roast meats, bubble tea.",
+                "cost": "varies",
+                "then": "Home: Piccadilly line Leicester Sq → King's Cross (~10 min), or a cab."
+              },
+              {
+                "id": "fairy",
+                "label": "Fairy Tales exhibition, then dinner by the hotel",
+                "icon": "📚",
+                "for": "Louise",
+                "tier": "gem",
+                "summary": "The British Library's immersive Fairy Tales show (costumes, puppets, pop-up books) is 5 min from the Travelodge — squarely Louise's world. Dinner at Coal Drops Yard after.",
+                "cost": "£11.50 adult",
+                "book": "Pre-book a timed slot (events.bl.uk)",
+                "travel": "Piccadilly line back to King's Cross, ~10 min."
+              }
+            ]
+          }
+        ]
+      },
       "events": [
         {
-          "text": "Morning: Covent Garden shops + street performers"
-        },
-        {
-          "time": "~11:30",
-          "text": "Head to V&A Museum (Tube to South Kensington)"
-        },
-        {
-          "time": "12:30",
-          "text": "👗 V&A Fashion Tour (45 min)",
-          "status": "action",
-          "statusLabel": "BOOK AHEAD"
-        },
-        {
-          "time": "13:15",
-          "text": "Tube: South Kensington → Leicester Square (~15 min)"
-        },
-        {
-          "time": "~13:35",
-          "text": "Arrive Cambridge Theatre — 25 min buffer ⚠️"
+          "text": "👇 Build your own below — tap options to shape the morning, lunch & evening. Matilda is the 2 PM anchor."
         },
         {
           "time": "14:00",
@@ -823,13 +905,7 @@
         },
         {
           "time": "~16:30",
-          "text": "Show ends"
-        },
-        {
-          "text": "⭐ Gems right here: Neal's Yard (secret color courtyard, 2 min away) + Rock & Sole Plaice (London's oldest chippy, 1871) for a cheap, great lunch; Paddington Bear statue if you pass through Paddington."
-        },
-        {
-          "text": "Dinner in Covent Garden or Chinatown"
+          "text": "Show ends — Chinatown is a 5-min walk"
         }
       ],
       "details": [
@@ -923,24 +999,142 @@
       "day": "Thu",
       "dayNum": "11",
       "month": "JUN",
-      "title": "British Museum + Regent's Park",
+      "title": "South Bank — Galleon, Market & Galleries",
       "date": "2026-06-11",
       "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 4,
+      "plan": {
+        "intro": "Meghan's South Bank string-of-pearls. Borough Market anchors it — tap the stops that fit the mood. It's too much to do all of it; pick a lane.",
+        "slots": [
+          {
+            "id": "start",
+            "title": "Start the day",
+            "time": "~10:00",
+            "options": [
+              {
+                "id": "golden-hinde",
+                "label": "Golden Hinde galleon first",
+                "icon": "🏴‍☠️",
+                "for": "Louise",
+                "tier": "gem",
+                "summary": "Climb aboard a full-size Tudor galleon (Drake's ship) 2 min from Borough — three decks, cannons, captain's cabin. A real pirate ship.",
+                "cost": "£6 all ages",
+                "travel": "Thameslink St Pancras → London Bridge (~6 min) or Northern line (~12 min); 5-min walk to St Mary Overie Dock.",
+                "notes": [{ "type": "tip", "text": "Do it FIRST at 10 AM while Louise is fresh and before the market packs out." }],
+                "then": "Borough Market is right next door."
+              },
+              {
+                "id": "borough-first",
+                "label": "Straight to Borough Market",
+                "icon": "🧀",
+                "for": "Everyone",
+                "summary": "Graze the stalls before the crowds build: Kappacasein grilled cheese, Bread Ahead doughnuts, Turnips chocolate strawberries.",
+                "cost": "~£5–10pp grazing",
+                "travel": "Thameslink St Pancras → London Bridge (~6 min); 3-min walk.",
+                "notes": [{ "type": "tip", "text": "Kappacasein's queue gets long — head there first." }]
+              }
+            ]
+          },
+          {
+            "id": "river-delight",
+            "title": "A delight along the river — pick one",
+            "time": "~12:00",
+            "options": [
+              {
+                "id": "hays",
+                "label": "Hays Galleria 'Navigators'",
+                "icon": "⚙️",
+                "for": "Everyone",
+                "tier": "gem",
+                "summary": "A 60-ft kinetic bronze sea-monster ship in a Victorian glass arcade — bizarre and spectacular at kid height. 3 min east of the market.",
+                "cost": "Free"
+              },
+              {
+                "id": "leake",
+                "label": "Leake Street graffiti tunnel",
+                "icon": "🎨",
+                "for": "Kenna",
+                "tier": "gem",
+                "summary": "London's legal street-art tunnel under Waterloo — artists painting live, walls that change daily. Kenna's camera will love it.",
+                "cost": "Free",
+                "travel": "~15-min riverside walk west toward Waterloo.",
+                "then": "Loop back east toward Tate Modern."
+              },
+              {
+                "id": "replay",
+                "label": "REPLAY recycled playground",
+                "icon": "🧱",
+                "for": "Louise",
+                "tier": "gem",
+                "summary": "A giant adventure playground built entirely from recycled materials, inside the Royal Festival Hall — pick up, build, wear, destroy. Louise-bait.",
+                "cost": "£7.50pp",
+                "book": "Pre-book a 1-hr slot (southbankcentre.co.uk)",
+                "travel": "On the South Bank by the Eye — ~12-min walk west."
+              }
+            ]
+          },
+          {
+            "id": "culture",
+            "title": "Fashion or art",
+            "time": "~13:30",
+            "options": [
+              {
+                "id": "ftm",
+                "label": "Fashion & Textile Museum",
+                "icon": "👗",
+                "for": "Kenna",
+                "summary": "Meghan's pick — 'Paint! Pattern! Print!', the sisters behind Liberty's famous prints. Small, vivid, design-focused.",
+                "cost": "£12.65",
+                "travel": "5-min walk from Borough Market down Bermondsey Street."
+              },
+              {
+                "id": "tate",
+                "label": "Tate Modern + Level 10 view",
+                "icon": "🖼️",
+                "for": "Everyone",
+                "summary": "Turbine Hall + the free Level 10 skyline view (better than paying for the Shard). Cross the Millennium Bridge for the St Paul's shot.",
+                "cost": "Free",
+                "travel": "~15-min riverside walk from the market."
+              }
+            ]
+          },
+          {
+            "id": "afternoon",
+            "title": "Afternoon",
+            "time": "~15:30",
+            "options": [
+              {
+                "id": "british-museum",
+                "label": "British Museum + Cartoon Museum",
+                "icon": "🏛️",
+                "for": "Everyone",
+                "summary": "Mummies, the Rosetta Stone, the Great Court — plus the tiny Cartoon Museum next door (free for kids, Kenna's kind of place).",
+                "cost": "Free",
+                "travel": "Tube to Tottenham Court Road / Holborn (~15 min), short walk."
+              },
+              {
+                "id": "wind-down",
+                "label": "Back to King's Cross / Coal Drops Yard",
+                "icon": "🚶",
+                "for": "Everyone",
+                "summary": "Wind down near the hotel — Granary Square fountains, Coal Drops Yard, easy dinner. Good if everyone's spent.",
+                "cost": "—"
+              }
+            ]
+          }
+        ]
+      },
       "events": [
         {
-          "text": "British Museum (mummies, Greek marbles)"
+          "text": "👇 Build your own below — Borough Market anchors a flexible South Bank day. Tap to choose your stops."
         },
         {
-          "time": "10:30",
-          "text": "⭐ Jason's narrowboat — Little Venice → Camden through the Maida Hill tunnel (45 min, a real 100-yr-old boat). Pairs perfectly with Regent's Park. Call ahead about stepping aboard for Meghan."
+          "time": "~10:00",
+          "text": "🧀 Borough Market — the day's anchor (open from 10)"
         },
         {
-          "text": "Regent's Park playgrounds / pedal boats. ⭐ Or swap in the Postal Museum + Mail Rail (15-min walk from the hotel — an underground train ride kids adore; BOOK the Mail Rail slot ahead, it sells out in summer). The British Library (free, 5 min away) is worth a quick Treasures-gallery peek."
-        },
-        {
-          "text": "Dinner near Kings Cross"
+          "text": "Dinner near King's Cross / Coal Drops Yard"
         }
       ],
       "details": [
@@ -1014,33 +1208,103 @@
       "day": "Fri",
       "dayNum": "12",
       "month": "JUN",
-      "title": "Museums (Split Day) + Pack for Paris",
+      "title": "Museum Quarter — Dinosaurs, Science & Fashion",
       "date": "2026-06-12",
       "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 5,
+      "plan": {
+        "intro": "Everything's a 5-minute walk apart in South Kensington. The NHM at 10 is booked — then tap your afternoon. (Pack for Paris tonight — 5:15 AM Eurostar!)",
+        "slots": [
+          {
+            "id": "midday",
+            "title": "Hands-on midday",
+            "time": "~13:00",
+            "options": [
+              {
+                "id": "wonderlab",
+                "label": "Science Museum WonderLab",
+                "icon": "🔬",
+                "for": "Everyone",
+                "tier": "gem",
+                "summary": "A hands-on science playground 3 min from the NHM — Van de Graaff hair-raising, body-sized bubbles, live shows every 30 min.",
+                "cost": "£17pp (family discount)",
+                "book": "Pre-book a ~1:30 slot (sciencemuseum.org.uk)",
+                "travel": "3-min walk from the NHM along Exhibition Road."
+              },
+              {
+                "id": "diana",
+                "label": "Diana Memorial Playground",
+                "icon": "🛝",
+                "for": "Louise",
+                "tier": "gem",
+                "summary": "A Peter Pan-themed adventure playground with a giant pirate galleon, in Kensington Gardens. Free.",
+                "cost": "Free",
+                "book": "Verify it's reopened the morning of (royalparks.org.uk)",
+                "travel": "~12-min walk through Kensington Gardens from the NHM."
+              },
+              {
+                "id": "va-free",
+                "label": "V&A free galleries + lunch",
+                "icon": "🏛️",
+                "for": "Everyone",
+                "summary": "The V&A's free fashion, photography & Cast Courts (a giant plaster Trajan's Column!), plus its courtyard café for Louise's lunch/nap.",
+                "cost": "Free",
+                "travel": "5-min walk from the NHM."
+              }
+            ]
+          },
+          {
+            "id": "fashion-finale",
+            "title": "Kenna's fashion finale — pick ONE",
+            "time": "~14:30",
+            "options": [
+              {
+                "id": "schiaparelli",
+                "label": "V&A: Schiaparelli",
+                "icon": "👗",
+                "for": "Kenna",
+                "summary": "The blockbuster surrealist-fashion show — Dalí's lobster dress, the skeleton dress, 100 garments. The fashion exhibition of 2026.",
+                "cost": "£28 adult",
+                "book": "Book ahead — selling out",
+                "travel": "Inside the V&A, 5 min from the NHM."
+              },
+              {
+                "id": "nigo",
+                "label": "Design Museum: NIGO",
+                "icon": "👟",
+                "for": "Kenna",
+                "tier": "gem",
+                "summary": "First UK retrospective of NIGO (BAPE / KENZO) — streetwear as culture, opening with his recreated teenage bedroom. The standout teen pick.",
+                "cost": "£15 adult / £7.65 child",
+                "travel": "~15-min walk or short bus to Kensington High Street.",
+                "notes": [{ "type": "tip", "text": "Has a free permanent gallery + garden too." }]
+              },
+              {
+                "id": "saatchi",
+                "label": "Saatchi: The Sun & the Moon",
+                "icon": "🎡",
+                "for": "Everyone",
+                "summary": "Immersive teamLab light installation + Luke Jerram's 6-metre sun — both kids equally dazzled.",
+                "cost": "From £13, Louise free",
+                "travel": "Tube/bus to Sloane Square, Chelsea (~15 min)."
+              }
+            ]
+          }
+        ]
+      },
       "events": [
         {
-          "text": "👨‍👧 Michael + Louise: Natural History Museum",
-          "status": "action",
-          "statusLabel": "BOOK ENTRY"
+          "text": "👇 Build your own below — the museum quarter clusters NHM, Science Museum, V&A & Design Museum within 5 min. Tap to choose."
         },
         {
-          "text": "👩‍👧 Meghan + Kenna: Tate Modern + Millennium Bridge"
+          "time": "10:00",
+          "text": "🦖 Natural History Museum (booked) — Hintze Hall whale, dinosaurs",
+          "status": "booked",
+          "statusLabel": "S16729453"
         },
         {
-          "text": "Regroup for lunch or afternoon"
-        },
-        {
-          "text": "Optional: Sky Garden (free, book 3 wks ahead)",
-          "status": "action",
-          "statusLabel": "BOOK MAY 25"
-        },
-        {
-          "text": "⭐ Gems today: Ampersand 'Science' afternoon tea (dinosaur + petri-dish themed, next to the NHM — book ahead) and Tate Modern's Level 10 free skyline view (better than paying for the Shard)."
-        },
-        {
-          "text": "⚠ Pack tonight — 5:15 AM wake-up tomorrow!"
+          "text": "⚠ Pack for Paris TONIGHT — 5:15 AM Eurostar wake-up tomorrow"
         }
       ],
       "details": [

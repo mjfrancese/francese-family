@@ -32,6 +32,35 @@ that cross zones, add a per-event `"tz"` override on individual events (see
 render normally (the feature self-disables). Preview any moment with the
 `?now=YYYY-MM-DDTHH:MM` URL param (treated as wall-clock in each day's zone).
 
+## Build-Your-Own days (adaptive, shared, sticky plans)
+Any timeline day can carry a `plan` that turns it into an interactive
+"choose at each step" day. Tapping an option reveals ITS OWN travel + notes,
+so the plan reshapes as you pick. Selections are stored in Firebase at
+`trips/{slug}/selections/{dayId}/{slotId}` and read with `onValue`, so they
+**sync across all viewers** (like checklist toggles), **stick**, and toggle
+on/off. Engine: `src/hooks/useSelections.js` + `src/components/DayPlan.jsx`,
+wired through DayCard/DayByDay/TripDashboard.
+
+Schema on a day:
+```
+"plan": {
+  "intro": "...",
+  "slots": [{
+    "id": "morning", "title": "Morning — pick your vibe", "time": "~10:30",
+    "options": [{
+      "id": "magic", "label": "Street magic", "icon": "🎩",
+      "for": "Everyone", "tier": "gem",        // tier:gem = 🦢 whole-family highlight
+      "summary": "...", "cost": "Free", "book": "Pre-book (url)",
+      "travel": "Piccadilly line ...",          // adaptive: shown when chosen
+      "notes": [{ "type": "tip|warn|info", "text": "..." }],
+      "then": "You're a 5-min walk from ..."
+    }]
+  }]
+}
+```
+Keep fixed bookings (Matilda, NHM) as normal `events` (anchors); put the
+choices in `plan`. Reusable for every trip — NH/FL can use it too.
+
 ## Deployment — Two-Step Process (IMPORTANT)
 
 The live site has **two independent layers** that must both be updated:

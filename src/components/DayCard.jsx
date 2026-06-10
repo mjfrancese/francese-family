@@ -1,11 +1,20 @@
 import { colors, fonts } from '../theme'
 import StatusBadge from './StatusBadge'
 import DetailSection from './DetailSection'
+import DayPlan from './DayPlan'
 import { renderBullets } from './Bullet'
 import { ChevronRight } from 'lucide-react'
 
-export default function DayCard({ day, dayNum, month, title, events = [], details = [], expanded, onToggle, isToday = false, currentEventIndex = -1 }) {
+export default function DayCard({ day, dayNum, month, title, events = [], details = [], expanded, onToggle, isToday = false, currentEventIndex = -1, plan = null, daySelections = {}, onSelectOption }) {
   const hasDetails = details && details.length > 0
+  const hasPlan = !!(plan && plan.slots && plan.slots.length > 0)
+  const hasExpandable = hasDetails || hasPlan
+  // Labels of currently-chosen options, for a compact "your picks" preview.
+  const pickLabels = hasPlan
+    ? plan.slots
+        .map(s => { const o = s.options.find(o => o.id === daySelections[s.id]); return o ? o.label : null })
+        .filter(Boolean)
+    : []
 
   return (
     <div style={{
@@ -18,17 +27,17 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
     }}>
       {/* Header row */}
       <div
-        onClick={hasDetails ? onToggle : undefined}
+        onClick={hasExpandable ? onToggle : undefined}
         style={{
           display: 'flex',
           alignItems: 'center',
           gap: 14,
           padding: 16,
-          cursor: hasDetails ? 'pointer' : 'default',
+          cursor: hasExpandable ? 'pointer' : 'default',
           transition: 'background 0.15s ease',
         }}
-        onMouseOver={e => { if (hasDetails) e.currentTarget.style.background = colors.cardHover }}
-        onMouseOut={e => { if (hasDetails) e.currentTarget.style.background = 'transparent' }}
+        onMouseOver={e => { if (hasExpandable) e.currentTarget.style.background = colors.cardHover }}
+        onMouseOut={e => { if (hasExpandable) e.currentTarget.style.background = 'transparent' }}
       >
         {/* Day badge */}
         <div style={{
@@ -78,7 +87,28 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
               </span>
             )}
             <span>{title}</span>
+            {hasPlan && (
+              <span style={{
+                fontFamily: fonts.mono, fontSize: 9, fontWeight: 700, letterSpacing: 1,
+                color: colors.bullet.tip, border: '1px solid #2d6b45', borderRadius: 4,
+                padding: '1px 6px', flexShrink: 0,
+              }}>
+                BUILD YOUR OWN
+              </span>
+            )}
           </div>
+          {pickLabels.length > 0 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 6 }}>
+              {pickLabels.map((l, i) => (
+                <span key={i} style={{
+                  fontSize: 10, color: colors.text, background: 'rgba(74,144,217,0.12)',
+                  border: `1px solid ${colors.cardBorderActive}`, borderRadius: 10, padding: '1px 8px',
+                }}>
+                  ✓ {l}
+                </span>
+              ))}
+            </div>
+          )}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             {events.slice(0, expanded ? events.length : 4).map((evt, i) => {
               const isCurrent = i === currentEventIndex
@@ -112,7 +142,7 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
         </div>
 
         {/* Chevron */}
-        {hasDetails && (
+        {hasExpandable && (
           <ChevronRight
             size={16}
             color={colors.textDim}
@@ -125,14 +155,21 @@ export default function DayCard({ day, dayNum, month, title, events = [], detail
         )}
       </div>
 
-      {/* Expanded detail sections */}
-      {expanded && hasDetails && (
+      {/* Expanded: Build-Your-Own plan + detail sections */}
+      {expanded && hasExpandable && (
         <div style={{
           padding: '0 16px 16px 82px',
           borderTop: `1px solid ${colors.divider}`,
           paddingTop: 16,
           background: 'linear-gradient(180deg, #12121f 0%, transparent 100%)',
         }}>
+          {hasPlan && (
+            <DayPlan
+              plan={plan}
+              daySelections={daySelections}
+              onSelect={(slotId, optId) => onSelectOption && onSelectOption(slotId, optId)}
+            />
+          )}
           {details.map((section, i) => (
             <DetailSection key={i} icon={section.icon} title={section.title} color={section.color}>
               {renderBullets(section.items || section.bullets)}

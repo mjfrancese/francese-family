@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
 import { useTripData } from '../hooks/useTripData'
 import { useChecklist } from '../hooks/useChecklist'
+import { useSelections } from '../hooks/useSelections'
 import { useAccess } from '../hooks/useAccess'
 import { colors, fonts, styles } from '../theme'
 import { Calendar, ClipboardList, DollarSign, CheckSquare, Lock, ArrowLeft, Settings, Plane, ShieldCheck } from 'lucide-react'
@@ -32,6 +33,7 @@ export default function TripDashboard() {
   const { user } = useAuth()
   const { meta, timeline, bookings, budget, flightOptions, travelers, loading: dataLoading } = useTripData(slug)
   const { items: checklistItems, loading: checkLoading, toggle } = useChecklist(slug)
+  const { selections, setSelection } = useSelections(slug)
   const { hasAccess, isOwner, accessList, loading: accessLoading, addAccess, removeAccess } = useAccess(slug, user)
   const [activeTab, setActiveTab] = useState('daybyday')
   const [showShare, setShowShare] = useState(false)
@@ -216,7 +218,7 @@ export default function TripDashboard() {
 
       {/* Tab content */}
       <div style={{ padding: '20px 24px 48px', maxWidth: 800, margin: '0 auto' }}>
-        {activeTab === 'daybyday' && <DayByDay timeline={timeline} meta={meta} />}
+        {activeTab === 'daybyday' && <DayByDay timeline={timeline} meta={meta} selections={selections} setSelection={setSelection} />}
         {activeTab === 'reservations' && <Reservations bookings={bookings} />}
         {activeTab === 'budget' && <Budget budget={budget} />}
         {activeTab === 'todo' && <Checklist items={checklistItems} toggle={toggle} />}
