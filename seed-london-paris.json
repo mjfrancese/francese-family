@@ -1230,32 +1230,93 @@
       "day": "Fri",
       "dayNum": "12",
       "month": "JUN",
-      "title": "Museum Quarter — Dinosaurs, Science & Fashion",
+      "title": "Museum Split & Fairy Tales Finale",
       "date": "2026-06-12",
       "tz": "Europe/London",
       "section": "London · Days 1–5",
       "order": 5,
       "plan": {
-        "intro": "Everything's a 5-minute walk apart in South Kensington. The NHM at 10 is booked — then tap your afternoon.",
+        "intro": "Split morning: Michael + Louise at the dinosaurs, Meghan + Kenna at the V&A (both South Kensington, 5 min apart). Reconvene for lunch, optional quick hit, then Fairy Tales at the British Library at 3 — it's 5 min from the hotel. Early night tonight: tomorrow's a big moving day.",
         "slots": [
           {
             "id": "nhm",
             "fixed": true,
             "time": "10:00",
-            "label": "🦖 Natural History Museum (booked)",
+            "label": "🦖 Natural History Museum — Michael + Louise (booked)",
             "status": "booked",
             "statusLabel": "S16729453",
             "notes": [
               {
                 "type": "info",
-                "text": "Hintze Hall blue whale + the dinosaur gallery. Allow ~90 min. South Kensington."
+                "text": "Hintze Hall blue whale + the dinosaur gallery. Allow ~90 min — done by ~11:45. South Kensington."
               }
             ]
           },
           {
-            "id": "midday",
-            "title": "Hands-on midday",
-            "time": "~13:00",
+            "id": "vanda",
+            "title": "Meghan + Kenna at the V&A — 10:00 (Meghan's call)",
+            "time": "10:00",
+            "options": [
+              {
+                "id": "membership-gambit",
+                "label": "Membership gambit → Schiaparelli",
+                "icon": "👗",
+                "for": "Kenna",
+                "tier": "gem",
+                "summary": "Day tickets for Schiaparelli are SOLD OUT — but a V&A membership (£86) gets Meghan in without a ticket and lets her bring Kenna free as her guest. Dalí's lobster dress, the skeleton dress, 100 garments — the fashion exhibition of 2026, and Kenna's dream show.",
+                "cost": "£86 (membership covers both)",
+                "book": "Buy membership online tonight or at the V&A desk at opening (vam.ac.uk/membership)",
+                "travel": "V&A main entrance, Cromwell Road — 5-min walk from the NHM.",
+                "notes": [
+                  {
+                    "type": "tip",
+                    "text": "Membership perks while you're there: the Members' Room for a quiet coffee, no-queue entry, and it covers any return visit."
+                  },
+                  {
+                    "type": "warn",
+                    "text": "Confirm guest entry to the exhibition at the membership desk before paying — that's the whole point of the £86."
+                  }
+                ],
+                "then": "Browse the free fashion gallery after, then meet the others for lunch."
+              },
+              {
+                "id": "va-free-galleries",
+                "label": "Free galleries instead",
+                "icon": "🏛️",
+                "for": "Kenna",
+                "summary": "Skip the £86: the V&A's permanent fashion gallery (1750 → now), the jewellery rooms, photography, and the Cast Courts (a giant plaster Trajan's Column) are all free and very Kenna.",
+                "cost": "Free",
+                "travel": "V&A main entrance, Cromwell Road — 5-min walk from the NHM."
+              }
+            ]
+          },
+          {
+            "id": "lunch",
+            "title": "Reconvene for lunch",
+            "time": "~12:15",
+            "options": [
+              {
+                "id": "va-courtyard",
+                "label": "V&A courtyard café",
+                "icon": "☕",
+                "for": "Everyone",
+                "summary": "Meet in the V&A's John Madejski Garden — the world's oldest museum café (gorgeous tiled rooms), and the shallow courtyard pool is made for Louise to paddle in if it's warm.",
+                "cost": "~£10–14pp"
+              },
+              {
+                "id": "exhibition-road",
+                "label": "Quick eats on Exhibition Road",
+                "icon": "🥙",
+                "for": "Everyone",
+                "summary": "Comptoir Libanais, Fernandez & Wells and friends — faster and cheaper than the museum cafés, right between the two museums.",
+                "cost": "~£8–12pp"
+              }
+            ]
+          },
+          {
+            "id": "quick-hit",
+            "title": "One quick hit before heading back? (optional)",
+            "time": "~13:15",
             "options": [
               {
                 "id": "wonderlab",
@@ -1263,72 +1324,54 @@
                 "icon": "🔬",
                 "for": "Everyone",
                 "tier": "gem",
-                "summary": "A hands-on science playground 3 min from the NHM — Van de Graaff hair-raising, body-sized bubbles, live shows every 30 min.",
+                "summary": "A hands-on science playground 3 min away — Van de Graaff hair-raising, body-sized bubbles, live shows. One brilliant hour.",
                 "cost": "£17pp (family discount)",
-                "book": "Pre-book a ~1:30 slot (sciencemuseum.org.uk)",
-                "travel": "3-min walk from the NHM along Exhibition Road."
-              },
-              {
-                "id": "diana",
-                "label": "Diana Memorial Playground",
-                "icon": "🛝",
-                "for": "Louise",
-                "tier": "gem",
-                "summary": "A Peter Pan-themed adventure playground with a giant pirate galleon, in Kensington Gardens. Free.",
-                "cost": "Free",
-                "book": "Verify it's reopened the morning of (royalparks.org.uk)",
-                "travel": "~12-min walk through Kensington Gardens from the NHM."
-              },
-              {
-                "id": "va-free",
-                "label": "V&A free galleries + lunch",
-                "icon": "🏛️",
-                "for": "Everyone",
-                "summary": "The V&A's free fashion, photography & Cast Courts (a giant plaster Trajan's Column!), plus its courtyard café for Louise's lunch/nap.",
-                "cost": "Free",
-                "travel": "5-min walk from the NHM."
-              }
-            ]
-          },
-          {
-            "id": "fashion-finale",
-            "title": "Kenna's fashion finale — pick ONE",
-            "time": "~14:30",
-            "options": [
-              {
-                "id": "schiaparelli",
-                "label": "V&A: Schiaparelli",
-                "icon": "👗",
-                "for": "Kenna",
-                "summary": "The blockbuster surrealist-fashion show — Dalí's lobster dress, the skeleton dress, 100 garments. The fashion exhibition of 2026.",
-                "cost": "£28 adult",
-                "book": "Book ahead — selling out",
-                "travel": "Inside the V&A, 5 min from the NHM."
-              },
-              {
-                "id": "nigo",
-                "label": "Design Museum: NIGO",
-                "icon": "👟",
-                "for": "Kenna",
-                "tier": "gem",
-                "summary": "First UK retrospective of NIGO (BAPE / KENZO) — streetwear as culture, opening with his recreated teenage bedroom. The standout teen pick.",
-                "cost": "£15 adult / £7.65 child",
-                "travel": "~15-min walk or short bus to Kensington High Street.",
+                "book": "Pre-book a ~13:15 slot (sciencemuseum.org.uk)",
+                "travel": "3-min walk along Exhibition Road.",
                 "notes": [
                   {
-                    "type": "tip",
-                    "text": "Has a free permanent gallery + garden too."
+                    "type": "warn",
+                    "text": "Hard stop ~14:15 — you need the ~25-min Piccadilly ride back to King's Cross for the 15:00 Fairy Tales slot."
                   }
                 ]
               },
               {
-                "id": "saatchi",
-                "label": "Saatchi: The Sun & the Moon",
-                "icon": "🎡",
+                "id": "skip-ahead",
+                "label": "Skip it — head back relaxed",
+                "icon": "🚇",
                 "for": "Everyone",
-                "summary": "Immersive teamLab light installation + Luke Jerram's 6-metre sun — both kids equally dazzled.",
-                "cost": "From £13, Louise free",
-                "travel": "Tube/bus to Sloane Square, Chelsea (~15 min)."
+                "summary": "Tube back to King's Cross at an easy pace, drop bags, and let Louise run the Granary Square fountains before the 15:00 exhibition. The unhurried version.",
+                "cost": "Free"
+              }
+            ]
+          },
+          {
+            "id": "fairy-tales",
+            "fixed": true,
+            "time": "15:00",
+            "label": "📚 Fairy Tales at the British Library — Michael + Meghan + Louise",
+            "status": "action",
+            "statusLabel": "BOOK TIX",
+            "notes": [
+              {
+                "type": "warn",
+                "text": "Book the ~15:00 timed slot TODAY (events.bl.uk) — £11.50 adult off-peak, child rate for Louise. Allow ~1 hr; costumes, puppets, pop-up books — squarely Louise's world."
+              },
+              {
+                "type": "info",
+                "text": "It's a 5-min walk from the Travelodge. Kenna: downtime at the hotel or Granary Square — or tag along if she fancies it."
+              }
+            ]
+          },
+          {
+            "id": "evening",
+            "fixed": true,
+            "time": "~17:30",
+            "label": "🍕 Easy dinner near the hotel, then an early night",
+            "notes": [
+              {
+                "type": "info",
+                "text": "Pizza Union or Coal Drops Yard — fast and 5 min from the hotel. Everyone packed and in bed early; tomorrow is a big moving day."
               }
             ]
           }
