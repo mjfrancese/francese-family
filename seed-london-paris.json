@@ -1556,40 +1556,58 @@
       "order": 7,
       "events": [
         {
-          "time": "~07:00",
-          "text": "Check out Dream Castle. Shuttle/walk to Art of Marvel."
+          "time": "07:00",
+          "text": "🚖 Freenow (scheduled) Dream Castle → Art of Marvel (~5 min). Breakfast costs zero park time — the park won't let you in before 8:30 anyway, so the hotel hour is free time."
         },
         {
-          "time": "~07:15",
-          "text": "Early check-in at Art of Marvel — get MagicPass + Priority Card at concierge desk (room not ready until 3 PM)",
-          "status": "booked",
-          "statusLabel": "32984124"
+          "time": "~07:10",
+          "text": "Split to save time: Michael → bell desk (luggage; room not ready till 3 PM) + concierge to collect Meghan's Priority Card (bring her disability doc + photo ID; confirm it's set for all 4). Meghan + kids → grab a table at Downtown Restaurant.",
+          "status": "action",
+          "statusLabel": "PRIORITY CARD"
         },
         {
-          "time": "~07:30",
-          "text": "Head to Disney Adventure World entrance (10-min walk)"
+          "time": "~07:20",
+          "text": "🍳 Breakfast at Downtown Restaurant buffet (opens 7:00, self-serve = fast). OUT OF POCKET today — meal plan doesn't cover it (~€26–32/head; Kenna may be adult-priced at 12). Skip the slower Manhattan table-service. Eat enough to bridge to the 11:45 voucher lunch.",
+          "status": "action",
+          "statusLabel": "NOT COVERED"
+        },
+        {
+          "time": "~08:00",
+          "text": "Walk to Disney Adventure World (~10–12 min along the lake — faster than the shuttle). Restroom first. Be at the tapstiles by ~8:15 (security opens ~8:00) to be near the front of the 8:30 release."
+        },
+        {
+          "text": "🔑 TONIGHT in the DLP app: (1) link all 4 park tickets + the Art of Marvel booking to your accounts — without this you CANNOT grab the Anna & Elsa virtual queue; (2) confirm tomorrow's EMT window (8:30), that Disney Adventure World is the EMT park, and the Anna & Elsa VQ drop times.",
+          "status": "action",
+          "statusLabel": "APP PREP"
         },
         {
           "time": "08:30–09:30",
-          "text": "⭐ EXTRA MAGIC TIME — early access! (Art of Marvel arrival day = eligible)",
+          "text": "⭐ EXTRA MAGIC TIME — your golden hour (Art of Marvel check-in day = eligible). Public doesn't get in until 9:30.",
           "status": "booked",
           "statusLabel": "EARLY ACCESS"
         },
         {
-          "text": "All 4 together: Crush's Coaster (Louise clears 107cm!), Spider-Man W.E.B., then split for Avengers Assemble"
+          "time": "08:30",
+          "text": "🧊 GO STRAIGHT TO WORLD OF FROZEN (back of park) and ride Frozen Ever After NOW. It's the newest ride, across the lake, and hits 'Arendelle full' capacity lockouts after 9:30 — this is the ONE ride where being physically first matters. (You can still re-ride at night as a bonus.)",
+          "status": "action",
+          "statusLabel": "FROZEN FIRST"
         },
         {
-          "text": "📱 Anna & Elsa Royal Encounter Virtual Queue — the EMT drop is ~08:45 (also 09:45 & 14:00), FREE but gone in under a minute. Be inside the park with the app open + tickets linked by 08:43. Louise's can't-miss moment — grab it before any ride.",
+          "time": "08:45",
+          "text": "📱 THE most time-critical moment of the day: grab the Anna & Elsa Royal Encounter virtual queue the instant it drops. FREE, fills in SECONDS, and the Priority Card does NOT skip it. The 08:45 drop is hotel-guest/EMT-only (beats the 9:45 day-guest stampede). Both phones on the booking screen at 08:44:50 — first to load a slot wins it for all 4. Fallbacks: 09:45 & 14:00. You can only hold ONE VQ park-wide at a time, so this is your only VQ priority until the meet is done.",
           "status": "action",
           "statusLabel": "VQ 08:45"
         },
         {
-          "time": "09:30",
-          "text": "Park opens to public. Crowds arrive — switch to lower-wait rides"
+          "time": "~09:00",
+          "text": "Sweep back toward the entrance (so you exit the back as the 9:30 crowd floods in): Worlds of Pixar — Crush's Coaster (Louise clears 107cm, all four) → Ratatouille (no height min). While in line, Meghan pulls the next Priority Card return to parallelize."
         },
         {
-          "time": "09:30–11:30",
-          "text": "Ratatouille (2D refurb!), Tower of Terror, Raiponce Tangled Spin — use Priority Card at MagicALL entrances throughout the day. Save Frozen Ever After for late evening (22 min wait at 10pm vs 93 min at 9am)."
+          "time": "09:30",
+          "text": "Public opens — now lean HARD on the Priority Card (free, walk-up, repeatable, covers all 4 → do NOT buy Premier Access). Chain headliners: Spider-Man W.E.B. (all four), Avengers Flight Force (120cm → Parent Swap), Tower of Terror (102cm — Louise clears it, but intense free-fall; your call), Tangled Spin, Toy Soldiers Parachute Drop (81cm). ⚠️ Cars ROAD TRIP & Slinky Dog are CLOSED — skip that area."
+        },
+        {
+          "text": "🔄 Parent Swap for the two Louise (115cm) can't ride — RC Racer (120cm) & Flight Force (120cm): Round 1 Meghan + Kenna ride while Michael waits with Louise; Round 2 Michael rides (Kenna re-rides) while Meghan + Louise. Both adults get the coasters, Kenna rides twice, Meghan stays in the action."
         },
         {
           "time": "11:45",
@@ -1598,12 +1616,14 @@
           "statusLabel": "DINING"
         },
         {
-          "time": "~13:00",
-          "text": "Continue rides. Use SNACK+DRINK voucher mid-afternoon (Pause Gourmande)"
+          "time": "~13:30",
+          "text": "🎭 Mickey and the Magician (indoor theater) — DON'T MISS: tomorrow is its LAST performance before it goes on break until August, so it's your only shot this trip. Indoor + A/C = a perfect rest for Louise. Pull exact showtimes from the app first thing AM and lock an early-afternoon slot. Also catch the roaming Disney Marching Band with Minnie on Adventure Way (~15 min, no queue).",
+          "status": "action",
+          "statusLabel": "LAST SHOW"
         },
         {
           "time": "~15:00",
-          "text": "Room ready — drop bags at Art of Marvel"
+          "text": "Use the SNACK+DRINK voucher (Pause Gourmande), then a hotel reset — room's ready at 3 PM, you're 10 min away. A mid-afternoon nap is the move if you want Louise to make the 10:40 finale (and it keeps Meghan fresh on the taper, not sidelined)."
         },
         {
           "time": "18:00",
@@ -1613,7 +1633,7 @@
         },
         {
           "time": "~19:00",
-          "text": "Evening rides — Frozen Ever After wait drops dramatically: ~60 min at 7pm → 47 min at 8pm → 22 min at 10pm. This is the prime Frozen window. Single Rider also available for faster boarding."
+          "text": "Evening rides — re-ride favorites with the Priority Card as the crowd thins. Bonus: Frozen Ever After drops to ~20–25 min in the last hour (~9–10pm) — a sweet re-ride if Louise still has gas (you already rode it at rope drop, so this is gravy). Single Rider available for a quick adult/Kenna solo lap."
         },
         {
           "time": "~22:00",
@@ -1732,7 +1752,7 @@
           "items": [
             {
               "type": "tip",
-              "text": "<strong>EMT Strategy (8:30–9:30):</strong> Enter at 08:30. FIRST: open the DLP app and join the Anna & Elsa Royal Encounter virtual queue (fills in minutes!). Then: ALL FOUR → Crush's Coaster. Then Spider-Man W.E.B. Then split: Michael+Kenna → Avengers Assemble (120cm, Parent Swap for Meghan) while Meghan+Louise → Raiponce Tangled Spin or Ratatouille. <strong>Do NOT chase Frozen Ever After at EMT — 9am wait avg is 93 min. Ride it after 9pm instead (22 min avg).</strong>"
+              "text": "<strong>EMT Strategy (8:30–9:30) — UPDATED:</strong> The smart move with the new World of Frozen is to ride <strong>Frozen Ever After FIRST</strong> at 08:30 — it's the newest ride, at the back of the park, and hits 'Arendelle full' capacity lockouts after 9:30, so this is the one place being physically first matters (the EMT wait is short; the midday standby is 60–120 min). At <strong>08:45</strong> grab the Anna & Elsa VQ on a second phone (FREE, fills in seconds, Priority Card does NOT skip it — the 08:45 drop is EMT-only). Then sweep back toward the entrance: Crush's Coaster (Louise clears 107cm) → Ratatouille → Spider-Man W.E.B. Use the Priority Card to parallelize (pull the next return while riding the current). Frozen re-rides cheap again in the last hour (~20–25 min) if you want a night lap."
             },
             {
               "type": "tip",
@@ -1740,7 +1760,7 @@
             },
             {
               "type": "tip",
-              "text": "<strong>World of Frozen strategy:</strong> Frozen Ever After (boat ride) — <strong>best at 9-10pm (22 min avg wait vs 93 min at 9am).</strong> Use Priority Card during the day for a manageable wait anytime. Single Rider available. Royal Encounter (Anna & Elsa meet): <strong>FREE virtual queue — drops ~08:45 during EMT (also 09:45 & 14:00), one slot per group, gone in under a minute. Have the app open + tickets linked by 08:43.</strong> A Celebration in Arendelle outdoor show: stand at the Arendelle Bay fjord railing, arrive 15-20 min early (no seating). Free-roaming robotic Olaf animatronic wanders the area — legitimately impressive."
+              "text": "<strong>World of Frozen strategy:</strong> Ride Frozen Ever After (boat ride) FIRST at 08:30 EMT — the land hits 'Arendelle full' lockouts after 9:30, so don't gamble on midday. The Priority Card gives a manageable walk-up wait anytime as backup, and the last hour (~9–10pm, ~20–25 min) is a cheap bonus re-ride. Single Rider available (adult/Kenna solo only — it splits the party). Royal Encounter (Anna & Elsa meet): <strong>FREE virtual queue — drops ~08:45 during EMT (also 09:45 & 14:00), one slot per group, gone in under a minute. The Priority Card does NOT skip it — you must win it in the app. Have it open + tickets linked by 08:43.</strong> A Celebration in Arendelle outdoor show: stand at the Arendelle Bay fjord railing, arrive 15-20 min early (no seating). Free-roaming robotic Olaf animatronic wanders the area — legitimately impressive."
             },
             {
               "type": "tip",
