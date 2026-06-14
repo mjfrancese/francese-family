@@ -1911,73 +1911,89 @@
       "order": 8,
       "events": [
         {
-          "time": "~07:00",
-          "text": "🍽️ Breakfast at Art of Marvel — BREAKFAST VOUCHER (only included breakfast of trip)"
+          "text": "🎯 PLAN (calibrated to Day-1 pace): NO nap, NO 22:40 finale — a straight-through day that wraps when Louise walls (~8pm, like yesterday), banking sleep before the 7:30am flight. Priority Card is your all-day fast lane again."
         },
         {
-          "time": "~07:30",
-          "text": "Head to Disneyland Park entrance (10-min walk)"
+          "time": "~07:15",
+          "text": "🍽️ Fast breakfast at Downtown (covered — only included breakfast of the trip). Eat quick (~7:15–7:45) so it doesn't eat EMT; don't do the slow Manhattan table-service."
+        },
+        {
+          "time": "~08:00",
+          "text": "Leave the room — Disneyland Park is the FARTHER park (~10 min walk vs 7 yesterday). Be through bag check and at the Main Street tapstiles by ~8:15."
         },
         {
           "time": "08:30–09:30",
-          "text": "⭐ EXTRA MAGIC TIME — early access! (Art of Marvel guest)",
+          "text": "⭐ EXTRA MAGIC TIME — early access! (Art of Marvel guest; both parks have EMT daily)",
           "status": "booked",
           "statusLabel": "EARLY ACCESS"
         },
         {
-          "text": "All 4 → Big Thunder Mountain. Then split: Hyperspace Mtn (Parent Swap) + Peter Pan (walk-on!)"
+          "time": "08:30",
+          "text": "🧚 PETER PAN'S FLIGHT FIRST — it's the one ride whose line you can't recover later (60–90 min by mid-morning) and it's whole-family (no height min). Go straight through/around the castle.",
+          "status": "action",
+          "statusLabel": "PETER PAN 1ST"
         },
         {
-          "time": "09:30",
-          "text": "Park opens to public. Crowds arrive — switch to lower-wait rides"
+          "text": "~08:45 Discoveryland split: Kenna + one parent → Hyperspace Mountain (Louise ~5cm under the 120cm min → Parent Swap, everyone present, adults take turns via the exit). Other parent + Louise → Buzz Lightyear + Orbitron. Regroup ~9:15 → Big Thunder Mountain (~9:20, Louise clears 102cm, whole family)."
+        },
+        {
+          "time": "09:45",
+          "text": "📱 9:45 SHARP — grab the Princess Pavilion virtual queue the instant it drops (Louise's real-princess meet — pot-luck princess, NOT Anna/Elsa). Same drill as the Anna & Elsa grab; the Priority Card does NOT skip it. Aim for a ~10:30–11:15 return window. One VQ at a time — Princess first; grab Meet Mickey (Phantom Manor gazebo) on the 14:00 drop later if wanted.",
+          "status": "action",
+          "statusLabel": "VQ 9:45"
+        },
+        {
+          "time": "~09:45",
+          "text": "Fantasyland dark rides are open now (Priority Card): it's a small world, Casey Jr., Le Pays des Contes de Fées (storybook boats), Pinocchio — all by Princess Pavilion. Do the Princess meet on your return window (~10:45)."
         },
         {
           "time": "11:30",
-          "text": "Disney Stars on Parade — now runs 11:30 (moved earlier in 2026), BEFORE lunch. Modified route: sharp right via Discoveryland due to the Sleeping Beauty Castle bridge refurb; the big Princess float is swapped for carriages. Position on the Discoveryland side of Main Street. Confirm the time in the app.",
+          "text": "🎉 Disney Stars on Parade (~25 min). Claim a Main Street / Town Square (entrance-end) curb by ~11:10. Watch from the MAIN STREET side, NOT the castle/Central Plaza side — it's walled off for the bridge refurb and the parade squeezes through a Discoveryland-side corridor.",
           "status": "action",
           "statusLabel": "PARADE 11:30"
         },
         {
           "time": "12:30",
-          "text": "🍽️ Lunch: Royal Banquet — LAST DAY VOUCHER + character dining",
+          "text": "🍽️ Lunch: Royal Banquet (covered voucher). It's INSIDE the Disneyland Hotel at the gate — tap OUT with each MagicPass, eat ~90 min, tap back IN (~14:00). Characters = Mickey/Minnie/Donald/Daisy in royal dress, NOT princesses. ⚠️ At check-in CONFIRM the voucher fully covers the character buffet + ask about drink upcharge.",
           "status": "booked",
           "statusLabel": "DINING"
         },
         {
           "time": "~14:00",
-          "text": "Afternoon: \"it's a small world\", Le Pays des Contes de Fées (storybook boats), Casey Jr., Buzz Lightyear (refurbished), Phantom Manor, Peter Pan's Flight (Priority Card!), Star Tours, Meet Mickey. ⚠️ Snow White is CLOSED (refurb until late July — it did NOT reopen June 13)."
+          "text": "Tap back in. No nap — straight into the afternoon (this is your bonus touring time). Grab the Meet Mickey VQ (14:00 drop) if the girls want a second meet."
         },
         {
-          "time": "~16:05",
-          "text": "🦁 The Lion King: Rhythms of the Pride Lands (Frontierland) — one of DLP's best shows, back as of June 13. Showtimes 12:30, 13:30, 16:05, 17:05 — the 16:05 fits nicely after lunch. (Note: Mickey and the Magician is in the OTHER park and its FINAL show is June 14 — catch it on Day 1, not today.)"
+          "text": "Afternoon swing — Frontierland: Phantom Manor (your call — spooky dark ride) + Big Thunder re-ride. Then Adventureland: Indiana Jones (Kenna + adults Parent Swap — confirm at the ride your card category allows Indy). Then Discoveryland: Star Tours (Louise clears 102cm), Buzz re-ride. Priority Card throughout."
+        },
+        {
+          "time": "16:05",
+          "text": "🦁 The Lion King: Rhythms of the Pride Lands (Frontierland Theater, 30 min) — your seated A/C rest beat to pace Louise (replacing the nap). Reopened Jun 13; Priority Card for theater access. (17:05 is the backup slot.)",
+          "status": "action",
+          "statusLabel": "REST BEAT"
         },
         {
           "time": "17:25",
-          "text": "⏰ Return check-in (BA221). Seats are confirmed: Meghan 20F (bulkhead), Michael 21J, Kenna 21H, Louise 21K. If online check-in errors like the outbound, just check in at the LHR T5 counter tomorrow. Don't reshuffle.",
+          "text": "⏰ Return check-in (BA221) — do it on your phone over dinner. Seats confirmed: Meghan 20F (bulkhead), Michael 21J, Kenna 21H, Louise 21K. If online check-in errors like the outbound, just check in at the LHR T5 counter tomorrow. Don't reshuffle.",
           "status": "action",
           "statusLabel": "CHECK-IN"
         },
         {
-          "time": "~18:30",
-          "text": "🍽️ Dinner: Quick-service (NO voucher left — ~€40-60 out of pocket)",
+          "time": "~18:00",
+          "text": "🍽️ Dinner: quick-service, out of pocket (~€40–60) — keep it FAST, not a second 90-min table meal. Then gentle wind-down rides to pace Louise: storybook boats, it's a small world, the Railroad, Carrousel, La Tanière du Dragon (free dragon under the castle).",
           "status": "action",
           "statusLabel": "NOT COVERED"
         },
         {
-          "text": "Stay in Art of Marvel (same room)",
+          "time": "~19:30–20:00",
+          "text": "🏁 Wrap when Louise walls (~8pm yesterday). Head back to Art of Marvel (~10 min) — getting her down early is a WIN before the 7:30am checkout. (Skipping the 22:40 Tales of Magic by choice — banking sleep for the flight.)"
+        },
+        {
+          "text": "🧳 Pack tonight — 7:30 AM checkout tomorrow. Stay in Art of Marvel, same room (H-DKH4WQD368V2).",
           "status": "booked",
           "statusLabel": "H-DKH4WQD368V2"
         },
         {
-          "time": "~22:40",
-          "text": "✨ Disney Tales of Magic — castle projections + fireworks at Sleeping Beauty Castle (park closing spectacular). Note: drones (removed Apr 1) and fountains (removed May 4) are OUT during the castle bridge refurb — extra pyro replaces them. Priority Card = dedicated accessible viewing area front-left of castle."
-        },
-        {
-          "time": "~22:50",
-          "text": "Disneyland Park closes (~22:40-22:50). Walk back to hotel."
-        },
-        {
-          "text": "⚠ Pack tonight — 7:30 AM checkout tomorrow!"
+          "text": "⚠️ CLOSED today — don't route to them: Pirates of the Caribbean (closure STARTS today), Snow White, Alice's Curious Labyrinth, and Dumbo (likely, Jun 8–19) — pre-warn Louise on Dumbo; Carrousel / Tea Cups are the spinning substitute. Verify all in the app at park open."
         }
       ],
       "details": [
@@ -2088,7 +2104,7 @@
           "items": [
             {
               "type": "tip",
-              "text": "<strong>EMT Strategy (8:30–9:30):</strong> ALL FOUR → Big Thunder Mountain first (Louise clears 102cm!). Then split: Meghan+Louise → Peter Pan's Flight (use Priority Card at accessible entrance — 10-25 min vs 60-90 standby) while Michael+Kenna → Hyperspace Mountain (120cm). Meet up at 9:30 for public opening."
+              "text": "<strong>EMT Strategy (8:30–9:30) — UPDATED:</strong> ALL FOUR → Peter Pan's Flight FIRST (no height min, and it's the one line you can't recover later — 60–90 min by mid-morning vs near walk-on now). Then Discoveryland: Michael+Kenna → Hyperspace Mountain (120cm, Parent Swap — Louise's ~5cm short) while Meghan+Louise → Buzz Lightyear + Orbitron. Regroup ~9:15 → Big Thunder Mountain (Louise clears 102cm). At 9:45 SHARP grab the Princess Pavilion VQ (Priority Card does NOT skip it)."
             },
             {
               "type": "tip",
